@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import * as esbuild from "esbuild-wasm";
+import { unpkgPathPlugin } from "./plugins/unpkgPathPlugin";
 
 const App = () => {
   const esbuildServiceRef = useRef<any>();
@@ -16,20 +17,22 @@ const App = () => {
 
   useEffect(() => {
     initializeEsbuildService();
-    console.log(code);
-  }, [code]);
+  }, []);
 
   const handleOnClick = async () => {
     if (!esbuildServiceRef.current) {
       return;
     }
 
-    const result = await esbuildServiceRef.current.transform(inputArea, {
-      loader: "jsx",
-      target: "es2015",
+    const result = await esbuildServiceRef.current.build({
+      entryPoints: ["index.js"],
+      bundle: true,
+      write: false,
+      plugins: [unpkgPathPlugin()],
     });
 
-    setCode(result.code);
+    // setCode(result);
+    console.log(result.outputFiles[0].text);
   };
 
   return (
