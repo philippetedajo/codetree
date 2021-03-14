@@ -5,7 +5,7 @@ export const unpkgPathPlugin = () => {
   return {
     name: "unpkg-path-plugin",
     setup(build: esbuild.PluginBuild) {
-      // intercept import paths, redirect them, and pass it to onLoad args
+      // intercept import paths, redirect them, and pass it to onLoad as args
       build.onResolve({ filter: /.*/ }, async (args: any) => {
         console.log("onResolve", args);
 
@@ -14,11 +14,10 @@ export const unpkgPathPlugin = () => {
         }
 
         if (args.path.includes("./") || args.path.includes("../")) {
-          const newUrl = new URL(args.path, args.importer + "/").href;
-          console.log(newUrl);
           return {
             namespace: "a",
-            path: newUrl,
+            path: new URL(args.path, `https://unpkg.com${args.resolveDir}/`)
+              .href,
           };
         }
 
@@ -28,7 +27,7 @@ export const unpkgPathPlugin = () => {
         };
       });
 
-      //load the file content and search for require or import statement to pass to onResolve args
+      //load the file content and search for require or import statement to pass to onResolve as args
       build.onLoad({ filter: /.*/ }, async (args: any) => {
         console.log("onLoad", args);
 
@@ -36,17 +35,19 @@ export const unpkgPathPlugin = () => {
           return {
             loader: "jsx",
             contents: `
-              const message = require('medium-test-pkg');
+              const message = require('nested-test-pkg');
               console.log(message);
             `,
           };
         }
 
-        const { data } = await axios.get(args.path);
-        console.log(data);
+        const { data, request } = await axios.get(args.path);
+
         return {
           loader: "jsx",
           contents: data,
+          //specify the place where the content was found
+          resolveDir: new URL("./", request.responseURL).pathname,
         };
       });
     },
