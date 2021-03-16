@@ -4,7 +4,7 @@ import * as esbuild from "esbuild-wasm";
 import { unpkgPathPlugin } from "./plugins/unpkgPathPlugin";
 
 const App = () => {
-  const esbuildServiceRef = useRef<any>();
+  const esbuildServiceRef = useRef<esbuild.Service>();
   const [inputArea, setInputArea] = useState("");
   const [code, setCode] = useState("");
 
@@ -28,7 +28,11 @@ const App = () => {
       entryPoints: ["index.js"],
       bundle: true,
       write: false,
-      plugins: [unpkgPathPlugin()],
+      plugins: [unpkgPathPlugin(inputArea)],
+      define: {
+        global: "window",
+        "process.env.NODE_ENV": '"production"',
+      },
     });
 
     setCode(result.outputFiles[0].text);
