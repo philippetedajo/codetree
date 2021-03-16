@@ -6,33 +6,10 @@ const fileCache = localForage.createInstance({
   name: "filecache",
 });
 
-export const unpkgPathPlugin = (inputCode: string) => {
+export const unpkgFetchPlugin = (inputCode: string) => {
   return {
-    name: "unpkg-path-plugin",
+    name: "unpkg-fecth-plugin",
     setup(build: esbuild.PluginBuild) {
-      // intercept import paths, redirect them, and pass it to onLoad as args
-      build.onResolve({ filter: /.*/ }, async (args: any) => {
-        console.log("onResolve", args);
-
-        if (args.path === "index.js") {
-          return { path: args.path, namespace: "a" };
-        }
-
-        if (args.path.includes("./") || args.path.includes("../")) {
-          return {
-            namespace: "a",
-            path: new URL(args.path, `https://unpkg.com${args.resolveDir}/`)
-              .href,
-          };
-        }
-
-        return {
-          namespace: "a",
-          path: `https://unpkg.com/${args.path}`,
-        };
-      });
-
-      //load the file content and search for require or import statement to pass to onResolve as args
       build.onLoad({ filter: /.*/ }, async (args: any) => {
         console.log("onLoad", args);
 
@@ -55,6 +32,7 @@ export const unpkgPathPlugin = (inputCode: string) => {
 
         //if not
         const { data, request } = await axios.get(args.path);
+
         const result: esbuild.OnLoadResult = {
           loader: "jsx",
           contents: data,

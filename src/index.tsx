@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import * as esbuild from "esbuild-wasm";
-import { unpkgPathPlugin } from "./plugins/unpkgPathPlugin";
+import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
+import { unpkgFetchPlugin } from "./plugins/unpkg-fecth-plugin";
 
 const App = () => {
   const esbuildServiceRef = useRef<esbuild.Service>();
@@ -28,7 +29,7 @@ const App = () => {
       entryPoints: ["index.js"],
       bundle: true,
       write: false,
-      plugins: [unpkgPathPlugin(inputArea)],
+      plugins: [unpkgPathPlugin(), unpkgFetchPlugin(inputArea)],
       define: {
         global: "window",
         "process.env.NODE_ENV": '"production"',
