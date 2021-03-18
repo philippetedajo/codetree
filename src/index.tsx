@@ -37,6 +37,14 @@ const App = () => {
     });
 
     setCode(result.outputFiles[0].text);
+
+    try {
+      setTimeout(() => {
+        eval(result.outputFiles[0].text);
+      }, 1000);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -44,9 +52,11 @@ const App = () => {
       <textarea
         onChange={(event) => setInputArea(event.target.value)}
         value={inputArea}
+        style={{ width: "400px", height: "200px" }}
       />
       <button onClick={handleOnClick}>Submit</button>
       <pre> {code} </pre>
+      <iframe title="frame" src="/test.html" />
     </div>
   );
 };
