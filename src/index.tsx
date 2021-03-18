@@ -9,6 +9,12 @@ const App = () => {
   const [inputArea, setInputArea] = useState("");
   const [code, setCode] = useState("");
 
+  const frameContent = ` 
+    <script>
+    ${code}
+    </script>
+  `;
+
   const initializeEsbuildService = async () => {
     esbuildServiceRef.current = await esbuild.startService({
       worker: true,
@@ -37,14 +43,6 @@ const App = () => {
     });
 
     setCode(result.outputFiles[0].text);
-
-    try {
-      setTimeout(() => {
-        eval(result.outputFiles[0].text);
-      }, 1000);
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   return (
@@ -56,7 +54,7 @@ const App = () => {
       />
       <button onClick={handleOnClick}>Submit</button>
       <pre> {code} </pre>
-      <iframe title="frame" src="/test.html" />
+      <iframe title="frame" sandbox="allow-scripts" srcDoc={frameContent} />
     </div>
   );
 };
