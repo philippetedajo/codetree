@@ -10,27 +10,54 @@ export const unpkgFetchPlugin = (inputCode: string) => {
   return {
     name: "unpkg-fecth-plugin",
     setup(build: esbuild.PluginBuild) {
-      build.onLoad({ filter: /.*/ }, async (args: any) => {
-        console.log("onLoad", args);
+      //match entry file "index.js"
+      build.onLoad({ filter: /(^index\.js$)/ }, () => {
+        return {
+          loader: "jsx",
+          contents: inputCode,
+        };
+      });
 
-        if (args.path === "index.js") {
-          return {
-            loader: "jsx",
-            contents: inputCode,
-          };
-        }
-
-        //check if file is has already been fetched and cached
+      build.onLoad({ filter: /.*/ }, async (args: esbuild.OnLoadArgs) => {
         const cacheResult = await fileCache.getItem<esbuild.OnLoadResult>(
           args.path
         );
-
-        // if yes
         if (cacheResult) {
           return cacheResult;
         }
+      });
 
-        //if not
+      //match css file
+      build.onLoad({ filter: /.css$/ }, async (args: esbuild.OnLoadArgs) => {
+        console.log("onLoad", args);
+
+        const { data, request } = await axios.get(args.path);
+
+        const escapedData = data
+          .replace(/\n/g, "")
+          .replace(/"/g, '\\"')
+          .replace(/'/g, "\\'");
+
+        const contents = `const style = document.createElement("style");
+               style.innerText = '${escapedData}';
+               document.head.appendChild(style);`;
+
+        const result: esbuild.OnLoadResult = {
+          loader: "jsx",
+          contents,
+          //specify the place where the content was found
+          resolveDir: new URL("./", request.responseURL).pathname,
+        };
+        //store response in cache
+        await fileCache.setItem(args.path, result);
+        return result;
+      });
+
+      //=================================================
+
+      build.onLoad({ filter: /.*/ }, async (args: esbuild.OnLoadArgs) => {
+        console.log("onLoad", args);
+
         const { data, request } = await axios.get(args.path);
 
         const result: esbuild.OnLoadResult = {

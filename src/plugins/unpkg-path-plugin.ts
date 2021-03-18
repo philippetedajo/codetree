@@ -10,7 +10,7 @@ export const unpkgPathPlugin = () => {
       });
 
       //match relative path in a module "./" or "../"
-      build.onResolve({ filter: /^\.+\// }, (args: any) => {
+      build.onResolve({ filter: /^\.+\// }, (args: esbuild.OnResolveArgs) => {
         return {
           namespace: "a",
           path: new URL(args.path, `https://unpkg.com${args.resolveDir}/`).href,
@@ -18,7 +18,7 @@ export const unpkgPathPlugin = () => {
       });
 
       //match main file in a module
-      build.onResolve({ filter: /.*/ }, async (args: any) => {
+      build.onResolve({ filter: /.*/ }, async (args: esbuild.OnResolveArgs) => {
         return {
           namespace: "a",
           path: `https://unpkg.com/${args.path}`,
