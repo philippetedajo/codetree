@@ -9,7 +9,7 @@ const App = () => {
   const iframe = useRef<any>();
   const [codeInputArea, setCodeInputArea] = useState("");
 
-  const htmlFrameContent = ` 
+  const htmlFrameContent = `
   <html>
   <head></head>
   <body>
@@ -18,7 +18,12 @@ const App = () => {
       window.addEventListener(
         "message",
         (event) => {
-          console.log(event);
+          try {
+            eval(event.data);
+          } catch (error) {
+            const root = document.querySelector("#root");
+            root.innerHTML = "<div>" + error + "</div>";
+          }
         },
         false
       );
