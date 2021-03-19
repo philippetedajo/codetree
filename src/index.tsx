@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import * as esbuild from "esbuild-wasm";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 import { unpkgFetchPlugin } from "./plugins/unpkg-fecth-plugin";
+import CodeEditor from "./components/code-editor";
 
 const App = () => {
   const esbuildServiceRef = useRef<esbuild.Service>();
@@ -21,7 +22,7 @@ const App = () => {
           try {
             eval(event.data);
           } catch (error) {
-            const root = document.querySelector("#root");
+            const root = document.getElementById("root");
             root.innerHTML = "<div style='color: red'>" + error + "</div>";
             throw error
           }
@@ -50,6 +51,8 @@ const App = () => {
       return;
     }
 
+    iframe.current.srcdoc = htmlFrameContent;
+
     const result = await esbuildServiceRef.current.build({
       entryPoints: ["index.js"],
       bundle: true,
@@ -66,6 +69,7 @@ const App = () => {
 
   return (
     <div>
+      <CodeEditor />
       <textarea
         onChange={(event) => setCodeInputArea(event.target.value)}
         value={codeInputArea}
