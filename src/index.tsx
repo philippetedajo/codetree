@@ -6,13 +6,25 @@ import { unpkgFetchPlugin } from "./plugins/unpkg-fecth-plugin";
 
 const App = () => {
   const esbuildServiceRef = useRef<esbuild.Service>();
-  const [inputArea, setInputArea] = useState("");
-  const [code, setCode] = useState("");
+  const iframe = useRef<any>();
+  const [codeInputArea, setCodeInputArea] = useState("");
 
-  const frameContent = ` 
+  const htmlFrameContent = ` 
+  <html>
+  <head></head>
+  <body>
+    <div id="root"></div>
     <script>
-    ${code}
+      window.addEventListener(
+        "message",
+        (event) => {
+          console.log(event);
+        },
+        false
+      );
     </script>
+  </body>
+</html>
   `;
 
   const initializeEsbuildService = async () => {
@@ -35,26 +47,31 @@ const App = () => {
       entryPoints: ["index.js"],
       bundle: true,
       write: false,
-      plugins: [unpkgPathPlugin(), unpkgFetchPlugin(inputArea)],
+      plugins: [unpkgPathPlugin(), unpkgFetchPlugin(codeInputArea)],
       define: {
         global: "window",
         "process.env.NODE_ENV": '"production"',
       },
     });
 
-    setCode(result.outputFiles[0].text);
+    iframe.current.contentWindow.postMessage(result.outputFiles[0].text, "*");
   };
 
   return (
     <div>
       <textarea
-        onChange={(event) => setInputArea(event.target.value)}
-        value={inputArea}
+        onChange={(event) => setCodeInputArea(event.target.value)}
+        value={codeInputArea}
         style={{ width: "400px", height: "200px" }}
       />
       <button onClick={handleOnClick}>Submit</button>
-      <pre> {code} </pre>
-      <iframe title="frame" sandbox="allow-scripts" srcDoc={frameContent} />
+
+      <iframe
+        ref={iframe}
+        title="previewWindow"
+        sandbox="allow-scripts"
+        srcDoc={htmlFrameContent}
+      />
     </div>
   );
 };
