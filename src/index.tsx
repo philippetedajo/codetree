@@ -4,7 +4,7 @@ import * as esbuild from "esbuild-wasm";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 import { unpkgFetchPlugin } from "./plugins/unpkg-fecth-plugin";
 import CodeEditor from "./components/code-editor";
-import "./style.css"
+import "./style.css";
 
 const App = () => {
   const esbuildServiceRef = useRef<esbuild.Service>();
@@ -95,5 +95,3 @@ const App = () => {
 };
 
 ReactDOM.render(<App />, document.querySelector("#root"));
-
-

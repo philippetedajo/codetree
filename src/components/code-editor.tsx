@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import MonacoEditor, { OnChange, OnMount } from "@monaco-editor/react";
-import prettier from "prettier"
-import parser from "prettier/parser-babel"
+import prettier from "prettier";
+import parser from "prettier/parser-babel";
+import useKey from "../hooks/useKey";
 
 //TODO Add format on save
-//TODO Disable on save document 
-
+//TODO Disable on save document
 
 interface codeEditorProps {
   initialValue: string;
@@ -33,14 +33,20 @@ const CodeEditor: React.FC<codeEditorProps> = ({
       parser: "babel",
       plugins: [parser],
       useTabs: false,
-      semi: true
-    })
-    codeEditor.current.setValue(formattedCode)
+      semi: true,
+    });
+    codeEditor.current.setValue(formattedCode);
   };
+
+  useKey("Enter", (event) => {
+    console.log(event);
+  });
 
   return (
     <>
-      <button onClick={onClick}>format code</button>
+      <button className="format" onClick={onClick}>
+        format code
+      </button>
       <MonacoEditor
         value={initialValue}
         onChange={onChange}

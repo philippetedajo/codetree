@@ -13,3 +13,9 @@ body {
 .editor {
   width: 50%;
 }
+
+.format {
+  position: fixed;
+  z-index: 99;
+  left: 35%;
+}
