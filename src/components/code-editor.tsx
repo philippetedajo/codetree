@@ -40,7 +40,7 @@ const CodeEditor: React.FC<codeEditorProps> = ({
 
   return (
     <>
-      {/* <button onClick={onClick}>format code</button> */}
+      <button onClick={onClick}>format code</button>
       <MonacoEditor
         value={initialValue}
         onChange={onChange}

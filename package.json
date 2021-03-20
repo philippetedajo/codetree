@@ -18,6 +18,7 @@
     "@types/react-dom": "^17.0.0",
     "axios": "^0.21.1",
     "esbuild-wasm": "0.8.57",
+    "jscodeshift": "^0.11.0",
     "localforage": "^1.9.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -27,8 +28,10 @@
   },
   "devDependencies": {
     "@monaco-editor/react": "^4.1.0",
+    "@types/jscodeshift": "^0.11.0",
     "@types/prettier": "^2.2.3",
     "monaco-editor": "^0.23.0",
+    "monaco-jsx-highlighter": "^1.1.8",
     "prettier": "^2.2.1"
   },
   "eslintConfig": {
