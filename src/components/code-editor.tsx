@@ -4,6 +4,8 @@ import prettier from "prettier"
 import parser from "prettier/parser-babel"
 
 //TODO Add format on save
+//TODO Disable on save document 
+
 
 interface codeEditorProps {
   initialValue: string;
@@ -27,25 +29,25 @@ const CodeEditor: React.FC<codeEditorProps> = ({
   const onClick = () => {
     //formating code on save
     const unformattedCode = codeEditor.current.getModel().getValue();
-    const formattedCode = prettier.format(unformattedCode,{
-        parser: "babel",
-        plugins: [parser],
-        useTabs: false, 
-        semi: true
+    const formattedCode = prettier.format(unformattedCode, {
+      parser: "babel",
+      plugins: [parser],
+      useTabs: false,
+      semi: true
     })
     codeEditor.current.setValue(formattedCode)
   };
 
   return (
     <>
-      <button onClick={onClick}>format code</button>
+      {/* <button onClick={onClick}>format code</button> */}
       <MonacoEditor
         value={initialValue}
         onChange={onChange}
         onMount={onMount}
         language="javascript"
         theme="vs-dark"
-        height="400px"
+        height="100vh"
         options={{
           wordWrap: "on",
           minimap: {

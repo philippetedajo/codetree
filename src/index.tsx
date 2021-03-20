@@ -4,11 +4,12 @@ import * as esbuild from "esbuild-wasm";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 import { unpkgFetchPlugin } from "./plugins/unpkg-fecth-plugin";
 import CodeEditor from "./components/code-editor";
+import "./style.css"
 
 const App = () => {
   const esbuildServiceRef = useRef<esbuild.Service>();
   const iframe = useRef<any>();
-  const [codeInputArea, setCodeInputArea] = useState("");
+  const [codeInputArea, setCodeInputArea] = useState<string | undefined>("");
 
   const htmlFrameContent = `
   <html>
@@ -68,26 +69,31 @@ const App = () => {
   };
 
   return (
-    <div>
-      <CodeEditor
-        initialValue="const a = 1"
-        onChangeCodeInput={(value) => setCodeInputArea(value)}
-      />
-      <textarea
-        onChange={(event) => setCodeInputArea(event.target.value)}
-        value={codeInputArea}
-        style={{ width: "400px", height: "200px" }}
-      />
-      <button onClick={handleOnClick}>Submit</button>
-
-      <iframe
-        ref={iframe}
-        title="previewWindow"
-        sandbox="allow-scripts"
-        srcDoc={htmlFrameContent}
-      />
+    <div className="container">
+      <div className="editor">
+        <CodeEditor
+          initialValue="const a = 1"
+          onChangeCodeInput={(value) => setCodeInputArea(value)}
+        />
+      </div>
+      <div className="preview">
+        <textarea
+          onChange={(event) => setCodeInputArea(event.target.value)}
+          value={codeInputArea}
+          style={{ width: "400px", height: "200px" }}
+        />
+        <button onClick={handleOnClick}>Submit</button>
+        <iframe
+          ref={iframe}
+          title="previewWindow"
+          sandbox="allow-scripts"
+          srcDoc={htmlFrameContent}
+        />
+      </div>
     </div>
   );
 };
 
 ReactDOM.render(<App />, document.querySelector("#root"));
+
+
