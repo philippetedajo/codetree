@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import MonacoEditor, { OnChange, OnMount } from "@monaco-editor/react";
+import { IKeyboardEvent } from "monaco-editor";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
-import { IKeyboardEvent } from "monaco-editor";
-
-//TODO Add format on save
-//TODO Disable on save document
+import { parse } from "@babel/parser";
+import traverse from "@babel/traverse";
+import MonacoJSXHighlighter from "monaco-jsx-highlighter";
 
 interface codeEditorProps {
   initialValue: string;
@@ -25,9 +25,31 @@ const CodeEditor: React.FC<codeEditorProps> = ({
   const onMount: OnMount = (monacoEditor) => {
     codeEditor.current = monacoEditor;
 
+    //jsx syntax highlight
+    const babelParse = (code: any) =>
+      parse(code, { sourceType: "module", plugins: ["jsx"] });
+
+    const monacoJSXHighlighter = new MonacoJSXHighlighter(
+      //@ts-ignore
+      window.monaco,
+      babelParse,
+      traverse,
+      monacoEditor
+    );
+
+    monacoJSXHighlighter.highLightOnDidChangeModelContent();
+
+    //
+
     let handleOnKeyDown = codeEditor.current.onKeyDown(
       (event: IKeyboardEvent) => {
-        if (event.metaKey && event.code === "KeyB") {
+        if (
+          (window.navigator.platform.match("Mac")
+            ? event.metaKey
+            : event.ctrlKey) &&
+          event.code === "KeyS"
+        ) {
+          event.preventDefault();
           formatOnSave();
           console.log(event.metaKey, event.code);
         }
