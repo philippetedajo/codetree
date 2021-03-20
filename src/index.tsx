@@ -80,7 +80,7 @@ const App = () => {
         <textarea
           onChange={(event) => setCodeInputArea(event.target.value)}
           value={codeInputArea}
-          style={{ width: "400px", height: "200px" }}
+          style={{ width: "200px", height: "200px" }}
         />
         <button onClick={handleOnClick}>Submit</button>
         <iframe

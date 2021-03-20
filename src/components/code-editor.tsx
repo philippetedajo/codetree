@@ -2,7 +2,7 @@ import { useRef } from "react";
 import MonacoEditor, { OnChange, OnMount } from "@monaco-editor/react";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
-import useKey from "../hooks/useKey";
+import { IKeyboardEvent } from "monaco-editor";
 
 //TODO Add format on save
 //TODO Disable on save document
@@ -24,10 +24,21 @@ const CodeEditor: React.FC<codeEditorProps> = ({
 
   const onMount: OnMount = (monacoEditor) => {
     codeEditor.current = monacoEditor;
+
+    let handleOnKeyDown = codeEditor.current.onKeyDown(
+      (event: IKeyboardEvent) => {
+        if (event.metaKey && event.code === "KeyB") {
+          formatOnSave();
+          console.log(event.metaKey, event.code);
+        }
+      }
+    );
+
+    //clearning up
+    return () => handleOnKeyDown.dispose();
   };
 
-  const onClick = () => {
-    //formating code on save
+  function formatOnSave() {
     const unformattedCode = codeEditor.current.getModel().getValue();
     const formattedCode = prettier.format(unformattedCode, {
       parser: "babel",
@@ -36,17 +47,10 @@ const CodeEditor: React.FC<codeEditorProps> = ({
       semi: true,
     });
     codeEditor.current.setValue(formattedCode);
-  };
-
-  useKey("Enter", (event) => {
-    console.log(event);
-  });
+  }
 
   return (
     <>
-      <button className="format" onClick={onClick}>
-        format code
-      </button>
       <MonacoEditor
         value={initialValue}
         onChange={onChange}
