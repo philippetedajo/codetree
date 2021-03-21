@@ -9,20 +9,20 @@ interface prewiewProps {
 const EditorPreview: React.FC<prewiewProps> = ({ code }) => {
   const iframe = useRef<any>();
 
-  // useEffect(() => {
-  //   iframe.current.srcdoc = htmlFrameContent;
-  //   iframe.current.contentWindow.postMessage(code, "*");
-  // }, [code]);
+  useEffect(() => {
+    iframe.current.srcdoc = htmlFrameContent;
+    iframe.current.contentWindow.postMessage(code, "*");
+  }, [code]);
 
   return (
     <div className="preview-wrapper">
-      {/* <iframe
+      <iframe
         className="preview-iframe"
         ref={iframe}
         title="previewWindow"
         sandbox="allow-scripts"
         srcDoc={htmlFrameContent}
-      /> */}
+      />
       div
     </div>
   );
