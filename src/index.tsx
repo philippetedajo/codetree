@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ReactDOM from "react-dom";
 import bundler from "./bundler";
 import CodeEditor from "./components/CodeEditor";
-import Preview from "./components/Preview";
+import EditorPreview from "./components/EditorPreview";
+import EditorHeader from "./components/EditorHeader";
+
 import "./style.css";
 
 const App = () => {
@@ -15,17 +17,20 @@ const App = () => {
   };
 
   return (
-    <div className="container">
-      <div className="editor">
-        <CodeEditor
-          initialValue="const a = 1"
-          onChangeCodeInput={(value) => setCodeInputArea(value)}
-        />
-      </div>
-      <div className="preview">
-        <button onClick={handleOnClick}>Submit</button>
-        <Preview code={code} />
-      </div>
+    <div className="editor-container">
+      <EditorHeader />
+      <main className="editor-main">
+        <div className="editor-zone">
+          <CodeEditor
+            initialValue=""
+            onChangeCodeInput={(value) => setCodeInputArea(value)}
+          />
+        </div>
+        <div className="preview">
+          <button onClick={handleOnClick}>Submit</button>
+          <EditorPreview code={code} />
+        </div>
+      </main>
     </div>
   );
 };

@@ -5,7 +5,7 @@ interface prewiewProps {
   code: string;
 }
 
-const Preview: React.FC<prewiewProps> = ({ code }) => {
+const EditorPreview: React.FC<prewiewProps> = ({ code }) => {
   const iframe = useRef<any>();
 
   useEffect(() => {
@@ -23,4 +23,4 @@ const Preview: React.FC<prewiewProps> = ({ code }) => {
   );
 };
 
-export default Preview;
+export default EditorPreview;
