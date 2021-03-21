@@ -10,7 +10,7 @@ const SplitBox: React.FC<splitBoxProps> = ({ direction, children }) => {
   let splitProps;
   if (direction === "horizontal") {
     splitProps = {
-      sizes: [25, 75],
+      sizes: [50, 75],
       minSize: 100,
       expandToMin: false,
       gutterSize: 10,

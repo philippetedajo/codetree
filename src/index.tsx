@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Helmet } from "react-helmet";
 import bundler from "./bundler";
@@ -12,11 +12,20 @@ import "./editor.css";
 const App = () => {
   const [code, setCode] = useState<any>();
   const [codeInputArea, setCodeInputArea] = useState<string | undefined>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleOnClick = async () => {
+    setIsLoading(true);
     const output = await bundler(codeInputArea);
     setCode(output);
+    setIsLoading(false);
   };
+
+  useEffect(() => {
+    if (isLoading) {
+      console.log("transpiling...");
+    }
+  }, [isLoading]);
 
   return (
     <>
@@ -27,7 +36,12 @@ const App = () => {
       </Helmet>
       <div className="editor-container">
         <EditorHeader />
-        {/* <button onClick={handleOnClick}>Submit</button> */}
+        <button
+          style={{ position: "fixed", zIndex: 99, bottom: 30 }}
+          onClick={handleOnClick}
+        >
+          Submit
+        </button>
         <main>
           <SplitBox direction="horizontal">
             <CodeEditor
