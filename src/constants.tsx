@@ -17,7 +17,7 @@ export const htmlFrameContent = `
             eval(event.data);
           } catch (error) {
             const root = document.getElementById("root");
-            root.innerHTML = "<div style='color: red'>" + error + "</div>";
+            root.innerHTML = "<div style='color: red'>" + "Runtime error: " + error + "</div>";
             throw error;
           }
         },
