@@ -11,7 +11,10 @@ const EditorPreview: React.FC<prewiewProps> = ({ code }) => {
 
   useEffect(() => {
     iframe.current.srcdoc = htmlFrameContent;
-    iframe.current.contentWindow.postMessage(code, "*");
+
+    setTimeout(() => {
+      iframe.current.contentWindow.postMessage(code, "*");
+    }, 50);
   }, [code]);
 
   return (

@@ -25,7 +25,7 @@ const SplitBox: React.FC<splitBoxProps> = ({ direction, children }) => {
   }
 
   return (
-    <Split className="editor-main " {...splitProps}>
+    <Split className="editor-main" {...splitProps}>
       {children}
     </Split>
   );
