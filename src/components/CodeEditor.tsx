@@ -87,7 +87,6 @@ const CodeEditor: React.FC<codeEditorProps> = ({
         onMount={onMount}
         language="javascript"
         theme="vs-dark"
-        height="100vh"
         options={{
           wordWrap: "on",
           minimap: {

@@ -5,7 +5,8 @@ import bundler from "./bundler";
 import CodeEditor from "./components/CodeEditor";
 import EditorPreview from "./components/EditorPreview";
 import EditorHeader from "./components/EditorHeader";
-import ResizableElement from "./components/ResizableElement";
+import SplitBox from "./components/SplitBox";
+
 import "./editor.css";
 
 const App = () => {
@@ -26,15 +27,15 @@ const App = () => {
       </Helmet>
       <div className="editor-container">
         <EditorHeader />
-        <button onClick={handleOnClick}>Submit</button>
-        <main className="editor-main">
-          <ResizableElement direction="horizontal">
+        {/* <button onClick={handleOnClick}>Submit</button> */}
+        <main>
+          <SplitBox direction="horizontal">
             <CodeEditor
               initialValue=""
               onChangeCodeInput={(value) => setCodeInputArea(value)}
             />
-          </ResizableElement>
-          <EditorPreview code={code} />
+            <EditorPreview code={code} />
+          </SplitBox>
         </main>
       </div>
     </>

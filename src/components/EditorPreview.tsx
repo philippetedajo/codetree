@@ -23,7 +23,6 @@ const EditorPreview: React.FC<prewiewProps> = ({ code }) => {
         sandbox="allow-scripts"
         srcDoc={htmlFrameContent}
       />
-      div
     </div>
   );
 };
