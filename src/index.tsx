@@ -14,8 +14,6 @@ const App = () => {
     setCode(output);
   };
 
-  useEffect(() => console.log(code), [code]);
-
   return (
     <div className="container">
       <div className="editor">
