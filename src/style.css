@@ -11,7 +11,7 @@ body {
 }
 
 .editor {
-  width: 80vw;
+  width: 50vw;
 }
 
 .preview {
@@ -21,4 +21,16 @@ body {
   position: fixed;
   z-index: 99;
   left: 35%;
+}
+
+.JSXElement.JSXIdentifier {
+  color: #e06c75 !important;
+}
+
+.JSXElement.JSXText {
+  color: #d4d4d4 !important;
+}
+
+.JSXElement.JSXBracket {
+  color: #d4d4d4 !important;
 }

@@ -3,9 +3,7 @@ import MonacoEditor, { OnChange, OnMount } from "@monaco-editor/react";
 import { IKeyboardEvent } from "monaco-editor";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
-import { parse } from "@babel/parser";
-import traverse from "@babel/traverse";
-import MonacoJSXHighlighter from "monaco-jsx-highlighter";
+import "./code-editor-syntax.css";
 
 interface codeEditorProps {
   initialValue: string;
@@ -22,8 +20,14 @@ const CodeEditor: React.FC<codeEditorProps> = ({
     onChangeCodeInput(value);
   };
 
-  const onMount: OnMount = (monacoEditor) => {
+  const onMount: OnMount = async (monacoEditor, monaco) => {
     codeEditor.current = monacoEditor;
+
+    const { default: traverse } = await import("@babel/traverse");
+    const { parse } = await import("@babel/parser");
+    const { default: MonacoJSXHighlighter } = await import(
+      "monaco-jsx-highlighter"
+    );
 
     //jsx syntax highlight
     const babelParse = (code: any) =>
@@ -31,16 +35,21 @@ const CodeEditor: React.FC<codeEditorProps> = ({
 
     const monacoJSXHighlighter = new MonacoJSXHighlighter(
       //@ts-ignore
-      window.monaco,
+      monaco,
       babelParse,
       traverse,
       monacoEditor
     );
 
-    monacoJSXHighlighter.highLightOnDidChangeModelContent();
+    monacoJSXHighlighter.highLightOnDidChangeModelContent(
+      0,
+      () => {},
+      () => {},
+      undefined,
+      () => {}
+    );
 
-    //
-
+    //save command
     let handleOnKeyDown = codeEditor.current.onKeyDown(
       (event: IKeyboardEvent) => {
         if (
@@ -51,7 +60,6 @@ const CodeEditor: React.FC<codeEditorProps> = ({
         ) {
           event.preventDefault();
           formatOnSave();
-          console.log(event.metaKey, event.code);
         }
       }
     );
