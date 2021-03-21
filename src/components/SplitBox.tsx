@@ -1,5 +1,6 @@
 import React from "react";
 import Split from "react-split";
+import "./styles/split-box.css";
 
 interface splitBoxProps {
   direction: "horizontal" | "vertical";

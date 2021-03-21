@@ -18,6 +18,7 @@ const EditorPreview: React.FC<prewiewProps> = ({ code }) => {
     <div className="preview-wrapper">
       <iframe
         className="preview-iframe"
+        frameBorder="0"
         ref={iframe}
         title="previewWindow"
         sandbox="allow-scripts"
