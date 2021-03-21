@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 import { htmlFrameContent } from "../constants";
+import "./styles/code-editor-preview.css";
 
 interface prewiewProps {
   code: string;
@@ -8,18 +9,22 @@ interface prewiewProps {
 const EditorPreview: React.FC<prewiewProps> = ({ code }) => {
   const iframe = useRef<any>();
 
-  useEffect(() => {
-    iframe.current.srcdoc = htmlFrameContent;
-    iframe.current.contentWindow.postMessage(code, "*");
-  }, [code]);
+  // useEffect(() => {
+  //   iframe.current.srcdoc = htmlFrameContent;
+  //   iframe.current.contentWindow.postMessage(code, "*");
+  // }, [code]);
 
   return (
-    <iframe
-      ref={iframe}
-      title="previewWindow"
-      sandbox="allow-scripts"
-      srcDoc={htmlFrameContent}
-    />
+    <div className="preview-wrapper">
+      {/* <iframe
+        className="preview-iframe"
+        ref={iframe}
+        title="previewWindow"
+        sandbox="allow-scripts"
+        srcDoc={htmlFrameContent}
+      /> */}
+      div
+    </div>
   );
 };
 

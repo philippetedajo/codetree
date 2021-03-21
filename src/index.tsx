@@ -1,11 +1,12 @@
 import { useState } from "react";
 import ReactDOM from "react-dom";
+import { Helmet } from "react-helmet";
 import bundler from "./bundler";
 import CodeEditor from "./components/CodeEditor";
 import EditorPreview from "./components/EditorPreview";
 import EditorHeader from "./components/EditorHeader";
-
-import "./style.css";
+import ResizableElement from "./components/ResizableElement";
+import "./editor.css";
 
 const App = () => {
   const [code, setCode] = useState<any>();
@@ -17,21 +18,26 @@ const App = () => {
   };
 
   return (
-    <div className="editor-container">
-      <EditorHeader />
-      <main className="editor-main">
-        <div className="editor-zone">
-          <CodeEditor
-            initialValue=""
-            onChangeCodeInput={(value) => setCodeInputArea(value)}
-          />
-        </div>
-        <div className="preview">
-          <button onClick={handleOnClick}>Submit</button>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>tinyCode</title>
+        <link rel="canonical" href="https://tiny-code.vercel.app/" />
+      </Helmet>
+      <div className="editor-container">
+        <EditorHeader />
+        <button onClick={handleOnClick}>Submit</button>
+        <main className="editor-main">
+          <ResizableElement direction="horizontal">
+            <CodeEditor
+              initialValue=""
+              onChangeCodeInput={(value) => setCodeInputArea(value)}
+            />
+          </ResizableElement>
           <EditorPreview code={code} />
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 };
 

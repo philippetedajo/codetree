@@ -3,7 +3,7 @@ import MonacoEditor, { OnChange, OnMount } from "@monaco-editor/react";
 import { IKeyboardEvent } from "monaco-editor";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
-import "./code-editor-syntax.css";
+import "./styles/code-editor-syntax.css";
 
 interface codeEditorProps {
   initialValue: string;

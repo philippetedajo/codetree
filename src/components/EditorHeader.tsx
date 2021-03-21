@@ -1,4 +1,4 @@
-import React from "react";
+import "./styles/code-editor-header.css";
 
 const EditorHeader = () => {
   return (
