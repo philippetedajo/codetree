@@ -38,10 +38,17 @@ const App = () => {
         <EditorHeader />
         <main>
           <SplitBox direction="horizontal">
-            <JavascriptEditor
-              placeholder={vanillaTemplate}
-              onChange={(value) => setCodeInputArea(value)}
-            />
+            <SplitBox direction="vertical">
+              <JavascriptEditor
+                placeholder={vanillaTemplate}
+                onChange={(value) => setCodeInputArea(value)}
+              />
+              <JavascriptEditor
+                placeholder={vanillaTemplate}
+                onChange={(value) => setCodeInputArea(value)}
+              />
+            </SplitBox>
+
             <EditorPreview code={code} />
           </SplitBox>
         </main>

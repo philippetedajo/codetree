@@ -30,6 +30,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  border: 2px solid red;
 }
 
 .editor-footer {

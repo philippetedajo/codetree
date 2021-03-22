@@ -13,7 +13,6 @@ const CodeEditor: React.FC<IAceEditorProps> = ({
   onChange,
   value,
   name,
-  width,
 }) => {
   return (
     <AceEditor
@@ -21,9 +20,9 @@ const CodeEditor: React.FC<IAceEditorProps> = ({
       theme="monokai"
       name={name}
       onChange={onChange}
-      fontSize={18}
-      width={width}
-      height={"50%"}
+      fontSize={15}
+      height={"33%"}
+      width={"100%"}
       value={value}
       showPrintMargin={true}
       showGutter={true}
@@ -37,7 +36,6 @@ const CodeEditor: React.FC<IAceEditorProps> = ({
   );
 };
 
-// import { useRef } from "react";
 // import MonacoEditor, { OnChange, OnMount } from "@monaco-editor/react";
 // import { IKeyboardEvent } from "monaco-editor";
 // import prettier from "prettier";
