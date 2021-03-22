@@ -11,7 +11,8 @@ import SplitBox from "./components/SplitBox";
 import "./editor.css";
 
 const App = () => {
-  const [code, setCode] = useState<any>();
+  const [code, setCode] = useState("");
+  const [error, setError] = useState("");
   const [isBundling, setIsBundling] = useState<boolean>(false);
   const [codeInputArea, setCodeInputArea] = useState<string | undefined>("");
 
@@ -19,7 +20,8 @@ const App = () => {
     const timer = setTimeout(async () => {
       setIsBundling(true);
       const output = await bundler(codeInputArea);
-      setCode(output);
+      setCode(output.code);
+      setError(output.error);
       setIsBundling(false);
     }, 1000);
 
@@ -41,7 +43,7 @@ const App = () => {
               initialValue=""
               onChangeCodeInput={(value) => setCodeInputArea(value)}
             />
-            <EditorPreview code={code} />
+            <EditorPreview code={code} message={error} />
           </SplitBox>
         </main>
         <EditorFooter isBundling={isBundling} />

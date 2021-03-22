@@ -20,3 +20,9 @@
   left: 0;
   opacity: 0;
 }
+
+.error-message {
+  position: absolute;
+  top: 0;
+  color: red;
+}
