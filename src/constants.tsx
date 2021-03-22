@@ -10,15 +10,19 @@ export const htmlFrameContent = `
   <body>
     <div id="root"></div>
     <script>
+      const handleError =(error)=>{
+        const root = document.getElementById("root");
+        root.innerHTML = "<div style='color: red'>" + "Runtime error: " + error + "</div>";
+        throw error;
+      }
+
       window.addEventListener(
         "message",
         (event) => {
           try {
             eval(event.data);
           } catch (error) {
-            const root = document.getElementById("root");
-            root.innerHTML = "<div style='color: red'>" + "Runtime error: " + error + "</div>";
-            throw error;
+            handleError(error)
           }
         },
         false

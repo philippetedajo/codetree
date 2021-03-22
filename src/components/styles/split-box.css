@@ -1,3 +1,7 @@
 .gutter.gutter-horizontal {
   border: 2px solid grey !important;
 }
+
+.gutter.gutter-vertical {
+  border: 2px solid grey !important;
+}

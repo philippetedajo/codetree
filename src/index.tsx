@@ -7,7 +7,6 @@ import EditorPreview from "./components/EditorPreview";
 import EditorHeader from "./components/EditorHeader";
 import EditorFooter from "./components/EditorFooter";
 import SplitBox from "./components/SplitBox";
-import { vanillaTemplate } from "./constants";
 
 import "./editor.css";
 
@@ -39,10 +38,9 @@ const App = () => {
         <main>
           <SplitBox direction="horizontal">
             <CodeEditor
-              initialValue={vanillaTemplate}
+              initialValue=""
               onChangeCodeInput={(value) => setCodeInputArea(value)}
             />
-
             <EditorPreview code={code} />
           </SplitBox>
         </main>

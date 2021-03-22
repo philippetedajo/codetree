@@ -28,7 +28,6 @@ const CodeEditor: React.FC<codeEditorProps> = ({
     const { default: MonacoJSXHighlighter } = await import(
       "monaco-jsx-highlighter"
     );
-
     //jsx syntax highlight
     const babelParse = (code: any) =>
       parse(code, { sourceType: "module", plugins: ["jsx"] });
