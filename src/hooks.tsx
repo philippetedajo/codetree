@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import bundler from "./bundler";
 
-export const useDebounce = (value: any, delay: any) => {
-  const [debouncedValue, setDebouncedValue] = useState();
+export const useDebounce = (value: string | undefined, delay: number) => {
+  const [debouncedValue, setDebouncedValue] = useState<string | undefined>("");
 
   useEffect(() => {
     const debounceHandler = setTimeout(() => {
@@ -15,8 +15,14 @@ export const useDebounce = (value: any, delay: any) => {
   return debouncedValue;
 };
 
-export const useDebounceBundler = (value: any, delay: any) => {
-  const [debouncedBundlerValue, setDebouncedBundlerValue] = useState<any>();
+export const useDebounceBundler = (
+  value: string | undefined,
+  delay: number
+) => {
+  const [debouncedBundlerValue, setDebouncedBundlerValue] = useState<{
+    code: string;
+    error: string | undefined;
+  }>();
 
   useEffect(() => {
     const debounceBundlerHandler = setTimeout(async () => {

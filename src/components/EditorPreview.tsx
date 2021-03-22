@@ -5,7 +5,7 @@ interface prewiewProps {
   rawJs: string | undefined;
   rawHtml: string | undefined;
   rawCss: string | undefined;
-  message: string;
+  message: string | undefined;
 }
 
 const EditorPreview: React.FC<prewiewProps> = ({
