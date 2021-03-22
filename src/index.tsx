@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Helmet } from "react-helmet";
 import bundler from "./bundler";
-import { JavascriptEditor } from "./components/CodeEditor";
+import CodeEditor from "./components/CodeEditor";
 import EditorPreview from "./components/EditorPreview";
 import EditorHeader from "./components/EditorHeader";
 import EditorFooter from "./components/EditorFooter";
@@ -38,16 +38,10 @@ const App = () => {
         <EditorHeader />
         <main>
           <SplitBox direction="horizontal">
-            <SplitBox direction="vertical">
-              <JavascriptEditor
-                placeholder={vanillaTemplate}
-                onChange={(value) => setCodeInputArea(value)}
-              />
-              <JavascriptEditor
-                placeholder={vanillaTemplate}
-                onChange={(value) => setCodeInputArea(value)}
-              />
-            </SplitBox>
+            <CodeEditor
+              initialValue={vanillaTemplate}
+              onChangeCodeInput={(value) => setCodeInputArea(value)}
+            />
 
             <EditorPreview code={code} />
           </SplitBox>
