@@ -10,6 +10,7 @@ const SplitBox: React.FC<splitBoxProps> = ({ direction, children }) => {
   let splitProps;
   if (direction === "horizontal") {
     splitProps = {
+      className: "editor-main-horizontal",
       sizes: [50, 75],
       minSize: 100,
       expandToMin: false,
@@ -21,14 +22,19 @@ const SplitBox: React.FC<splitBoxProps> = ({ direction, children }) => {
       cursor: "col-resize",
     };
   } else {
-    splitProps = {};
+    splitProps = {
+      className: "editor-main-vertical",
+      expandToMin: true,
+      gutterSize: 10,
+      gutterAlign: "center",
+      snapOffset: 30,
+      dragInterval: 1,
+      direction: "vertical",
+      cursor: "row-resize",
+    };
   }
 
-  return (
-    <Split className="editor-main" {...splitProps}>
-      {children}
-    </Split>
-  );
+  return <Split {...splitProps}>{children}</Split>;
 };
 
 export default SplitBox;

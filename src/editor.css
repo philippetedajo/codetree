@@ -21,9 +21,15 @@ body {
   align-items: center;
 }
 
-.editor-main {
+.editor-main-horizontal {
   display: flex;
   height: 88vh;
+}
+
+.editor-main-vertical {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .editor-footer {
