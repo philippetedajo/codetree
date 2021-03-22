@@ -6,6 +6,8 @@ interface prewiewProps {
   message: string;
 }
 
+let htmlContent = "htmlContent";
+
 export const htmlFrameContent = `
 <html>
   <head>
@@ -16,18 +18,21 @@ export const htmlFrameContent = `
     </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="ht">${htmlContent}</div>
+    </div>
     <script>
-      const handleError =(error)=>{
+      const handleError = (error) => {
         const root = document.getElementById("root");
-        root.innerHTML = "<div style='color: red'>" + "Runtime error: " + error + "</div>";
+        root.innerHTML =
+          "<div style='color: red'>" + "Runtime error: " + error + "</div>";
         throw error;
-      }
+      };
 
       window.addEventListener("error", (event) => {
-        event.preventDefault()
-        handleError(event.error)
-      });      
+        event.preventDefault();
+        handleError(event.error);
+      });
 
       window.addEventListener(
         "message",
@@ -35,7 +40,7 @@ export const htmlFrameContent = `
           try {
             eval(event.data);
           } catch (error) {
-            handleError(error)
+            handleError(error);
           }
         },
         false
@@ -55,8 +60,6 @@ const EditorPreview: React.FC<prewiewProps> = ({ code, message }) => {
       iframe.current.contentWindow.postMessage(code, "*");
     }, 50);
   }, [code]);
-
-  console.log(message);
 
   return (
     <div className="preview-wrapper">
