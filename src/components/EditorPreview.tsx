@@ -2,14 +2,16 @@ import { useRef, useEffect } from "react";
 import "./styles/code-editor-preview.css";
 
 interface prewiewProps {
-  code: string | undefined;
-  htmlRawCode: string | undefined;
+  rawJs: string | undefined;
+  rawHtml: string | undefined;
+  rawCss: string | undefined;
   message: string;
 }
 
 const EditorPreview: React.FC<prewiewProps> = ({
-  code,
-  htmlRawCode,
+  rawJs,
+  rawHtml,
+  rawCss,
   message,
 }) => {
   const iframe = useRef<any>();
@@ -18,14 +20,12 @@ const EditorPreview: React.FC<prewiewProps> = ({
   <html>
     <head>
       <style>
-        body {
-          background-color: #fff;
-        }
+        ${rawCss}
       </style>
     </head>
     <body>
       <div id="root">
-        ${htmlRawCode}
+        ${rawHtml}
       </div>
       <script>
         const handleError = (error) => {
@@ -60,9 +60,9 @@ const EditorPreview: React.FC<prewiewProps> = ({
     iframe.current.srcdoc = htmlFrameContent;
 
     setTimeout(() => {
-      iframe.current.contentWindow.postMessage(code, "*");
+      iframe.current.contentWindow.postMessage(rawJs, "*");
     }, 50);
-  }, [code, htmlFrameContent]);
+  }, [rawJs, htmlFrameContent]);
 
   return (
     <div className="preview-wrapper">

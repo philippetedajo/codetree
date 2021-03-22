@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Helmet } from "react-helmet";
 import bundler from "./bundler";
+import { reactTemplate, vanillaTemplate } from "./constants";
 import CodeEditor from "./components/CodeEditor";
 import EditorPreview from "./components/EditorPreview";
 import EditorHeader from "./components/EditorHeader";
@@ -16,6 +17,9 @@ const App = () => {
 
   const [htmlInput, setHmlInput] = useState<string | undefined>("");
   const [htmlCode, setHtmlCode] = useState<string | undefined>("");
+
+  const [cssInput, setCssInput] = useState<string | undefined>("");
+  const [cssCode, setCssCode] = useState<string | undefined>("");
 
   const [error, setError] = useState("");
   const [isBundling, setIsBundling] = useState<boolean>(false);
@@ -33,9 +37,14 @@ const App = () => {
       setHtmlCode(htmlInput);
     }, 1000);
 
+    const TimerCss = setTimeout(() => {
+      setHtmlCode(htmlInput);
+    }, 1000);
+
     return () => {
       clearTimeout(timerJs);
       clearTimeout(TimerHtml);
+      clearTimeout(TimerCss);
     };
   }, [jsInput, htmlInput]);
 
@@ -58,13 +67,19 @@ const App = () => {
               />
               <CodeEditor
                 initialValue=""
+                language="css"
+                onChangeCodeInput={(value) => setCssCode(value)}
+              />
+              <CodeEditor
+                initialValue=""
                 language="javascript"
                 onChangeCodeInput={(value) => setJsInput(value)}
               />
             </SplitBox>
             <EditorPreview
-              code={jsCode}
-              htmlRawCode={htmlCode}
+              rawJs={jsCode}
+              rawHtml={htmlCode}
+              rawCss={cssCode}
               message={error}
             />
           </SplitBox>
