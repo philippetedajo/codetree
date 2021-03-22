@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Helmet } from "react-helmet";
 import bundler from "./bundler";
-import { reactTemplate, vanillaTemplate } from "./constants";
+import { react, vanilla } from "./template";
 import CodeEditor from "./components/CodeEditor";
 import EditorPreview from "./components/EditorPreview";
 import EditorHeader from "./components/EditorHeader";
@@ -38,7 +38,7 @@ const App = () => {
     }, 1000);
 
     const TimerCss = setTimeout(() => {
-      setHtmlCode(htmlInput);
+      setCssCode(cssInput);
     }, 1000);
 
     return () => {
@@ -46,7 +46,43 @@ const App = () => {
       clearTimeout(TimerHtml);
       clearTimeout(TimerCss);
     };
-  }, [jsInput, htmlInput]);
+  }, [jsInput, htmlInput, cssInput]);
+
+  let template = "react";
+
+  const EditorTemplate =
+    template === "vanilla" ? (
+      <>
+        <CodeEditor
+          initialValue={vanilla.html}
+          language="html"
+          onChangeCodeInput={(value) => setHmlInput(value)}
+        />
+        <CodeEditor
+          initialValue={vanilla.css}
+          language="css"
+          onChangeCodeInput={(value) => setCssInput(value)}
+        />
+        <CodeEditor
+          initialValue={vanilla.js}
+          language="javascript"
+          onChangeCodeInput={(value) => setJsInput(value)}
+        />
+      </>
+    ) : (
+      <>
+        <CodeEditor
+          initialValue={react.js}
+          language="javascript"
+          onChangeCodeInput={(value) => setJsInput(value)}
+        />
+        <CodeEditor
+          initialValue={react.css}
+          language="css"
+          onChangeCodeInput={(value) => setCssInput(value)}
+        />
+      </>
+    );
 
   return (
     <>
@@ -59,23 +95,7 @@ const App = () => {
         <EditorHeader />
         <main>
           <SplitBox direction="horizontal">
-            <SplitBox direction="vertical">
-              <CodeEditor
-                initialValue=""
-                language="html"
-                onChangeCodeInput={(value) => setHmlInput(value)}
-              />
-              <CodeEditor
-                initialValue=""
-                language="css"
-                onChangeCodeInput={(value) => setCssCode(value)}
-              />
-              <CodeEditor
-                initialValue=""
-                language="javascript"
-                onChangeCodeInput={(value) => setJsInput(value)}
-              />
-            </SplitBox>
+            <SplitBox direction="vertical">{EditorTemplate}</SplitBox>
             <EditorPreview
               rawJs={jsCode}
               rawHtml={htmlCode}
