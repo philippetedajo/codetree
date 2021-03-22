@@ -11,22 +11,33 @@ import SplitBox from "./components/SplitBox";
 import "./editor.css";
 
 const App = () => {
-  const [code, setCode] = useState("");
+  const [jsInput, setJsInput] = useState<string | undefined>("");
+  const [jsCode, setJsCode] = useState<string | undefined>("");
+
+  const [htmlInput, setHmlInput] = useState<string | undefined>("");
+  const [htmlCode, setHtmlCode] = useState<string | undefined>("");
+
   const [error, setError] = useState("");
   const [isBundling, setIsBundling] = useState<boolean>(false);
-  const [codeInputArea, setCodeInputArea] = useState<string | undefined>("");
 
   useEffect(() => {
-    const timer = setTimeout(async () => {
+    const timerJs = setTimeout(async () => {
       setIsBundling(true);
-      const output = await bundler(codeInputArea);
-      setCode(output.code);
+      const output = await bundler(jsInput);
+      setJsCode(output.code);
       setError(output.error);
       setIsBundling(false);
     }, 1000);
 
-    return () => clearTimeout(timer);
-  }, [codeInputArea]);
+    const TimerHtml = setTimeout(() => {
+      setHtmlCode(htmlInput);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timerJs);
+      clearTimeout(TimerHtml);
+    };
+  }, [jsInput, htmlInput]);
 
   return (
     <>
@@ -39,11 +50,23 @@ const App = () => {
         <EditorHeader />
         <main>
           <SplitBox direction="horizontal">
-            <CodeEditor
-              initialValue=""
-              onChangeCodeInput={(value) => setCodeInputArea(value)}
+            <SplitBox direction="vertical">
+              <CodeEditor
+                initialValue=""
+                language="html"
+                onChangeCodeInput={(value) => setHmlInput(value)}
+              />
+              <CodeEditor
+                initialValue=""
+                language="javascript"
+                onChangeCodeInput={(value) => setJsInput(value)}
+              />
+            </SplitBox>
+            <EditorPreview
+              code={jsCode}
+              htmlRawCode={htmlCode}
+              message={error}
             />
-            <EditorPreview code={code} message={error} />
           </SplitBox>
         </main>
         <EditorFooter isBundling={isBundling} />

@@ -7,12 +7,14 @@ import "./styles/code-editor-syntax.css";
 
 interface codeEditorProps {
   initialValue: string;
+  language: string;
   onChangeCodeInput(value: string | undefined): void;
 }
 
 const CodeEditor: React.FC<codeEditorProps> = ({
   initialValue,
   onChangeCodeInput,
+  language,
 }) => {
   const codeEditor = useRef<any>();
 
@@ -48,6 +50,18 @@ const CodeEditor: React.FC<codeEditorProps> = ({
       () => {}
     );
 
+    //format
+    function formatOnSave() {
+      const unformattedCode = codeEditor.current.getModel().getValue();
+      const formattedCode = prettier.format(unformattedCode, {
+        parser: "babel",
+        plugins: [parser],
+        useTabs: false,
+        semi: true,
+      });
+      codeEditor.current.setValue(formattedCode);
+    }
+
     //save command
     let handleOnKeyDown = codeEditor.current.onKeyDown(
       (event: IKeyboardEvent) => {
@@ -67,24 +81,13 @@ const CodeEditor: React.FC<codeEditorProps> = ({
     return () => handleOnKeyDown.dispose();
   };
 
-  function formatOnSave() {
-    const unformattedCode = codeEditor.current.getModel().getValue();
-    const formattedCode = prettier.format(unformattedCode, {
-      parser: "babel",
-      plugins: [parser],
-      useTabs: false,
-      semi: true,
-    });
-    codeEditor.current.setValue(formattedCode);
-  }
-
   return (
     <>
       <MonacoEditor
         value={initialValue}
         onChange={onChange}
-        onMount={onMount}
-        language="javascript"
+        onMount={language === "javascript" ? onMount : undefined}
+        language={language}
         theme="vs-dark"
         options={{
           wordWrap: "on",
