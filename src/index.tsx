@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ReactDOM from "react-dom";
 import { Helmet } from "react-helmet";
-import bundler from "./bundler";
 import { react, vanilla } from "./template";
+import { useDebounce, useDebounceBundler } from "./hooks";
 import CodeEditor from "./components/CodeEditor";
 import EditorPreview from "./components/EditorPreview";
 import EditorHeader from "./components/EditorHeader";
@@ -13,42 +13,14 @@ import "./editor.css";
 
 const App = () => {
   const [jsInput, setJsInput] = useState<string | undefined>("");
-  const [jsCode, setJsCode] = useState<string | undefined>("");
-
   const [htmlInput, setHmlInput] = useState<string | undefined>("");
-  const [htmlCode, setHtmlCode] = useState<string | undefined>("");
-
   const [cssInput, setCssInput] = useState<string | undefined>("");
-  const [cssCode, setCssCode] = useState<string | undefined>("");
 
-  const [error, setError] = useState("");
-  const [isBundling, setIsBundling] = useState<boolean>(false);
+  const debouncedHtml = useDebounce(htmlInput, 1000);
+  const debouncedCss = useDebounce(cssInput, 1000);
+  const debouncedJs = useDebounceBundler(jsInput, 1000);
 
-  useEffect(() => {
-    const timerJs = setTimeout(async () => {
-      setIsBundling(true);
-      const output = await bundler(jsInput);
-      setJsCode(output.code);
-      setError(output.error);
-      setIsBundling(false);
-    }, 1000);
-
-    const TimerHtml = setTimeout(() => {
-      setHtmlCode(htmlInput);
-    }, 1000);
-
-    const TimerCss = setTimeout(() => {
-      setCssCode(cssInput);
-    }, 1000);
-
-    return () => {
-      clearTimeout(timerJs);
-      clearTimeout(TimerHtml);
-      clearTimeout(TimerCss);
-    };
-  }, [jsInput, htmlInput, cssInput]);
-
-  let template = "react";
+  let template = "vanilla";
 
   const EditorTemplate =
     template === "vanilla" ? (
@@ -97,14 +69,14 @@ const App = () => {
           <SplitBox direction="horizontal">
             <SplitBox direction="vertical">{EditorTemplate}</SplitBox>
             <EditorPreview
-              rawJs={jsCode}
-              rawHtml={htmlCode}
-              rawCss={cssCode}
-              message={error}
+              rawJs={debouncedJs && debouncedJs.code}
+              rawHtml={debouncedHtml}
+              rawCss={debouncedCss}
+              message={debouncedJs && debouncedJs.error}
             />
           </SplitBox>
         </main>
-        <EditorFooter isBundling={isBundling} />
+        <EditorFooter />
       </div>
     </>
   );

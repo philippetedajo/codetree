@@ -1,15 +1,9 @@
 import React from "react";
 
-interface editorProps {
-  isBundling: boolean;
-}
+interface editorProps {}
 
-const EditorFooter: React.FC<editorProps> = ({ isBundling }) => {
-  return (
-    <footer className="editor-footer">
-      <div> {isBundling ? "Bundling..." : ""} </div>
-    </footer>
-  );
+const EditorFooter: React.FC<editorProps> = () => {
+  return <footer className="editor-footer"></footer>;
 };
 
 export default EditorFooter;
