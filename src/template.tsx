@@ -5,7 +5,7 @@ export const vanilla = {
 `,
   js: `const root = document.querySelector("#root");
 const h3 = document.createElement("h3");
-h3.innerHTML = "Ready to use Vanilla template";
+h3.innerHTML = "Ready to use Vanilla Js template";
 root.appendChild(h3);`,
   css: `h3{
     color:red
