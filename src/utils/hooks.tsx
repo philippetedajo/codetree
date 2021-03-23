@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import bundler from "./bundler";
+import bundler from "../bundler";
 
 export const useDebounce = (value: string | undefined, delay: number) => {
   const [debouncedValue, setDebouncedValue] = useState<string | undefined>("");
