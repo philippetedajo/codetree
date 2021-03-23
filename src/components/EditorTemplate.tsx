@@ -6,7 +6,7 @@ import EditorPreview from "./EditorPreview";
 import SplitBox from "./SplitBox";
 
 interface editorTemplateProps {
-  template: string;
+  template: "vanilla" | "react";
 }
 
 const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
