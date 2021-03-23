@@ -75,11 +75,6 @@ const CodeEditor: React.FC<codeEditorProps> = ({
           break;
       }
 
-      // let config =
-      //   language === "javascript"
-      //     ? { parser: "babel", plugin: [parserBabel] }
-      //     : { parser: "css", plugin: [parserCss] };
-
       const formattedCode = prettier.format(unformattedCode, {
         parser: config && config.parser,
         plugins: config && config.plugin,
