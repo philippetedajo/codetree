@@ -20,42 +20,6 @@ const App = () => {
   const debouncedCss = useDebounce(cssInput, 1000);
   const debouncedJs = useDebounceBundler(jsInput, 1000);
 
-  let template = "vanilla";
-
-  const EditorTemplate =
-    template === "vanilla" ? (
-      <>
-        <CodeEditor
-          initialValue={vanilla.html}
-          language="html"
-          onChangeCodeInput={(value) => setHmlInput(value)}
-        />
-        <CodeEditor
-          initialValue={vanilla.css}
-          language="css"
-          onChangeCodeInput={(value) => setCssInput(value)}
-        />
-        <CodeEditor
-          initialValue={vanilla.js}
-          language="javascript"
-          onChangeCodeInput={(value) => setJsInput(value)}
-        />
-      </>
-    ) : (
-      <>
-        <CodeEditor
-          initialValue={react.js}
-          language="javascript"
-          onChangeCodeInput={(value) => setJsInput(value)}
-        />
-        <CodeEditor
-          initialValue={react.css}
-          language="css"
-          onChangeCodeInput={(value) => setCssInput(value)}
-        />
-      </>
-    );
-
   return (
     <>
       <Helmet>
@@ -67,7 +31,23 @@ const App = () => {
         <EditorHeader />
         <main>
           <SplitBox direction="horizontal">
-            <SplitBox direction="vertical">{EditorTemplate}</SplitBox>
+            <SplitBox direction="vertical">
+              <CodeEditor
+                initialValue={vanilla.html}
+                language="html"
+                onChangeCodeInput={(value) => setHmlInput(value)}
+              />
+              <CodeEditor
+                initialValue={vanilla.css}
+                language="css"
+                onChangeCodeInput={(value) => setCssInput(value)}
+              />
+              <CodeEditor
+                initialValue={vanilla.js}
+                language="javascript"
+                onChangeCodeInput={(value) => setJsInput(value)}
+              />
+            </SplitBox>
             <EditorPreview
               rawJs={debouncedJs && debouncedJs.code}
               rawHtml={debouncedHtml}
