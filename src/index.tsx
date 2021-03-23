@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReactDOM from "react-dom";
 import { Helmet } from "react-helmet";
-import { react, vanilla } from "./template";
+import { vanilla } from "./template";
 import { useDebounce, useDebounceBundler } from "./hooks";
 import CodeEditor from "./components/CodeEditor";
 import EditorPreview from "./components/EditorPreview";

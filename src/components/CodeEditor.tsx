@@ -2,7 +2,10 @@ import { useRef } from "react";
 import MonacoEditor, { OnChange, OnMount } from "@monaco-editor/react";
 import { IKeyboardEvent } from "monaco-editor";
 import prettier from "prettier";
-import parser from "prettier/parser-babel";
+import parserBabel from "prettier/parser-babel";
+import parserCss from "prettier/parser-postcss";
+import parserHtml from "prettier/parser-html";
+
 import "./styles/code-editor-syntax.css";
 
 interface codeEditorProps {
@@ -53,12 +56,38 @@ const CodeEditor: React.FC<codeEditorProps> = ({
     //format
     function formatOnSave() {
       const unformattedCode = codeEditor.current.getModel().getValue();
+      let config;
+
+      switch (language) {
+        case "html":
+          config = { parser: "html", plugin: [parserHtml] };
+          break;
+
+        case "css":
+          config = { parser: "css", plugin: [parserCss] };
+          break;
+
+        case "javascript":
+          config = { parser: "babel", plugin: [parserBabel] };
+          break;
+
+        default:
+          break;
+      }
+
+      // let config =
+      //   language === "javascript"
+      //     ? { parser: "babel", plugin: [parserBabel] }
+      //     : { parser: "css", plugin: [parserCss] };
+
       const formattedCode = prettier.format(unformattedCode, {
-        parser: "babel",
-        plugins: [parser],
+        parser: config && config.parser,
+        plugins: config && config.plugin,
         useTabs: false,
         semi: true,
       });
+
+      console.log(formattedCode);
       codeEditor.current.setValue(formattedCode);
     }
 
@@ -86,7 +115,7 @@ const CodeEditor: React.FC<codeEditorProps> = ({
       <MonacoEditor
         value={initialValue}
         onChange={onChange}
-        onMount={language === "javascript" ? onMount : undefined}
+        onMount={onMount}
         language={language}
         theme="vs-dark"
         options={{
