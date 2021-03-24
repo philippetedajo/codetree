@@ -1,3 +1,10 @@
+.setup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .err {
   color: red;
   font-size: 11px;
