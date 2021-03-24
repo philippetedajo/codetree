@@ -11,6 +11,7 @@
   "dependencies": {
     "@babel/parser": "^7.13.11",
     "@babel/traverse": "^7.13.0",
+    "@craco/craco": "^6.1.1",
     "@hookform/resolvers": "1.0.0",
     "@monaco-editor/react": "^4.1.0",
     "@testing-library/jest-dom": "^5.11.4",
@@ -41,8 +42,12 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.4",
     "@types/prettier": "^2.2.3",
-    "prettier": "^2.2.1"
+    "autoprefixer": "^9",
+    "postcss": "^7",
+    "prettier": "^2.2.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },
   "eslintConfig": {
     "extends": [
