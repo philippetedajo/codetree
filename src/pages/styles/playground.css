@@ -33,3 +33,15 @@
   display: flex !important ;
   flex-direction: column !important;
 }
+
+.css-1ondw75 {
+  outline: none !important;
+}
+
+.css-1ondw75:active {
+  background: none !important;
+}
+
+*:focus {
+  box-shadow: none !important;
+}

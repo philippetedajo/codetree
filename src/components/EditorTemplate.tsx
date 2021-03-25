@@ -25,10 +25,10 @@ const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
     <main>
       <SplitBox direction="horizontal">
         <Tabs>
-          <TabList>
-            <Tab>One</Tab>
-            <Tab>Two</Tab>
-            <Tab>Three</Tab>
+          <TabList borderY={"2px solid red"}>
+            <Tab color="#fff">Html</Tab>
+            <Tab color="#fff">Css</Tab>
+            <Tab color="#fff">Javascript</Tab>
           </TabList>
 
           <TabPanels className="h-full">

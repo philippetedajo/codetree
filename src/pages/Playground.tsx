@@ -9,7 +9,7 @@ export const Playground = () => {
   const location = useLocation();
   console.log(location);
   return (
-    <>
+    <div className="bg-editorsecondary">
       <Helmet>
         <meta charSet="utf-8" />
         <title>tinyCode</title>
@@ -20,6 +20,6 @@ export const Playground = () => {
         <EditorTemplate template="react" />
         <EditorFooter />
       </div>
-    </>
+    </div>
   );
 };

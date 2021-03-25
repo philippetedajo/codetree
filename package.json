@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "craco start",
+    "dev": "craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
@@ -34,6 +34,7 @@
     "localforage": "^1.9.0",
     "monaco-editor": "^0.23.0",
     "monaco-jsx-highlighter": "^1.1.8",
+    "monaco-themes": "^0.3.3",
     "react": "^17.0.1",
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^17.0.1",
