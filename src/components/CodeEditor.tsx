@@ -106,25 +106,23 @@ const CodeEditor: React.FC<codeEditorProps> = ({
   };
 
   return (
-    <>
-      <MonacoEditor
-        value={initialValue}
-        onChange={onChange}
-        onMount={onMount}
-        language={language}
-        theme="vs-dark"
-        options={{
-          wordWrap: "on",
-          minimap: {
-            enabled: false,
-          },
-          showUnused: true, // to reset
-          fontSize: 13,
-          automaticLayout: true,
-          tabSize: 2,
-        }}
-      />
-    </>
+    <MonacoEditor
+      value={initialValue}
+      onChange={onChange}
+      onMount={onMount}
+      language={language}
+      theme="vs-dark"
+      options={{
+        wordWrap: "on",
+        minimap: {
+          enabled: false,
+        },
+        showUnused: true, // to reset
+        fontSize: 13,
+        automaticLayout: true,
+        tabSize: 2,
+      }}
+    />
   );
 };
 

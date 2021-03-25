@@ -13,7 +13,7 @@
 
 .editor-main-horizontal {
   display: flex;
-  height: 88vh;
+  height: 90vh;
 }
 
 .editor-main-vertical {
@@ -23,8 +23,13 @@
 
 .editor-footer {
   display: flex;
-  height: 5vh;
+  height: 3vh;
   color: #d4d4d4;
   background-color: #1e1e1e;
   padding: 0 1rem;
+}
+
+.css-13o7eu2 {
+  display: flex !important ;
+  flex-direction: column !important;
 }
