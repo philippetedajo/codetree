@@ -6,6 +6,15 @@ import CodeEditor from "./CodeEditor";
 import EditorPreview from "./EditorPreview";
 import SplitBox from "./SplitBox";
 
+import { Icon, InlineIcon } from "@iconify/react";
+import bracketsCurly from "@iconify-icons/uil/brackets-curly";
+import codeTags from "@iconify-icons/mdi/code-tags";
+import fileTypeJs from "@iconify-icons/vscode-icons/file-type-js";
+import fileTypeTypescript from "@iconify-icons/vscode-icons/file-type-typescript";
+import htmlIcon from "@iconify-icons/whh/html";
+import fileTypeCss from "@iconify-icons/vscode-icons/file-type-css";
+import fileTypeHtml from "@iconify-icons/vscode-icons/file-type-html";
+
 interface editorTemplateProps {
   template: "vanilla" | "react";
 }
@@ -27,9 +36,28 @@ const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
       <SplitBox direction="horizontal">
         <Tabs>
           <TabList background="#171E25" color="#fff" pl={9}>
-            <Tab _selected={_selected}>Javascript</Tab>
-            <Tab _selected={_selected}>Html</Tab>
-            <Tab _selected={_selected}>Css</Tab>
+            <Tab _selected={_selected}>
+              <Icon icon={fileTypeJs} width={20} className="mr-3" />
+              Javascript
+            </Tab>
+            <Tab _selected={_selected}>
+              <Icon
+                icon={codeTags}
+                color="#3B82F6"
+                width={20}
+                className="mr-3"
+              />
+              Html
+            </Tab>
+            <Tab _selected={_selected}>
+              <Icon
+                icon={bracketsCurly}
+                width={16}
+                className="mr-3"
+                color="#EF4444"
+              />
+              Css
+            </Tab>
           </TabList>
 
           <TabPanels className="h-full pt-5">
