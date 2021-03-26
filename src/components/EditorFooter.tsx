@@ -4,7 +4,7 @@ interface editorProps {}
 
 const EditorFooter: React.FC<editorProps> = () => {
   return (
-    <footer className="text-white bg-editorprimary border-t-2 border-editorborder">
+    <footer className="flex justify-end item-center px-5 text-white text-sm bg-editorprimary border-t-2 border-editorborder">
       Console
     </footer>
   );
