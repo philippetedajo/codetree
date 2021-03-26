@@ -30,6 +30,8 @@ const CodeEditor: React.FC<codeEditorProps> = ({
       rules: [],
       colors: {
         "editor.background": "#f1B252D",
+        "editor.selectionBackground": "#2A3842",
+        "editor.inactiveSelectionBackground": "#232E38",
       },
     });
     monaco.editor.setTheme("myTheme");

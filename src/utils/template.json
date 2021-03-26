@@ -13,6 +13,20 @@
       "content": "console.log('working fine')"
     }
   },
+  "typescript": {
+    "html": {
+      "lang": "html",
+      "content": "<div class='foo'>hello React</div>"
+    },
+    "css": {
+      "lang": "css",
+      "content": ".foo{color:red}"
+    },
+    "javascript": {
+      "lang": "javascript",
+      "content": "console.log('working fine')"
+    }
+  },
   "react": {
     "html": {
       "lang": "html",

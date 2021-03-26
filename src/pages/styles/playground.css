@@ -70,7 +70,7 @@
 }
 
 ._console {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
 }
 
 .react-draggable-transparent-selection .preview-wrapper:after {

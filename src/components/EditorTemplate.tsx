@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { Icon } from "@iconify/react";
+import bracketsCurly from "@iconify-icons/uil/brackets-curly";
+import codeTags from "@iconify-icons/mdi/code-tags";
+import fileTypeJs from "@iconify-icons/vscode-icons/file-type-js";
 import * as fill from "../utils/template.json";
 import { useDebounce, useDebounceBundler } from "../utils/hooks";
 import CodeEditor from "./CodeEditor";
 import EditorPreview from "./EditorPreview";
 import SplitBox from "./SplitBox";
-import { Icon } from "@iconify/react";
-import bracketsCurly from "@iconify-icons/uil/brackets-curly";
-import codeTags from "@iconify-icons/mdi/code-tags";
-import fileTypeJs from "@iconify-icons/vscode-icons/file-type-js";
-// import fileTypeTypescript from "@iconify-icons/vscode-icons/file-type-typescript";
 
 interface editorTemplateProps {
   template: "vanilla" | "react";
