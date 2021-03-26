@@ -49,3 +49,58 @@
 *:focus {
   box-shadow: none !important;
 }
+
+/* Split box */
+
+.gutter.gutter-horizontal {
+  background-color: #4c5b67;
+}
+
+.gutter.gutter-horizontal:hover {
+  background-color: #40b883;
+}
+
+.gutter.gutter-vertical {
+  background-color: #4c5b67;
+}
+
+/* Editor preview */
+
+.preview-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  height: 90vh;
+  background: #fff;
+}
+
+.preview-wrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.react-draggable-transparent-selection .preview-wrapper:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.error-message {
+  position: absolute;
+  top: 0;
+  color: red;
+}
+
+.monaco-editor,
+.monaco-editor-background,
+.monaco-editor .inputarea.ime-input {
+  background-color: transparent !important;
+}
+.monaco-editor .margin {
+  background-color: transparent !important;
+}

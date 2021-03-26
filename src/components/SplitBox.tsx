@@ -1,6 +1,5 @@
 import React from "react";
 import Split from "react-split";
-import "./styles/split-box.css";
 
 interface splitBoxProps {
   direction: "horizontal" | "vertical";
@@ -13,7 +12,7 @@ const SplitBox: React.FC<splitBoxProps> = ({ direction, children }) => {
       className: "editor-main-horizontal",
       minSize: 100,
       expandToMin: false,
-      gutterSize: 10,
+      gutterSize: 7,
       gutterAlign: "center",
       snapOffset: 30,
       dragInterval: 1,
@@ -25,7 +24,7 @@ const SplitBox: React.FC<splitBoxProps> = ({ direction, children }) => {
       className: "editor-main-vertical",
       minSize: 20,
       expandToMin: false,
-      gutterSize: 10,
+      gutterSize: 7,
       gutterAlign: "center",
       snapOffset: 30,
       dragInterval: 1,

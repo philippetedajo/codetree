@@ -1,5 +1,4 @@
 import { useRef, useEffect } from "react";
-import "./styles/code-editor-preview.css";
 
 interface prewiewProps {
   rawJs: string | undefined;

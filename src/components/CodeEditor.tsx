@@ -6,8 +6,6 @@ import parserBabel from "prettier/parser-babel";
 import parserCss from "prettier/parser-postcss";
 import parserHtml from "prettier/parser-html";
 
-import "./styles/code-editor-syntax.css";
-
 interface codeEditorProps {
   initialValue: string;
   language: string;
@@ -31,7 +29,7 @@ const CodeEditor: React.FC<codeEditorProps> = ({
       inherit: true,
       rules: [],
       colors: {
-        "editor.background": "#161a22",
+        "editor.background": "#f1B252D",
       },
     });
     monaco.editor.setTheme("myTheme");

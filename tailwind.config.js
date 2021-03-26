@@ -16,9 +16,10 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       //custom
-      editorprimary: "#1e2028",
-      editorsecondary: "#161a22",
+      editorprimary: "#171E25",
+      editorsecondary: "#1B252D",
       editorborder: "#131419",
+      editorthird: "#4C5B67",
     },
     fontFamily: {
       rubik: ["Rubik", "sans-serif"],

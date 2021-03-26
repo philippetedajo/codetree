@@ -4,6 +4,7 @@ import EditorHeader from "../components/EditorHeader";
 import EditorFooter from "../components/EditorFooter";
 import EditorTemplate from "../components/EditorTemplate";
 import "./styles/playground.css";
+import "./styles/editor-syntax.css";
 
 export const Playground = () => {
   const location = useLocation();
