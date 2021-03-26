@@ -11,7 +11,7 @@ import EditorPreview from "./EditorPreview";
 import SplitBox from "./SplitBox";
 
 interface editorTemplateProps {
-  template: "javascript" | "typescript" | "react" | "reactTS" | "vue" | "vueTS";
+  template: "javascript" |  "react" |  "vue"
 }
 
 const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
