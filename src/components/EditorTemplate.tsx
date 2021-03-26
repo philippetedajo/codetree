@@ -11,9 +11,6 @@ import bracketsCurly from "@iconify-icons/uil/brackets-curly";
 import codeTags from "@iconify-icons/mdi/code-tags";
 import fileTypeJs from "@iconify-icons/vscode-icons/file-type-js";
 import fileTypeTypescript from "@iconify-icons/vscode-icons/file-type-typescript";
-import htmlIcon from "@iconify-icons/whh/html";
-import fileTypeCss from "@iconify-icons/vscode-icons/file-type-css";
-import fileTypeHtml from "@iconify-icons/vscode-icons/file-type-html";
 
 interface editorTemplateProps {
   template: "vanilla" | "react";

@@ -48,7 +48,7 @@
 }
 
 .gutter.gutter-horizontal:hover {
-  background-color: #060807;
+  cursor: ew-resize;
 }
 
 .gutter.gutter-vertical {

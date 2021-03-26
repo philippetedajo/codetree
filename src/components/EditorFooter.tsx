@@ -11,5 +11,3 @@ const EditorFooter: React.FC<editorProps> = () => {
 };
 
 export default EditorFooter;
-
-// border-t-2 border-editorborder
