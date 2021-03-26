@@ -1889,6 +1889,16 @@
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-1.0.0.tgz#ad924cb846343fe0a42addcf0b055c4f9aa2dcb9"
   integrity sha512-YzBq6ZFw/uWGa3rXBNSHqnsE4hDXLrzdboDxPRKGjYHVzs1dBxjvELftP8iTmRPqP32VjnbVfUktX1CQ6Y7sog==
 
+"@iconify-icons/logos@^1.1.9":
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/@iconify-icons/logos/-/logos-1.1.9.tgz#5216541eb62c5849ed33e46e951271bef63ef2af"
+  integrity sha512-+myjzWPtTp7vNYrl2t7gV4xojG3Rl2b8xw6sD0V0dib/h1UwsTYo4X7AaLQDrdO8Bxe1wzQfhSgS6qLbBRYCpw==
+
+"@iconify/react@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-1.1.4.tgz#c778eddbaf196e55705d0bedff00d039dc1de8d3"
+  integrity sha512-oxq8IMOq8q3nKGiDHbQPC8FcFuBsKve68JWBo140d5LRnj0bv5TB/FE/y01ZSvEZ7PlI2HIrnb2qivPN8kTDgw==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"

@@ -20,6 +20,9 @@ module.exports = {
       editorsecondary: "#161a22",
       editorborder: "#131419",
     },
+    fontFamily: {
+      rubik: ["Rubik", "sans-serif"],
+    },
   },
   variants: {
     extend: {},

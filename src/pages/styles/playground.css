@@ -6,7 +6,7 @@
   color: #d4d4d4;
   background-color: #1e1e1e;
   height: 7vh;
-  padding: 0.2rem 1rem;
+  padding: 0.2rem 1.5rem;
   display: flex;
   align-items: center;
 }
@@ -40,6 +40,10 @@
 
 .css-1ondw75:active {
   background: none !important;
+}
+
+.css-1rspyfx {
+  border-bottom: 1px solid #1e2028 !important;
 }
 
 *:focus {

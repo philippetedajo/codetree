@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import * as fill from "../utils/template.json";
 import { useDebounce, useDebounceBundler } from "../utils/hooks";
 import CodeEditor from "./CodeEditor";
 import EditorPreview from "./EditorPreview";
 import SplitBox from "./SplitBox";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 
 interface editorTemplateProps {
   template: "vanilla" | "react";
@@ -25,13 +25,20 @@ const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
     <main>
       <SplitBox direction="horizontal">
         <Tabs>
-          <TabList borderY={"2px solid red"}>
+          <TabList pl={9}>
+            <Tab color="#fff">Javascript</Tab>
             <Tab color="#fff">Html</Tab>
             <Tab color="#fff">Css</Tab>
-            <Tab color="#fff">Javascript</Tab>
           </TabList>
 
-          <TabPanels className="h-full">
+          <TabPanels className="h-full pt-5">
+            <TabPanel p={0} className="h-full">
+              <CodeEditor
+                initialValue={contentBox.javascript.content}
+                language="javascript"
+                onChangeCodeInput={(value) => setJsInput(value)}
+              />
+            </TabPanel>
             <TabPanel p={0} className="h-full">
               <CodeEditor
                 initialValue={contentBox.html.content}
@@ -44,13 +51,6 @@ const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
                 initialValue={contentBox.css.content}
                 language="css"
                 onChangeCodeInput={(value) => setCssInput(value)}
-              />
-            </TabPanel>
-            <TabPanel p={0} className="h-full">
-              <CodeEditor
-                initialValue={contentBox.javascript.content}
-                language="javascript"
-                onChangeCodeInput={(value) => setJsInput(value)}
               />
             </TabPanel>
           </TabPanels>

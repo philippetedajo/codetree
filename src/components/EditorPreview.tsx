@@ -67,7 +67,7 @@ const EditorPreview: React.FC<prewiewProps> = ({
   return (
     <div className="preview-wrapper">
       <iframe
-        className="preview-iframe"
+        className="preview-iframe "
         frameBorder="0"
         ref={iframe}
         title="previewWindow"

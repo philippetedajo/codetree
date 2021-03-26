@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Landing, Setup, Playground } from "./pages";
-
 import { ChakraProvider } from "@chakra-ui/react";
 
 import "./index.css";

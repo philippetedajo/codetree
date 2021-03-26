@@ -128,9 +128,10 @@ const CodeEditor: React.FC<codeEditorProps> = ({
           enabled: false,
         },
         showUnused: true, // to reset
-        fontSize: 13,
+        fontSize: 14,
         automaticLayout: true,
         tabSize: 2,
+        renderLineHighlight: "none",
       }}
     />
   );

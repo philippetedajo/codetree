@@ -1,9 +1,0 @@
-.editor-header-details {
-  display: flex;
-}
-.editor-header-details-section {
-  padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
