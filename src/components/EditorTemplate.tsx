@@ -11,7 +11,7 @@ import EditorPreview from "./EditorPreview";
 import SplitBox from "./SplitBox";
 
 interface editorTemplateProps {
-  template: "vanilla" | "react";
+  template: "javascript" | "typescript" | "react" | "reactTS" | "vue" | "vueTS";
 }
 
 const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
@@ -23,7 +23,7 @@ const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
   const debouncedCss = useDebounce(cssInput, 1000);
   const debouncedJs = useDebounceBundler(jsInput, 1000);
 
-  let contentBox = template === "vanilla" ? fill.vanilla : fill.react;
+  let contentBox = template === "javascript" ? fill.javascript : fill.react;
   let _selected = { color: "white", bg: "#1B252D" };
 
   return (
