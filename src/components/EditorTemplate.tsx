@@ -5,12 +5,11 @@ import { useDebounce, useDebounceBundler } from "../utils/hooks";
 import CodeEditor from "./CodeEditor";
 import EditorPreview from "./EditorPreview";
 import SplitBox from "./SplitBox";
-
-import { Icon, InlineIcon } from "@iconify/react";
+import { Icon } from "@iconify/react";
 import bracketsCurly from "@iconify-icons/uil/brackets-curly";
 import codeTags from "@iconify-icons/mdi/code-tags";
 import fileTypeJs from "@iconify-icons/vscode-icons/file-type-js";
-import fileTypeTypescript from "@iconify-icons/vscode-icons/file-type-typescript";
+// import fileTypeTypescript from "@iconify-icons/vscode-icons/file-type-typescript";
 
 interface editorTemplateProps {
   template: "vanilla" | "react";
@@ -87,6 +86,7 @@ const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
           rawHtml={debouncedHtml}
           rawCss={debouncedCss}
           message={debouncedJs && debouncedJs.error}
+          showConsole={true}
         />
       </SplitBox>
     </main>

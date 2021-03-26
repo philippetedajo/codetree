@@ -5,6 +5,7 @@ interface prewiewProps {
   rawHtml: string | undefined;
   rawCss: string | undefined;
   message: string | undefined;
+  showConsole: boolean;
 }
 
 const EditorPreview: React.FC<prewiewProps> = ({
@@ -12,8 +13,11 @@ const EditorPreview: React.FC<prewiewProps> = ({
   rawHtml,
   rawCss,
   message,
+  showConsole,
 }) => {
   const iframe = useRef<any>();
+
+  console.log(showConsole);
 
   const htmlFrameContent = `
   <html>
@@ -66,7 +70,7 @@ const EditorPreview: React.FC<prewiewProps> = ({
   return (
     <div className="preview-wrapper">
       <iframe
-        className="preview-iframe "
+        className="preview-iframe"
         frameBorder="0"
         ref={iframe}
         title="previewWindow"
@@ -74,7 +78,9 @@ const EditorPreview: React.FC<prewiewProps> = ({
         srcDoc={htmlFrameContent}
       />
 
-      {message && <div className="error-message">{message}</div>}
+      <div className="_console">Console</div>
+
+      {/* {message && <div className="error-message">{message}</div>} */}
     </div>
   );
 };

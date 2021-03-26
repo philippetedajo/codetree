@@ -22,7 +22,7 @@ const SplitBox: React.FC<splitBoxProps> = ({ direction, children }) => {
   } else {
     splitProps = {
       className: "editor-main-vertical",
-      minSize: 20,
+      minSize: 50,
       expandToMin: false,
       gutterSize: 7,
       gutterAlign: "center",
