@@ -3,12 +3,7 @@
 }
 
 .editor-header {
-  color: #d4d4d4;
-  background-color: #1e1e1e;
-  height: 7vh;
-  padding: 0.2rem 1.5rem;
-  display: flex;
-  align-items: center;
+  height: 6.5vh;
 }
 
 .editor-main-horizontal {
@@ -22,11 +17,7 @@
 }
 
 .editor-footer {
-  display: flex;
-  height: 3vh;
-  color: #d4d4d4;
-  background-color: #1e1e1e;
-  padding: 0 1rem;
+  height: 3.5vh;
 }
 
 .css-13o7eu2 {
@@ -38,12 +29,12 @@
   outline: none !important;
 }
 
-.css-1ondw75:active {
+.css-1brdcqb:active {
   background: none !important;
 }
 
-.css-1rspyfx {
-  border-bottom: 1px solid #1e2028 !important;
+.css-pccucp {
+  border-bottom: 1px solid #1b252d !important;
 }
 
 *:focus {
@@ -57,7 +48,7 @@
 }
 
 .gutter.gutter-horizontal:hover {
-  background-color: #40b883;
+  background-color: #060807;
 }
 
 .gutter.gutter-vertical {

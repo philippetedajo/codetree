@@ -20,15 +20,16 @@ const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
   const debouncedJs = useDebounceBundler(jsInput, 1000);
 
   let contentBox = template === "vanilla" ? fill.vanilla : fill.react;
+  let _selected = { color: "white", bg: "#1B252D" };
 
   return (
     <main>
       <SplitBox direction="horizontal">
         <Tabs>
-          <TabList pl={9}>
-            <Tab color="#fff">Javascript</Tab>
-            <Tab color="#fff">Html</Tab>
-            <Tab color="#fff">Css</Tab>
+          <TabList background="#171E25" color="#fff" pl={9}>
+            <Tab _selected={_selected}>Javascript</Tab>
+            <Tab _selected={_selected}>Html</Tab>
+            <Tab _selected={_selected}>Css</Tab>
           </TabList>
 
           <TabPanels className="h-full pt-5">

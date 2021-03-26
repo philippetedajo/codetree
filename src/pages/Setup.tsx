@@ -11,7 +11,7 @@ export const Setup = () => {
   });
 
   const onSubmit = (data: any) => {
-    history.push("/playground", data);
+    history.push("/test", data);
   };
 
   return (

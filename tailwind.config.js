@@ -15,6 +15,7 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      white: colors.white,
       //custom
       editorprimary: "#171E25",
       editorsecondary: "#1B252D",
