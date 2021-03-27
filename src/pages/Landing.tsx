@@ -20,6 +20,9 @@ export const Landing = () => {
         <link rel="canonical" href="https://codetree.vercel.app/" />
       </Helmet>
       <div className="land-style bg-green-500 h-screen flex justify-center">
+        <div className="absolute font-medium border-2 text-green-900 border-white w-full bg-white opacity-90 flex justify-center">
+          Beta version 🌱
+        </div>
         <div className="flex flex-col items-center text-gray-200 h-96 m-32">
           <h1 className="text-7xl">CodeTree</h1>
           <p className="text-2xl text-center text-gray-500 mt-5">
