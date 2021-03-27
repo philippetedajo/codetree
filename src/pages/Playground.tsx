@@ -8,7 +8,8 @@ import "./styles/editor-syntax.css";
 
 export const Playground = () => {
   const location = useLocation();
-  console.log(location);
+  console.log(location.state);
+
   return (
     <div className="bg-editorsecondary">
       <Helmet>
@@ -18,7 +19,7 @@ export const Playground = () => {
       </Helmet>
       <div className="editor-container">
         <EditorHeader />
-        <EditorTemplate template="react" />
+        <EditorTemplate template={location.state} />
         <EditorFooter />
       </div>
     </div>
