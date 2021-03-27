@@ -6,8 +6,8 @@ import vueIcon from "@iconify-icons/logos/vue";
 
 const EditorHeader = () => {
   return (
-    <header className="flex justify-between items-center editor-header bg-editorprimary border-b-2 border-editorborder px-9">
-      <div className="flex items-center text-white">
+    <header className="flex justify-between  items-center editor-header bg-editorprimary border-b-2 border-editorborder px-9">
+      <div className="flex items-center text-gray-200">
         <div className="mr-8">Logo</div>
         <div>
           <small>Octopus</small>

@@ -2,7 +2,7 @@
   "javascript": {
     "html": {
       "lang": "html",
-      "content": "<div class='foo'>hello vanilla</div>"
+      "content": "<div class='foo'>hello Js</div>"
     },
     "css": {
       "lang": "css",
@@ -10,7 +10,7 @@
     },
     "javascript": {
       "lang": "javascript",
-      "content": "console.log('working fine')"
+      "content": "console.log('js')"
     }
   },
 
@@ -25,13 +25,13 @@
     },
     "javascript": {
       "lang": "javascript",
-      "content": "console.log('working fine')"
+      "content": "console.log('react')"
     }
   },
   "vue": {
     "html": {
       "lang": "html",
-      "content": "<div class='foo'>hello React</div>"
+      "content": "<div class='foo'>hello Vue</div>"
     },
     "css": {
       "lang": "css",
@@ -39,7 +39,7 @@
     },
     "javascript": {
       "lang": "javascript",
-      "content": "console.log('working fine')"
+      "content": "console.log('vue')"
     }
   }
 }

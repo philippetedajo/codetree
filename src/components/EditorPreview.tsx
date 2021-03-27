@@ -17,8 +17,6 @@ const EditorPreview: React.FC<prewiewProps> = ({
 }) => {
   const iframe = useRef<any>();
 
-  console.log(showConsole);
-
   const htmlFrameContent = `
   <html>
     <head>
@@ -27,9 +25,7 @@ const EditorPreview: React.FC<prewiewProps> = ({
       </style>
     </head>
     <body>
-      <div id="root">
         ${rawHtml}
-      </div>
       <script>
         const handleError = (error) => {
           const root = document.getElementById("root");
@@ -78,8 +74,7 @@ const EditorPreview: React.FC<prewiewProps> = ({
         srcDoc={htmlFrameContent}
       />
 
-      <div className="_console">Console</div>
-
+      {/* <div className="_console">Console</div> */}
       {/* {message && <div className="error-message">{message}</div>} */}
     </div>
   );

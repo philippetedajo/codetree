@@ -20,15 +20,15 @@
   flex-direction: column !important;
 }
 
-.css-1ondw75 {
+.css-tj4v59 {
   outline: none !important;
 }
 
-.css-1brdcqb:active {
+.css-tj4v59:active {
   background: none !important;
 }
 
-.css-pccucp {
+.css-qrhhjl {
   border-bottom: 1px solid #1b252d !important;
 }
 
@@ -70,7 +70,7 @@
 }
 
 ._console {
-  /* border: 2px solid blue; */
+  border: 2px solid blue;
 }
 
 .react-draggable-transparent-selection .preview-wrapper:after {

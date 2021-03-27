@@ -4,14 +4,14 @@ import { Icon } from "@iconify/react";
 import bracketsCurly from "@iconify-icons/uil/brackets-curly";
 import codeTags from "@iconify-icons/mdi/code-tags";
 import fileTypeJs from "@iconify-icons/vscode-icons/file-type-js";
-import * as fill from "../utils/template.json";
+import playgroundTemplate from "../utils/template";
 import { useDebounce, useDebounceBundler } from "../utils/hooks";
 import CodeEditor from "./CodeEditor";
 import EditorPreview from "./EditorPreview";
 import SplitBox from "./SplitBox";
 
 interface editorTemplateProps {
-  template: "javascript" |  "react" |  "vue"
+  template: "javascript" | "react" | "vue";
 }
 
 const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
@@ -23,19 +23,47 @@ const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
   const debouncedCss = useDebounce(cssInput, 1000);
   const debouncedJs = useDebounceBundler(jsInput, 1000);
 
-  let contentBox = template === "javascript" ? fill.javascript : fill.react;
-  let _selected = { color: "white", bg: "#1B252D" };
+  let contentBox;
+
+  switch (template) {
+    case "javascript":
+      contentBox = playgroundTemplate.javascript;
+      break;
+    case "react":
+      contentBox = playgroundTemplate.react;
+      break;
+    case "vue":
+      contentBox = playgroundTemplate.vue;
+      break;
+  }
+
+  console.log(contentBox);
+
+  let _selected = { bg: "#1B252D", color: "#E5E7EB" };
 
   return (
     <main>
       <SplitBox direction="horizontal">
         <Tabs>
-          <TabList background="#171E25" color="#fff" pl={9}>
-            <Tab _selected={_selected}>
+          <TabList
+            _selected={_selected}
+            background="#171E25"
+            color="#6B7280"
+            pl={9}
+          >
+            <Tab
+              _selected={_selected}
+              className="font-medium"
+              fontSize=".92rem"
+            >
               <Icon icon={fileTypeJs} width={20} className="mr-3" />
               Javascript
             </Tab>
-            <Tab _selected={_selected}>
+            <Tab
+              _selected={_selected}
+              className="font-medium"
+              fontSize=".92rem"
+            >
               <Icon
                 icon={codeTags}
                 color="#3B82F6"
@@ -44,11 +72,15 @@ const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
               />
               Html
             </Tab>
-            <Tab _selected={_selected}>
+            <Tab
+              _selected={_selected}
+              className="font-medium"
+              fontSize=".92rem"
+            >
               <Icon
                 icon={bracketsCurly}
                 width={16}
-                className="mr-3"
+                className="mr-3 "
                 color="#EF4444"
               />
               Css
