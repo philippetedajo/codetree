@@ -14,8 +14,7 @@ export const Playground = () => {
     <div className="bg-editorsecondary">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>tinyCode</title>
-        <link rel="canonical" href="https://tiny-code.vercel.Playground/" />
+        <title>Playground</title>
       </Helmet>
       <div className="editor-container">
         <EditorHeader />
