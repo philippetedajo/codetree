@@ -8,7 +8,7 @@ export const Landing = () => {
   const history = useHistory();
 
   const handleOnClick = (event: any) => {
-    // history.push("/playground", event.currentTarget.name);
+    history.push("/playground", event.currentTarget.name);
   };
 
   return (
@@ -24,14 +24,14 @@ export const Landing = () => {
             onClick={handleOnClick}
             className="mr-10 transform hover:scale-125 focus:outline-none transition-700 cursor-pointer duration-500"
           >
-            <Icon icon={javascriptIcon} width={50} />
+            <Icon icon={javascriptIcon} width={45} />
           </button>
           <button
             name="react"
             onClick={handleOnClick}
             className="transform hover:scale-125 focus:outline-none transition-700 cursor-pointer duration-500"
           >
-            <Icon icon={reactIcon} width={55} />
+            <Icon icon={reactIcon} width={50} />
           </button>
         </div>
       </div>
