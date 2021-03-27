@@ -23,6 +23,7 @@ const playgroundTemplate = {
       content: `.App {
   font-family: sans-serif;
   text-align: center;
+  padding-top: 35px;
 }
       `,
     },
@@ -30,13 +31,16 @@ const playgroundTemplate = {
       lang: "javascript",
       content: `import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import { Icon } from "@iconify/react";
+import reactIcon from "@iconify-icons/logos/react";
       
 function App() {
   const [count, setCount] = useState(0);
       
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
+      <Icon icon={reactIcon} height={135} />
+      <h1>Welcome React TinyCode</h1>
       <h2>You clicked {count} times!</h2>      
       <button onClick={() => setCount(count - 1)}>Decrement</button>
       <button onClick={() => setCount(count + 1)}>Increment</button>
@@ -47,20 +51,6 @@ function App() {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
       `,
-    },
-  },
-  vue: {
-    html: {
-      lang: "html",
-      content: "<div class='foo'>hello Vue</div>",
-    },
-    css: {
-      lang: "css",
-      content: ".foo{color:red}",
-    },
-    javascript: {
-      lang: "javascript",
-      content: "console.log('vue')",
     },
   },
 };

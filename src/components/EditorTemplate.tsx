@@ -11,7 +11,7 @@ import EditorPreview from "./EditorPreview";
 import SplitBox from "./SplitBox";
 
 interface editorTemplateProps {
-  template: "javascript" | "react" | "vue";
+  template: "javascript" | "react";
 }
 
 const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
@@ -31,9 +31,6 @@ const EditorTemplate: React.FC<editorTemplateProps> = ({ template }) => {
       break;
     case "react":
       contentBox = playgroundTemplate.react;
-      break;
-    case "vue":
-      contentBox = playgroundTemplate.vue;
       break;
   }
 
