@@ -1,9 +1,26 @@
 import { Icon } from "@iconify/react";
-import typescriptIcon from "@iconify-icons/logos/typescript-icon";
 import javascriptIcon from "@iconify-icons/logos/javascript";
 import reactIcon from "@iconify-icons/logos/react";
 
-const EditorHeader = () => {
+interface editorHeaderProps {
+  template: "javascript" | "react" | unknown;
+}
+
+const EditorHeader: React.FC<editorHeaderProps> = ({ template }) => {
+  let iconsTemp;
+
+  switch (template) {
+    case "javascript":
+      iconsTemp = javascriptIcon;
+      break;
+    case "react":
+      iconsTemp = reactIcon;
+      break;
+    default:
+      iconsTemp = javascriptIcon;
+      break;
+  }
+
   return (
     <header className="flex justify-between  items-center editor-header bg-editorprimary border-b-2 border-editorborder px-9">
       <div className="flex items-center text-gray-200">
@@ -14,9 +31,7 @@ const EditorHeader = () => {
       </div>
 
       <div className="flex">
-        <Icon icon={typescriptIcon} width={20} className="mr-3" />
-        <Icon icon={javascriptIcon} width={20} className="mr-3" />
-        <Icon icon={reactIcon} width={20} className="mr-3" />
+        <Icon icon={iconsTemp} width={20} className="mr-3" />
       </div>
     </header>
   );

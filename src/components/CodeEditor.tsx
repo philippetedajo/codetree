@@ -92,7 +92,6 @@ const CodeEditor: React.FC<codeEditorProps> = ({
         semi: true,
       });
 
-      console.log(formattedCode);
       codeEditor.current.setValue(formattedCode);
     }
 
