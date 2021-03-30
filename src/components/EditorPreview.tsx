@@ -4,7 +4,7 @@ interface PreviewProps {
   rawJs: string | undefined;
   rawHtml: string | undefined;
   rawCss: string | undefined;
-  message: string | undefined;
+  message: any;
   showConsole: boolean;
 }
 
@@ -16,6 +16,8 @@ const EditorPreview: React.FC<PreviewProps> = ({
   showConsole,
 }) => {
   const iframe = useRef<any>();
+
+  console.log(rawCss);
 
   const htmlFrameContent = `
   <html>

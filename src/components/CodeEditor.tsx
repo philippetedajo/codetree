@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import MonacoEditor, { OnChange, OnMount } from "@monaco-editor/react";
+import MonacoEditor, { OnChange, OnMount, loader } from "@monaco-editor/react";
 import { IKeyboardEvent } from "monaco-editor";
 import prettier from "prettier";
 import parserBabel from "prettier/parser-babel";
@@ -24,6 +24,7 @@ const CodeEditor: React.FC<codeEditorProps> = ({
   };
 
   const onMount: OnMount = async (monacoEditor, monaco) => {
+    console.log(loader);
     monaco.editor.defineTheme("myTheme", {
       base: "vs-dark",
       inherit: true,
