@@ -1,6 +1,6 @@
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 
-interface prewiewProps {
+interface PreviewProps {
   rawJs: string | undefined;
   rawHtml: string | undefined;
   rawCss: string | undefined;
@@ -8,7 +8,7 @@ interface prewiewProps {
   showConsole: boolean;
 }
 
-const EditorPreview: React.FC<prewiewProps> = ({
+const EditorPreview: React.FC<PreviewProps> = ({
   rawJs,
   rawHtml,
   rawCss,
@@ -25,7 +25,7 @@ const EditorPreview: React.FC<prewiewProps> = ({
       </style>
     </head>
     <body>
-        ${rawHtml}
+     ${rawHtml}
       <script>
         const handleError = (error) => {
           const root = document.getElementById("root");

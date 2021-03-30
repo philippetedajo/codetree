@@ -1,26 +1,6 @@
-import { Icon } from "@iconify/react";
-import javascriptIcon from "@iconify-icons/logos/javascript";
-import reactIcon from "@iconify-icons/logos/react";
+import React from "react";
 
-interface editorHeaderProps {
-  template: "javascript" | "react" | unknown;
-}
-
-const EditorHeader: React.FC<editorHeaderProps> = ({ template }) => {
-  let iconsTemp;
-
-  switch (template) {
-    case "javascript":
-      iconsTemp = javascriptIcon;
-      break;
-    case "react":
-      iconsTemp = reactIcon;
-      break;
-    default:
-      iconsTemp = javascriptIcon;
-      break;
-  }
-
+const EditorHeader: React.FC = () => {
   return (
     <header className="flex justify-between  items-center editor-header bg-editorprimary border-b-2 border-editorborder px-9">
       <div className="flex items-center text-gray-200">
@@ -30,9 +10,7 @@ const EditorHeader: React.FC<editorHeaderProps> = ({ template }) => {
         </div>
       </div>
 
-      <div className="flex">
-        <Icon icon={iconsTemp} width={20} className="mr-3" />
-      </div>
+      <div className="flex">config</div>
     </header>
   );
 };

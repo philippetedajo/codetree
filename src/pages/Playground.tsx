@@ -7,9 +7,6 @@ import "./styles/playground.css";
 import "./styles/editor-syntax.css";
 
 export const Playground = () => {
-  const location = useLocation();
-  console.log(location.state);
-
   return (
     <div className="bg-editorsecondary">
       <Helmet>
@@ -17,8 +14,8 @@ export const Playground = () => {
         <title>Playground</title>
       </Helmet>
       <div className="editor-container">
-        <EditorHeader template={location.state} />
-        <Editor template={location.state} />
+        <EditorHeader />
+        <Editor />
         <EditorFooter />
       </div>
     </div>

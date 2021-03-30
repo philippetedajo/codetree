@@ -1,15 +1,12 @@
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { Icon } from "@iconify/react";
-import javascriptIcon from "@iconify-icons/logos/javascript";
-import reactIcon from "@iconify-icons/logos/react";
 import "./styles/landing.css";
 
 export const Landing = () => {
   const history = useHistory();
 
   const handleOnClick = (event: any) => {
-    history.push("/playground", event.currentTarget.name);
+    history.push("/playground");
   };
 
   return (
@@ -28,21 +25,8 @@ export const Landing = () => {
           <p className="text-2xl text-center text-gray-500 mt-5">
             Powerful tiny playground for rapid web prototyping
           </p>
-          <div className="flex mt-10">
-            <button
-              name="javascript"
-              onClick={handleOnClick}
-              className="mr-10 transform hover:scale-125 focus:outline-none transition-700 cursor-pointer duration-500"
-            >
-              <Icon icon={javascriptIcon} width={45} />
-            </button>
-            <button
-              name="react"
-              onClick={handleOnClick}
-              className="transform hover:scale-125 focus:outline-none transition-700 cursor-pointer duration-500"
-            >
-              <Icon icon={reactIcon} width={50} />
-            </button>
+          <div className="flex mt-10" onClick={handleOnClick}>
+            Start prototyping
           </div>
         </div>
       </div>

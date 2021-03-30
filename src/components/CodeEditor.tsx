@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import MonacoEditor, { OnChange, OnMount } from "@monaco-editor/react";
 import { IKeyboardEvent } from "monaco-editor";
 import prettier from "prettier";
@@ -7,7 +7,7 @@ import parserCss from "prettier/parser-postcss";
 import parserHtml from "prettier/parser-html";
 
 interface codeEditorProps {
-  initialValue: string;
+  initialValue: any;
   language: string;
   onChangeCodeInput(value: string | undefined): void;
 }

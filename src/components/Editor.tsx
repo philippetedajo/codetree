@@ -4,17 +4,13 @@ import { Icon } from "@iconify/react";
 import bracketsCurly from "@iconify-icons/uil/brackets-curly";
 import codeTags from "@iconify-icons/mdi/code-tags";
 import fileTypeJs from "@iconify-icons/vscode-icons/file-type-js";
-import playgroundTemplate from "../utils/template";
+import template from "../utils/template";
 import { useDebounce, useDebounceBundler } from "../utils/hooks";
 import CodeEditor from "./CodeEditor";
 import EditorPreview from "./EditorPreview";
 import SplitBox from "./SplitBox";
 
-interface editorProps {
-  template: "javascript" | "react" | unknown;
-}
-
-const Editor: React.FC<editorProps> = ({ template }) => {
+const Editor: React.FC = () => {
   const [jsInput, setJsInput] = useState<string | undefined>("");
   const [htmlInput, setHmlInput] = useState<string | undefined>("");
   const [cssInput, setCssInput] = useState<string | undefined>("");
@@ -22,22 +18,6 @@ const Editor: React.FC<editorProps> = ({ template }) => {
   const debouncedHtml = useDebounce(htmlInput, 1000);
   const debouncedCss = useDebounce(cssInput, 1000);
   const debouncedJs = useDebounceBundler(jsInput, 1000);
-
-  let contentBox;
-
-  switch (template) {
-    case "javascript":
-      contentBox = playgroundTemplate.javascript;
-      break;
-    case "react":
-      contentBox = playgroundTemplate.react;
-      break;
-    default:
-      contentBox = playgroundTemplate.javascript;
-      break;
-  }
-
-  console.log(contentBox);
 
   let _selected = { bg: "#1B252D", color: "#E5E7EB" };
 
@@ -90,21 +70,21 @@ const Editor: React.FC<editorProps> = ({ template }) => {
           <TabPanels className="h-full pt-5">
             <TabPanel p={0} className="h-full">
               <CodeEditor
-                initialValue={contentBox.javascript.content}
+                initialValue={template.javascript}
                 language="javascript"
                 onChangeCodeInput={(value) => setJsInput(value)}
               />
             </TabPanel>
             <TabPanel p={0} className="h-full">
               <CodeEditor
-                initialValue={contentBox.html.content}
+                initialValue={template.html}
                 language="html"
                 onChangeCodeInput={(value) => setHmlInput(value)}
               />
             </TabPanel>
             <TabPanel p={0} className="h-full">
               <CodeEditor
-                initialValue={contentBox.css.content}
+                initialValue={template.css}
                 language="css"
                 onChangeCodeInput={(value) => setCssInput(value)}
               />
