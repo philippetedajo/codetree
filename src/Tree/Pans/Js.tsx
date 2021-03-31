@@ -1,7 +1,7 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { useAppDispatch } from "../../store/hook";
 import { update_code } from "../../store/editor/EditorSlice";
-import CodeEditor from "../../components/CodeEditor";
+import Editor from "../../components/Editor";
 
 export const JsTab = () => {
   return <div>Js</div>;
@@ -11,7 +11,7 @@ export const JsPanel = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <CodeEditor
+    <Editor
       initialValue=""
       language="javascript"
       onChangeCodeInput={(value) =>

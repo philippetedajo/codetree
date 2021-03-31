@@ -1,12 +1,12 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Landing, Playground } from "./pages";
 import TreeEditor from "./Tree/TreeEditor";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 
 import "./index.css";
+import "./monaco-css.css";
 
 const Index = () => {
   return (
@@ -14,9 +14,7 @@ const Index = () => {
       <ChakraProvider>
         <Router>
           <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route path="/playground" component={Playground} />
-            <Route path="/treeEditor" component={TreeEditor} />
+            <Route exact path="/" component={TreeEditor} />
           </Switch>
         </Router>
       </ChakraProvider>

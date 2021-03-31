@@ -1,31 +1,17 @@
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 
-interface prewiewProps {
-  rawJs: string | undefined;
-  rawHtml: string | undefined;
-  rawCss: string | undefined;
-  message: string | undefined;
-  showConsole: boolean;
-}
-
-const EditorPreview: React.FC<prewiewProps> = ({
-  rawJs,
-  rawHtml,
-  rawCss,
-  message,
-  showConsole,
-}) => {
+const Preview: React.FC = ({}) => {
   const iframe = useRef<any>();
 
   const htmlFrameContent = `
   <html>
     <head>
-      <style>
-        ${rawCss}
+      <style> 
+        ${"rawCss"}
       </style>
     </head>
     <body>
-        ${rawHtml}
+        ${"rawHtml"}
       <script>
         const handleError = (error) => {
           const root = document.getElementById("root");
@@ -59,9 +45,9 @@ const EditorPreview: React.FC<prewiewProps> = ({
     iframe.current.srcdoc = htmlFrameContent;
 
     setTimeout(() => {
-      iframe.current.contentWindow.postMessage(rawJs, "*");
+      iframe.current.contentWindow.postMessage("rawJs", "*");
     }, 50);
-  }, [rawJs, htmlFrameContent]);
+  }, ["rawJs", htmlFrameContent]);
 
   return (
     <div className="preview-wrapper">
@@ -80,4 +66,4 @@ const EditorPreview: React.FC<prewiewProps> = ({
   );
 };
 
-export default EditorPreview;
+export default Preview;

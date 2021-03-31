@@ -1,126 +1,139 @@
-import React, { useState } from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { Icon } from "@iconify/react";
-import bracketsCurly from "@iconify-icons/uil/brackets-curly";
-import codeTags from "@iconify-icons/mdi/code-tags";
-import fileTypeJs from "@iconify-icons/vscode-icons/file-type-js";
-import playgroundTemplate from "../utils/template";
-import { useDebounce, useDebounceBundler } from "../utils/hooks";
-import CodeEditor from "./CodeEditor";
-import EditorPreview from "./EditorPreview";
-import SplitBox from "./SplitBox";
+import React, { useRef } from "react";
+import MonacoEditor, { OnChange, OnMount } from "@monaco-editor/react";
+import { IKeyboardEvent } from "monaco-editor";
+import prettier from "prettier";
+import parserBabel from "prettier/parser-babel";
+import parserCss from "prettier/parser-postcss";
+import parserHtml from "prettier/parser-html";
 
-interface EditorProps {
-  template: "javascript" | "react" | unknown;
+interface codeEditorProps {
+  initialValue: string;
+  language: string;
+  onChangeCodeInput(value: string | undefined): void;
 }
 
-const Editor: React.FC<EditorProps> = ({ template }) => {
-  const [jsInput, setJsInput] = useState<string | undefined>("");
-  const [htmlInput, setHmlInput] = useState<string | undefined>("");
-  const [cssInput, setCssInput] = useState<string | undefined>("");
+const Editor: React.FC<codeEditorProps> = ({
+  initialValue,
+  onChangeCodeInput,
+  language,
+}) => {
+  const codeEditor = useRef<any>();
 
-  const debouncedHtml = useDebounce(htmlInput, 1000);
-  const debouncedCss = useDebounce(cssInput, 1000);
-  const debouncedJs = useDebounceBundler(jsInput, 1000);
+  const onChange: OnChange = (value) => {
+    onChangeCodeInput(value);
+  };
 
-  let contentBox;
+  const onMount: OnMount = async (monacoEditor, monaco) => {
+    monaco.editor.defineTheme("myTheme", {
+      base: "vs-dark",
+      inherit: true,
+      rules: [],
+      colors: {
+        "editor.background": "#f1B252D",
+        "editor.selectionBackground": "#2A3842",
+        "editor.inactiveSelectionBackground": "#232E38",
+      },
+    });
+    monaco.editor.setTheme("myTheme");
 
-  switch (template) {
-    case "javascript":
-      contentBox = playgroundTemplate.javascript;
-      break;
-    case "react":
-      contentBox = playgroundTemplate.react;
-      break;
-    default:
-      contentBox = playgroundTemplate.javascript;
-      break;
-  }
+    codeEditor.current = monacoEditor;
 
-  console.log(contentBox);
+    const { default: traverse } = await import("@babel/traverse");
+    const { parse } = await import("@babel/parser");
+    const { default: MonacoJSXHighlighter } = await import(
+      "monaco-jsx-highlighter"
+    );
 
-  let _selected = { bg: "#1B252D", color: "#E5E7EB" };
+    //jsx syntax highlight
+    const babelParse = (code: any) =>
+      parse(code, { sourceType: "module", plugins: ["jsx"] });
+
+    const monacoJSXHighlighter = new MonacoJSXHighlighter(
+      //@ts-ignore
+      monaco,
+      babelParse,
+      traverse,
+      monacoEditor
+    );
+
+    monacoJSXHighlighter.highLightOnDidChangeModelContent(
+      0,
+      () => {},
+      () => {},
+      undefined,
+      () => {}
+    );
+
+    //format
+    function formatOnSave() {
+      const unformattedCode = codeEditor.current.getModel().getValue();
+      let config;
+
+      switch (language) {
+        case "html":
+          config = { parser: "html", plugin: [parserHtml] };
+          break;
+
+        case "css":
+          config = { parser: "css", plugin: [parserCss] };
+          break;
+
+        case "javascript":
+          config = { parser: "babel", plugin: [parserBabel] };
+          break;
+
+        default:
+          break;
+      }
+
+      const formattedCode = prettier.format(unformattedCode, {
+        parser: config && config.parser,
+        plugins: config && config.plugin,
+        useTabs: false,
+        semi: true,
+      });
+
+      codeEditor.current.setValue(formattedCode);
+    }
+
+    //save command
+    let handleOnKeyDown = codeEditor.current.onKeyDown(
+      (event: IKeyboardEvent) => {
+        if (
+          (window.navigator.platform.match("Mac")
+            ? event.metaKey
+            : event.ctrlKey) &&
+          event.code === "KeyS"
+        ) {
+          event.preventDefault();
+          formatOnSave();
+        }
+      }
+    );
+
+    //clearning up
+    return () => handleOnKeyDown.dispose();
+  };
 
   return (
-    <main>
-      <SplitBox direction="horizontal">
-        <Tabs>
-          <TabList
-            _selected={_selected}
-            background="#171E25"
-            color="#6B7280"
-            pl={9}
-          >
-            <Tab
-              _selected={_selected}
-              className="font-medium"
-              fontSize=".92rem"
-            >
-              <Icon icon={fileTypeJs} width={20} className="mr-3" />
-              Javascript
-            </Tab>
-            <Tab
-              _selected={_selected}
-              className="font-medium"
-              fontSize=".92rem"
-            >
-              <Icon
-                icon={codeTags}
-                color="#3B82F6"
-                width={20}
-                className="mr-3"
-              />
-              Html
-            </Tab>
-            <Tab
-              _selected={_selected}
-              className="font-medium"
-              fontSize=".92rem"
-            >
-              <Icon
-                icon={bracketsCurly}
-                width={16}
-                className="mr-3 "
-                color="#EF4444"
-              />
-              Css
-            </Tab>
-          </TabList>
-
-          <TabPanels className="h-full pt-5">
-            <TabPanel p={0} className="h-full">
-              <CodeEditor
-                initialValue={contentBox.javascript.content}
-                language="javascript"
-                onChangeCodeInput={(value) => setJsInput(value)}
-              />
-            </TabPanel>
-            <TabPanel p={0} className="h-full">
-              <CodeEditor
-                initialValue={contentBox.html.content}
-                language="html"
-                onChangeCodeInput={(value) => setHmlInput(value)}
-              />
-            </TabPanel>
-            <TabPanel p={0} className="h-full">
-              <CodeEditor
-                initialValue={contentBox.css.content}
-                language="css"
-                onChangeCodeInput={(value) => setCssInput(value)}
-              />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-
-        <EditorPreview
-          rawJs={debouncedJs && debouncedJs.code}
-          rawHtml={debouncedHtml}
-          rawCss={debouncedCss}
-          message={debouncedJs && debouncedJs.error}
-          showConsole={true}
-        />
-      </SplitBox>
-    </main>
+    <MonacoEditor
+      value={initialValue}
+      onChange={onChange}
+      onMount={onMount}
+      language={language}
+      theme="vs-dark"
+      options={{
+        wordWrap: "on",
+        minimap: {
+          enabled: false,
+        },
+        showUnused: true, // to reset
+        fontSize: 13.5,
+        automaticLayout: true,
+        tabSize: 2,
+        renderLineHighlight: "none",
+      }}
+    />
   );
 };
 

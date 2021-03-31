@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { RootState } from "../store";
-
 enum ProgLang {
   js = "js",
   html = "html",

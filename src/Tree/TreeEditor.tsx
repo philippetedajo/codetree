@@ -1,6 +1,7 @@
 import React from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { JsTab, JsPanel, HtmlTab, HtmlPanel, CssTab, CssPanel } from "./Pans";
+import Preview from "../components/Preview";
 import { tabListConfig, tabConfig } from "./config";
 import SplitBox from "../components/SplitBox";
 
@@ -30,7 +31,7 @@ const TreeEditor = () => {
             </Tab>
           </TabList>
 
-          <TabPanels className="h-full pt-5">
+          <TabPanels className="h-full">
             <TabPanel p={0} className="h-full">
               <JsPanel />
             </TabPanel>
@@ -43,7 +44,7 @@ const TreeEditor = () => {
           </TabPanels>
         </Tabs>
 
-        <div>hello world</div>
+        <Preview />
       </SplitBox>
 
       {/* Foot ======================================= */}
