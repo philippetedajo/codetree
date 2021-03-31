@@ -4,7 +4,6 @@ import { JsTab, JsPanel, HtmlTab, HtmlPanel, CssTab, CssPanel } from "./Pans";
 import SplitBox from "../components/SplitBox";
 
 const TreeEditor = () => {
-  let _selectedTab = { bg: "#1B252D", color: "#E5E7EB" };
   let tabListConfig = {
     _selected: { bg: "#1B252D", color: "#E5E7EB" },
     background: "#171E25",
