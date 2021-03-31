@@ -1,21 +1,10 @@
 import React from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { JsTab, JsPanel, HtmlTab, HtmlPanel, CssTab, CssPanel } from "./Pans";
+import { tabListConfig, tabConfig } from "./config";
 import SplitBox from "../components/SplitBox";
 
 const TreeEditor = () => {
-  let tabListConfig = {
-    _selected: { bg: "#1B252D", color: "#E5E7EB" },
-    background: "#171E25",
-    color: "#6B7280",
-    pl: 9,
-  };
-  let tabConfig = {
-    _selected: { bg: "#1B252D", color: "#E5E7EB" },
-    className: "font-medium",
-    fontSize: ".92rem",
-  };
-
   return (
     <div style={{ height: "100vh" }}>
       {/* Head ======================================= */}
