@@ -10,11 +10,11 @@ import CodeEditor from "./CodeEditor";
 import EditorPreview from "./EditorPreview";
 import SplitBox from "./SplitBox";
 
-interface editorProps {
+interface EditorProps {
   template: "javascript" | "react" | unknown;
 }
 
-const Editor: React.FC<editorProps> = ({ template }) => {
+const Editor: React.FC<EditorProps> = ({ template }) => {
   const [jsInput, setJsInput] = useState<string | undefined>("");
   const [htmlInput, setHmlInput] = useState<string | undefined>("");
   const [cssInput, setCssInput] = useState<string | undefined>("");

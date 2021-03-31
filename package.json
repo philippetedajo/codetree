@@ -46,6 +46,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-split": "^2.0.9",
+    "react-tabs": "^3.2.1",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
