@@ -1,6 +1,6 @@
 import React from "react";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { Js, Html, Css } from "./Pans";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { JsTab, JsPanel, HtmlTab, HtmlPanel, CssTab, CssPanel } from "./Pans";
 import SplitBox from "../components/SplitBox";
 import "react-tabs/style/react-tabs.css";
 
@@ -17,20 +17,28 @@ const TreeEditor = () => {
           className="h-full border-2 border-red-600 "
         >
           <TabList>
-            <Tab>Js</Tab>
-            <Tab>Html</Tab>
-            <Tab>Css</Tab>
+            <Tab>
+              <JsTab />
+            </Tab>
+            <Tab>
+              <HtmlTab />
+            </Tab>
+            <Tab>
+              <CssTab />
+            </Tab>
           </TabList>
 
-          <TabPanel>
-            <Js />
-          </TabPanel>
-          <TabPanel>
-            <Html />
-          </TabPanel>
-          <TabPanel>
-            <Css />
-          </TabPanel>
+          <TabPanels className="h-full pt-5">
+            <TabPanel className="h-full">
+              <JsPanel />
+            </TabPanel>
+            <TabPanel className="h-full">
+              <HtmlPanel />
+            </TabPanel>
+            <TabPanel className="h-full">
+              <CssPanel />
+            </TabPanel>
+          </TabPanels>
         </Tabs>
 
         <div>hello world</div>
