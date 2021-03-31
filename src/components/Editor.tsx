@@ -5,15 +5,15 @@ import bracketsCurly from "@iconify-icons/uil/brackets-curly";
 import codeTags from "@iconify-icons/mdi/code-tags";
 import fileTypeJs from "@iconify-icons/vscode-icons/file-type-js";
 import template from "../utils/template";
-import { useDebounce } from "../utils/hooks";
 import CodeEditor from "./CodeEditor";
 import EditorPreview from "./EditorPreview";
 import SplitBox from "./SplitBox";
+import { useDebounce } from "../utils/hooks";
 
 const Editor: React.FC = () => {
-  const [jsInput, setJsInput] = useState("");
-  const [htmlInput, setHmlInput] = useState("");
-  const [cssInput, setCssInput] = useState("");
+  const [jsInput, setJsInput] = useState(template.javascript);
+  const [htmlInput, setHmlInput] = useState(template.html);
+  const [cssInput, setCssInput] = useState(template.css);
 
   const debouncedHtml = useDebounce(htmlInput, 1000, false);
   const debouncedCss = useDebounce(cssInput, 1000, false);
@@ -93,11 +93,9 @@ const Editor: React.FC = () => {
         </Tabs>
 
         <EditorPreview
-          rawJs={debouncedJs && debouncedJs.code}
-          rawHtml={debouncedHtml && debouncedHtml.code}
-          rawCss={debouncedCss && debouncedCss.code}
-          message={debouncedJs && debouncedJs.error}
-          showConsole={true}
+          rawJs={debouncedJs}
+          rawHtml={debouncedHtml}
+          rawCss={debouncedCss}
         />
       </SplitBox>
     </main>

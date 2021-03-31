@@ -1,33 +1,19 @@
 import React, { useRef, useEffect } from "react";
 
-interface PreviewProps {
-  rawJs: string | undefined;
-  rawHtml: string | undefined;
-  rawCss: string | undefined;
-  message: any;
-  showConsole: boolean;
-}
+const EditorPreview: React.FC<any> = ({ rawJs, rawHtml, rawCss }) => {
+  console.log(rawHtml);
 
-const EditorPreview: React.FC<PreviewProps> = ({
-  rawJs,
-  rawHtml,
-  rawCss,
-  message,
-  showConsole,
-}) => {
   const iframe = useRef<any>();
-
-  console.log(rawCss);
 
   const htmlFrameContent = `
   <html>
     <head>
       <style>
-        ${rawCss}
+        ${rawCss && rawCss.code}
       </style>
     </head>
     <body>
-     ${rawHtml}
+     ${rawHtml && rawHtml.code}
       <script>
         const handleError = (error) => {
           const root = document.getElementById("root");
@@ -61,7 +47,7 @@ const EditorPreview: React.FC<PreviewProps> = ({
     iframe.current.srcdoc = htmlFrameContent;
 
     setTimeout(() => {
-      iframe.current.contentWindow.postMessage(rawJs, "*");
+      iframe.current.contentWindow.postMessage(rawJs && rawJs.code, "*");
     }, 50);
   }, [rawJs, htmlFrameContent]);
 
