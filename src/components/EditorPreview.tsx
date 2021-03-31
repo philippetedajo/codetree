@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
 const EditorPreview: React.FC<any> = ({ rawJs, rawHtml, rawCss }) => {
-  console.log(rawHtml);
-
   const iframe = useRef<any>();
 
   const htmlFrameContent = `
