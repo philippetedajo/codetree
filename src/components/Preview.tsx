@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useAppSelector } from "../store/hook";
-import { editor_state } from "../store/features/EditorSlice";
+import { editor_state } from "../store/features/editorSlice";
 
 const Preview: React.FC = () => {
   const iframe = useRef<any>();
