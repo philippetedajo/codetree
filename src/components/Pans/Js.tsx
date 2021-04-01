@@ -14,12 +14,16 @@ export const JsPanel: React.FC = () => {
 
   const debounced = useDebouncedCallback(
     async (value) => {
+      //true
+
       const output = await bundler(value);
+
       dispatch(
         update_code({
           code: output.code,
           type: "js",
           loading: false,
+          error: output.error,
         })
       );
     },

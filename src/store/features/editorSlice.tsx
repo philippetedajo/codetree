@@ -5,17 +5,20 @@ const initialEditorState = {
   js: {
     code: "hello js",
     transformer: "js",
-    loading: true,
+    loading: false,
+    error: "",
   },
   css: {
     code: "hello css",
     transformer: "css",
-    loading: true,
+    loading: false,
+    error: "",
   },
   html: {
     code: "hello html",
     transformer: "html",
-    loading: true,
+    loading: false,
+    error: "",
   },
 };
 
@@ -26,6 +29,7 @@ export const editorSlice = createSlice({
     update_code: (state: any, { payload }) => {
       state[payload.type].code = payload.code;
       state[payload.type].loading = payload.loading;
+      state[payload.type].error = payload.error;
     },
   },
 });
