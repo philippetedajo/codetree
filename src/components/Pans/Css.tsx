@@ -1,14 +1,14 @@
 import React from "react";
-import { useDebouncedCallback } from "use-debounce";
 import { useAppDispatch } from "../../store/hook";
 import { update_code } from "../../store/editor/EditorSlice";
-import Editor from "../../components/Editor";
+import Editor from "../Editor";
+import { useDebouncedCallback } from "use-debounce";
 
-export const HtmlTab = () => {
-  return <div>Html</div>;
+export const CssTab = () => {
+  return <div>Css</div>;
 };
 
-export const HtmlPanel: React.FC = () => {
+export const CssPanel: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const debounced = useDebouncedCallback(
@@ -16,7 +16,7 @@ export const HtmlPanel: React.FC = () => {
       dispatch(
         update_code({
           value: value,
-          type: "html",
+          type: "css",
         })
       );
     },
@@ -27,7 +27,7 @@ export const HtmlPanel: React.FC = () => {
   return (
     <Editor
       initialValue=""
-      language="html"
+      language="css"
       onChangeCodeInput={(value: string) => debounced(value)}
     />
   );

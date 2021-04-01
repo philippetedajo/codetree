@@ -1,9 +1,9 @@
 import React from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { JsTab, JsPanel, HtmlTab, HtmlPanel, CssTab, CssPanel } from "./Pans";
-import Preview from "../components/Preview";
+import Preview from ".//Preview";
 import { tabListConfig, tabConfig } from "./config";
-import SplitBox from "../components/SplitBox";
+import SplitBox from "./SplitBox";
 
 const TreeEditor = () => {
   return (

@@ -1,58 +1,56 @@
 import React, { useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../store/hook";
+import { editor_state } from "../store/editor/EditorSlice";
 
 const Preview: React.FC = () => {
   const iframe = useRef<any>();
+  const data = useAppSelector(editor_state);
 
-  const data = useSelector((state) => state);
-
-  console.log(data);
+  console.log(data.js.code);
 
   const htmlFrameContent = `
   <html>
-    <head>
-      <style> 
-        ${"rawCss"}
-      </style>
-    </head>
-    <body>
-        ${"rawHtml"}
-      <script>
-        const handleError = (error) => {
-          const root = document.getElementById("root");
-          root.innerHTML =
-            "<div style='color: red'>" + "Runtime error: " + error + "</div>";
-          throw error;
-        };
-  
-        window.addEventListener("error", (event) => {
-          event.preventDefault();
-          handleError(event.error);
-        });
-  
-        window.addEventListener(
-          "message",
-          (event) => {
-            try {
-              eval(event.data);
-            } catch (error) {
-              handleError(error);
-            }
-          },
-          false
-        );
-      </script>
-    </body>
-  </html>
+  <head>
+    <style>
+      ${data.css.code}
+    </style>
+  </head>
+  <body>
+    <div id="root">${data.html.code}</div>
+    <script>
+      const handleError = (error) => {
+        throw error;
+      };
+
+      window.addEventListener("error", (event) => {
+        event.preventDefault();
+        handleError(event.error);
+      });
+
+      window.addEventListener(
+        "message",
+        (event) => {
+          try {
+            eval(event.data);
+          } catch (error) {
+            handleError(error);
+          }
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
+
   `;
 
   useEffect(() => {
     iframe.current.srcdoc = htmlFrameContent;
 
     setTimeout(() => {
-      iframe.current.contentWindow.postMessage("rawJs", "*");
+      iframe.current.contentWindow.postMessage(data.js.code, "*");
     }, 50);
-  }, ["rawJs", htmlFrameContent]);
+  }, [data.js.code, htmlFrameContent]);
 
   return (
     <div className="preview-wrapper">

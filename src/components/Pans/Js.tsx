@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { useAppDispatch } from "../../store/hook";
 import { update_code } from "../../store/editor/EditorSlice";
-import Editor from "../../components/Editor";
+import Editor from "../Editor";
 import bundler from "../../bundler";
 
 export const JsTab = () => {
