@@ -24,8 +24,8 @@ export const editorSlice = createSlice({
   initialState: initialEditorState,
   reducers: {
     update_code: (state: any, { payload }) => {
-      state[payload.transformer].code = payload.code;
-      state[payload.transformer].loading = payload.loading;
+      state[payload.type].code = payload.code;
+      state[payload.type].loading = payload.loading;
     },
   },
 });

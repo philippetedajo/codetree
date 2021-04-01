@@ -18,7 +18,7 @@ export const JsPanel: React.FC = () => {
       dispatch(
         update_code({
           code: output.code,
-          transformer: "js",
+          type: "js",
           loading: false,
         })
       );
