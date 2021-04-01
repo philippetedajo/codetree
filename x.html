@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <style>
+      ${data.css.code}
+    </style>
+  </head>
+  <body>
+    <div id="root">${data.html.code}</div>
+    <script>
+      const handleError = (error) => {
+        throw error;
+      };
+
+      window.addEventListener("error", (event) => {
+        event.preventDefault();
+        handleError(event.error);
+      });
+
+      window.addEventListener(
+        "message",
+        (event) => {
+          try {
+            eval(event.data);
+          } catch (error) {
+            handleError(error);
+          }
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
