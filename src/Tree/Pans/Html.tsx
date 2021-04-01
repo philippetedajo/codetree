@@ -8,7 +8,7 @@ export const HtmlTab = () => {
   return <div>Html</div>;
 };
 
-export const HtmlPanel = () => {
+export const HtmlPanel: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const debounced = useDebouncedCallback(

@@ -9,7 +9,7 @@ export const JsTab = () => {
   return <div>Js</div>;
 };
 
-export const JsPanel = () => {
+export const JsPanel: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const debounced = useDebouncedCallback(

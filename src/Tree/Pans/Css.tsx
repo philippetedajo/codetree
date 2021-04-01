@@ -8,7 +8,7 @@ export const CssTab = () => {
   return <div>Css</div>;
 };
 
-export const CssPanel = () => {
+export const CssPanel: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const debounced = useDebouncedCallback(
