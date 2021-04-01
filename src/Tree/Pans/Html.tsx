@@ -1,4 +1,5 @@
 import React from "react";
+import { useDebouncedCallback } from "use-debounce";
 import { useAppDispatch } from "../../store/hook";
 import { update_code } from "../../store/editor/EditorSlice";
 import Editor from "../../components/Editor";
@@ -10,18 +11,24 @@ export const HtmlTab = () => {
 export const HtmlPanel = () => {
   const dispatch = useAppDispatch();
 
+  const debounced = useDebouncedCallback(
+    (value) => {
+      dispatch(
+        update_code({
+          value: value,
+          type: "html",
+        })
+      );
+    },
+    // delay in ms
+    1000
+  );
+
   return (
     <Editor
       initialValue=""
       language="html"
-      onChangeCodeInput={(value) =>
-        dispatch(
-          update_code({
-            value: value,
-            type: "html",
-          })
-        )
-      }
+      onChangeCodeInput={(value: string) => debounced(value)}
     />
   );
 };

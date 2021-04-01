@@ -1,7 +1,12 @@
 import React, { useRef, useEffect } from "react";
+import { useSelector } from "react-redux";
 
-const Preview: React.FC = ({}) => {
+const Preview: React.FC = () => {
   const iframe = useRef<any>();
+
+  const data = useSelector((state) => state);
+
+  console.log(data);
 
   const htmlFrameContent = `
   <html>
