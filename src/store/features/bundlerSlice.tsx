@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import bundler from "../../bundler";
+import { RootState } from "../store";
 
 interface initialBundlerStateInterface {
   loading: boolean;
@@ -23,8 +24,9 @@ export const getBundle = createAsyncThunk(
   async (value: string) => {
     try {
       const output = await bundler(value);
+      return output.code;
     } catch (err) {
-      return err;
+      return err.message;
     }
   }
 );
@@ -43,19 +45,13 @@ const bundlerSlice = createSlice({
       getBundle.fulfilled,
       (state, action: PayloadAction<bundlerPayloadInterface>) => {
         state.loading = false;
-        state.err = "";
+        state.err = action.payload.error;
         state.code = action.payload.code;
       }
     );
-    // builder.addCase(
-    //   getBundle.rejected,
-    //   (state, action: PayloadAction<bundlerPayloadInterface>) => {
-    //     state.loading = false;
-    //     state.err = "";
-    //     state.code = "";
-    //   }
-    // );
   },
 });
+
+export const select_bundle = (state: RootState) => state;
 
 export default bundlerSlice.reducer;

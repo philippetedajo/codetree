@@ -18,7 +18,7 @@ const Preview: React.FC = () => {
     <script>
       const handleError = (error) => {
         throw error;
-      };
+      }; 
 
       window.addEventListener("error", (event) => {
         event.preventDefault();
