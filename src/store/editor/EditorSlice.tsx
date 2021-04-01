@@ -1,12 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-enum ProgLang {
-  js = "js",
-  html = "html",
-  css = "css",
-}
-
 const initialState = {
   js: {
     code: "hello js",
@@ -27,17 +21,7 @@ export const editorSlice = createSlice({
   initialState: initialState,
   reducers: {
     update_code: (state: any, { payload }) => {
-      switch (payload.type) {
-        case ProgLang.js:
-          state[payload.type].code = payload.value;
-          break;
-        case ProgLang.html:
-          state[payload.type].code = payload.value;
-          break;
-        case ProgLang.css:
-          state[payload.type].code = payload.value;
-          break;
-      }
+      state[payload.type].code = payload.value;
     },
   },
 });
