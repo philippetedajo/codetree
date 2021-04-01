@@ -5,14 +5,17 @@ const initialEditorState = {
   js: {
     code: "hello js",
     transformer: "js",
+    loading: true,
   },
   css: {
     code: "hello css",
     transformer: "css",
+    loading: true,
   },
   html: {
     code: "hello html",
     transformer: "html",
+    loading: true,
   },
 };
 
@@ -21,7 +24,8 @@ export const editorSlice = createSlice({
   initialState: initialEditorState,
   reducers: {
     update_code: (state: any, { payload }) => {
-      state[payload.type].code = payload.value;
+      state[payload.transformer].code = payload.code;
+      state[payload.transformer].loading = payload.loading;
     },
   },
 });

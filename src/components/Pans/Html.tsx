@@ -15,8 +15,9 @@ export const HtmlPanel: React.FC = () => {
     (value) => {
       dispatch(
         update_code({
-          value: value,
-          type: "html",
+          code: value,
+          transformer: "html",
+          loading: false,
         })
       );
     },

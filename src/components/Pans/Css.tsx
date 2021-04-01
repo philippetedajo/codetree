@@ -15,8 +15,9 @@ export const CssPanel: React.FC = () => {
     (value) => {
       dispatch(
         update_code({
-          value: value,
-          type: "css",
+          code: value,
+          transformer: "css",
+          loading: false,
         })
       );
     },
