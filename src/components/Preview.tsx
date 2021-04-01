@@ -6,6 +6,8 @@ const Preview: React.FC = () => {
   const iframe = useRef<any>();
   const data = useAppSelector(editor_state);
 
+  console.log(data.js.loading);
+
   const htmlFrameContent = `
   <html>
   <head>

@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { useAppDispatch } from "../../store/hook";
-import { update_code } from "../../store/features/editorSlice";
+import {
+  update_start,
+  update_finished,
+} from "../../store/features/editorSlice";
 import Editor from "../Editor";
 import bundler from "../../bundler";
 
@@ -14,15 +17,12 @@ export const JsPanel: React.FC = () => {
 
   const debounced = useDebouncedCallback(
     async (value) => {
-      //true
-
+      dispatch(update_start({ type: "js" }));
       const output = await bundler(value);
-
       dispatch(
-        update_code({
+        update_finished({
           code: output.code,
           type: "js",
-          loading: false,
           error: output.error,
         })
       );
