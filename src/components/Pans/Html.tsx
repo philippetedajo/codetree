@@ -1,7 +1,7 @@
 import React from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { useAppDispatch } from "../../store/hook";
-import { update_code } from "../../store/editor/EditorSlice";
+import { update_code } from "../../store/features/editorSlice";
 import Editor from "../Editor";
 
 export const HtmlTab = () => {

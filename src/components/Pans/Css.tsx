@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppDispatch } from "../../store/hook";
-import { update_code } from "../../store/editor/EditorSlice";
+import { update_code } from "../../store/features/editorSlice";
 import Editor from "../Editor";
 import { useDebouncedCallback } from "use-debounce";
 

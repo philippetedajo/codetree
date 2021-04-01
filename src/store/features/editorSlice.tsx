@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-const initialState = {
+const initialEditorState = {
   js: {
     code: "hello js",
     transformer: "js",
@@ -18,7 +18,7 @@ const initialState = {
 
 export const editorSlice = createSlice({
   name: "editor",
-  initialState: initialState,
+  initialState: initialEditorState,
   reducers: {
     update_code: (state: any, { payload }) => {
       state[payload.type].code = payload.value;
