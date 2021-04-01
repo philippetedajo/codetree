@@ -47,14 +47,14 @@ const bundlerSlice = createSlice({
         state.code = action.payload.code;
       }
     );
-    builder.addCase(
-      getBundle.fulfilled,
-      (state, action: PayloadAction<bundlerPayloadInterface>) => {
-        state.loading = false;
-        state.err = "";
-        state.code = "";
-      }
-    );
+    // builder.addCase(
+    //   getBundle.rejected,
+    //   (state, action: PayloadAction<bundlerPayloadInterface>) => {
+    //     state.loading = false;
+    //     state.err = "";
+    //     state.code = "";
+    //   }
+    // );
   },
 });
 
