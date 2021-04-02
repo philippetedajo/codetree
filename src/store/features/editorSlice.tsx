@@ -4,7 +4,7 @@ import { RootState } from "../store";
 const initialEditorState = {
   js: {
     code: {
-      data: "hello js",
+      data: "",
       error: "",
       loading: false,
     },
@@ -12,7 +12,7 @@ const initialEditorState = {
   },
   css: {
     code: {
-      data: "hello css",
+      data: "",
       error: "",
       loading: false,
     },
@@ -20,7 +20,7 @@ const initialEditorState = {
   },
   html: {
     code: {
-      data: "hello html",
+      data: "<h2>Start editing and watch the magic happen</h2>",
       error: "",
       loading: false,
     },
