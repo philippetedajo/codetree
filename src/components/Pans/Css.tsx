@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppDispatch } from "../../store/hook";
-import { update_code } from "../../store/editor/EditorSlice";
+import { update_sync_code } from "../../store/features/editorSlice";
 import Editor from "../Editor";
 import { useDebouncedCallback } from "use-debounce";
 
@@ -14,8 +14,8 @@ export const CssPanel: React.FC = () => {
   const debounced = useDebouncedCallback(
     (value) => {
       dispatch(
-        update_code({
-          value: value,
+        update_sync_code({
+          code: value,
           type: "css",
         })
       );

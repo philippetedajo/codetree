@@ -1,7 +1,8 @@
 import React from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { useAppDispatch } from "../../store/hook";
-import { update_code } from "../../store/editor/EditorSlice";
+import { update_sync_code } from "../../store/features/editorSlice";
+
 import Editor from "../Editor";
 
 export const HtmlTab = () => {
@@ -14,8 +15,8 @@ export const HtmlPanel: React.FC = () => {
   const debounced = useDebouncedCallback(
     (value) => {
       dispatch(
-        update_code({
-          value: value,
+        update_sync_code({
+          code: value,
           type: "html",
         })
       );

@@ -1,24 +1,24 @@
 import React, { useRef, useEffect } from "react";
 import { useAppSelector } from "../store/hook";
-import { editor_state } from "../store/editor/EditorSlice";
+import { editor_state } from "../store/features/editorSlice";
 
 const Preview: React.FC = () => {
   const iframe = useRef<any>();
-  const data = useAppSelector(editor_state);
+  const { js, html, css } = useAppSelector(editor_state);
 
   const htmlFrameContent = `
   <html>
   <head>
     <style>
-      ${data.css.code}
+      ${css.code.data}
     </style>
   </head>
   <body>
-    <div id="root">${data.html.code}</div>
+    <div id="root">${html.code.data}</div>
     <script>
       const handleError = (error) => {
         throw error;
-      };
+      }; 
 
       window.addEventListener("error", (event) => {
         event.preventDefault();
@@ -46,9 +46,9 @@ const Preview: React.FC = () => {
     iframe.current.srcdoc = htmlFrameContent;
 
     setTimeout(() => {
-      iframe.current.contentWindow.postMessage(data.js.code, "*");
+      iframe.current.contentWindow.postMessage(js.code.data, "*");
     }, 50);
-  }, [data.js.code, htmlFrameContent]);
+  }, [js.code.data, htmlFrameContent]);
 
   return (
     <div className="preview-wrapper">
