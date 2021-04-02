@@ -55,7 +55,7 @@ const Preview: React.FC = () => {
   }, [js.code, htmlFrameContent]);
 
   return (
-    <div className="bg-white">
+    <div>
       {js.code.loading ? (
         <div className="flex flex-col items-center justify-start text-white pt-64 fadeInAnim">
           <CodeLoader />
@@ -79,9 +79,5 @@ const Preview: React.FC = () => {
 
 export default Preview;
 
-{
-  /* <div className="_console">Console</div> */
-}
-{
-  /* {message && <div className="error-message">{message}</div>} */
-}
+/* <div className="_console">Console</div> */
+/* {message && <div className="error-message">{message}</div>} */
