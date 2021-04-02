@@ -7,7 +7,7 @@ import SplitBox from "./SplitBox";
 
 const TreeEditor = () => {
   return (
-    <div style={{ height: "100vh" }}>
+    <div className="bg-editorsecondary" style={{ height: "100vh" }}>
       {/* Head ======================================= */}
       <header
         style={{ height: "6.5vh" }}
