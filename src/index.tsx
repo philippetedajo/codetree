@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-import { useMediaQuery, useMediaQueries } from "@react-hook/media-query";
+import { useMediaQuery } from "@react-hook/media-query";
 import TreeEditor from "./components/TreeEditor";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
