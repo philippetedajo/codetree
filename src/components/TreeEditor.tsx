@@ -4,21 +4,14 @@ import { JsTab, JsPanel, HtmlTab, HtmlPanel, CssTab, CssPanel } from "./Pans";
 import Preview from ".//Preview";
 import { tabListConfig, tabConfig } from "./config";
 import SplitBox from "./SplitBox";
-import { editor_state } from "../store/features/editorSlice";
-import { useAppSelector } from "../store/hook";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const TreeEditor = () => {
-  const { js } = useAppSelector(editor_state);
-  console.log(js);
   return (
     <div className="bg-editorsecondary" style={{ height: "100vh" }}>
       {/* Head ======================================= */}
-      <header
-        style={{ height: "6.5vh" }}
-        className="flex justify-between items-center editor-header bg-editorprimary text-white border-b-2 border-editorborder px-9"
-      >
-        CodeTree
-      </header>
+      <Header />
 
       {/* Editor and Preview ======================================= */}
       <SplitBox direction="horizontal">
@@ -52,12 +45,7 @@ const TreeEditor = () => {
       </SplitBox>
 
       {/* Foot ======================================= */}
-      <footer
-        style={{ height: "3.5vh" }}
-        className="editor-footer flex justify-end item-center px-5 text-white text-sm bg-editorprimary border-t-2 border-editorborder"
-      >
-        {js.code.loading && <p>...Transpiling</p>}
-      </footer>
+      <Footer />
     </div>
   );
 };
