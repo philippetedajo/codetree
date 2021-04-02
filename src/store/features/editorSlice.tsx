@@ -3,22 +3,28 @@ import { RootState } from "../store";
 
 const initialEditorState = {
   js: {
-    code: "hello js",
+    code: {
+      data: "hello js",
+      error: "",
+      loading: false,
+    },
     transformer: "js",
-    loading: false,
-    error: "",
   },
   css: {
-    code: "hello css",
+    code: {
+      data: "hello css",
+      error: "",
+      loading: false,
+    },
     transformer: "css",
-    loading: false,
-    error: "",
   },
   html: {
-    code: "hello html",
+    code: {
+      data: "hello html",
+      error: "",
+      loading: false,
+    },
     transformer: "html",
-    loading: false,
-    error: "",
   },
 };
 
@@ -26,20 +32,27 @@ export const editorSlice = createSlice({
   name: "editor",
   initialState: initialEditorState,
   reducers: {
+    update_sync_code: (state: any, { payload }) => {
+      state[payload.type].code.data = payload.code;
+    },
     update_start: (state: any, { payload }) => {
-      state[payload.type].loading = true;
-      state[payload.type].error = "";
-      state[payload.type].code = "";
+      state[payload.type].code.loading = true;
+      state[payload.type].code.error = "";
+      state[payload.type].code.data = "";
     },
     update_finished: (state: any, { payload }) => {
-      state[payload.type].loading = false;
-      state[payload.type].error = payload.error;
-      state[payload.type].code = payload.code;
+      state[payload.type].code.loading = false;
+      state[payload.type].code.error = payload.error;
+      state[payload.type].code.data = payload.code;
     },
   },
 });
 
-export const { update_start, update_finished } = editorSlice.actions;
+export const {
+  update_sync_code,
+  update_start,
+  update_finished,
+} = editorSlice.actions;
 
 export const editor_state = (state: RootState) => state.editor;
 
