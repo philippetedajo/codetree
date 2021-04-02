@@ -22,6 +22,7 @@
     "@iconify-icons/vscode-icons": "^1.1.2",
     "@iconify/react": "^1.1.4",
     "@monaco-editor/react": "^4.1.0",
+    "@react-hook/media-query": "^1.1.1",
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

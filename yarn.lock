@@ -2189,6 +2189,11 @@
   dependencies:
     tslib "^2.0.0"
 
+"@react-hook/media-query@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@react-hook/media-query/-/media-query-1.1.1.tgz#7fc4e52591784a39be924b62b4270ae3e18ec578"
+  integrity sha512-VM14wDOX5CW5Dn6b2lTiMd79BFMTut9AZj2+vIRT3LCKgMCYmdqruTtzDPSnIVDQdtxdPgtOzvU9oK20LopuOw==
+
 "@reduxjs/toolkit@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@reduxjs/toolkit/-/toolkit-1.5.1.tgz#05daa2f6eebc70dc18cd98a90421fab7fa565dc5"
