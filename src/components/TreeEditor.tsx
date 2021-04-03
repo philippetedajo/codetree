@@ -10,7 +10,7 @@ import Header from "./Header";
 
 const TreeEditor = () => {
   return (
-    <div className="bg-editor-secondary" style={{ height: "100vh" }}>
+    <div className="bg-editor_secondary" style={{ height: "100vh" }}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Codetree Playground</title>

@@ -23,6 +23,7 @@ const bundler = async (rawCode: string | undefined) => {
         "process.env.NODE_ENV": '"production"',
       },
     });
+    console.log("Transpiling...");
     return {
       code: result.outputFiles[0].text,
       error: "",
