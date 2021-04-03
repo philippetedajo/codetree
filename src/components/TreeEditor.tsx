@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { JsTab, JsPanel, HtmlTab, HtmlPanel, CssTab, CssPanel } from "./Pans";
-import Preview from ".//Preview";
+import { Helmet } from "react-helmet";
+import Preview from "./Preview";
 import { tabListConfig, tabConfig } from "./config";
 import SplitBox from "./SplitBox";
 import Footer from "./Footer";
@@ -10,6 +11,11 @@ import Header from "./Header";
 const TreeEditor = () => {
   return (
     <div className="bg-editorsecondary" style={{ height: "100vh" }}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Codetree Playground</title>
+        <link rel="canonical" href="https://codetree.vercel.app/" />
+      </Helmet>
       {/* Head ======================================= */}
       <Header />
 

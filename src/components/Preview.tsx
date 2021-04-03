@@ -9,7 +9,7 @@ const Preview: React.FC = () => {
   const htmlFrameContent = `
   <html lang="en">
   <head>
-    <title>CodeTree</title>
+    <title>Codetree</title>
     <style>
       ${css.code.data}
     </style>
