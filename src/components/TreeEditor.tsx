@@ -10,7 +10,7 @@ import Header from "./Header";
 
 const TreeEditor = () => {
   return (
-    <div className="bg-editorsecondary" style={{ height: "100vh" }}>
+    <div className="bg-editor-secondary" style={{ height: "100vh" }}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Codetree Playground</title>
@@ -34,7 +34,7 @@ const TreeEditor = () => {
             </Tab>
           </TabList>
 
-          <TabPanels className="h-full">
+          <TabPanels className="h-full pt-4">
             <TabPanel p={0} className="h-full">
               <JsPanel />
             </TabPanel>

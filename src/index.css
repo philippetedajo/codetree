@@ -114,3 +114,13 @@ body {
     opacity: 1;
   }
 }
+
+/* =======================================================================  console */
+
+.console_style {
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #ddd;
+  background: #f0f0f0;
+  position: absolute;
+}

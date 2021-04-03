@@ -2,7 +2,7 @@ import React from "react";
 import { useAppSelector } from "../store/hook";
 import { editor_state } from "../store/features/editorSlice";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const { js } = useAppSelector(editor_state);
   return (
     <footer

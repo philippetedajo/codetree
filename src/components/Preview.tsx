@@ -1,10 +1,14 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { Resizable } from "re-resizable";
+
 import { useAppSelector } from "../store/hook";
 import { editor_state } from "../store/features/editorSlice";
 
 const Preview: React.FC = () => {
   const iframe = useRef<any>();
   const { js, html, css } = useAppSelector(editor_state);
+  const [toggle, setToggle] = useState(false);
+  const [logs, setLogs] = useState("");
 
   const htmlFrameContent = `
   <html lang="en">
@@ -40,7 +44,6 @@ const Preview: React.FC = () => {
     </script>
   </body>
 </html>
-
   `;
 
   useEffect(() => {
@@ -53,6 +56,10 @@ const Preview: React.FC = () => {
     }
   }, [js.code, htmlFrameContent]);
 
+  const handleCloseConsole = () => {
+    setToggle(!toggle);
+  };
+
   return (
     <div className="preview-wrapper">
       <iframe
@@ -62,12 +69,31 @@ const Preview: React.FC = () => {
         title="previewWindow"
         sandbox="allow-scripts"
         srcDoc={htmlFrameContent}
+        onError={(e) => console.log("error")}
       />
+      <Resizable
+        minWidth="100%"
+        minHeight="20vh"
+        maxHeight="80vh"
+        defaultSize={{ width: "100%", height: "30vh" }}
+        className={`console_style ${toggle ? "hidden" : "flex"} `}
+        enable={{
+          top: true,
+          right: false,
+          bottom: false,
+          left: false,
+          topRight: false,
+          bottomRight: false,
+          bottomLeft: false,
+          topLeft: false,
+        }}
+      >
+        hello
+      </Resizable>
     </div>
   );
 };
 
 export default Preview;
 
-/* <div className="_console">Console</div> */
 /* {message && <div className="error-message">{message}</div>} */
