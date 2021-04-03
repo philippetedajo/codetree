@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useAppSelector } from "../store/hook";
 import { editor_state } from "../store/features/editorSlice";
-import CodeLoader from "./Others/Code_Loader";
 
 const Preview: React.FC = () => {
   const iframe = useRef<any>();
@@ -55,24 +54,15 @@ const Preview: React.FC = () => {
   }, [js.code, htmlFrameContent]);
 
   return (
-    <div>
-      {js.code.loading ? (
-        <div className="flex flex-col items-center justify-start text-white pt-64 fadeInAnim">
-          <CodeLoader />
-          <div className="mt-5">Importing your npm package...</div>
-        </div>
-      ) : (
-        <div className="preview-wrapper">
-          <iframe
-            className="preview-iframe"
-            frameBorder="0"
-            ref={iframe}
-            title="previewWindow"
-            sandbox="allow-scripts"
-            srcDoc={htmlFrameContent}
-          />
-        </div>
-      )}
+    <div className="preview-wrapper">
+      <iframe
+        className={`${js.code.loading ? "opacity-20" : ""}`}
+        frameBorder="0"
+        ref={iframe}
+        title="previewWindow"
+        sandbox="allow-scripts"
+        srcDoc={htmlFrameContent}
+      />
     </div>
   );
 };
