@@ -19,7 +19,7 @@ const Preview: React.FC = () => {
     </style>
   </head>
   <body>
-    <div id="root">${html.code.data}</div>
+      ${html.code.data}
     <script>
       const handleError = (error) => {
         throw error;

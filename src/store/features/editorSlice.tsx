@@ -21,7 +21,10 @@ const initialEditorState: InitialEditorState = {
   },
   html: {
     code: {
-      data: "<h2>Start editing and watch the magic happen</h2>",
+      data: `<div id="root">
+  <h2>Start editing and watch the magic happen</h2>
+</div>
+`,
       error: "",
       loading: false,
     },
