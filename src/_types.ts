@@ -37,5 +37,4 @@ export interface CodeEditorProps {
 
 export interface Console {
   isOpen: boolean;
-  logs: any;
 }
