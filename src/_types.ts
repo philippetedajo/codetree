@@ -34,3 +34,8 @@ export interface CodeEditorProps {
   language: string;
   onChangeCodeInput(value: string | undefined): void;
 }
+
+export interface Console {
+  isOpen: boolean;
+  message: string[];
+}
