@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Resizable } from "re-resizable";
 import { useAppDispatch, useAppSelector } from "../store/hook";
-import { add_log } from "../store/features/consoleSlice";
+import { add_log, clear_log } from "../store/features/consoleSlice";
 import { editor_state } from "../store/features/editorSlice";
 import { log_state } from "../store/features/consoleSlice";
 
@@ -24,42 +24,34 @@ const Preview: React.FC = () => {
   <body>
     ${html.code.data}
     <script>
-      window.onerror = function (message) {
-        window.parent.postMessage({ type: "iframe-error", message }, "*");
-      };
+   window.onerror = function (message) {
+    window.parent.postMessage({ type: "iframe-error", message }, "*");
+  };
 
-      window.addEventListener("unhandledrejection", (err) => {
-        window.parent.postMessage(
-          { type: "iframe-error", message: err.reason.stack },
-          "*"
-        );
-      });
+  window.addEventListener("unhandledrejection", (err) => {
+    window.parent.postMessage(
+      { type: "iframe-error", message: err.reason.stack },
+      "*"
+    );
+  });
 
-      const handleError = (error) => {
+  window.addEventListener(
+    "message",
+    (event) => {
+      try {
+        eval(event.data);
+      } catch (error) {
         throw error;
-      };
-
-      window.addEventListener("error", (event) => {
-        event.preventDefault();
-        handleError(event.error);
-      });
-
-      window.addEventListener(
-        "message",
-        (event) => {
-          try {
-            eval(event.data);
-          } catch (error) {
-            handleError(error);
-          }
-        },
-        false
-      );
+      }
+    },
+    false
+  );
     </script>
   </body>
 </html>
   `;
 
+  //listen to income message from iframe
   useEffect(() => {
     window.addEventListener("message", function (response) {
       if (response.data && response.data.type === "iframe-error") {
@@ -68,6 +60,7 @@ const Preview: React.FC = () => {
     });
   }, [dispatch]);
 
+  //send massage to iframe
   useEffect(() => {
     if (!js.code.loading) {
       iframe.current.srcdoc = htmlFrameContent;
@@ -78,6 +71,10 @@ const Preview: React.FC = () => {
     }
   }, [js.code, htmlFrameContent]);
 
+  const clearConsole = () => {
+    dispatch(clear_log());
+  };
+
   return (
     <div className="preview-wrapper">
       <iframe
@@ -87,7 +84,6 @@ const Preview: React.FC = () => {
         title="previewWindow"
         sandbox="allow-scripts"
         srcDoc={htmlFrameContent}
-        onError={(e) => console.log("error")}
       />
       <Resizable
         minWidth="100%"
@@ -106,7 +102,7 @@ const Preview: React.FC = () => {
           topLeft: false,
         }}
       >
-        hello
+        <button onClick={clearConsole}>Clear</button>
       </Resizable>
     </div>
   );

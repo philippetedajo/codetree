@@ -12,12 +12,11 @@ const consoleSlice = createSlice({
   initialState: initialConsoleState,
   reducers: {
     add_log: (state, { payload }) => {
-      console.log(payload);
-      state.message.push(payload.message);
+      if (state.message.includes(payload.message) === false)
+        state.message.push(payload.message);
     },
     clear_log: (state) => {
       state.message = [];
-      console.log(state);
     },
     toggle_log: (state) => {
       state.isOpen = !state.isOpen;
