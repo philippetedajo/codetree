@@ -11,7 +11,7 @@ const Preview: React.FC = () => {
   const { js, html, css } = useAppSelector(editor_state);
   const { isOpen, message } = useAppSelector(log_state);
 
-  console.log(message);
+  // console.log(message);
 
   const htmlFrameContent = `
   <html lang="en">
@@ -24,43 +24,62 @@ const Preview: React.FC = () => {
   <body>
     ${html.code.data}
     <script>
-   window.onerror = function (message) {
-    window.parent.postMessage({ type: "iframe-error", message }, "*");
-  };
+      //====== send massage to iframe
+      const _log = console.log;
 
-  window.addEventListener("unhandledrejection", (err) => {
-    window.parent.postMessage(
-      { type: "iframe-error", message: err.reason.stack },
-      "*"
-    );
-  });
+      console.log = function (...rest) {
+        window.parent.postMessage(
+          {
+            source: "iframe",
+            type: "iframe_console_log",
+            message: rest,
+          },
+          "*"
+        );
+        _log.apply(console, arguments);
+      };
 
-  window.addEventListener(
-    "message",
-    (event) => {
-      try {
-        eval(event.data);
-      } catch (error) {
-        throw error;
-      }
-    },
-    false
-  );
+      window.onerror = function (message) {
+        window.parent.postMessage(
+          { source: "iframe", type: "iframe_error", message },
+          "*"
+        );
+      };
+
+      window.onunhandledrejection = function (err) {
+        window.parent.postMessage(
+          { source: "iframe", type: "iframe_error", message: err.reason },
+          "*"
+        );
+      };
+
+      //====== listen to income message of parent
+      window.onmessage = function (event) {
+        try {
+          eval(event.data);
+        } catch (error) {
+          throw error;
+        }
+      };
     </script>
   </body>
 </html>
   `;
 
-  //listen to income message from iframe
+  //====== listen to income message of iframe
   useEffect(() => {
-    window.addEventListener("message", function (response) {
-      if (response.data && response.data.type === "iframe-error") {
-        dispatch(add_log({ message: response.data.message }));
+    window.onmessage = function (response: MessageEvent) {
+      if (response.data && response.data.source === "iframe") {
+        console.log(response.data);
       }
-    });
+
+      // if (response.data && response.data.type === "iframe-error") {
+      //   dispatch(add_log({ message: response.data.message }));
+      // }
+    };
   }, [dispatch]);
 
-  //send massage to iframe
+  //====== send massage to iframe
   useEffect(() => {
     if (!js.code.loading) {
       iframe.current.srcdoc = htmlFrameContent;
@@ -82,7 +101,7 @@ const Preview: React.FC = () => {
         frameBorder="0"
         ref={iframe}
         title="previewWindow"
-        sandbox="allow-scripts"
+        sandbox="allow-scripts allow-modals"
         srcDoc={htmlFrameContent}
       />
       <Resizable
@@ -109,5 +128,3 @@ const Preview: React.FC = () => {
 };
 
 export default Preview;
-
-/* {message && <div className="error-message">{message}</div>} */
