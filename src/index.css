@@ -118,9 +118,8 @@ body {
 /* =======================================================================  console */
 
 .console_style {
-  align-items: center;
-  justify-content: center;
-  border: solid 1px #ddd;
-  background: #f0f0f0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #171e25;
   position: absolute;
 }
