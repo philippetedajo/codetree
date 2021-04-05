@@ -4,7 +4,7 @@ import { Console } from "../../_types";
 
 const initialConsoleState: Console = {
   isOpen: false,
-  message: [],
+  logs: [],
 };
 
 const consoleSlice = createSlice({
@@ -12,11 +12,10 @@ const consoleSlice = createSlice({
   initialState: initialConsoleState,
   reducers: {
     add_log: (state, { payload }) => {
-      if (state.message.includes(payload.message) === false)
-        state.message.push(payload.message);
+      state.logs = payload;
     },
     clear_log: (state) => {
-      state.message = [];
+      state.logs = [];
     },
     toggle_log: (state) => {
       state.isOpen = !state.isOpen;

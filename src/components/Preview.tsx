@@ -9,7 +9,7 @@ const Preview: React.FC = () => {
   const iframe = useRef<any>();
   const dispatch = useAppDispatch();
   const { js, html, css } = useAppSelector(editor_state);
-  const { isOpen, message } = useAppSelector(log_state);
+  const { isOpen, logs } = useAppSelector(log_state);
 
   // console.log(message);
 
@@ -104,7 +104,6 @@ const Preview: React.FC = () => {
         title="previewWindow"
         sandbox="allow-scripts allow-modals"
         srcDoc={htmlFrameContent}
-        onLoad={() => console.log("loaded")}
       />
       <Resizable
         minWidth="100%"
