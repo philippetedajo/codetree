@@ -28,20 +28,21 @@ const Preview: React.FC = () => {
       const _log = console.log;
 
       console.log = function (...rest) {
+        let message = JSON.parse(JSON.stringify(rest))
         window.parent.postMessage(
           {
             source: "iframe",
             type: "iframe_console_log",
-            message: rest,
+            message
           },
           "*"
         );
         _log.apply(console, arguments);
       };
 
-      window.onerror = function (message) {
+      window.onerror = function (err) {
         window.parent.postMessage(
-          { source: "iframe", type: "iframe_error", message },
+          { source: "iframe", type: "iframe_error", message: err },
           "*"
         );
       };
@@ -103,6 +104,7 @@ const Preview: React.FC = () => {
         title="previewWindow"
         sandbox="allow-scripts allow-modals"
         srcDoc={htmlFrameContent}
+        onLoad={() => console.log("loaded")}
       />
       <Resizable
         minWidth="100%"
