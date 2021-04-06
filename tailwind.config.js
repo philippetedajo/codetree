@@ -17,10 +17,10 @@ module.exports = {
       pink: colors.pink,
       white: colors.white,
       //custom
-      editorprimary: "#171E25",
-      editorsecondary: "#1B252D",
-      editorborder: "#131419",
-      editorthird: "#4C5B67",
+      editor_primary: "#171E25",
+      editor_secondary: "#1B252D",
+      editor_border: "#131419",
+      editor_third: "#4C5B67",
     },
     fontFamily: {
       rubik: ["Rubik", "sans-serif"],

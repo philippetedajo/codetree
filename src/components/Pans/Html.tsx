@@ -18,6 +18,7 @@ export const HtmlPanel: React.FC = () => {
         update_sync_code({
           code: value,
           type: "html",
+          error: "",
         })
       );
     },

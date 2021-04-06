@@ -96,3 +96,30 @@ body {
 .monaco-editor .margin {
   background-color: transparent !important;
 }
+
+/* =======================================================================  preview */
+
+.fadeInAnim {
+  animation: fadeInAnimation 0.5s;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* =======================================================================  console */
+
+.console_style {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #171e25;
+  position: absolute;
+}

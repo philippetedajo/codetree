@@ -1,11 +1,8 @@
 import React from "react";
 import Split from "react-split";
+import { SplitBoxProps } from "../_types";
 
-interface splitBoxProps {
-  direction: "horizontal" | "vertical";
-}
-
-const SplitBox: React.FC<splitBoxProps> = ({ direction, children }) => {
+const SplitBox: React.FC<SplitBoxProps> = ({ direction, children }) => {
   let splitProps;
   if (direction === "horizontal") {
     splitProps = {

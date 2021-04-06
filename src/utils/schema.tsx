@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
 export const setupSchema = yup.object().shape({
-  name: yup.string().required(),
-  age: yup.string().required(),
+  foo: yup.string().required(),
+  foo2: yup.string().required(),
 });

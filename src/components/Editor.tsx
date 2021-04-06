@@ -5,14 +5,9 @@ import prettier from "prettier";
 import parserBabel from "prettier/parser-babel";
 import parserCss from "prettier/parser-postcss";
 import parserHtml from "prettier/parser-html";
+import { CodeEditorProps } from "../_types";
 
-interface codeEditorProps {
-  initialValue: string;
-  language: string;
-  onChangeCodeInput(value: string | undefined): void;
-}
-
-const Editor: React.FC<codeEditorProps> = ({
+const Editor: React.FC<CodeEditorProps> = ({
   initialValue,
   onChangeCodeInput,
   language,
@@ -132,6 +127,7 @@ const Editor: React.FC<codeEditorProps> = ({
         automaticLayout: true,
         tabSize: 2,
         renderLineHighlight: "none",
+        fontWeight: "600",
       }}
     />
   );

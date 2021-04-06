@@ -17,6 +17,7 @@ export const CssPanel: React.FC = () => {
         update_sync_code({
           code: value,
           type: "css",
+          error: "",
         })
       );
     },
