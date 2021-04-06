@@ -1,14 +1,14 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { editor_state } from "../store/features/editorSlice";
-import { toggle_log } from "../store/features/consoleSlice";
+import { toggle_console } from "../store/features/consoleSlice";
 
 const Footer: React.FC = () => {
   const { js } = useAppSelector(editor_state);
   const dispatch = useAppDispatch();
 
   const handleToggleConsole = () => {
-    dispatch(toggle_log());
+    dispatch(toggle_console());
   };
 
   return (

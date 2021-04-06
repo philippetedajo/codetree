@@ -10,14 +10,14 @@ const consoleSlice = createSlice({
   name: "console",
   initialState: initialConsoleState,
   reducers: {
-    toggle_log: (state) => {
+    toggle_console: (state) => {
       state.isOpen = !state.isOpen;
     },
   },
 });
 
-export const { toggle_log } = consoleSlice.actions;
+export const { toggle_console } = consoleSlice.actions;
 
-export const log_state = (state: RootState) => state.console;
+export const console_state = (state: RootState) => state.console;
 
 export default consoleSlice.reducer;

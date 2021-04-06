@@ -1,17 +1,22 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Resizable } from "re-resizable";
-import { Console, Hook, Unhook } from "console-feed";
+import { Console, Hook } from "console-feed";
+import { Icon, InlineIcon } from "@iconify/react";
+import clearOutlined from "@iconify-icons/ant-design/clear-outlined";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { editor_state } from "../store/features/editorSlice";
+import { console_state } from "../store/features/consoleSlice";
 
 const Preview: React.FC = () => {
   const iframe = useRef<any>();
   const dispatch = useAppDispatch();
   const { js, html, css } = useAppSelector(editor_state);
+  const { isOpen } = useAppSelector(console_state);
 
+  console.log(isOpen);
+
+  //local state
   const [logs, setLogs] = useState([]);
-
-  console.log(logs);
 
   const htmlFrameContent = `
   <html lang="en">
@@ -52,7 +57,7 @@ const Preview: React.FC = () => {
 </html>
   `;
 
-  //====== listen to income message of iframe
+  //====== TODO: listen to income ERROR message of iframe
   useEffect(() => {
     window.onmessage = function (response: MessageEvent) {
       if (response.data && response.data.source === "iframe") {
@@ -77,10 +82,8 @@ const Preview: React.FC = () => {
   }, [js.code, htmlFrameContent]);
 
   const clearConsole = () => {
-    console.log("clearLog");
+    setLogs([]);
   };
-
-  let isOpen = false;
 
   return (
     <div className="preview-wrapper">
@@ -106,7 +109,7 @@ const Preview: React.FC = () => {
         minHeight="20vh"
         maxHeight="80vh"
         defaultSize={{ width: "100%", height: "40vh" }}
-        className={`console_style ${isOpen ? "hidden" : "flex"} `}
+        className={`console_style ${isOpen ? "hidden" : "flex flex-col"} `}
         enable={{
           top: true,
           right: false,
@@ -118,11 +121,17 @@ const Preview: React.FC = () => {
           topLeft: false,
         }}
       >
+        <div className="text-white flex justify-end text-sm border-b-2 border-editor_secondary px-5 py-1">
+          <div onClick={clearConsole}>
+            <Icon className="cursor-pointer" height={20} icon={clearOutlined} />
+          </div>
+        </div>
         <Console
           styles={{
             BASE_FONT_FAMILY: '"Rubik", sans-serif;',
             BASE_FONT_SIZE: 14,
             BASE_BACKGROUND_COLOR: "#171E25",
+            LOG_BORDER: "#4C5B67",
           }}
           logs={logs}
           variant="dark"
@@ -133,12 +142,3 @@ const Preview: React.FC = () => {
 };
 
 export default Preview;
-
-// editor_primary: "#171E25",
-//     editor_secondary: "#1B252D",
-//     editor_border: "#131419",
-//     editor_third: "#4C5B67",
-
-// import React from "react";
-//
-// console.log(React);
