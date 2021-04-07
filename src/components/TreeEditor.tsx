@@ -20,15 +20,15 @@ const TreeEditor = () => {
 
       {/* Editor and Preview ======================================= */}
       <SplitBox direction="horizontal">
-        <div className="bg-white border-2 border-red-600 h-full">
+        <div className="h-full">
           <Tabs type="underlined">
-            <Tabs.Panel id="one" label="Tab one">
+            <Tabs.Panel id="one" label="Js">
               <JsPanel />
             </Tabs.Panel>
-            <Tabs.Panel id="two" label="Tab two">
+            <Tabs.Panel id="two" label="Html">
               <HtmlPanel />
             </Tabs.Panel>
-            <Tabs.Panel id="three" label="Tab three">
+            <Tabs.Panel id="three" label="Css">
               <CssPanel />
             </Tabs.Panel>
           </Tabs>

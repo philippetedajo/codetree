@@ -9,7 +9,6 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: "Rubik", sans-serif;
 }
 
 /* ======================================================================= editor */
@@ -125,12 +124,10 @@ body {
 }
 
 .sbui-space-col.sbui-space-y-4 {
-  border: 2px solid blue;
   height: 100%;
 }
 #one,
 #two,
 #three {
-  border: 2px solid blue;
   height: 100%;
 }
