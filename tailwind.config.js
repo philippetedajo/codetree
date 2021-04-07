@@ -16,7 +16,7 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       white: colors.white,
-      //custom
+      //custom theme
       editor_primary: "#171E25",
       editor_secondary: "#1B252D",
       editor_border: "#131419",

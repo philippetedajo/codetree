@@ -127,7 +127,8 @@ body {
 
 .sbui-space-row {
   padding: 5px 10px 0px 10px;
-  background: #171e25 !important;
+
+  @apply bg-editor_primary;
 }
 
 /* text inside tab */
