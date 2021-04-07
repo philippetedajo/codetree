@@ -31,7 +31,7 @@ const Index = () => {
       ) : (
         <div className="bg-editor_primary text-white h-screen flex items-center justify-center text-center font-semibold">
           <div>
-            The application is not yet supported on mobile, please open{" "}
+            The application is not yet supported on mobile, please open {" "}
             <span className="text-green-500"> CodeTree</span> on a computer
           </div>
         </div>
