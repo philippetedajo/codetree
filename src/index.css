@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,6 +7,9 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  font-family: system-ui, -apple-system,
+    /* Firefox supports this but not yet `system-ui` */ "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 /* ======================================================================= editor */
@@ -55,7 +56,6 @@ body {
 /* =======================================================================  preview */
 .preview-wrapper {
   position: relative;
-  height: 100%;
   width: 100%;
   flex-grow: 1;
   height: 90vh;
@@ -123,9 +123,48 @@ body {
   position: absolute;
 }
 
-.sbui-space-col.sbui-space-y-4 {
+/* =======================================================================  supabase ui editor */
+
+.sbui-space-row {
+  padding: 5px 10px 0px 10px;
+  background: #171e25 !important;
+}
+
+/* text inside tab */
+.sbui-btn-container {
+  width: 50px;
+}
+
+.sbui-btn-container > button {
+  width: 100%;
+}
+
+/* text inside tab */
+.sbui-tab-button-underline {
+  display: flex;
+  justify-content: center;
+  color: #bbbbbb;
+  font-size: 14px;
+}
+
+.sbui-tab-button-underline:hover {
+  color: #ffffff;
+}
+
+/* active text inside tab */
+.sbui-tab-button-underline--active {
+  color: #ffffff;
+}
+
+/* divider*/
+.sbui-divider {
+  border: none !important;
+}
+
+.sbui-space-col {
   height: 100%;
 }
+
 #one,
 #two,
 #three {
