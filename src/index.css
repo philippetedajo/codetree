@@ -127,7 +127,6 @@ body {
 
 .sbui-space-row {
   padding: 5px 10px 0px 10px;
-
   @apply bg-editor_primary;
 }
 
@@ -144,17 +143,17 @@ body {
 .sbui-tab-button-underline {
   display: flex;
   justify-content: center;
-  color: #6b7280;
-  font-size: 14px;
+  color: #6b7280 !important;
+  font-size: 14px !important;
 }
 
 .sbui-tab-button-underline:hover {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 /* active text inside tab */
 .sbui-tab-button-underline--active {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 /* divider*/
@@ -163,7 +162,7 @@ body {
 }
 
 .sbui-space-col {
-  height: 100%;
+  height: 100% !important;
 }
 
 #jstree,
