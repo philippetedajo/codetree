@@ -84,8 +84,6 @@ const Preview: React.FC = () => {
     setLogs([]);
   };
 
-  console.log(logs);
-
   return (
     <div className="preview-wrapper">
       <iframe
