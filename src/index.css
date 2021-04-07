@@ -123,3 +123,14 @@ body {
   background: #171e25;
   position: absolute;
 }
+
+.sbui-space-col.sbui-space-y-4 {
+  border: 2px solid blue;
+  height: 100%;
+}
+#one,
+#two,
+#three {
+  border: 2px solid blue;
+  height: 100%;
+}

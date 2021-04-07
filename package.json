@@ -11,7 +11,6 @@
   "dependencies": {
     "@babel/parser": "^7.13.11",
     "@babel/traverse": "^7.13.0",
-    "@chakra-ui/react": "^1.4.1",
     "@craco/craco": "^6.1.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
@@ -25,6 +24,7 @@
     "@monaco-editor/react": "^4.1.0",
     "@react-hook/media-query": "^1.1.1",
     "@reduxjs/toolkit": "^1.5.1",
+    "@supabase/ui": "^0.23.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
