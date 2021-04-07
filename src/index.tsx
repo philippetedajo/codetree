@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
 import { useMediaQuery } from "@react-hook/media-query";
 import { Provider } from "react-redux";
 import ReactGA from "react-ga";
@@ -19,11 +20,13 @@ const Index = () => {
     <div>
       {matches ? (
         <Provider store={store}>
+          <ChakraProvider>
           <Router>
             <Switch>
               <Route exact path="/" component={TreeEditor} />
             </Switch>
           </Router>
+          </ChakraProvider>
         </Provider>
       ) : (
         <div className="bg-editor_primary text-white h-screen flex items-center justify-center text-center font-semibold">
