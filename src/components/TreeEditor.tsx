@@ -12,7 +12,7 @@ const TreeEditor = () => {
     <div className="bg-editor_secondary" style={{ height: "100vh" }}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Codetree Playground</title>
+        <title>Codetree</title>
         <link rel="canonical" href="https://codetree.vercel.app/" />
       </Helmet>
       {/* Head ======================================= */}
@@ -22,13 +22,13 @@ const TreeEditor = () => {
       <SplitBox direction="horizontal">
         <div className="h-full">
           <Tabs type="underlined">
-            <Tabs.Panel id="one" label="Js">
+            <Tabs.Panel id="jstree" label="Js">
               <JsPanel />
             </Tabs.Panel>
-            <Tabs.Panel id="two" label="Html">
+            <Tabs.Panel id="htmltree" label="Html">
               <HtmlPanel />
             </Tabs.Panel>
-            <Tabs.Panel id="three" label="Css">
+            <Tabs.Panel id="csstree" label="Css">
               <CssPanel />
             </Tabs.Panel>
           </Tabs>

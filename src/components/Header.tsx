@@ -6,7 +6,7 @@ const Header: React.FC = () => {
       style={{ height: "6.5vh" }}
       className="flex justify-between items-center editor-header bg-editor_primary text-white border-b-2 border-editor_border px-9"
     >
-      CodeTree
+      Codetree
     </header>
   );
 };
