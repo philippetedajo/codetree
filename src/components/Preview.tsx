@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Resizable } from "re-resizable";
 import { Console, Hook } from "console-feed";
-import { Icon, InlineIcon } from "@iconify/react";
+import { Icon } from "@iconify/react";
 import clearOutlined from "@iconify-icons/ant-design/clear-outlined";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { editor_state } from "../store/features/editorSlice";
@@ -12,8 +12,6 @@ const Preview: React.FC = () => {
   const dispatch = useAppDispatch();
   const { js, html, css } = useAppSelector(editor_state);
   const { isOpen } = useAppSelector(console_state);
-
-  console.log(isOpen);
 
   //local state
   const [logs, setLogs] = useState([]);
@@ -61,12 +59,13 @@ const Preview: React.FC = () => {
   useEffect(() => {
     window.onmessage = function (response: MessageEvent) {
       if (response.data && response.data.source === "iframe") {
-        console.log(response.data);
+        let errorObject = {
+          method: "error",
+          id: Date.now(),
+          data: [`${response.data.message}`],
+        };
+        setLogs((currLogs): any => [...currLogs, errorObject]);
       }
-
-      // if (response.data && response.data.type === "iframe-error") {
-      //   dispatch(add_log({ message: response.data.message }));
-      // }
     };
   }, [dispatch]);
 
@@ -84,6 +83,8 @@ const Preview: React.FC = () => {
   const clearConsole = () => {
     setLogs([]);
   };
+
+  console.log(logs);
 
   return (
     <div className="preview-wrapper">
