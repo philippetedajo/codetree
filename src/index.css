@@ -143,7 +143,7 @@ body {
 .sbui-tab-button-underline {
   display: flex;
   justify-content: center;
-  color: #bbbbbb;
+  color: #6b7280;
   font-size: 14px;
 }
 
@@ -165,8 +165,8 @@ body {
   height: 100%;
 }
 
-#one,
-#two,
-#three {
+#jstree,
+#htmltree,
+#csstree {
   height: 100%;
 }
