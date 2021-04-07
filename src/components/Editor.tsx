@@ -127,7 +127,7 @@ const Editor: React.FC<CodeEditorProps> = ({
         automaticLayout: true,
         tabSize: 2,
         renderLineHighlight: "none",
-        fontWeight: "600",
+        fontWeight: "500",
       }}
     />
   );

@@ -4,7 +4,6 @@ export const tabListConfig = {
   color: "#6B7280",
   pl: 9,
 };
-
 export const tabConfig = {
   _selected: { bg: "#1B252D", color: "#E5E7EB" },
   className: "font-medium",

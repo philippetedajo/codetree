@@ -1,7 +1,7 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
@@ -16,7 +16,7 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       white: colors.white,
-      //custom
+      //custom theme
       editor_primary: "#171E25",
       editor_secondary: "#1B252D",
       editor_border: "#131419",
