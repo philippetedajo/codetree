@@ -1,9 +1,8 @@
 import React from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { JsTab, JsPanel, HtmlTab, HtmlPanel, CssTab, CssPanel } from "./Pans";
+import { Tabs } from "@supabase/ui";
+import { JsPanel, HtmlPanel, CssPanel } from "./Pans";
 import { Helmet } from "react-helmet";
 import Preview from "./Preview";
-import { tabListConfig, tabConfig } from "./config";
 import SplitBox from "./SplitBox";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -21,31 +20,19 @@ const TreeEditor = () => {
 
       {/* Editor and Preview ======================================= */}
       <SplitBox direction="horizontal">
-        <Tabs style={{ height: "90vh" }}>
-          <TabList {...tabListConfig}>
-            <Tab {...tabConfig}>
-              <JsTab />
-            </Tab>
-            <Tab {...tabConfig}>
-              <HtmlTab />
-            </Tab>
-            <Tab {...tabConfig}>
-              <CssTab />
-            </Tab>
-          </TabList>
-
-          <TabPanels className="h-full pt-4">
-            <TabPanel p={0} className="h-full">
+        <div className="h-full">
+          <Tabs type="underlined">
+            <Tabs.Panel id="one" label="Js">
               <JsPanel />
-            </TabPanel>
-            <TabPanel p={0} className="h-full">
+            </Tabs.Panel>
+            <Tabs.Panel id="two" label="Html">
               <HtmlPanel />
-            </TabPanel>
-            <TabPanel p={0} className="h-full">
+            </Tabs.Panel>
+            <Tabs.Panel id="three" label="Css">
               <CssPanel />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
+            </Tabs.Panel>
+          </Tabs>
+        </div>
 
         <Preview />
       </SplitBox>
