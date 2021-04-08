@@ -3,7 +3,7 @@ import { RootState } from "../store";
 import { Console } from "../../_types";
 
 const initialConsoleState: Console = {
-  isOpen: false,
+  isOpen: true,
 };
 
 const consoleSlice = createSlice({

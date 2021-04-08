@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { JsTab, JsPanel, HtmlTab, HtmlPanel, CssTab, CssPanel } from "./Pans";
-import { tabListConfig, tabConfig } from "./config";
+import { tabStyle, tabListStyle } from "./constants/stylesConfig";
 import { Helmet } from "react-helmet";
 import Preview from "./Preview";
 import SplitBox from "./SplitBox";
@@ -22,14 +22,14 @@ const TreeEditor = () => {
       {/* Editor and Preview ======================================= */}
       <SplitBox direction="horizontal">
         <Tabs style={{ height: "90vh" }}>
-          <TabList {...tabListConfig}>
-            <Tab {...tabConfig}>
+          <TabList {...tabListStyle}>
+            <Tab {...tabStyle}>
               <JsTab />
             </Tab>
-            <Tab {...tabConfig}>
+            <Tab {...tabStyle}>
               <HtmlTab />
             </Tab>
-            <Tab {...tabConfig}>
+            <Tab {...tabStyle}>
               <CssTab />
             </Tab>
           </TabList>

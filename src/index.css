@@ -23,11 +23,11 @@ body {
   flex-direction: column !important;
 }
 
-.css-tj4v59 {
+.css-103b8e2 {
   outline: none !important;
 }
 
-.css-tj4v59:active {
+.css-103b8e2:active {
   background: none !important;
 }
 
@@ -119,7 +119,6 @@ body {
 .console_style {
   overflow-x: hidden;
   overflow-y: auto;
-  background: #171e25;
+  background: #1b252d;
   position: absolute;
 }
-

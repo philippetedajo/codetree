@@ -105,7 +105,7 @@ const Preview: React.FC = () => {
       />
       <Resizable
         minWidth="100%"
-        minHeight="20vh"
+        minHeight="10vh"
         maxHeight="80vh"
         defaultSize={{ width: "100%", height: "40vh" }}
         className={`console_style ${isOpen ? "hidden" : "flex flex-col"} `}
