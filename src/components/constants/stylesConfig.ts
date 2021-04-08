@@ -13,4 +13,5 @@ export const tabStyle = {
   },
   className: "font-medium",
   fontSize: ".92rem",
+  borderTop: "2px solid #171E25",
 };
