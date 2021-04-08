@@ -1,13 +1,20 @@
+![](src/docs/in-action1.png)
+
 # Codetree
 
-Codetree is a tiny web-base code playground scale for speed of execution, using esbuild, typescript and React, unlike codepen.io or codeSandbox, the code is compiled directly in web browsers, without backend and converted into machine language, allowing extremely fast execution and off-line use of the editor.
+Codetree is a lightning fast ⚡️⚡️⚡️ code playground supporting automatic module detection in the import syntax (es6/es5).Unlike https://codepen.io/ or https://codesandbox.io/ , Codetree is built on top of using esbuild, the code is compiled directly in web browsers, without backend and converted into machine language, allowing extremely fast execution and offline mode.
 
-Current features
+## Usage
 
-- Instant compilation of Js/Css/Html code and preview (10x faster than codepen/codesanbox).
+No need to install any npm package manually, codetree automatically detects the presence of import/require syntax in your file, downloads and installs npm package for you, for example just type `import React from "react"` for installing React library.
 
-- Import of npm modules and Es6 support (Ex: `import React from "react").
+## Features
 
-- Auto-completion and intelliSense of Html, Css, Js code during typing. 
+- Instant code compilation and preview (15x faster than codepen/codesanbox).
 
-- Off-line use.
+- Automatic import of external library.
+
+- Auto-completion and intelliSense. 
+
+- Offline mode.
+
