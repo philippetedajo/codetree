@@ -14,11 +14,11 @@ const Footer: React.FC = () => {
   return (
     <footer
       style={{ height: "3.5vh" }}
-      className="editor-footer font-semibold  flex justify-between item-center px-5 text-white text-sm bg-editor_primary border-t-2 border-editor_border"
+      className="font-semibold flex justify-between item-center px-5 text-sm bg-tree-hard text-white z-50"
     >
-      <div>
+      <div className="flex">
         <a
-          className="mr-2 hover:text-green-500"
+          className="mr-2 hover:text-green-500 h-full flex items-center"
           href="https://github.com/philippetedajo/Codetree"
           target="_blank"
           rel="noreferrer"
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
           Github
         </a>
         <a
-          className="mr-2 hover:text-green-500"
+          className="mr-2 hover:text-green-500 h-full flex items-center"
           href="https://twitter.com/PhilippeTedajo"
           target="_blank"
           rel="noreferrer"
@@ -34,15 +34,14 @@ const Footer: React.FC = () => {
           Twitter
         </a>
       </div>
-      <div>
+      <div className="flex justify-center items-center">
         {js.code.loading ? <div className="mr-3">Transpiling...</div> : ""}
-        <div className="mr-1">
-          <span className="cursor-pointer" onClick={handleToggleConsole}>
-            Console
-          </span>
-          <div className="absolute right-2.5 p-1 bg-green-400 rounded-full bottom-2.5 animate-ping" />
-          <div className="absolute right-2.5 p-1 bg-green-400  border-white rounded-full bottom-2.5" />
-        </div>
+
+        <span className="cursor-pointer mr-2" onClick={handleToggleConsole}>
+          Console
+        </span>
+        <div className="absolute right-2.5 p-1 bg-green-400 rounded-full animate-ping" />
+        <div className="absolute right-2.5 p-1 bg-green-400  border-white rounded-full" />
       </div>
     </footer>
   );

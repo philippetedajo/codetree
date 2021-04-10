@@ -11,7 +11,6 @@
   "dependencies": {
     "@babel/parser": "^7.13.11",
     "@babel/traverse": "^7.13.0",
-    "@chakra-ui/react": "^1.5.0",
     "@craco/craco": "^6.1.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
@@ -42,6 +41,7 @@
     "monaco-editor": "^0.23.0",
     "monaco-jsx-highlighter": "^1.1.8",
     "monaco-themes": "^0.3.3",
+    "rc-tabs": "^11.7.3",
     "re-resizable": "^6.9.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

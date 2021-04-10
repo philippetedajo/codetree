@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+*:focus {
+  outline: none;
+}
+
+/* react-split ============================================================================= */
+.split-horizontal {
+  display: flex;
+  height: 90vh;
+}
+
+.gutter.gutter-horizontal {
+  background-color: #4c5b67;
+}
+
+.gutter.gutter-horizontal:hover {
+  cursor: ew-resize;
+}
+
+/* rc-tabs ============================================================================= */
+.rc-tabs {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  @apply bg-tree-soft;
+}
+
+.rc-tabs-nav-operations {
+  display: none;
+}
+
+.rc-tabs-nav-list {
+  display: flex;
+  height: 2.5rem;
+  padding: 0 3rem;
+  @apply bg-tree-hard;
+}
+
+.rc-tabs-content-holder,
+.rc-tabs-content,
+.rc-tabs-tabpane {
+  height: 100%;
+}
+
+.rc-tabs-content {
+  padding-top: 20px;
+}
+
+.rc-tabs-tab {
+  padding: 0.5rem 0 0 1rem;
+  width: 100px;
+  @apply border-t-2 border-tree-hard cursor-pointer text-gray-600;
+}
+
+.rc-tabs-tab-active {
+  @apply bg-tree-soft border-t-2 border-green-500 text-white;
+}
+
+.rc-tabs-tab-btn {
+  height: 100%;
+}
+
+/* preview ======================================================================= */
+.preview-wrapper {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  height: 90vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.preview-wrapper iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.react-draggable-transparent-selection .preview-wrapper:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.error-message {
+  position: absolute;
+  top: 0;
+  color: red;
+}
+
+.monaco-editor,
+.monaco-editor-background,
+.monaco-editor .inputarea.ime-input {
+  background-color: transparent !important;
+}
+.monaco-editor .margin {
+  background-color: transparent !important;
+}
+
+/* console ======================================================================= */
+
+.console_style {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #1b252d;
+  position: absolute;
+}

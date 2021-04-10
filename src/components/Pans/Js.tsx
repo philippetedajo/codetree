@@ -8,10 +8,6 @@ import {
 import Editor from "../Editor";
 import bundler from "../../bundler";
 
-export const JsTab = () => {
-  return <div>Js</div>;
-};
-
 export const JsPanel: React.FC = () => {
   const dispatch = useAppDispatch();
 

@@ -4,10 +4,6 @@ import { update_sync_code } from "../../store/features/editorSlice";
 import Editor from "../Editor";
 import { useDebouncedCallback } from "use-debounce";
 
-export const CssTab = () => {
-  return <div>Css</div>;
-};
-
 export const CssPanel: React.FC = () => {
   const dispatch = useAppDispatch();
 
