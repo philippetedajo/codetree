@@ -27,6 +27,7 @@ const TreeEditor = () => {
         <title>Codetree</title>
         <link rel="canonical" href="https://codetree.vercel.app/" />
       </Helmet>
+
       {/* Head ======================================= */}
       <Header />
 

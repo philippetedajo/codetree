@@ -13,7 +13,7 @@ ReactGA.initialize("UA-193712913-1");
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Index = () => {
-  const matches = useMediaQuery("only screen and (min-width: 450px)");
+  const matches = useMediaQuery("only screen and (min-width: 550px)");
 
   return (
     <div>
@@ -26,7 +26,7 @@ const Index = () => {
           </Router>
         </Provider>
       ) : (
-        <div className="bg-editor_primary text-white h-screen flex items-center justify-center text-center font-semibold">
+        <div className="bg-tree-hard text-white h-screen flex items-center justify-center text-center font-semibold">
           <div>
             The application is not yet supported on mobile, please open{" "}
             <span className="text-green-500"> CodeTree</span> on a computer

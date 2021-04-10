@@ -45,7 +45,7 @@ body {
   display: flex;
   height: 2.5rem;
   padding: 0 3rem;
-  @apply bg-tree-hard;
+  @apply bg-tree-soft;
 }
 
 .rc-tabs-content-holder,
@@ -60,8 +60,8 @@ body {
 
 .rc-tabs-tab {
   padding: 0.5rem 0 0 1rem;
-  width: 100px;
-  @apply border-t-2 border-tree-hard cursor-pointer text-gray-600;
+  min-width: 100px;
+  @apply cursor-pointer text-gray-600;
 }
 
 .rc-tabs-tab-active {
