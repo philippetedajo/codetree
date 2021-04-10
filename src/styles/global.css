@@ -45,7 +45,7 @@ body {
   display: flex;
   height: 2.5rem;
   padding: 0 3rem;
-  @apply bg-tree-soft;
+  @apply bg-tree-hard;
 }
 
 .rc-tabs-content-holder,
