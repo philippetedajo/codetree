@@ -16,10 +16,11 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       white: colors.white,
-      //custom theme
-      editor_primary: "#171E25",
-      editor_secondary: "#1B252D",
-      editor_border: "#131419",
+      black: "black",
+      tree: {
+        hard: "#171E25",
+        soft: "#1B252D",
+      },
     },
     fontFamily: {
       rubik: ["Rubik", "sans-serif"],

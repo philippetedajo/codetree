@@ -1,14 +1,25 @@
 import React from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { JsTab, JsPanel, HtmlTab, HtmlPanel, CssTab, CssPanel } from "./Pans";
-import { tabStyle, tabListStyle } from "./constants/stylesConfig";
+import Split from "react-split";
+import Tabs, { TabPane } from "rc-tabs";
 import { Helmet } from "react-helmet";
+import { JsPanel, HtmlPanel, CssPanel } from "./Pans";
 import Preview from "./Preview";
-import SplitBox from "./SplitBox";
 import Footer from "./Footer";
 import Header from "./Header";
 
 const TreeEditor = () => {
+  const splitProps = {
+    className: "split-horizontal",
+    minSize: 0,
+    expandToMin: false,
+    gutterSize: 5,
+    gutterAlign: "center",
+    snapOffset: 30,
+    dragInterval: 1,
+    direction: "horizontal",
+    cursor: "col-resize",
+  };
+
   return (
     <div className="bg-editor_secondary" style={{ height: "100vh" }}>
       <Helmet>
@@ -16,39 +27,25 @@ const TreeEditor = () => {
         <title>Codetree</title>
         <link rel="canonical" href="https://codetree.vercel.app/" />
       </Helmet>
+
       {/* Head ======================================= */}
       <Header />
 
       {/* Editor and Preview ======================================= */}
-      <SplitBox direction="horizontal">
-        <Tabs style={{ height: "90vh" }}>
-          <TabList {...tabListStyle}>
-            <Tab {...tabStyle}>
-              <JsTab />
-            </Tab>
-            <Tab {...tabStyle}>
-              <HtmlTab />
-            </Tab>
-            <Tab {...tabStyle}>
-              <CssTab />
-            </Tab>
-          </TabList>
-
-          <TabPanels className="h-full pt-4">
-            <TabPanel p={0} className="h-full">
-              <JsPanel />
-            </TabPanel>
-            <TabPanel p={0} className="h-full">
-              <HtmlPanel />
-            </TabPanel>
-            <TabPanel p={0} className="h-full">
-              <CssPanel />
-            </TabPanel>
-          </TabPanels>
+      <Split {...splitProps}>
+        <Tabs defaultActiveKey="1">
+          <TabPane tab="Js" key="1">
+            <JsPanel />
+          </TabPane>
+          <TabPane tab="Html" key="2">
+            <HtmlPanel />
+          </TabPane>
+          <TabPane tab="css" key="3">
+            <CssPanel />
+          </TabPane>
         </Tabs>
-
         <Preview />
-      </SplitBox>
+      </Split>
 
       {/* Foot ======================================= */}
       <Footer />

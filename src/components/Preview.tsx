@@ -120,7 +120,7 @@ const Preview: React.FC = () => {
           topLeft: false,
         }}
       >
-        <div className="text-white flex justify-end text-sm border-b-2 border-editor_secondary px-5 py-1">
+        <div className="text-white flex justify-end text-sm shadow px-5 py-1">
           <div onClick={clearConsole}>
             <Icon className="cursor-pointer" height={20} icon={clearOutlined} />
           </div>
@@ -130,7 +130,7 @@ const Preview: React.FC = () => {
             BASE_FONT_FAMILY: '"Rubik", sans-serif;',
             BASE_FONT_SIZE: 14,
             BASE_BACKGROUND_COLOR: "#171E25",
-            LOG_BORDER: "#4C5B67",
+            LOG_BORDER: "#303b47",
           }}
           logs={logs}
           variant="dark"

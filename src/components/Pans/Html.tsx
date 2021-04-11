@@ -5,10 +5,6 @@ import { update_sync_code } from "../../store/features/editorSlice";
 
 import Editor from "../Editor";
 
-export const HtmlTab = () => {
-  return <div>Html</div>;
-};
-
 export const HtmlPanel: React.FC = () => {
   const dispatch = useAppDispatch();
 
