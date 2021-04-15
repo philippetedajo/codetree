@@ -1,3 +1,5 @@
+//interfaces
+
 export interface Code {
   data: string;
   error: string;
@@ -37,4 +39,14 @@ export interface CodeEditorProps {
 
 export interface Console {
   isOpen: boolean;
+}
+
+export interface LoginForm {
+  email: string;
+  password: string;
+}
+
+export interface RegisterForm {
+  email: string;
+  password: string;
 }

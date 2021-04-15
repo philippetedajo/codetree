@@ -1,39 +1,19 @@
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useMediaQuery } from "@react-hook/media-query";
 import { Provider } from "react-redux";
 import ReactGA from "react-ga";
-import TreeEditor from "./components/TreeEditor";
 import { store } from "./store/store";
-
 import "./styles/monaco-css.css";
 import "./styles/global.css";
+import App from "./App";
 
 ReactGA.initialize("UA-193712913-1");
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Index = () => {
-  const matches = useMediaQuery("only screen and (min-width: 550px)");
-
   return (
-    <div>
-      {matches ? (
-        <Provider store={store}>
-          <Router>
-            <Switch>
-              <Route exact path="/" component={TreeEditor} />
-            </Switch>
-          </Router>
-        </Provider>
-      ) : (
-        <div className="bg-tree-hard text-white h-screen flex items-center justify-center text-center font-semibold">
-          <div>
-            The application is not yet supported on mobile, please open{" "}
-            <span className="text-green-500"> CodeTree</span> on a computer
-          </div>
-        </div>
-      )}
-    </div>
+    <Provider store={store}>
+      <App />
+    </Provider>
   );
 };
 
