@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { Console } from "../../_types";
-import { stat } from "fs";
 
 const initialConsoleState: Console = {
   isOpen: true,
