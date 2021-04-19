@@ -5,7 +5,10 @@ import { Icon } from "@iconify/react";
 import clearOutlined from "@iconify-icons/ant-design/clear-outlined";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { editor_state } from "../store/features/editorSlice";
-import { console_state } from "../store/features/consoleSlice";
+import {
+  console_state,
+  update_console_logs,
+} from "../store/features/consoleSlice";
 
 const Preview: React.FC = () => {
   const iframe = useRef<any>();
@@ -15,6 +18,14 @@ const Preview: React.FC = () => {
 
   //local state
   const [logs, setLogs] = useState([]);
+
+  useEffect(() => {
+    if (logs.length > 0) {
+      dispatch(update_console_logs(true));
+    } else {
+      dispatch(update_console_logs(false));
+    }
+  }, [logs]);
 
   const htmlFrameContent = `
   <html lang="en">

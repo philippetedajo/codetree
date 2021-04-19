@@ -1,3 +1,7 @@
+//interfaces
+
+import { array } from "yup";
+
 export interface Code {
   data: string;
   error: string;
@@ -37,4 +41,15 @@ export interface CodeEditorProps {
 
 export interface Console {
   isOpen: boolean;
+  hasLogs: boolean;
+}
+
+export interface LoginForm {
+  email: string;
+  password: string;
+}
+
+export interface RegisterForm {
+  email: string;
+  password: string;
 }
