@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../utils/validationSchema";
 import { RegisterForm } from "../_types";
+import Helmet from "react-helmet";
 
 export const Register: React.FC = () => {
   const history = useHistory();
@@ -18,6 +19,10 @@ export const Register: React.FC = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Register | Codetree</title>
+        <meta name="description" content="Create an account" />
+      </Helmet>
       <div className="border p-4">
         <div
           className="font-semibold cursor-pointer"

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import TreeEditor from "./components/TreeEditor";
-import { Login, Register, Home } from "./pages";
+import { Home, Register, Login } from "./pages";
 
 const App = () => {
   return (

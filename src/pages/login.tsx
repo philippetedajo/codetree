@@ -1,4 +1,5 @@
 import React from "react";
+import Helmet from "react-helmet";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,6 +19,10 @@ export const Login: React.FC = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Login | Codetree</title>
+        <meta name="description" content="Login to your account" />
+      </Helmet>
       <div className="border p-4">
         <div
           className="font-semibold cursor-pointer"
