@@ -25,7 +25,7 @@ const Preview: React.FC = () => {
     } else {
       dispatch(update_console_logs(false));
     }
-  }, [logs]);
+  }, [logs, dispatch]);
 
   const htmlFrameContent = `
   <html lang="en">
