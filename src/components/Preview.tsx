@@ -12,7 +12,10 @@ import {
 const Preview: React.FC = () => {
   const iframe = useRef<any>();
   const dispatch = useAppDispatch();
-  const { js, html, css, isConsoleOpen } = useAppSelector(editor_state);
+  const {
+    template: { js, html, css },
+    isConsoleOpen,
+  } = useAppSelector(editor_state);
 
   //local state
   const [logs, setLogs] = useState([]);

@@ -3,7 +3,10 @@ import { useAppDispatch, useAppSelector } from "../store/hook";
 import { editor_state, toggle_console } from "../store/features/editorSlice";
 
 const Footer: React.FC = () => {
-  const { js, hasConsoleLogs } = useAppSelector(editor_state);
+  const {
+    template: { js },
+    hasConsoleLogs,
+  } = useAppSelector(editor_state);
   const dispatch = useAppDispatch();
 
   const handleToggleConsole = () => {
