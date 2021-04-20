@@ -1,12 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { UpdateCode } from "../../_types";
-import { emptyTemplate, reactTemplate } from "../../components/templates";
-
-let template = emptyTemplate;
+import { UpdateCode, Pans } from "../../_types";
+import { emptyTemplate } from "../../components/templates";
 
 const initialEditorState = {
-  template,
+  template: emptyTemplate,
   isConsoleOpen: false,
   hasConsoleLogs: false,
 };
@@ -37,6 +35,9 @@ export const editorSlice = createSlice({
     update_console_logs: (state, action: PayloadAction<boolean>) => {
       state.hasConsoleLogs = action.payload;
     },
+    update_template: (state, { payload }: PayloadAction<Pans>) => {
+      state.template = payload;
+    },
     toggle_console: (state) => {
       state.isConsoleOpen = !state.isConsoleOpen;
     },
@@ -47,8 +48,9 @@ export const {
   update_sync_code,
   update_async_code_start,
   update_async_code_finished,
-  toggle_console,
   update_console_logs,
+  update_template,
+  toggle_console,
 } = editorSlice.actions;
 
 export const editor_state = (state: RootState) => state.editor;

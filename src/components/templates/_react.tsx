@@ -20,7 +20,7 @@ export const reactTemplate: Pans = {
   html: {
     code: {
       data: `<div id="root">
-  <h2>Start editing and watch the magic happen</h2>
+  <h2>React</h2>
 </div>
 `,
       error: "",
