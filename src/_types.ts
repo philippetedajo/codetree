@@ -1,7 +1,5 @@
 //interfaces
 
-import { array } from "yup";
-
 export interface Code {
   data: string;
   error: string;
@@ -17,7 +15,7 @@ export interface IObjectKeys {
   [key: string]: LangProg;
 }
 
-export interface InitialEditorState extends IObjectKeys {
+export interface Pans extends IObjectKeys {
   js: LangProg;
   css: LangProg;
   html: LangProg;
@@ -37,11 +35,6 @@ export interface CodeEditorProps {
   initialValue: string;
   language: string;
   onChangeCodeInput(value: string | undefined): void;
-}
-
-export interface Console {
-  isOpen: boolean;
-  hasLogs: boolean;
 }
 
 export interface LoginForm {

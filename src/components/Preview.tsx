@@ -4,17 +4,15 @@ import { Console, Hook } from "console-feed";
 import { Icon } from "@iconify/react";
 import clearOutlined from "@iconify-icons/ant-design/clear-outlined";
 import { useAppDispatch, useAppSelector } from "../store/hook";
-import { editor_state } from "../store/features/editorSlice";
 import {
-  console_state,
+  editor_state,
   update_console_logs,
-} from "../store/features/consoleSlice";
+} from "../store/features/editorSlice";
 
 const Preview: React.FC = () => {
   const iframe = useRef<any>();
   const dispatch = useAppDispatch();
-  const { js, html, css } = useAppSelector(editor_state);
-  const { isOpen } = useAppSelector(console_state);
+  const { js, html, css, isConsoleOpen } = useAppSelector(editor_state);
 
   //local state
   const [logs, setLogs] = useState([]);
@@ -119,7 +117,9 @@ const Preview: React.FC = () => {
         minHeight="10vh"
         maxHeight="80vh"
         defaultSize={{ width: "100%", height: "40vh" }}
-        className={`console_style ${isOpen ? "hidden" : "flex flex-col"} `}
+        className={`console_style ${
+          isConsoleOpen ? "flex flex-col" : "hidden"
+        } `}
         enable={{
           top: true,
           right: false,

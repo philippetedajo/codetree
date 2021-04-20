@@ -1,11 +1,9 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../store/hook";
-import { editor_state } from "../store/features/editorSlice";
-import { console_state, toggle_console } from "../store/features/consoleSlice";
+import { editor_state, toggle_console } from "../store/features/editorSlice";
 
 const Footer: React.FC = () => {
-  const { js } = useAppSelector(editor_state);
-  const { hasLogs } = useAppSelector(console_state);
+  const { js, hasConsoleLogs } = useAppSelector(editor_state);
   const dispatch = useAppDispatch();
 
   const handleToggleConsole = () => {
@@ -42,7 +40,7 @@ const Footer: React.FC = () => {
           Console
         </span>
 
-        {hasLogs ? (
+        {hasConsoleLogs ? (
           <>
             <div className="absolute right-2.5 p-1 bg-green-400 rounded-full animate-ping" />
             <div className="absolute right-2.5 p-1 bg-green-400  border-white rounded-full" />

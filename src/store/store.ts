@@ -1,11 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import editorReducer from "./features/editorSlice";
-import consoleReducer from "./features/consoleSlice";
 
 export const store = configureStore({
   reducer: {
     editor: editorReducer,
-    console: consoleReducer,
   },
 });
 

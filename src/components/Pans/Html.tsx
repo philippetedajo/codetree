@@ -24,7 +24,7 @@ export const HtmlPanel: React.FC = () => {
 
   return (
     <Editor
-      initialValue=""
+      initialValue="hello"
       language="html"
       onChangeCodeInput={(value: string) => debounced(value)}
     />
