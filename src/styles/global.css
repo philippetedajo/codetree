@@ -31,7 +31,7 @@ body {
 
 /* rc-tabs ============================================================================= */
 .rc-tabs {
-  height: 90vh;
+  height: 89vh;
   display: flex;
   flex-direction: column;
   padding: 0 15px;
