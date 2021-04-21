@@ -11,7 +11,7 @@ export const emptyTemplate = {
   },
   css: {
     code: {
-      data: "body{background: red }",
+      data: "",
       error: "",
       loading: false,
     },
@@ -20,7 +20,7 @@ export const emptyTemplate = {
   html: {
     code: {
       data: `<div id="root">
-  <h2>Start editing and watch the magic happen</h2>
+  <h2>Empty</h2>
 </div>
 `,
       error: "",

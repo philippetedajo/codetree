@@ -14,6 +14,8 @@
     "@craco/craco": "^6.1.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@headlessui/react": "^1.0.0",
+    "@heroicons/react": "^1.0.1",
     "@hookform/resolvers": "1.0.0",
     "@iconify-icons/ant-design": "^1.1.0",
     "@iconify-icons/logos": "^1.1.9",

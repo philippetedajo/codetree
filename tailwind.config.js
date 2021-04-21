@@ -20,6 +20,10 @@ module.exports = {
       tree: {
         hard: "#171E25",
         soft: "#1B252D",
+        border: "#4c5b67",
+        // hard: "#161717",
+        // soft: "#242626",
+        // border: "#474A4D",
       },
     },
     fontFamily: {

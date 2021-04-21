@@ -11,7 +11,7 @@ export const reactTemplate: Pans = {
   },
   css: {
     code: {
-      data: "body{background: green }",
+      data: "",
       error: "",
       loading: false,
     },

@@ -22,7 +22,7 @@ body {
 }
 
 .gutter.gutter-horizontal {
-  background-color: #4c5b67;
+  @apply bg-tree-border;
 }
 
 .gutter.gutter-horizontal:hover {
@@ -34,7 +34,8 @@ body {
   height: 90vh;
   display: flex;
   flex-direction: column;
-  @apply bg-tree-soft;
+  padding: 0 15px;
+  @apply bg-tree-hard;
 }
 
 .rc-tabs-nav-operations {
@@ -43,9 +44,11 @@ body {
 
 .rc-tabs-nav-list {
   display: flex;
-  height: 2.5rem;
-  padding: 0 3rem;
-  @apply bg-tree-hard;
+  height: 1.5rem;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  overflow: hidden;
+  @apply bg-tree-hard border-r border-l border-t border-tree-border;
 }
 
 .rc-tabs-content-holder,
@@ -55,17 +58,22 @@ body {
 }
 
 .rc-tabs-content {
-  padding-top: 20px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding-top: 15px;
+  @apply bg-tree-soft border border-tree-border;
 }
 
 .rc-tabs-tab {
-  padding: 0.5rem 0 0 1rem;
-  min-width: 100px;
+  min-width: calc(100% / 3);
+  display: flex;
+  justify-content: center;
   @apply cursor-pointer text-gray-600;
 }
 
 .rc-tabs-tab-active {
-  @apply bg-tree-soft border-t-2 border-green-500 text-white;
+  color: #ffffff;
+  @apply bg-tree-soft;
 }
 
 .rc-tabs-tab-btn {
@@ -77,17 +85,19 @@ body {
   position: relative;
   width: 100%;
   flex-grow: 1;
-  height: 90vh;
-  background: #fff;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  padding: 0 15px;
+  @apply bg-tree-hard;
 }
 
 .preview-wrapper iframe {
-  position: absolute;
+  background: #ffffff;
+  position: relative;
   width: 100%;
   height: 100%;
+  border-radius: 5px;
 }
 
 .react-draggable-transparent-selection .preview-wrapper:after {
