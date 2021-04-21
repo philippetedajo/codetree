@@ -1,6 +1,6 @@
 import { Pans } from "../../_types";
 
-export const reactTemplate: Pans = {
+export const _react: Pans = {
   js: {
     code: {
       data: "",

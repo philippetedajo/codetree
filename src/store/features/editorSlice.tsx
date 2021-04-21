@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { UpdateCode, Pans } from "../../_types";
-import { emptyTemplate } from "../../components/templates";
+import { _empty } from "../../components/templates";
 
 const initialEditorState = {
-  template: emptyTemplate,
+  template: _empty,
   isConsoleOpen: false,
   hasConsoleLogs: false,
 };
