@@ -130,8 +130,9 @@ body {
 .console_style {
   overflow-x: hidden;
   overflow-y: auto;
-  background: #1b252d;
   position: absolute;
+  border-radius: 5px;
+  @apply bg-tree-soft border border-tree-border mt-5;
 }
 
 /* Pages  ======================================================================= */
