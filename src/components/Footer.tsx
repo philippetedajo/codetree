@@ -37,11 +37,11 @@ const Footer: React.FC = () => {
         </a>
         <a
           className="mr-2 hover:text-green-500 h-full flex items-center "
-          href="https://discord.gg/gUWvD6M2"
+          href="https://discord.gg/sV3UHkab43"
           target="_blank"
           rel="noreferrer"
         >
-          Discord
+          Join Discord
         </a>
       </div>
       <div className="flex justify-center items-center">
