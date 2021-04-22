@@ -6,7 +6,7 @@ import App from "./App";
 import ReactGA from "react-ga";
 import { store } from "./store/store";
 import "./styles/monaco-css.css";
-import "./styles/global.css ";
+import "./styles/global.css";
 
 Sentry.init({
   dsn:
