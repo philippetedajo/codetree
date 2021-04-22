@@ -26,6 +26,8 @@
     "@monaco-editor/react": "^4.1.0",
     "@react-hook/media-query": "^1.1.1",
     "@reduxjs/toolkit": "^1.5.1",
+    "@sentry/react": "^6.3.0",
+    "@sentry/tracing": "^6.3.0",
     "@tailwindcss/forms": "^0.3.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

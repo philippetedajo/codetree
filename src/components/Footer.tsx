@@ -35,6 +35,14 @@ const Footer: React.FC = () => {
         >
           Twitter
         </a>
+        <a
+          className="mr-2 hover:text-green-500 h-full flex items-center"
+          href="https://discord.gg/gUWvD6M2"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Discord
+        </a>
       </div>
       <div className="flex justify-center items-center">
         {js.code.loading ? <div className="mr-3">Transpiling...</div> : ""}
