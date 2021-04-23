@@ -2,7 +2,7 @@ export const _react = {
   template: "react",
   js: {
     code: {
-      data: "",
+      data: `console.log("hello world")`,
       error: "",
       loading: false,
     },
@@ -10,7 +10,7 @@ export const _react = {
   },
   css: {
     code: {
-      data: "",
+      data: `background: red`,
       error: "",
       loading: false,
     },
@@ -18,9 +18,7 @@ export const _react = {
   },
   html: {
     code: {
-      data: `<div id="root">
-  <h2>React</h2>
-</div>
+      data: `<div id="root"></div>
 `,
       error: "",
       loading: false,

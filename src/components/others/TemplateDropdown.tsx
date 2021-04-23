@@ -1,12 +1,31 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import { update_template } from "../../store/features/editorSlice";
+import {
+  update_async_code_finished,
+  update_async_code_start,
+  update_template,
+} from "../../store/features/editorSlice";
 import { useAppDispatch } from "../../store/hook";
 import { _empty, _react } from "../templates";
+import bundler from "../../bundler";
 
 export default function TemplateDropDown() {
   const dispatch = useAppDispatch();
+
+  const manualBundleStart = async (value: any) => {
+    dispatch(update_template(value));
+
+    dispatch(update_async_code_start({ code: "", type: "js", error: "" }));
+    const output = await bundler(value.js.code.data);
+    dispatch(
+      update_async_code_finished({
+        code: output.code,
+        type: "js",
+        error: output.error,
+      })
+    );
+  };
 
   return (
     <div className="w-56 text-right z-50">
@@ -40,7 +59,7 @@ export default function TemplateDropDown() {
                   <Menu.Item>
                     {({ active }) => (
                       <button
-                        onClick={() => dispatch(update_template(_empty))}
+                        onClick={() => manualBundleStart(_empty)}
                         className={`${
                           active ? "bg-violet-500 text-white" : "text-gray-900"
                         } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
@@ -52,7 +71,7 @@ export default function TemplateDropDown() {
                   <Menu.Item>
                     {({ active }) => (
                       <button
-                        onClick={() => dispatch(update_template(_react))}
+                        onClick={() => manualBundleStart(_react)}
                         className={`${
                           active ? "bg-violet-500 text-white" : "text-gray-900"
                         } group flex rounded-md items-center w-full px-2 py-2 text-sm`}

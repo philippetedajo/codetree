@@ -1,15 +1,20 @@
 import React, { useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce";
-import { useAppDispatch } from "../../store/hook";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
 import {
   update_async_code_start,
   update_async_code_finished,
+  editor_state,
 } from "../../store/features/editorSlice";
 import Editor from "../Editor";
 import bundler from "../../bundler";
+import { _react, _empty } from "../templates";
 
 export const JsPanel: React.FC = () => {
   const dispatch = useAppDispatch();
+  const {
+    codeEditor: { template },
+  } = useAppSelector(editor_state);
 
   const debounced = useDebouncedCallback(
     async (value) => {
@@ -35,9 +40,20 @@ export const JsPanel: React.FC = () => {
     [debounced]
   );
 
+  let initialValue = _empty.js.code.data;
+
+  switch (template) {
+    case "react":
+      initialValue = _react.js.code.data;
+      break;
+    case "empty":
+      initialValue = _empty.js.code.data;
+      break;
+  }
+
   return (
     <Editor
-      initialValue=""
+      initialValue={initialValue}
       language="javascript"
       onChangeCodeInput={(value: string) => debounced(value)}
     />

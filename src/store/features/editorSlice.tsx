@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { UpdateCode, Pans } from "../../_types";
+import { UpdateCode } from "../../_types";
 import { _empty } from "../../components/templates";
 
 const initialEditorState = {
