@@ -1,12 +1,20 @@
 import React from "react";
 import { useDebouncedCallback } from "use-debounce";
-import { useAppDispatch } from "../../store/hook";
-import { update_sync_code } from "../../store/features/editorSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import {
+  editor_state,
+  update_sync_code,
+} from "../../store/features/editorSlice";
 
 import Editor from "../Editor";
+import { _empty, _react } from "../templates";
 
 export const HtmlPanel: React.FC = () => {
   const dispatch = useAppDispatch();
+
+  const {
+    codeEditor: { template },
+  } = useAppSelector(editor_state);
 
   const debounced = useDebouncedCallback(
     (value) => {
@@ -22,9 +30,20 @@ export const HtmlPanel: React.FC = () => {
     1000
   );
 
+  let initialValue = _empty.html.code.data;
+
+  switch (template) {
+    case "react":
+      initialValue = _react.html.code.data;
+      break;
+    case "empty":
+      initialValue = _empty.html.code.data;
+      break;
+  }
+
   return (
     <Editor
-      initialValue=""
+      initialValue={initialValue}
       language="html"
       onChangeCodeInput={(value: string) => debounced(value)}
     />
