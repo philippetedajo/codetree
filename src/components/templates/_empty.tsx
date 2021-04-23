@@ -1,6 +1,5 @@
-import { Pans } from "../../_types";
-
-export const _empty: Pans = {
+export const _empty = {
+  template: "empty",
   js: {
     code: {
       data: "",

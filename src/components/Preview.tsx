@@ -13,7 +13,7 @@ const Preview: React.FC = () => {
   const iframe = useRef<any>();
   const dispatch = useAppDispatch();
   const {
-    template: { js, html, css },
+    codeEditor: { js, html, css },
     isConsoleOpen,
   } = useAppSelector(editor_state);
 

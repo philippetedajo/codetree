@@ -4,7 +4,7 @@ import { editor_state, toggle_console } from "../store/features/editorSlice";
 
 const Footer: React.FC = () => {
   const {
-    template: { js },
+    codeEditor: { js },
     hasConsoleLogs,
   } = useAppSelector(editor_state);
   const dispatch = useAppDispatch();
