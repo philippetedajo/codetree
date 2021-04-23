@@ -2,7 +2,15 @@ export const _empty = {
   template: "empty",
   js: {
     code: {
-      data: "",
+      data: `document.getElementById("root").innerHTML = \`
+<h1>Hello VanillaTree</h1>
+<div>
+  We use the same configuration as Esbuild to bundle this sandbox, you can find more
+  info about Esbuild 
+  <a href="https://esbuild.github.io/" target="_blank" rel="noopener noreferrer">here</a>.
+</div>
+\`;
+`,
       error: "",
       loading: false,
     },
@@ -10,7 +18,11 @@ export const _empty = {
   },
   css: {
     code: {
-      data: "",
+      data: `body {
+  font-family: sans-serif;
+  text-align: center;
+}
+`,
       error: "",
       loading: false,
     },
@@ -18,10 +30,7 @@ export const _empty = {
   },
   html: {
     code: {
-      data: `<div id="root">
-  <h2>Empty</h2>
-</div>
-`,
+      data: `<div id="root"></div>`,
       error: "",
       loading: false,
     },
