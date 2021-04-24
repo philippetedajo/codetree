@@ -1,6 +1,0 @@
-This favicon was generated using the following font:
-
-- Font Title: Kufam
-- Font Author: Copyright 2019 The Kufam Project Authors (https://github.com/originaltype/kufam)
-- Font Source: http://fonts.gstatic.com/s/kufam/v6/C8c-4cY7pG7w_oSJDszBXsKCcBH3lqk7qQCJHvIwYg.ttf
-- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL)
