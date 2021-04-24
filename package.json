@@ -27,6 +27,7 @@
     "@types/react-dom": "^17.0.0",
     "axios": "^0.21.1",
     "console-feed": "^3.2.2",
+    "deployment-badge": "^1.1.0",
     "esbuild-wasm": "0.8.57",
     "framer-motion": "^4",
     "localforage": "^1.9.0",

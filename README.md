@@ -16,6 +16,8 @@
     <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Netlify Status" />
 </p>
 
+![](docs/in-action1.png)
+
 # Codetree
 
 Codetree is a high efficiency and lightning fast ⚡️⚡️⚡️ code playground supporting automatic module detection in the import syntax (es6/es5).Unlike https://codepen.io/ or https://codesandbox.io/ , Codetree is built on top of using esbuild, the code is compiled directly in web browsers, without backend and converted into machine language, allowing extremely fast execution and offline mode.
