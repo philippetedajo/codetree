@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Logo" src="public/android-chrome-192x192.png" width="100" />
+  <img alt="Logo" src="public/android-chrome-192x192.png" width="30" />
 </div>
 <h1 align="center">
   Codetree - v1.0
