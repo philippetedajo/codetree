@@ -1,8 +1,6 @@
-<div align="center">
-  <img alt="Logo" src="public/android-chrome-192x192.png" width="30" />
-</div>
+
 <h1 align="center">
-  Codetree - v1.0
+  Codetree   <img alt="Logo" src="public/android-chrome-192x192.png" width="30" />
 </h1>
 <p align="center">
   The Future of online editor Playground, built with <a href="https://nextjs.org/" target="_blank">Next</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>
