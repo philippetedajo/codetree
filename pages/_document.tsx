@@ -13,7 +13,7 @@ class CodetreeDocument extends Document {
           <link rel="shortcut icon" href="/favicon-16x16.png" />
           <meta
             name="description"
-            content="Codetree is a lightning fast online code playground with automatic npm module detection"
+            content="Codetree is a lightning fast online code playground with automatic npm module detection."
           />
           <meta charSet="utf-8" />
           <link rel="canonical" href="https://codetree.vercel.app/" />
