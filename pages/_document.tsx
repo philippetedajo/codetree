@@ -36,6 +36,24 @@ class CodetreeDocument extends Document {
           />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="author" content="Philippe Tedajo" />
+
+          <meta
+            property="og:url"
+            content="https://codetree.vercel.app/"
+            key="ogurl"
+          />
+          <meta
+            property="og:image"
+            content="/preview-image.png"
+            key="ogimage"
+          />
+          <meta property="og:site_name" content="Codetree" key="ogsitename" />
+          <meta property="og:title" content="Codetree" key="ogtitle" />
+          <meta
+            property="og:description"
+            content="Codetree is a lightning fast online code playground with automatic npm module detection."
+            key="ogdesc"
+          />
         </Head>
         <body>
           <Main />
