@@ -1,3 +1,21 @@
+<div align="center">
+  <img alt="Logo" src="https://raw.githubusercontent.com/bchiang7/v4/main/src/images/logo.png" width="100" />
+</div>
+<h1 align="center">
+  Codetree - v1.0
+</h1>
+<p align="center">
+  The Future of online editor Playground, built with <a href="https://nextjs.org/" target="_blank">Next</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>
+</p>
+<p align="center">
+  Join us :
+  <a href="https://discord.gg/sV3UHkab43" target="_blank">Discord</a>,
+  <a href="https://github.com/bchiang7/v2" target="_blank">Twitter.</a>
+</p>
+<p align="center">
+    <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Netlify Status" />
+</p>
+
 ![](docs/in-action1.png)
 
 # Codetree
