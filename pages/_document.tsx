@@ -34,7 +34,6 @@ class CodetreeDocument extends Document {
             sizes="16x16"
             href="/favicon-16x16.png"
           />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="author" content="Philippe Tedajo" />
 
           <meta
