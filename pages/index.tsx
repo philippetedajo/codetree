@@ -11,18 +11,6 @@ const TreeEditor = () => {
     ssr: false,
   });
 
-  const splitProps = {
-    className: "split-horizontal",
-    minSize: 0,
-    expandToMin: false,
-    gutterSize: 5,
-    gutterAlign: "center",
-    snapOffset: 30,
-    dragInterval: 1,
-    direction: "horizontal",
-    cursor: "col-resize",
-  };
-
   return (
     <div>
       <div className="bg-editor_secondary" style={{ height: "100vh" }}>
@@ -35,19 +23,34 @@ const TreeEditor = () => {
         <Header />
 
         {/* Editor and Preview ======================================= */}
-        <Split {...splitProps}>
-          <Tabs defaultActiveKey="1">
-            <TabPane tab="Js" key="1">
-              <JsPanel />
-            </TabPane>
-            <TabPane tab="Html" key="2">
-              <HtmlPanel />
-            </TabPane>
-            <TabPane tab="css" key="3">
-              <CssPanel />
-            </TabPane>
-          </Tabs>
-          <PreviewWithNoSSR />
+        <Split
+          sizes={[25, 75]}
+          minSize={100}
+          expandToMin={false}
+          gutterSize={10}
+          gutterAlign="center"
+          snapOffset={30}
+          dragInterval={1}
+          direction="horizontal"
+          cursor="col-resize"
+          className="flex"
+        >
+          <div>
+            <Tabs defaultActiveKey="1">
+              <TabPane tab="Js" key="1">
+                <JsPanel />
+              </TabPane>
+              <TabPane tab="Html" key="2">
+                <HtmlPanel />
+              </TabPane>
+              <TabPane tab="css" key="3">
+                <CssPanel />
+              </TabPane>
+            </Tabs>
+          </div>
+          <div>
+            <PreviewWithNoSSR />
+          </div>
         </Split>
 
         {/* Foot ======================================= */}
