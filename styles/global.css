@@ -34,7 +34,7 @@ body {
 
 /* rc-tabs ============================================================================= */
 .rc-tabs {
-  height: 90vh;
+  height: 89.5vh;
   display: flex;
   flex-direction: column;
   @apply bg-tree-hard;
