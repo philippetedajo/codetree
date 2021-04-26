@@ -34,10 +34,9 @@ body {
 
 /* rc-tabs ============================================================================= */
 .rc-tabs {
-  height: 89vh;
+  height: 89.5vh;
   display: flex;
   flex-direction: column;
-  padding: 0 15px;
   @apply bg-tree-hard;
 }
 
@@ -48,10 +47,7 @@ body {
 .rc-tabs-nav-list {
   display: flex;
   height: 1.5rem;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
   overflow: hidden;
-  @apply bg-tree-hard border-r border-l border-t border-tree-border;
 }
 
 .rc-tabs-content-holder,
@@ -61,10 +57,7 @@ body {
 }
 
 .rc-tabs-content {
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
   padding-top: 15px;
-  @apply bg-tree-soft border border-tree-border;
 }
 
 .rc-tabs-tab {
@@ -75,8 +68,7 @@ body {
 }
 
 .rc-tabs-tab-active {
-  color: #ffffff;
-  @apply bg-tree-soft;
+  @apply text-green-500 border-t-2 border-green-500;
 }
 
 .rc-tabs-tab-btn {
@@ -92,7 +84,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 15px;
+
   @apply bg-tree-hard;
 }
 
@@ -101,7 +93,6 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 5px;
 }
 
 .react-draggable-transparent-selection .preview-wrapper:after {
@@ -135,8 +126,6 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   position: absolute;
-  border-radius: 5px;
-  @apply bg-tree-soft border border-tree-border mt-5;
 }
 
 /* Pages  ======================================================================= */

@@ -2,8 +2,8 @@ import React from "react";
 
 const EditorLoader = () => {
   return (
-    <div className=" h-full bg-white flex flex-col items-center justify-center">
-      <div className="bg-white flex flex-col items-center justify-center transition-all duration-700 fade-loader">
+    <div className="h-full bg-white flex flex-col items-center justify-center">
+      <div className="bg-white  flex flex-col items-center justify-center fade-loader">
         <ul className="loader ml-7">
           <li className="center bg-green-400" />
           <li className="item item-1 bg-green-400" />

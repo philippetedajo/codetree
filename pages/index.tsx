@@ -24,7 +24,7 @@ const TreeEditor = () => {
 
         {/* Editor and Preview ======================================= */}
         <Split
-          sizes={[45, 55]}
+          sizes={[50, 50]}
           minSize={100}
           expandToMin={true}
           gutterSize={10}
