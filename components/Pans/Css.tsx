@@ -6,7 +6,7 @@ import {
 } from "../../store/features/editorSlice";
 import Editor from "../Editor";
 import { useDebouncedCallback } from "use-debounce";
-import { _empty, _react } from "../templates";
+import { _empty, _p5, _react } from "../templates";
 
 export const CssPanel: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -36,6 +36,9 @@ export const CssPanel: React.FC = () => {
       break;
     case "empty":
       initialValue = _empty.css.code.data;
+      break;
+    case "p5":
+      initialValue = _p5.css.code.data;
       break;
   }
 

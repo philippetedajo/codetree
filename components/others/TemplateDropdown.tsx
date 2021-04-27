@@ -4,7 +4,7 @@ import {
   update_template,
 } from "../../store/features/editorSlice";
 import { useAppDispatch } from "../../store/hook";
-import { _empty, _react } from "../templates";
+import { _empty, _react, _p5 } from "../templates";
 import bundler from "../../bundler";
 import Dropdown from "react-dropdown";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs";
@@ -26,7 +26,7 @@ const TemplateDropDown = () => {
     );
   };
 
-  const options = ["Vanilla", "React"];
+  const options = ["Vanilla", "React", "P5"];
   const defaultOption = options[0];
 
   const OnSelect = (data) => {
@@ -36,6 +36,9 @@ const TemplateDropDown = () => {
         break;
       case "React":
         manualBundleStart(_react);
+        break;
+      case "P5":
+        manualBundleStart(_p5);
         break;
     }
     console.log(data.value);
