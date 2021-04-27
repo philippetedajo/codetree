@@ -7,7 +7,7 @@ import {
 } from "../../store/features/editorSlice";
 
 import Editor from "../Editor";
-import { _empty, _react } from "../templates";
+import { _empty, _p5, _react } from "../templates";
 
 export const HtmlPanel: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -38,6 +38,9 @@ export const HtmlPanel: React.FC = () => {
       break;
     case "empty":
       initialValue = _empty.html.code.data;
+      break;
+    case "p5":
+      initialValue = _p5.html.code.data;
       break;
   }
 
