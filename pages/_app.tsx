@@ -1,6 +1,7 @@
 import "../styles/global.css";
 import "../styles/monaco-css.css";
 import "../styles/editorLoader.css";
+
 import Head from "next/head";
 import { Provider } from "react-redux";
 import { store } from "../store/store";

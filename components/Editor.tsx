@@ -19,18 +19,6 @@ const Editor: React.FC<CodeEditorProps> = ({
   };
 
   const onMount: OnMount = async (monacoEditor, monaco) => {
-    monaco.editor.defineTheme("myTheme", {
-      base: "vs-dark",
-      inherit: true,
-      rules: [],
-      colors: {
-        "editor.background": "#f1B252D",
-        "editor.selectionBackground": "#2A3842",
-        "editor.inactiveSelectionBackground": "#232E38",
-      },
-    });
-    monaco.editor.setTheme("myTheme");
-
     codeEditor.current = monacoEditor;
 
     const { default: traverse } = await import("@babel/traverse");

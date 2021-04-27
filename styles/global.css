@@ -129,3 +129,6 @@ body {
 }
 
 /* Pages  ======================================================================= */
+.Dropdown-option {
+  @apply flex items-center hover:text-green-500 h-9;
+}
