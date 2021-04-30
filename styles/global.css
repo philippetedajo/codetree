@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Quicksand:wght@500&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,12 +9,15 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: "Quicksand", sans-serif;
 }
 
 *:focus {
   outline: none;
+}
+
+.logo {
+  @apply font-fredericka bg-green-500 text-tree-hard  flex items-center justify-center;
 }
 
 /* react-split ============================================================================= */
@@ -34,7 +39,7 @@ body {
 
 /* rc-tabs ============================================================================= */
 .rc-tabs {
-  height: 89.5vh;
+  height: 89vh;
   display: flex;
   flex-direction: column;
   @apply bg-tree-hard;

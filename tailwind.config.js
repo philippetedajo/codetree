@@ -28,7 +28,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      rubik: ["Rubik", "sans-serif"],
+      fredericka: ['"Fredericka the Great"', "cursive", "sans-serif"],
     },
   },
   variants: {
