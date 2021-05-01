@@ -257,50 +257,10 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.2.0.tgz#f3933a44e365864f4dad5db94158106d511e8131"
   integrity sha512-sqKVVVOe5ivCaXDWivIJYVSaEgdQK9ul7a4Kity5Iw7u9+wBAPbX1RMSnLLmp7O4Vzj0WOWwMAJsTL00xwaNug==
 
-"@headlessui/react@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.0.0.tgz#661b50ebfd25041abb45d8eedd85e7559056bcaf"
-  integrity sha512-mjqRJrgkbcHQBfAHnqH0yRxO/y/22jYrdltpE7WkurafREKZ+pj5bPBwYHMt935Sdz/n16yRcVmsSCqDFHee9A==
-
-"@heroicons/react@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@heroicons/react/-/react-1.0.1.tgz#66d25f6441920bd5c2146ea27fd33995885452dd"
-  integrity sha512-uikw2gKCmqnvjVxitecWfFLMOKyL9BTFcU4VM3hHj9OMwpkCr5Ke+MRMyY2/aQVmsYs4VTq7NCFX05MYwAHi3g==
-
 "@hookform/resolvers@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-1.0.0.tgz#ad924cb846343fe0a42addcf0b055c4f9aa2dcb9"
   integrity sha512-YzBq6ZFw/uWGa3rXBNSHqnsE4hDXLrzdboDxPRKGjYHVzs1dBxjvELftP8iTmRPqP32VjnbVfUktX1CQ6Y7sog==
-
-"@iconify-icons/ant-design@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@iconify-icons/ant-design/-/ant-design-1.1.0.tgz#7fbaa994dcac24195512164595118819e5749bca"
-  integrity sha512-RU3MljXpV3Y777woJb8t1ymJ+4k7QqGDOYsSJxkDHNRkJruPl0CtC/QpXgPYA+beAmhTTfz2HPZSJXYnZUlAmg==
-
-"@iconify-icons/logos@^1.1.9":
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/@iconify-icons/logos/-/logos-1.1.9.tgz#5216541eb62c5849ed33e46e951271bef63ef2af"
-  integrity sha512-+myjzWPtTp7vNYrl2t7gV4xojG3Rl2b8xw6sD0V0dib/h1UwsTYo4X7AaLQDrdO8Bxe1wzQfhSgS6qLbBRYCpw==
-
-"@iconify-icons/mdi@^1.1.13":
-  version "1.1.14"
-  resolved "https://registry.yarnpkg.com/@iconify-icons/mdi/-/mdi-1.1.14.tgz#4f974d7b6529c9059d11d63f598ac93961140efd"
-  integrity sha512-0IuD/5YQZKRIV4gCQRlG3iDcDu2gZ4RTvHLHxDOyHTfdOxnDulxRU+m2o9X3sSPIGENA/OkGWz6ZbzQRtOxgOA==
-
-"@iconify-icons/uil@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@iconify-icons/uil/-/uil-1.1.1.tgz#6e7185b73d47eae79f7bf308909e1d59a12a34db"
-  integrity sha512-HdSyOZzEPwh2549jpL2YrLkuR4aYRRF47gDRuZcSRRFdgbkmlpGDSSQ1G1PR9E/a3Igg7j9XdIK9HffTFJP0Lg==
-
-"@iconify-icons/vscode-icons@^1.1.2":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@iconify-icons/vscode-icons/-/vscode-icons-1.1.4.tgz#dfa29a2bcfeb5a3915209daa974a8336df9dd3d4"
-  integrity sha512-dI5Os/QQlfPu81+ECkiCZxgdnc1VyLwBnwzLK6izFQ5y1orFP4DakDVNcXH7QoG5CuXh001vBQ0Thtorjhn6aQ==
-
-"@iconify/react@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-1.1.4.tgz#c778eddbaf196e55705d0bedff00d039dc1de8d3"
-  integrity sha512-oxq8IMOq8q3nKGiDHbQPC8FcFuBsKve68JWBo140d5LRnj0bv5TB/FE/y01ZSvEZ7PlI2HIrnb2qivPN8kTDgw==
 
 "@monaco-editor/loader@^1.0.1":
   version "1.0.1"
@@ -399,11 +359,6 @@
   integrity sha512-aj2/rJsGb2whAZ/BQWHWWQRSbhH0r/l1ozOByiv+ZNjBD84GMvb5dhAyfpeasFky+EJrAwX5eaqft8NQMZFWvA==
   dependencies:
     mini-svg-data-uri "^1.2.3"
-
-"@tailwindui/react@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@tailwindui/react/-/react-0.1.1.tgz#0376d4080bb260e3e8dd116349d85dfaa7628ec6"
-  integrity sha512-2VoUokHT/EYHaWQjH49gwKqYtwii7snb1SIp93ewfuI9fSy4x6DYocs4v4WNfyiE971ixc/PT+cs6tCi+zabSA==
 
 "@types/hoist-non-react-statics@^3.3.0":
   version "3.3.1"

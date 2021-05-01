@@ -1,14 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Resizable } from "re-resizable";
 import { Console, Hook } from "console-feed";
-import { Icon } from "@iconify/react";
-import clearOutlined from "@iconify-icons/ant-design/clear-outlined";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import {
   editor_state,
   update_console_logs,
 } from "../store/features/editorSlice";
 import EditorLoader from "./others/EditorLoader";
+import Image from "next/image";
 
 const Preview: React.FC = () => {
   const iframe = useRef<any>();
@@ -143,7 +142,12 @@ const Preview: React.FC = () => {
       >
         <div className="text-white flex justify-end text-sm shadow px-5 py-1">
           <div onClick={clearConsole}>
-            <Icon className="cursor-pointer" height={20} icon={clearOutlined} />
+            <Image
+              src="/icons/clear-outlined.svg"
+              alt="p5 js"
+              width={30}
+              height={30}
+            />
           </div>
         </div>
         <Console

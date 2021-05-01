@@ -46,9 +46,9 @@ const TemplateDropDown = () => {
 
   return (
     <Dropdown
-      className="cursor-pointer w-36 pt-1.5 z-50"
-      controlClassName="bg-tree-low flex items-center justify-between px-3 h-9 text-sm rounded"
-      menuClassName="mt-3 border px-3 rounded bg-gray-100 text-tree-hard shadow-lg text-sm"
+      className="cursor-pointer w-36 z-50"
+      controlClassName="bg-tree-low  flex items-center justify-between px-3 h-9 text-sm rounded"
+      menuClassName="mt-3  border px-3 rounded bg-gray-100 text-tree-hard shadow-lg text-sm"
       arrowClosed={<BsCaretDownFill size={25} />}
       arrowOpen={<BsCaretUpFill size={25} />}
       options={options}

@@ -4,12 +4,10 @@ import TemplateDropdown from "./others/TemplateDropdown";
 const Header: React.FC = () => {
   return (
     <header
-      className="flex px-5 justify-between border-b border-black bg-tree-soft text-white"
-      style={{ height: "7vh" }}
+      className="flex px-5 justify-between pt-2.5 border-b border-black bg-tree-soft text-white"
+      style={{ height: "7.5vh" }}
     >
-      <div className="pb-2 font-bold">
-        <span className="text-3xl text-green-500">C</span>odetree
-      </div>
+      <div className="logo text-4xl w-9 h-9">C</div>
       <TemplateDropdown />
     </header>
   );
