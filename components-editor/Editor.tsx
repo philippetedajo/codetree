@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import MonacoEditor, { OnChange, OnMount } from "@monaco-editor/react";
 import { IKeyboardEvent } from "monaco-editor";
 import prettier from "prettier";
@@ -13,12 +13,16 @@ const Editor: React.FC<CodeEditorProps> = ({
   language,
 }) => {
   const codeEditor = useRef<any>();
+  //local state
+  const [ready, setReady] = useState(false);
 
   const onChange: OnChange = (value) => {
     onChangeCodeInput(value);
   };
 
   const onMount: OnMount = async (monacoEditor, monaco) => {
+    setReady(true);
+
     codeEditor.current = monacoEditor;
 
     const { default: traverse } = await import("@babel/traverse");
@@ -97,6 +101,8 @@ const Editor: React.FC<CodeEditorProps> = ({
     //clearning up
     return () => handleOnKeyDown.dispose();
   };
+
+  console.log(ready);
 
   return (
     <MonacoEditor

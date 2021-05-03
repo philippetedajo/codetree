@@ -41,7 +41,6 @@ const TemplateDropDown = () => {
         manualBundleStart(_p5);
         break;
     }
-    console.log(data.value);
   };
 
   return (

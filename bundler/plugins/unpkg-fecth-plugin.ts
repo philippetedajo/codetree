@@ -29,8 +29,6 @@ export const unpkgFetchPlugin = (inputCode: string | undefined) => {
 
       //match css file
       build.onLoad({ filter: /.css$/ }, async (args: esbuild.OnLoadArgs) => {
-        console.log("onLoad", args);
-
         const { data, request } = await axios.get(args.path);
 
         const escapedData = data
