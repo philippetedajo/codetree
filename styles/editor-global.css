@@ -17,7 +17,7 @@ body {
 }
 
 .logo {
-  @apply font-fredericka bg-green-500 text-tree-hard  flex items-center justify-center;
+  @apply font-fredericka bg-green-500 text-tree-hard flex items-center justify-center;
 }
 
 /* react-split ============================================================================= */
@@ -72,38 +72,20 @@ body {
   height: 100%;
 }
 
-/*.rc-tabs-nav-operations {*/
-/*  display: none;*/
-/*}*/
-
-/*.rc-tabs-nav-list {*/
-/*  display: flex;*/
-/*  height: 1.5rem;*/
-/*  overflow: hidden;*/
-/*}*/
-
-/*.rc-tabs-content {*/
-/*  padding-top: 15px;*/
-/*}*/
-
-/*.rc-tabs-tab {*/
-/*  min-width: calc(100% / 3);*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*  @apply cursor-pointer text-gray-600;*/
-/*}*/
-
-/*.rc-tabs-tab-active {*/
-/*  @apply text-green-500 border-t-2 border-green-500;*/
-/*}*/
-
-/*.rc-tabs-tab-btn {*/
-/*  height: 100%;*/
-/*}*/
-
 /*react-modal ======================================================================= */
 
-tModal__Overlay {
+.ReactModal__Content {
+  width: 65% !important;
+  @apply text-white;
+}
+
+@media only screen and (max-width: 1100px) {
+  .ReactModal__Content {
+    width: 90% !important;
+  }
+}
+
+.ReactModal__Overlay {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
 }
@@ -167,9 +149,4 @@ tModal__Overlay {
   overflow-x: hidden;
   overflow-y: auto;
   position: absolute;
-}
-
-/* Pages  ======================================================================= */
-.Dropdown-option {
-  @apply flex items-center hover:text-green-500 h-9;
 }

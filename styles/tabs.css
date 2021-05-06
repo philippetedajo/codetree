@@ -76,6 +76,13 @@
   flex-direction: column;
   min-width: 150px;
 }
+@media only screen and (max-width: 500px) {
+  .rc-tabs-left .rc-tabs-nav,
+  .rc-tabs-right .rc-tabs-nav {
+    min-width: 100px;
+  }
+}
+
 .rc-tabs-left .rc-tabs-nav-list,
 .rc-tabs-right .rc-tabs-nav-list {
   flex-direction: column;

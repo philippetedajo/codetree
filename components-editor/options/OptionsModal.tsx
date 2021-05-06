@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import ReactModal from "react-modal";
 import Tabs, { TabPane } from "rc-tabs";
+import TemplateSelect from "./TemplateSelect";
+
+// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+ReactModal.setAppElement("#editor_modal");
 
 const Bar = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState<any>(false);
 
   const openModal = () => {
     setShowModal(true);
@@ -23,8 +27,6 @@ const Bar = () => {
       backgroundColor: "rgba(0, 0, 0, 0.5)",
     },
     content: {
-      color: "white",
-      width: "60%",
       height: "30rem",
       top: "50%",
       left: "50%",
@@ -40,7 +42,7 @@ const Bar = () => {
   };
 
   return (
-    <div>
+    <div id="editor_modal">
       <button onClick={openModal}>Create a tree</button>
       <ReactModal
         isOpen={showModal}
@@ -56,7 +58,7 @@ const Bar = () => {
           tabBarGutter={16}
         >
           <TabPane tab="Templates" key="templates">
-            Template
+            <TemplateSelect setShowModal={setShowModal} />
           </TabPane>
           <TabPane tab="News" key="news">
             News
