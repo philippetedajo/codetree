@@ -17,7 +17,7 @@ body {
 }
 
 .logo {
-  @apply font-fredericka bg-green-500 text-tree-hard  flex items-center justify-center;
+  @apply font-fredericka bg-green-500 text-tree-hard flex items-center justify-center;
 }
 
 /* react-split ============================================================================= */
@@ -38,21 +38,60 @@ body {
 }
 
 /* rc-tabs ============================================================================= */
-.rc-tabs {
+
+.programming-language-tabs {
   height: 89vh;
   display: flex;
   flex-direction: column;
+  border: none !important;
   @apply bg-tree-hard;
 }
 
-.rc-tabs-nav-operations {
-  display: none;
+.programming-language-tabs .rc-tabs-tab:hover {
+  @apply bg-tree-soft;
 }
 
-.rc-tabs-nav-list {
+.programming-language-tabs .rc-tabs-tab-active {
+  @apply text-green-500;
+}
+
+.programming-language-tabs .rc-tabs-tab-btn {
+  min-width: 70px;
   display: flex;
-  height: 1.5rem;
-  overflow: hidden;
+  justify-content: center;
+  @apply cursor-pointer py-2 text-gray-600;
+}
+
+.programming-language-tabs .rc-tabs-content-holder {
+  padding-top: 20px;
+}
+
+/* */
+.option-modal-tabs {
+  height: 100%;
+  border: none !important;
+}
+
+.option-modal-tabs .rc-tabs-tabpane {
+  @apply p-5 bg-tree-hard;
+}
+
+.option-modal-tabs .rc-tabs-nav-wrap {
+  border-right: 1px solid black;
+  @apply pt-5 bg-tree-soft;
+}
+
+.option-modal-tabs .rc-tabs-tab {
+  padding-left: 10px;
+  @apply font-medium text-sm;
+}
+
+.option-modal-tabs .rc-tabs-tab:hover {
+  @apply bg-tree-hard;
+}
+
+.option-modal-tabs .rc-tabs-tab-active {
+  @apply text-green-500;
 }
 
 .rc-tabs-content-holder,
@@ -61,23 +100,30 @@ body {
   height: 100%;
 }
 
-.rc-tabs-content {
-  padding-top: 15px;
+/*react-modal ======================================================================= */
+
+.ReactModal__Content {
+  width: 65% !important;
+  @apply text-white;
 }
 
-.rc-tabs-tab {
-  min-width: calc(100% / 3);
-  display: flex;
-  justify-content: center;
-  @apply cursor-pointer text-gray-600;
+@media only screen and (max-width: 1100px) {
+  .ReactModal__Content {
+    width: 90% !important;
+  }
 }
 
-.rc-tabs-tab-active {
-  @apply text-green-500 border-t-2 border-green-500;
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
 }
 
-.rc-tabs-tab-btn {
-  height: 100%;
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
 }
 
 /* preview ======================================================================= */
@@ -131,9 +177,4 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   position: absolute;
-}
-
-/* Pages  ======================================================================= */
-.Dropdown-option {
-  @apply flex items-center hover:text-green-500 h-9;
 }

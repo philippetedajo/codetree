@@ -1,12 +1,7 @@
 import React from "react";
-import Dropdown from "../components/others/Dropdown";
 
 const Bar = () => {
-  return (
-    <div>
-      <Dropdown />
-    </div>
-  );
+  return <div>bar</div>;
 };
 
 export default Bar;

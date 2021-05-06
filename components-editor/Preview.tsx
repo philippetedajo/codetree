@@ -96,7 +96,7 @@ const Preview: React.FC = () => {
     setLogs([]);
   };
 
-  console.log(js.code.data);
+  // console.log(js.code.data);
   return (
     <div className="preview-wrapper">
       {!js.code.data || js.code.loading ? (

@@ -1,15 +1,24 @@
+import { useState } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Split from "react-split";
 import Tabs, { TabPane } from "rc-tabs";
-import { JsPanel, HtmlPanel, CssPanel } from "../components/Pans";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import { JsPanel, HtmlPanel, CssPanel } from "../components-editor/Pans";
+import Footer from "../components-editor/Footer";
+import Header from "../components-editor/Header";
+import React from "react";
+import { BiCodeAlt } from "react-icons/bi";
+import { DiCssTricks, DiJavascript1 } from "react-icons/di";
 
 const TreeEditor = () => {
-  const PreviewWithNoSSR = dynamic(() => import("../components/Preview"), {
-    ssr: false,
-  });
+  const [gutter, setGutter] = useState(false);
+
+  const PreviewWithNoSSR = dynamic(
+    () => import("../components-editor/Preview"),
+    {
+      ssr: false,
+    }
+  );
 
   return (
     <div>
@@ -36,14 +45,19 @@ const TreeEditor = () => {
           className="flex"
         >
           <div>
-            <Tabs defaultActiveKey="1">
-              <TabPane tab="Js" key="1">
+            <Tabs
+              tabPosition={"top"}
+              tabBarGutter={gutter ? 16 : null}
+              className="programming-language-tabs"
+              defaultActiveKey="js"
+            >
+              <TabPane tab={<div className="text-base">Js </div>} key="js">
                 <JsPanel />
               </TabPane>
-              <TabPane tab="Html" key="2">
+              <TabPane tab={<div className="text-base">Html </div>} key="html">
                 <HtmlPanel />
               </TabPane>
-              <TabPane tab="css" key="3">
+              <TabPane tab={<div className="text-base">Css</div>} key="css">
                 <CssPanel />
               </TabPane>
             </Tabs>
