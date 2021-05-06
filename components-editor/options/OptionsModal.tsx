@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ReactModal from "react-modal";
+import { GiPartyPopper } from "react-icons/gi";
+import { CgTrees } from "react-icons/cg";
 import Tabs, { TabPane } from "rc-tabs";
 import TemplateSelect from "./TemplateSelect";
 import News from "./News";
@@ -58,10 +60,25 @@ const Bar = () => {
           tabPosition="left"
           tabBarGutter={16}
         >
-          <TabPane tab="Templates" key="templates">
+          <TabPane
+            tab={
+              <div className="flex">
+                <CgTrees size={27} className="mr-2" />
+                Tree
+              </div>
+            }
+            key="tree"
+          >
             <TemplateSelect setShowModal={setShowModal} />
           </TabPane>
-          <TabPane tab="News" key="news">
+          <TabPane
+            tab={
+              <div className="flex">
+                <GiPartyPopper size={27} className="mr-2" /> News
+              </div>
+            }
+            key="news"
+          >
             <News />
           </TabPane>
         </Tabs>

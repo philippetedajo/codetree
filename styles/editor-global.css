@@ -66,6 +66,14 @@ body {
   @apply font-medium text-sm;
 }
 
+.option-modal-tabs .rc-tabs-tab:hover {
+  @apply bg-tree-hard;
+}
+
+.option-modal-tabs .rc-tabs-tab-active {
+  @apply text-green-500;
+}
+
 .rc-tabs-content-holder,
 .rc-tabs-content,
 .rc-tabs-tabpane {
