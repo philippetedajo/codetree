@@ -7,6 +7,8 @@ import { JsPanel, HtmlPanel, CssPanel } from "../components-editor/Pans";
 import Footer from "../components-editor/Footer";
 import Header from "../components-editor/Header";
 import React from "react";
+import { BiCodeAlt } from "react-icons/bi";
+import { DiCssTricks, DiJavascript1 } from "react-icons/di";
 
 const TreeEditor = () => {
   const [gutter, setGutter] = useState(false);
@@ -49,13 +51,13 @@ const TreeEditor = () => {
               className="programming-language-tabs"
               defaultActiveKey="js"
             >
-              <TabPane tab="Js" key="js">
+              <TabPane tab={<div className="text-base">Js </div>} key="js">
                 <JsPanel />
               </TabPane>
-              <TabPane tab="Html" key="html">
+              <TabPane tab={<div className="text-base">Html </div>} key="html">
                 <HtmlPanel />
               </TabPane>
-              <TabPane tab="css" key="css">
+              <TabPane tab={<div className="text-base">Css</div>} key="css">
                 <CssPanel />
               </TabPane>
             </Tabs>
