@@ -102,8 +102,6 @@ const Editor: React.FC<CodeEditorProps> = ({
     return () => handleOnKeyDown.dispose();
   };
 
-  console.log(ready);
-
   return (
     <MonacoEditor
       value={initialValue}

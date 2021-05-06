@@ -38,21 +38,12 @@ body {
 }
 
 /* rc-tabs ============================================================================= */
-.rc-tabs {
+.programming-language-tabs {
   height: 89vh;
   display: flex;
   flex-direction: column;
+  border: none !important;
   @apply bg-tree-hard;
-}
-
-.rc-tabs-nav-operations {
-  display: none;
-}
-
-.rc-tabs-nav-list {
-  display: flex;
-  height: 1.5rem;
-  overflow: hidden;
 }
 
 .rc-tabs-content-holder,
@@ -61,23 +52,47 @@ body {
   height: 100%;
 }
 
-.rc-tabs-content {
-  padding-top: 15px;
+/*.rc-tabs-nav-operations {*/
+/*  display: none;*/
+/*}*/
+
+/*.rc-tabs-nav-list {*/
+/*  display: flex;*/
+/*  height: 1.5rem;*/
+/*  overflow: hidden;*/
+/*}*/
+
+/*.rc-tabs-content {*/
+/*  padding-top: 15px;*/
+/*}*/
+
+/*.rc-tabs-tab {*/
+/*  min-width: calc(100% / 3);*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  @apply cursor-pointer text-gray-600;*/
+/*}*/
+
+/*.rc-tabs-tab-active {*/
+/*  @apply text-green-500 border-t-2 border-green-500;*/
+/*}*/
+
+/*.rc-tabs-tab-btn {*/
+/*  height: 100%;*/
+/*}*/
+
+/*react-modal ======================================================================= */
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
 }
 
-.rc-tabs-tab {
-  min-width: calc(100% / 3);
-  display: flex;
-  justify-content: center;
-  @apply cursor-pointer text-gray-600;
+.ReactModal__Overlay--after-open {
+  opacity: 1;
 }
 
-.rc-tabs-tab-active {
-  @apply text-green-500 border-t-2 border-green-500;
-}
-
-.rc-tabs-tab-btn {
-  height: 100%;
+.ReactModal__Overlay--before-close {
+  opacity: 0;
 }
 
 /* preview ======================================================================= */
