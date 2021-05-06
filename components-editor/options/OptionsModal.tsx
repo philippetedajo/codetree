@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactModal from "react-modal";
 import Tabs, { TabPane } from "rc-tabs";
 import TemplateSelect from "./TemplateSelect";
+import News from "./News";
 
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 ReactModal.setAppElement("#editor_modal");
@@ -37,7 +38,7 @@ const Bar = () => {
       padding: 0,
       margin: 0,
       border: "none",
-      borderRadius: "5px",
+      borderRadius: "0",
     },
   };
 
@@ -61,7 +62,7 @@ const Bar = () => {
             <TemplateSelect setShowModal={setShowModal} />
           </TabPane>
           <TabPane tab="News" key="news">
-            News
+            <News />
           </TabPane>
         </Tabs>
       </ReactModal>

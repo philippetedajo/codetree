@@ -39,7 +39,7 @@ const TemplateSelect = ({ setShowModal }) => {
         manualBundleStart(_p5);
         break;
     }
-    // setShowModal(false);
+    setShowModal(false);
   };
 
   return (
@@ -47,34 +47,48 @@ const TemplateSelect = ({ setShowModal }) => {
       <h1 className="text-2xl font-bold pb-3 border-b border-tree-border">
         Create your tree
       </h1>
-      <div className="pt-3">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <button name="vanilla" onClick={onSelect}>
+      <div className="pt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <button
+            name="vanilla"
+            onClick={onSelect}
+            className="hover:bg-tree-soft p-2"
+          >
             <div className="flex pointer-events-none">
-              <Image src="/icons/vanilla.svg" width={40} height={40} />
+              <Image src="/icons/vanilla.svg" width={35} height={35} />
               <div className="flex flex-col items-start justify-start pl-4">
                 <div>Vanilla</div>
-                <div>description</div>
+                <div className="text-xs text-gray-400">Empty Js playground</div>
               </div>
             </div>
           </button>
 
-          <button name="react" onClick={onSelect}>
+          <button
+            name="react"
+            onClick={onSelect}
+            className="hover:bg-tree-soft p-2"
+          >
             <div className="flex pointer-events-none">
-              <Image src="/icons/reactjs.svg" width={40} height={40} />
+              <Image src="/icons/reactjs.svg" width={35} height={35} />
               <div className="flex flex-col items-start justify-start pl-4">
                 <div>React</div>
-                <div>description</div>
+                <div className="text-xs text-gray-400">ReactJs playground</div>
               </div>
             </div>
           </button>
 
-          <button name="p5" onClick={onSelect}>
+          <button
+            name="p5"
+            onClick={onSelect}
+            className="hover:bg-tree-soft p-2"
+          >
             <div className="flex pointer-events-none">
-              <Image src="/icons/p5-dot-js.svg" width={40} height={40} />
+              <Image src="/icons/p5-dot-js.svg" width={35} height={35} />
               <div className="flex flex-col items-start justify-start pl-4">
                 <div>P5</div>
-                <div>description</div>
+                <div className="text-xs justify-start text-gray-400">
+                  Processing for today’s web
+                </div>
               </div>
             </div>
           </button>
