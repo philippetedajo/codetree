@@ -38,10 +38,7 @@ body {
 }
 
 /* rc-tabs ============================================================================= */
-.rc-tabs-content-holder {
-  padding-top: 20px;
-}
-/* */
+
 .programming-language-tabs {
   height: 89vh;
   display: flex;
@@ -63,6 +60,10 @@ body {
   display: flex;
   justify-content: center;
   @apply cursor-pointer py-2 text-gray-600;
+}
+
+.programming-language-tabs .rc-tabs-content-holder {
+  padding-top: 20px;
 }
 
 /* */
