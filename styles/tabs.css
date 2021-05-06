@@ -1,7 +1,6 @@
 .rc-tabs-dropdown {
   position: absolute;
   background: #fefefe;
-  border: 1px solid black;
   max-height: 200px;
   overflow: auto;
 }
@@ -75,7 +74,7 @@
 .rc-tabs-left .rc-tabs-nav,
 .rc-tabs-right .rc-tabs-nav {
   flex-direction: column;
-  min-width: 50px;
+  min-width: 150px;
 }
 .rc-tabs-left .rc-tabs-nav-list,
 .rc-tabs-right .rc-tabs-nav-list {
@@ -104,7 +103,6 @@
   direction: rtl;
 }
 .rc-tabs {
-  border: 1px solid gray;
   font-size: 14px;
   overflow: hidden;
 }
@@ -185,7 +183,6 @@
 .rc-tabs-tab {
   border: 0;
   font-size: 20px;
-  background: rgba(255, 255, 255, 0.5);
   margin: 0;
   display: flex;
   outline: none;

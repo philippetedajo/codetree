@@ -23,6 +23,7 @@ const Bar = () => {
       backgroundColor: "rgba(0, 0, 0, 0.5)",
     },
     content: {
+      color: "white",
       width: "60%",
       height: "30rem",
       top: "50%",
@@ -31,6 +32,10 @@ const Bar = () => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
+      padding: 0,
+      margin: 0,
+      border: "none",
+      borderRadius: "5px",
     },
   };
 
@@ -41,16 +46,20 @@ const Bar = () => {
         isOpen={showModal}
         style={customModalStyles}
         contentLabel="Create a tree"
-        shouldCloseOnOverlayClick={true}
         closeTimeoutMS={300}
+        onRequestClose={closeModal}
+        shouldCloseOnOverlayClick={true}
       >
-        <button onClick={closeModal}>Close Modal</button>
-        <Tabs tabPosition="left" tabBarGutter={16}>
-          <TabPane key="light" tab="light">
-            Light
+        <Tabs
+          className="option-modal-tabs"
+          tabPosition="left"
+          tabBarGutter={16}
+        >
+          <TabPane tab="Templates" key="templates">
+            Template
           </TabPane>
-          <TabPane key="bamboo" tab="bamboo">
-            Bamboo
+          <TabPane tab="News" key="news">
+            News
           </TabPane>
         </Tabs>
       </ReactModal>
