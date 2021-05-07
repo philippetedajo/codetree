@@ -13,7 +13,7 @@ body {
 }
 
 *:focus {
-  outline: none;
+  outline: none !important;
 }
 
 button:focus {
