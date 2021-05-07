@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
   return (
     <footer
       style={{ height: "3.5vh" }}
-      className="font-semibold border-t border-black flex justify-between item-center px-5 text-sm bg-tree-soft text-white z-50"
+      className={`font-semibold border-t border-black flex justify-between item-center px-5 text-sm bg-tree-soft text-white z-50`}
     >
       <div className="flex">
         <a

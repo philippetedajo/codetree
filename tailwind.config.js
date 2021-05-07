@@ -1,10 +1,14 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: [],
+  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "pulse-slow": "pulse 3s linear infinite",
+      },
+    },
     colors: {
       // default
       gray: colors.trueGray,
