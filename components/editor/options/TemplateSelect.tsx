@@ -7,6 +7,8 @@ import {
 import { useAppDispatch } from "../../../store/hook";
 import { _empty, _react, _p5 } from "../templates";
 import bundler from "../../../bundler";
+import { CgTrees } from "react-icons/cg";
+import React from "react";
 
 const TemplateSelect = ({ setShowModal }) => {
   const dispatch = useAppDispatch();

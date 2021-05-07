@@ -16,6 +16,10 @@ body {
   outline: none;
 }
 
+button:focus {
+  outline: none !important;
+}
+
 .logo {
   @apply font-fredericka bg-green-500 text-tree-hard flex items-center justify-center;
 }

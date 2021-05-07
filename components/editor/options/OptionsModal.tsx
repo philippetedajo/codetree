@@ -46,7 +46,12 @@ const Bar = () => {
 
   return (
     <div id="editor_modal">
-      <button onClick={openModal}>Create a tree</button>
+      <button
+        onClick={openModal}
+        className="px-2 py-1 border-2 border-tree-hard flex items-start hover:text-green-500"
+      >
+        Create a tree <CgTrees size={27} className="ml-2" />
+      </button>
       <ReactModal
         isOpen={showModal}
         style={customModalStyles}
@@ -64,10 +69,10 @@ const Bar = () => {
             tab={
               <div className="flex">
                 <CgTrees size={27} className="mr-2" />
-                Tree
+                trees
               </div>
             }
-            key="tree"
+            key="trees"
           >
             <TemplateSelect setShowModal={setShowModal} />
           </TabPane>
