@@ -5,7 +5,7 @@ import prettier from "prettier";
 import parserBabel from "prettier/parser-babel";
 import parserCss from "prettier/parser-postcss";
 import parserHtml from "prettier/parser-html";
-import { CodeEditorProps } from "../_types";
+import { CodeEditorProps } from "../../_types";
 
 const Editor: React.FC<CodeEditorProps> = ({
   initialValue,

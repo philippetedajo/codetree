@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce";
-import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { useAppDispatch, useAppSelector } from "../../../store/hook";
 import {
   update_async_code_start,
   update_async_code_finished,
   editor_state,
-} from "../../store/features/editorSlice";
+} from "../../../store/features/editorSlice";
 import Editor from "../Editor";
-import bundler from "../../bundler";
+import bundler from "../../../bundler";
 import { _react, _empty, _p5 } from "../templates";
 
 export const JsPanel: React.FC = () => {

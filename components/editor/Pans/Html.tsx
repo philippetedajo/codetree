@@ -1,10 +1,10 @@
 import React from "react";
 import { useDebouncedCallback } from "use-debounce";
-import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { useAppDispatch, useAppSelector } from "../../../store/hook";
 import {
   editor_state,
   update_sync_code,
-} from "../../store/features/editorSlice";
+} from "../../../store/features/editorSlice";
 
 import Editor from "../Editor";
 import { _empty, _p5, _react } from "../templates";

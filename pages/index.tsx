@@ -2,14 +2,14 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import Split from "react-split";
 import Tabs, { TabPane } from "rc-tabs";
-import { JsPanel, HtmlPanel, CssPanel } from "../components-editor/Pans";
-import Footer from "../components-editor/Footer";
-import Header from "../components-editor/Header";
+import { JsPanel, HtmlPanel, CssPanel } from "../components/editor/Pans";
+import Footer from "../components/editor/Footer";
+import Header from "../components/editor/Header";
 import React from "react";
 
 const TreeEditor = () => {
   const PreviewWithNoSSR = dynamic(
-    () => import("../components-editor/Preview"),
+    () => import("../components/editor/Preview"),
     {
       ssr: false,
     }

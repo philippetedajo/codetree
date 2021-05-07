@@ -3,10 +3,10 @@ import {
   update_async_code_finished,
   update_async_code_start,
   update_template,
-} from "../../store/features/editorSlice";
-import { useAppDispatch } from "../../store/hook";
+} from "../../../store/features/editorSlice";
+import { useAppDispatch } from "../../../store/hook";
 import { _empty, _react, _p5 } from "../templates";
-import bundler from "../../bundler";
+import bundler from "../../../bundler";
 
 const TemplateSelect = ({ setShowModal }) => {
   const dispatch = useAppDispatch();
