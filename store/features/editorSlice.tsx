@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { UpdateCode } from "../../_types";
-import { _empty } from "../../components-editor/templates";
+import { _empty } from "../../components/editor/templates";
 
 const initialEditorState = {
   codeEditor: _empty,

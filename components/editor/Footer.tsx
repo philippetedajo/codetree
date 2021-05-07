@@ -1,6 +1,6 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../store/hook";
-import { editor_state, toggle_console } from "../store/features/editorSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { editor_state, toggle_console } from "../../store/features/editorSlice";
 
 const Footer: React.FC = () => {
   const {
