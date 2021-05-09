@@ -174,10 +174,3 @@ button:focus {
 .monaco-editor .margin {
   background-color: transparent !important;
 }
-
-/* console ======================================================================= */
-
-.console_style {
-  overflow-x: hidden;
-  overflow-y: auto;
-}

@@ -18,7 +18,7 @@ const Main = () => {
   };
 
   return (
-    <>
+    <main className="flex flex-grow flex-shrink-0">
       <Split
         sizes={[50, 50]}
         minSize={100}
@@ -29,7 +29,7 @@ const Main = () => {
         dragInterval={1}
         direction="horizontal"
         cursor="col-resize"
-        className="flex flex-shrink flex-grow"
+        className="flex flex-grow "
       >
         <div>
           <Tabs
@@ -51,11 +51,11 @@ const Main = () => {
         </div>
         {/* */}
         <div>
-          <button onClick={handleToggleFocusMode}>toggle Focus mode</button>
+          {/*<button onClick={handleToggleFocusMode}>toggle Focus mode</button>*/}
           <PreviewWithNoSSR />
         </div>
       </Split>
-    </>
+    </main>
   );
 };
 

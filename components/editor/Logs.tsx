@@ -5,7 +5,7 @@ import { Console } from "console-feed";
 const Logs = ({ logs, clearConsole }) => {
   return (
     <div>
-      <div className="text-white flex justify-end text-sm shadow px-5 py-1">
+      <div className="text-white flex justify-end text-sm shadow px-5 py-1 ">
         <div onClick={clearConsole}>
           <Image
             src="/icons/clear-outlined.svg"
@@ -16,6 +16,7 @@ const Logs = ({ logs, clearConsole }) => {
           />
         </div>
       </div>
+
       <Console
         styles={{
           BASE_FONT_FAMILY: '"Rubik", sans-serif;',
