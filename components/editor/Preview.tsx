@@ -1,13 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Resizable } from "re-resizable";
-import { Console, Hook } from "console-feed";
+import { Hook } from "console-feed";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import {
   editor_state,
   update_console_logs,
 } from "../../store/features/editorSlice";
 import EditorLoader from "./others/EditorLoader";
-import Image from "next/image";
 import Logs from "./Logs";
 
 const Preview: React.FC = () => {
@@ -97,7 +96,6 @@ const Preview: React.FC = () => {
     setLogs([]);
   };
 
-  // console.log(js.code.data);
   return (
     <div className="preview-wrapper">
       {!js.code.data || js.code.loading ? (
@@ -141,7 +139,7 @@ const Preview: React.FC = () => {
           topLeft: false,
         }}
       >
-        <Logs logs={logs} />
+        <Logs logs={logs} clearConsole={clearConsole} />
       </Resizable>
     </div>
   );

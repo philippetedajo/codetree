@@ -2,16 +2,17 @@ import React from "react";
 import Image from "next/image";
 import { Console } from "console-feed";
 
-const Logs = ({ logs }) => {
+const Logs = ({ logs, clearConsole }) => {
   return (
     <div>
       <div className="text-white flex justify-end text-sm shadow px-5 py-1">
-        <div>
+        <div onClick={clearConsole}>
           <Image
             src="/icons/clear-outlined.svg"
             alt="clear"
-            width={30}
-            height={30}
+            width={25}
+            height={25}
+            className="cursor-pointer"
           />
         </div>
       </div>
