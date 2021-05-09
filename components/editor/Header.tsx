@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   return (
     <header
       style={{ height: isFocusMode ? "0" : "6vh" }}
-      className="flex flex-shrink-0 px-5 justify-between items-center border-b border-black bg-tree-soft text-white"
+      className="flex flex-shrink-0 px-5 justify-between items-center border-b border-black bg-tree-soft text-white transition-all duration-700"
     >
       {/*<div className="logo text-4xl w-9 h-9">C</div>*/}
       {/*<OptionsModal />*/}
