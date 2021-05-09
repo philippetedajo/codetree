@@ -125,7 +125,7 @@ const Preview: React.FC = () => {
         minHeight="10vh"
         maxHeight="60vh"
         defaultSize={{ width: "100%", height: "40vh" }}
-        className={`console_style border-2 border-red-600 ${
+        className={`console_style ${
           isConsoleOpen ? "flex flex-col" : "hidden"
         } `}
         enable={{

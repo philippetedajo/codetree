@@ -6,7 +6,9 @@ const Footer: React.FC = () => {
   const {
     codeEditor: { js },
     hasConsoleLogs,
+    isFocusMode,
   } = useAppSelector(editor_state);
+
   const dispatch = useAppDispatch();
 
   const handleToggleConsole = () => {
@@ -15,7 +17,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer
-      style={{ height: "3vh" }}
+      style={{ height: isFocusMode ? "0" : "3vh" }}
       className={`flex flex-shrink-0 justify-between item-center font-semibold border-t border-black px-5 text-sm bg-tree-soft text-white z-50`}
     >
       {/*<div className="flex">*/}

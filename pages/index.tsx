@@ -5,7 +5,7 @@ import Header from "../components/editor/Header";
 
 const TreeEditor = () => {
   return (
-    <div className="min-h-screen flex items-stretch flex-col bg-editor_secondary border-2 border-red-600">
+    <div className="min-h-screen flex items-stretch flex-col bg-editor_secondary">
       <Head>
         <meta charSet="utf-8" />
         <title>Codetree | Playground</title>

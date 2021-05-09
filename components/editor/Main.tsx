@@ -3,11 +3,20 @@ import Split from "react-split";
 import dynamic from "next/dynamic";
 import Tabs, { TabPane } from "rc-tabs";
 import { JsPanel, HtmlPanel, CssPanel } from "./Pans";
+import { useAppDispatch } from "../../store/hook";
+import { toggle_focus_mode } from "../../store/features/editorSlice";
 
 const Main = () => {
   const PreviewWithNoSSR = dynamic(() => import("./Preview"), {
     ssr: false,
   });
+
+  const dispatch = useAppDispatch();
+
+  const handleToggleFocusMode = () => {
+    dispatch(toggle_focus_mode());
+  };
+
   return (
     <>
       <Split
@@ -42,6 +51,7 @@ const Main = () => {
         </div>
         {/* */}
         <div>
+          <button onClick={handleToggleFocusMode}>toggle Focus mode</button>
           <PreviewWithNoSSR />
         </div>
       </Split>
