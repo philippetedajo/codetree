@@ -2,6 +2,7 @@ import "../styles/editor-global.css";
 import "../styles/monaco-css.css";
 import "../styles/editorLoader.css";
 import "../styles/tabs.css";
+import "../styles/resizer.css";
 
 import Head from "next/head";
 import { Provider } from "react-redux";

@@ -126,7 +126,7 @@ const Preview: React.FC = () => {
         minHeight="10vh"
         maxHeight="60vh"
         defaultSize={{ width: "100%", height: "40vh" }}
-        className={`console_style ${
+        className={`console_style border-2 border-red-600 ${
           isConsoleOpen ? "flex flex-col" : "hidden"
         } `}
         enable={{
@@ -144,7 +144,7 @@ const Preview: React.FC = () => {
           <div onClick={clearConsole}>
             <Image
               src="/icons/clear-outlined.svg"
-              alt="p5 js"
+              alt="clear"
               width={30}
               height={30}
             />

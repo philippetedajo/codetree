@@ -5,8 +5,9 @@ import { _empty } from "../../components/editor/templates";
 
 const initialEditorState = {
   codeEditor: _empty,
-  isConsoleOpen: false,
+  isConsoleOpen: true, //to set to false
   hasConsoleLogs: false,
+  isFocusMode: false,
 };
 
 export const editorSlice = createSlice({
@@ -41,6 +42,9 @@ export const editorSlice = createSlice({
     toggle_console: (state) => {
       state.isConsoleOpen = !state.isConsoleOpen;
     },
+    toggle_focus_mode: (state) => {
+      state.isFocusMode = !state.isFocusMode;
+    },
   },
 });
 
@@ -51,6 +55,7 @@ export const {
   update_console_logs,
   update_template,
   toggle_console,
+  toggle_focus_mode,
 } = editorSlice.actions;
 
 export const editor_state = (state: RootState) => state.editor;
