@@ -8,6 +8,7 @@ import {
 } from "../../store/features/editorSlice";
 import EditorLoader from "./others/EditorLoader";
 import Image from "next/image";
+import Logs from "./Logs";
 
 const Preview: React.FC = () => {
   const iframe = useRef<any>();
@@ -140,26 +141,7 @@ const Preview: React.FC = () => {
           topLeft: false,
         }}
       >
-        <div className="text-white flex justify-end text-sm shadow px-5 py-1">
-          <div onClick={clearConsole}>
-            <Image
-              src="/icons/clear-outlined.svg"
-              alt="clear"
-              width={30}
-              height={30}
-            />
-          </div>
-        </div>
-        <Console
-          styles={{
-            BASE_FONT_FAMILY: '"Rubik", sans-serif;',
-            BASE_FONT_SIZE: 14,
-            BASE_BACKGROUND_COLOR: "#171E25",
-            LOG_BORDER: "#303b47",
-          }}
-          logs={logs}
-          variant="dark"
-        />
+        <Logs logs={logs} />
       </Resizable>
     </div>
   );
