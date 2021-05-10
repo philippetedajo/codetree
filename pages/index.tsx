@@ -1,71 +1,22 @@
 import Head from "next/head";
-import dynamic from "next/dynamic";
-import Split from "react-split";
-import Tabs, { TabPane } from "rc-tabs";
-import { JsPanel, HtmlPanel, CssPanel } from "../components/editor/Pans";
 import Footer from "../components/editor/Footer";
+import Main from "../components/editor/Main";
 import Header from "../components/editor/Header";
 import React from "react";
 
 const TreeEditor = () => {
-  const PreviewWithNoSSR = dynamic(
-    () => import("../components/editor/Preview"),
-    {
-      ssr: false,
-    }
-  );
-
   return (
-    <div>
-      <div className="bg-editor_secondary" style={{ height: "100vh" }}>
-        <Head>
-          <meta charSet="utf-8" />
-          <title>Codetree | Playground</title>
-        </Head>
-
-        {/* Head ======================================= */}
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <title>Codetree | Playground</title>
+      </Head>
+      <div className="min-h-screen flex flex-col bg-editor_secondary">
         <Header />
-
-        {/* Editor and Preview ======================================= */}
-        <Split
-          sizes={[50, 50]}
-          minSize={100}
-          expandToMin={true}
-          gutterSize={10}
-          gutterAlign="center"
-          snapOffset={30}
-          dragInterval={1}
-          direction="horizontal"
-          cursor="col-resize"
-          className="flex"
-        >
-          <div>
-            <Tabs
-              tabPosition={"top"}
-              tabBarGutter={16}
-              className="programming-language-tabs"
-              defaultActiveKey="js"
-            >
-              <TabPane tab={<div className="text-base">Js </div>} key="js">
-                <JsPanel />
-              </TabPane>
-              <TabPane tab={<div className="text-base">Html </div>} key="html">
-                <HtmlPanel />
-              </TabPane>
-              <TabPane tab={<div className="text-base">Css</div>} key="css">
-                <CssPanel />
-              </TabPane>
-            </Tabs>
-          </div>
-          <div>
-            <PreviewWithNoSSR />
-          </div>
-        </Split>
-
-        {/* Foot ======================================= */}
+        <Main />
         <Footer />
       </div>
-    </div>
+    </>
   );
 };
 

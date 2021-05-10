@@ -10,6 +10,7 @@ body {
   padding: 0;
   overflow: hidden;
   font-family: "Quicksand", sans-serif;
+  height: 100% !important;
 }
 
 *:focus {
@@ -44,8 +45,8 @@ button:focus {
 /* rc-tabs ============================================================================= */
 
 .programming-language-tabs {
-  height: 89vh;
   display: flex;
+  height: 100%;
   flex-direction: column;
   border: none !important;
   @apply bg-tree-hard;
@@ -172,12 +173,4 @@ button:focus {
 }
 .monaco-editor .margin {
   background-color: transparent !important;
-}
-
-/* console ======================================================================= */
-
-.console_style {
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: absolute;
 }

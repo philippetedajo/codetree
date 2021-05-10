@@ -1,13 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Resizable } from "re-resizable";
-import { Console, Hook } from "console-feed";
+import { Hook } from "console-feed";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import {
   editor_state,
   update_console_logs,
 } from "../../store/features/editorSlice";
 import EditorLoader from "./others/EditorLoader";
-import Image from "next/image";
+import Logs from "./Logs";
 
 const Preview: React.FC = () => {
   const iframe = useRef<any>();
@@ -96,7 +96,6 @@ const Preview: React.FC = () => {
     setLogs([]);
   };
 
-  // console.log(js.code.data);
   return (
     <div className="preview-wrapper">
       {!js.code.data || js.code.loading ? (
@@ -126,9 +125,7 @@ const Preview: React.FC = () => {
         minHeight="10vh"
         maxHeight="60vh"
         defaultSize={{ width: "100%", height: "40vh" }}
-        className={`console_style ${
-          isConsoleOpen ? "flex flex-col" : "hidden"
-        } `}
+        className={`${isConsoleOpen ? "flex flex-col" : "hidden"} `}
         enable={{
           top: true,
           right: false,
@@ -140,26 +137,7 @@ const Preview: React.FC = () => {
           topLeft: false,
         }}
       >
-        <div className="text-white flex justify-end text-sm shadow px-5 py-1">
-          <div onClick={clearConsole}>
-            <Image
-              src="/icons/clear-outlined.svg"
-              alt="p5 js"
-              width={30}
-              height={30}
-            />
-          </div>
-        </div>
-        <Console
-          styles={{
-            BASE_FONT_FAMILY: '"Rubik", sans-serif;',
-            BASE_FONT_SIZE: 14,
-            BASE_BACKGROUND_COLOR: "#171E25",
-            LOG_BORDER: "#303b47",
-          }}
-          logs={logs}
-          variant="dark"
-        />
+        <Logs logs={logs} clearConsole={clearConsole} />
       </Resizable>
     </div>
   );
