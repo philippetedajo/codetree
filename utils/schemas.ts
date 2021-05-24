@@ -23,6 +23,7 @@ let schemas = {
       /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/,
       "Your password should have at least 8 characters, one capital letter and one number."
     ),
+  last_password: yup.string().required("You must enter your last password"),
   confirm_password: yup
     .string()
     .oneOf([yup.ref("password"), null], "Passwords must match"),
@@ -35,6 +36,7 @@ const {
   min,
   password,
   confirm_password,
+  last_password,
   status,
   description,
 } = schemas;
@@ -65,4 +67,13 @@ export const updateProfileSchema = yup.object().shape({
   username,
   description,
   status,
+});
+
+export const updateEmailSchema = yup.object().shape({
+  email,
+});
+
+export const updatePasswordSchema = yup.object().shape({
+  last_password,
+  password,
 });

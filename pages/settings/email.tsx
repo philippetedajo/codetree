@@ -1,7 +1,83 @@
+import { yupResolver } from "@hookform/resolvers/yup";
+import React, { useState } from "react";
 import { SettingsLayout } from "../../components/share";
+import {
+  checkSession,
+  withSession,
+  fetcher,
+  updateEmailSchema,
+} from "../../utils";
+import { useForm } from "react-hook-form";
+import { UpdateEmailForm } from "../../_types/profile_types";
+import { useUser } from "../../hooks";
 
 const Email = () => {
-  return <SettingsLayout>email update</SettingsLayout>;
+  const { user } = useUser();
+
+  const { register, handleSubmit, errors } = useForm<UpdateEmailForm>({
+    resolver: yupResolver(updateEmailSchema),
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<any>({});
+
+  const onSubmit = async (formData: UpdateEmailForm) => {
+    console.log(formData);
+    const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/auth/profile/updateEmail`;
+
+    setLoading(true);
+
+    //TODO
+
+    // const result = await fetcher(url, "POST", user.token, {
+    //   token: user?.token,
+    //   email: formData.email,
+    // });
+    // setData(result);
+
+    setLoading(false);
+  };
+
+  console.log(data);
+  return (
+    <SettingsLayout>
+      <form
+        className="flex flex-col pt-3 w-80 md:w-112"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <h2 className="my-4 text-3xl ">Change your email </h2>
+        <label className="mb-2">Email *</label>
+        <input
+          className="border-2 border-black"
+          name="email"
+          type="email"
+          ref={register}
+        />
+        <small className="mt-1 text-red-500">{errors.email?.message}</small>
+
+        <button
+          disabled={loading}
+          className={`bg-blue-600 text-white mt-8 h-10 mb-4 ${
+            loading ? "disabled:opacity-70" : ""
+          }`}
+        >
+          {loading ? "... Processing" : "Save"}
+        </button>
+
+        <div className="text-red-500">
+          {data?.type === "error" ? data?.data?.message : ""}
+        </div>
+      </form>
+    </SettingsLayout>
+  );
 };
 
 export default Email;
+
+export const getServerSideProps = withSession(async ({ req, res }) => {
+  checkSession(req, res);
+
+  return {
+    props: {},
+  };
+});

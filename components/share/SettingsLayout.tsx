@@ -23,16 +23,16 @@ export const SettingsLayout = ({ children }) => {
               <div className="hidden sm:block">Profile</div>
             </a>
           </Link>
-          <Link href="/settings/password">
-            <a className="flex items-center sm:mb-4">
-              <ShieldCheckIcon className="w-7 h-7 mr-2" />
-              <div className="hidden sm:block">Password</div>
-            </a>
-          </Link>
           <Link href="/settings/email">
             <a className="flex items-center sm:mb-4">
               <MailIcon className="w-7 h-7 mr-2" />
               <div className="hidden sm:block">Email</div>
+            </a>
+          </Link>
+          <Link href="/settings/password">
+            <a className="flex items-center sm:mb-4">
+              <ShieldCheckIcon className="w-7 h-7 mr-2" />
+              <div className="hidden sm:block">Password</div>
             </a>
           </Link>
         </div>
