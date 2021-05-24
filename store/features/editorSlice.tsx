@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { UpdateCode } from "../../_types";
+import { UpdateCode } from "../../_types/editor_types";
 import { _empty } from "../../components/editor/templates";
 
 const initialEditorState = {
   codeEditor: _empty,
-  isConsoleOpen: true, //to set to false
+  isConsoleOpen: false, //to set to false
   hasConsoleLogs: false,
-  isFocusMode: false,
+  isModalOpen: false,
 };
 
 export const editorSlice = createSlice({
@@ -39,11 +39,11 @@ export const editorSlice = createSlice({
     update_template: (state, { payload }) => {
       state.codeEditor = payload;
     },
+    update_modal: (state, { payload }) => {
+      state.isModalOpen = payload;
+    },
     toggle_console: (state) => {
       state.isConsoleOpen = !state.isConsoleOpen;
-    },
-    toggle_focus_mode: (state) => {
-      state.isFocusMode = !state.isFocusMode;
     },
   },
 });
@@ -55,7 +55,7 @@ export const {
   update_console_logs,
   update_template,
   toggle_console,
-  toggle_focus_mode,
+  update_modal,
 } = editorSlice.actions;
 
 export const editor_state = (state: RootState) => state.editor;

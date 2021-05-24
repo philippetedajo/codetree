@@ -2,11 +2,16 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       animation: {
         "pulse-slow": "pulse 3s linear infinite",
+      },
+      width: {
+        112: "30rem",
+      },
+      borderWidth: {
+        3: "3px",
       },
     },
     colors: {
@@ -36,7 +41,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      opacity: ["disabled"],
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 };

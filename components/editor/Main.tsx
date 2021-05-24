@@ -3,22 +3,15 @@ import Split from "react-split";
 import dynamic from "next/dynamic";
 import Tabs, { TabPane } from "rc-tabs";
 import { JsPanel, HtmlPanel, CssPanel } from "./Pans";
-import { useAppDispatch } from "../../store/hook";
-import { toggle_focus_mode } from "../../store/features/editorSlice";
+import EditorModal from "./modal";
 
 const Main = () => {
   const PreviewWithNoSSR = dynamic(() => import("./Preview"), {
     ssr: false,
   });
 
-  const dispatch = useAppDispatch();
-
-  const handleToggleFocusMode = () => {
-    dispatch(toggle_focus_mode());
-  };
-
   return (
-    <main className="flex flex-grow flex-shrink-0">
+    <main className="flex flex-grow flex-shrink-0  border-t-2 border-b-2 border-black bg-tree-hard">
       <Split
         sizes={[50, 50]}
         minSize={100}
@@ -49,12 +42,11 @@ const Main = () => {
             </TabPane>
           </Tabs>
         </div>
-        {/* */}
         <div>
-          {/*<button onClick={handleToggleFocusMode}>toggle Focus mode</button>*/}
           <PreviewWithNoSSR />
         </div>
       </Split>
+      <EditorModal />
     </main>
   );
 };

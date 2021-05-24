@@ -1,30 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Quicksand:wght@500&display=swap");
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  font-family: "Quicksand", sans-serif;
-  height: 100% !important;
-}
-
-*:focus {
-  outline: none !important;
-}
-
-button:focus {
-  outline: none !important;
-}
-
-.logo {
-  @apply font-fredericka bg-green-500 text-tree-hard flex items-center justify-center;
-}
-
 /* react-split ============================================================================= */
 .gutter {
   @apply bg-tree-border;
@@ -33,13 +6,13 @@ button:focus {
 }
 
 .gutter.gutter-horizontal {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==");
   cursor: col-resize;
+  @apply bg-gray-300;
 }
 
 .gutter.gutter-vertical {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=");
   cursor: row-resize;
+  @apply bg-gray-300;
 }
 
 /* rc-tabs ============================================================================= */
@@ -49,15 +22,12 @@ button:focus {
   height: 100%;
   flex-direction: column;
   border: none !important;
-  @apply bg-tree-hard;
 }
 
 .programming-language-tabs .rc-tabs-tab:hover {
-  @apply bg-tree-soft;
 }
 
 .programming-language-tabs .rc-tabs-tab-active {
-  @apply text-green-500;
 }
 
 .programming-language-tabs .rc-tabs-tab-btn {
@@ -92,7 +62,6 @@ button:focus {
 }
 
 .option-modal-tabs .rc-tabs-tab:hover {
-  @apply bg-tree-hard;
 }
 
 .option-modal-tabs .rc-tabs-tab-active {
@@ -140,7 +109,6 @@ button:focus {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  @apply bg-tree-hard;
 }
 
 .preview-wrapper iframe {
