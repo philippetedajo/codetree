@@ -17,7 +17,12 @@ let schemas = {
   email: yup.string().email().required("You must enter an email"),
   min: yup.string().required("You must your password"),
   status: yup.string().max(50),
-  password: yup.string().required("You must enter a password").min(5),
+  password: yup
+    .string()
+    .matches(
+      /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/,
+      "Your password should have at least 8 characters, one capital letter and one number."
+    ),
   confirm_password: yup
     .string()
     .oneOf([yup.ref("password"), null], "Passwords must match"),

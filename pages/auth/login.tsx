@@ -56,7 +56,7 @@ const Login: React.FC = () => {
           </h1>
           <h2 className="mb-5 text-3xl ">
             {router?.query?.event_message
-              ? "Welcome to Codetree 🔥"
+              ? "Welcome to Codetree"
               : "Login to your account"}
           </h2>
 
