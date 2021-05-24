@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   checkSession,
   fetcher,
+  notify,
   updateProfileSchema,
   withSession,
 } from "../../utils";
@@ -10,6 +11,8 @@ import { useForm } from "react-hook-form";
 import { UpdateProfileForm } from "../../_types/profile_types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useUser } from "../../hooks";
+import { responseType } from "../../_types/share_types";
+import { ToastContainer } from "react-toastify";
 
 const Index = () => {
   const { user } = useUser();
@@ -28,16 +31,18 @@ const Index = () => {
     const result = await fetcher(url, "POST", user?.token, formData);
     setData(result);
 
+    if (data?.data?.code === 200) {
+      notify(responseType.success, "We've saved your profile changes");
+    }
+
     setLoading(false);
   };
 
-  console.log(data);
-
-  //TODO NOTIFICATION ON SAVE
   //TODO AVATAR UPDATE
 
   return (
     <SettingsLayout>
+      <ToastContainer hideProgressBar={true} autoClose={8000} />
       <form
         className="flex flex-col pt-3 w-80 md:w-112"
         onSubmit={handleSubmit(onSubmit)}
@@ -105,9 +110,9 @@ const Index = () => {
           {loading ? "... Processing" : "Save"}
         </button>
 
-        {/*<div className="text-red-500">*/}
-        {/*  {data?.type === "error" ? data?.data?.message : ""}*/}
-        {/*</div>*/}
+        <div className="text-red-500">
+          {data?.type === "error" ? data?.data?.message : ""}
+        </div>
       </form>
     </SettingsLayout>
   );

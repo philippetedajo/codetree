@@ -29,7 +29,10 @@ export default function Dropdown() {
   };
 
   return (
-    <Menu as="div" className="relative inline-block text-left z-10">
+    <Menu
+      as="div"
+      className="relative inline-block text-left z-10 bg-transparent"
+    >
       {({ open }) => (
         <>
           <div>

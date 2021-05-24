@@ -1,17 +1,10 @@
 import { useRouter } from "next/router";
 import React from "react";
 import Link from "next/link";
-import { XIcon } from "@heroicons/react/solid";
 import { motion } from "framer-motion";
-import {
-  beta_bar,
-  beta_bar_text,
-  menu,
-  text_reveal,
-} from "../../utils/framer-animation";
+import { menu, text_reveal } from "../../utils/framer-animation";
 import Dropdown from "./Dropdown";
 import { useUser } from "../../hooks";
-import { ToastContainer } from "react-toastify";
 
 export const AppLayout = ({ children }) => {
   const { user } = useUser();
@@ -19,33 +12,6 @@ export const AppLayout = ({ children }) => {
 
   return (
     <div>
-      <ToastContainer hideProgressBar={true} autoClose={8000} />
-      {/* =================beta bar================ */}
-
-      {router.pathname !== "/playground" && (
-        <motion.div
-          initial="initial"
-          animate="animate"
-          variants={beta_bar}
-          className="flex justify-center mb-2 px-5 py-1 items-center text-white shadow-lg bg-gradient-to-l from-blue-600 to-blue-700 "
-        >
-          <motion.div
-            variants={beta_bar_text}
-            className="flex text-sm text-gray-100"
-          >
-            Beta 1.1 🌱:
-            <a
-              className="ml-1 hover:text-gray-300 h-full flex items-center"
-              href="https://github.com/philippetedajo/Codetree"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Support us by leaving a star on Github
-            </a>
-          </motion.div>
-        </motion.div>
-      )}
-
       {/*    =================================    */}
       <motion.div
         initial="initial"

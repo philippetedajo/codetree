@@ -26,6 +26,7 @@ module.exports = {
       pink: colors.pink,
       white: colors.white,
       black: "black",
+      transparent: "transparent",
       tree: {
         hard: "#171E25",
         soft: "#1B252D",

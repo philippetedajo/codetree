@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useUser } from "../../hooks";
 import { useForm } from "react-hook-form";
 import { LoginForm } from "../../_types/auth_types";
 import { fetcher, loginSchema } from "../../utils";
 import Head from "next/head";
-import { notify } from "../../utils";
 import { responseType } from "../../_types/share_types";
 
 const Login: React.FC = () => {
@@ -16,8 +14,6 @@ const Login: React.FC = () => {
     redirectTo: "/profile",
     redirectIfFound: true,
   });
-
-  const router = useRouter();
 
   const { register, handleSubmit, errors } = useForm<LoginForm>({
     resolver: yupResolver(loginSchema),

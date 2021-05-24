@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { fetcher, notify, resetPasswordSchema } from "../../utils";
 import { useRouter } from "next/router";
 import { responseType } from "../../_types/share_types";
+import { ToastContainer } from "react-toastify";
 
 const ResetPassword = () => {
   //here we just check if user is already logged in and redirect to profile
@@ -58,6 +59,7 @@ const ResetPassword = () => {
         <title>Reset password | Codetree</title>
         <meta name="description" content="Login to your Codetree account" />
       </Head>
+      <ToastContainer hideProgressBar={true} autoClose={8000} />
       <div className="h-screen flex flex-col items-center pt-14">
         <form
           className="flex flex-col mt-3 w-80 md:w-112"
