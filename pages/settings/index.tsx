@@ -12,7 +12,6 @@ import { UpdateProfileForm } from "../../_types/profile_types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useUser } from "../../hooks";
 import { responseType } from "../../_types/share_types";
-import { ToastContainer } from "react-toastify";
 
 const Index = () => {
   const { user } = useUser();
@@ -28,21 +27,21 @@ const Index = () => {
     setLoading(true);
 
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/auth/profile/update`;
-    const result = await fetcher(url, "POST", user?.token, formData);
-    setData(result);
-
-    if (data?.data?.code === 200) {
-      notify(responseType.success, "We've saved your profile changes");
-    }
+    await fetcher(url, "POST", user?.token, formData).then((result) => {
+      setData(result);
+      if (result.data.code === 200) {
+        notify(responseType.success, "We've saved your profile changes");
+      }
+    });
 
     setLoading(false);
   };
 
+  console.log(data);
   //TODO AVATAR UPDATE
 
   return (
     <SettingsLayout>
-      <ToastContainer hideProgressBar={true} autoClose={8000} />
       <form
         className="flex flex-col pt-3 w-80 md:w-112"
         onSubmit={handleSubmit(onSubmit)}

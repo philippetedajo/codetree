@@ -12,7 +12,9 @@ import Router from "next/router";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
 import NProgress from "nprogress";
-import { AppLayout } from "../components/share";
+import { AppLayout, SettingsLayout } from "../components/share";
+import { ToastContainer } from "react-toastify";
+import React from "react";
 
 function MyApp({ Component, pageProps }) {
   NProgress.configure({ showSpinner: false });
@@ -29,6 +31,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <AppLayout>
+        <ToastContainer hideProgressBar={true} autoClose={8000} />
         <Component {...pageProps} />
       </AppLayout>
     </Provider>

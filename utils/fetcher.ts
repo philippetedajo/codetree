@@ -34,6 +34,6 @@ export const fetcher = async (
 };
 
 function notifier(type: string, data: any) {
-  console.log({ type: type, data: data });
+  // console.log({ type: type, data: data });
   return { type: type, data: data };
 }
