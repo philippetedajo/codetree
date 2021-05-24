@@ -12,7 +12,7 @@ export const SettingsLayout = ({ children }) => {
     <div className="pt-4 sm:pt-8 px-3 lg:px-24 flex flex-col sm:flex-row">
       <nav className="sm:w-56 sm:pt-5">
         <ChevronLeftIcon
-          onClick={() => Router.back()}
+          onClick={() => Router.push("/profile")}
           className="w-5 h-5 text-3xl mb-5 sm:mb-4 cursor-pointer"
         />
 

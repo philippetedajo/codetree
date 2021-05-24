@@ -28,10 +28,10 @@ const Index = () => {
 
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/auth/profile/update`;
     await fetcher(url, "POST", user?.token, formData).then((result) => {
-      setData(result);
       if (result.data.code === 200) {
         notify(responseType.success, "We've saved your profile changes");
       }
+      setData(result);
     });
 
     setLoading(false);
