@@ -3,8 +3,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { fetcher, notify } from "../../utils";
 import { useUser } from "../../hooks";
-import { responseType } from "../../_types/share_types";
-import { ToastContainer } from "react-toastify";
 
 const Confirm = () => {
   const { user } = useUser({
@@ -35,13 +33,11 @@ const Confirm = () => {
   }, [router]);
 
   if (data?.data?.code === 200) {
-    notify(
-      responseType.success,
-      "Account successfully created. Thank you for your registration!"
-    );
-
     router.push({
       pathname: "/auth/login",
+      query: {
+        event_message: "Your account has been activated successfully !",
+      },
     });
   }
 
@@ -55,8 +51,6 @@ const Confirm = () => {
         <title>Confirm | Codetree</title>
         <meta name="description" content="Create a Codetree account" />
       </Head>
-
-      <ToastContainer hideProgressBar={true} autoClose={8000} />
 
       {data?.data?.message !== 200 && !loading && (
         <div className="flex justify-center items-center mt-48">

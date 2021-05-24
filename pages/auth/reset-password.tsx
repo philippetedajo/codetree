@@ -4,9 +4,8 @@ import { useUser } from "../../hooks";
 import { useForm } from "react-hook-form";
 import { ResetPasswordForm } from "../../_types/auth_types";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { fetcher, notify, resetPasswordSchema } from "../../utils";
+import { fetcher, resetPasswordSchema } from "../../utils";
 import { useRouter } from "next/router";
-import { responseType } from "../../_types/share_types";
 import { ToastContainer } from "react-toastify";
 
 const ResetPassword = () => {
@@ -43,13 +42,9 @@ const ResetPassword = () => {
   }
 
   if (data?.data?.code === 200) {
-    notify(
-      responseType.success,
-      "Password change successfully, you can now login."
-    );
-
     router.push({
       pathname: "/auth/login",
+      query: { event_message: "Your password has been reset successfully !" },
     });
   }
 

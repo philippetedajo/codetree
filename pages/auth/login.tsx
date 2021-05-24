@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useUser } from "../../hooks";
@@ -14,6 +15,10 @@ const Login: React.FC = () => {
     redirectTo: "/profile",
     redirectIfFound: true,
   });
+
+  const router = useRouter();
+
+  console.log(router?.query);
 
   const { register, handleSubmit, errors } = useForm<LoginForm>({
     resolver: yupResolver(loginSchema),
@@ -48,6 +53,7 @@ const Login: React.FC = () => {
           className="flex flex-col mt-3 w-80 md:w-112"
           onSubmit={handleSubmit(onSubmit)}
         >
+          <h1 className="mb-5">{router?.query?.event_message}</h1>
           <h2 className="mb-8 text-3xl ">Login to your account </h2>
 
           <label className="mb-2">Email *</label>
