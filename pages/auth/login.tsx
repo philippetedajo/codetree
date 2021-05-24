@@ -18,8 +18,6 @@ const Login: React.FC = () => {
 
   const router = useRouter();
 
-  console.log(router?.query);
-
   const { register, handleSubmit, errors } = useForm<LoginForm>({
     resolver: yupResolver(loginSchema),
   });
@@ -53,8 +51,14 @@ const Login: React.FC = () => {
           className="flex flex-col mt-3 w-80 md:w-112"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <h1 className="mb-5">{router?.query?.event_message}</h1>
-          <h2 className="mb-8 text-3xl ">Login to your account </h2>
+          <h1 className="mb-5 text-xl text-green-500">
+            {router?.query?.event_message}
+          </h1>
+          <h2 className="mb-5 text-3xl ">
+            {router?.query?.event_message
+              ? "Welcome to Codetree 🔥"
+              : "Login to your account"}
+          </h2>
 
           <label className="mb-2">Email *</label>
           <input
