@@ -19,7 +19,7 @@ const Bar = () => {
         style={{ height: "3vh" }}
         className="border-2 border-red-600 flex flex-shrink-0"
       >
-        footer
+        footer side
       </footer>
     </div>
   );
