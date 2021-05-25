@@ -14,8 +14,9 @@ export default function Dropdown() {
   const { mutateUser } = useUser();
 
   const logout = async () => {
-    await mutateUser(fetcher("/api/auth/logout", "POST"));
-    Router.push("/auth/login");
+    await mutateUser(fetcher("/api/auth/logout", "POST")).then(() => {
+      Router.push("/auth/login");
+    });
   };
 
   return (
@@ -65,7 +66,7 @@ export default function Dropdown() {
                     <a
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm"
+                        "block px-4 py-2 text-sm cursor-pointer"
                       )}
                       onClick={() => Router.push("/profile")}
                     >
@@ -78,7 +79,7 @@ export default function Dropdown() {
                     <a
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm"
+                        "block px-4 py-2 text-sm cursor-pointer"
                       )}
                       onClick={
                         () => Router.push("/playground/randomName1234") //TODO SET THE RANDOM NAME GENERATION
@@ -97,7 +98,7 @@ export default function Dropdown() {
                       onClick={logout}
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm"
+                        "block px-4 py-2 text-sm cursor-pointer"
                       )}
                     >
                       Logout

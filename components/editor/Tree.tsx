@@ -5,7 +5,7 @@ import Tabs, { TabPane } from "rc-tabs";
 import { JsPanel, HtmlPanel, CssPanel } from "./Pans";
 import EditorModal from "./modal";
 
-const Main = () => {
+const Tree = () => {
   const PreviewWithNoSSR = dynamic(() => import("./Preview"), {
     ssr: false,
   });
@@ -51,4 +51,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Tree;

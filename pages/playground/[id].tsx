@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Main from "../../components/editor/Main";
+import Tree from "../../components/editor/Tree";
 import React from "react";
 import { checkSession, withSession } from "../../utils";
 
@@ -10,8 +10,7 @@ const Playground = () => {
         <meta charSet="utf-8" />
         <title>Playground | Codetree </title>
       </Head>
-
-      <Main />
+      <Tree />
     </>
   );
 };
