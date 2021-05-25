@@ -8,15 +8,21 @@ import "../node_modules/react-toastify/scss/main.scss";
 import "nprogress/nprogress.css";
 
 import Head from "next/head";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
 import NProgress from "nprogress";
-import { AppLayout, SettingsLayout } from "../components/share";
+import {
+  StandardLayout,
+  EditorLayout,
+  AuthLayout,
+} from "../components/layouts";
 import { ToastContainer } from "react-toastify";
 import React from "react";
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
   NProgress.configure({ showSpinner: false });
   //Binding events.
   Router.events.on("routeChangeStart", () => NProgress.start());
@@ -30,10 +36,20 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <AppLayout>
-        <ToastContainer hideProgressBar={true} autoClose={8000} />
-        <Component {...pageProps} />
-      </AppLayout>
+      {router.pathname.startsWith("/auth") ? (
+        <AuthLayout>
+          <Component {...pageProps} />
+        </AuthLayout>
+      ) : router.pathname.startsWith("/playground") ? (
+        <EditorLayout>
+          <Component {...pageProps} />
+        </EditorLayout>
+      ) : (
+        <StandardLayout>
+          <ToastContainer hideProgressBar={true} autoClose={8000} />
+          <Component {...pageProps} />
+        </StandardLayout>
+      )}
     </Provider>
   );
 }

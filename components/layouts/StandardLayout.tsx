@@ -3,10 +3,10 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { menu, text_reveal } from "../../utils/framer-animation";
-import Dropdown from "./Dropdown";
+import Dropdown from "../site/Dropdown";
 import { useUser } from "../../hooks";
 
-export const AppLayout = ({ children }) => {
+export const StandardLayout = ({ children }) => {
   const { user } = useUser();
   const router = useRouter();
 
@@ -56,26 +56,6 @@ export const AppLayout = ({ children }) => {
                 <Dropdown />
               </div>
             )}
-
-          {/* User is on login page */}
-          {router.pathname == "/auth/login" && (
-            <div className="flex items-center">
-              <div className="mr-2 text-gray-500">New to Codetree ?</div>
-              <Link href="/auth/register">
-                <a className="text-green-500"> Join us</a>
-              </Link>
-            </div>
-          )}
-
-          {/* User is on register page */}
-          {router.pathname == "/auth/register" && (
-            <div className="flex items-center">
-              <div className="mr-2 text-gray-500">Already with us ?</div>
-              <Link href="/auth/login">
-                <a className="text-green-500 ">Login</a>
-              </Link>
-            </div>
-          )}
         </motion.div>
       </motion.div>
       {children}

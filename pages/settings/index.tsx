@@ -6,7 +6,7 @@ import {
   updateProfileSchema,
   withSession,
 } from "../../utils";
-import { SettingsLayout } from "../../components/share";
+import { SettingsLayout } from "../../components/layouts";
 import { useForm } from "react-hook-form";
 import { UpdateProfileForm } from "../../_types/profile_types";
 import { yupResolver } from "@hookform/resolvers/yup";

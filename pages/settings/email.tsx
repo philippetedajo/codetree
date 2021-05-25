@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import React, { useState } from "react";
-import { SettingsLayout } from "../../components/share";
+import { SettingsLayout } from "../../components/layouts";
 import {
   checkSession,
   withSession,

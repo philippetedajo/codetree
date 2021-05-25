@@ -49,56 +49,54 @@ const ResetPassword = () => {
   }
 
   return (
-    <>
+    <div>
       <Head>
         <title>Reset password | Codetree</title>
         <meta name="description" content="Login to your Codetree account" />
       </Head>
-      <ToastContainer hideProgressBar={true} autoClose={8000} />
-      <div className="h-screen flex flex-col items-center pt-14">
-        <form
-          className="flex flex-col mt-3 w-80 md:w-112"
-          onSubmit={handleSubmit(onSubmit)}
+
+      <form
+        className="flex flex-col mt-3 w-80 md:w-112"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <h2 className="mb-5 text-3xl text-center">Please set a new password</h2>
+
+        <label className="mb-2">Password *</label>
+        <input
+          className="border-2 border-black"
+          name="password"
+          type="password"
+          ref={register}
+        />
+        <small className="mt-1 mb-6 text-red-500">
+          {errors.password?.message}
+        </small>
+
+        <label className="mb-2">Confirm password *</label>
+        <input
+          className="border-2 border-black"
+          type="password"
+          name="confirm_password"
+          ref={register}
+        />
+        <small className="mt-1 text-red-500">
+          {errors.confirm_password?.message}
+        </small>
+
+        <button
+          disabled={loading}
+          className={`bg-blue-600 text-white mt-8 h-10 mb-4 ${
+            loading ? "disabled:opacity-70" : ""
+          }`}
         >
-          <h2 className="mb-5 text-3xl">Please set a new password</h2>
+          {loading ? "... Processing" : "Reset"}
+        </button>
 
-          <label className="mb-2">Password *</label>
-          <input
-            className="border-2 border-black"
-            name="password"
-            type="password"
-            ref={register}
-          />
-          <small className="mt-1 mb-6 text-red-500">
-            {errors.password?.message}
-          </small>
-
-          <label className="mb-2">Confirm password *</label>
-          <input
-            className="border-2 border-black"
-            type="password"
-            name="confirm_password"
-            ref={register}
-          />
-          <small className="mt-1 text-red-500">
-            {errors.confirm_password?.message}
-          </small>
-
-          <button
-            disabled={loading}
-            className={`bg-blue-600 text-white mt-8 h-10 mb-4 ${
-              loading ? "disabled:opacity-70" : ""
-            }`}
-          >
-            {loading ? "... Processing" : "Reset"}
-          </button>
-
-          <div className="text-red-500">
-            {data?.type === "error" ? data?.data?.message : ""}
-          </div>
-        </form>
-      </div>
-    </>
+        <div className="text-red-500">
+          {data?.type === "error" ? data?.data?.message : ""}
+        </div>
+      </form>
+    </div>
   );
 };
 

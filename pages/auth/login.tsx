@@ -40,64 +40,74 @@ const Login: React.FC = () => {
   }
 
   return (
-    <>
+    <div>
       <Head>
         <title>Login | Codetree</title>
         <meta name="description" content="Login to your Codetree account" />
       </Head>
 
-      <div className="h-screen flex flex-col items-center pt-14">
-        <form
-          className="flex flex-col mt-3 w-80 md:w-112"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <h1 className="mb-5 text-xl text-green-500">
-            {router?.query?.event_message}
-          </h1>
-          <h2 className="mb-5 text-3xl ">
-            {router?.query?.event_message
-              ? "Welcome to Codetree"
-              : "Login to your account"}
-          </h2>
+      <form
+        className="flex flex-col w-80 md:w-112"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <h1 className="mb-5 text-xl text-green-500">
+          {router?.query?.event_message}
+        </h1>
+        <h2 className="mb-5 text-3xl text-center">
+          {router?.query?.event_message
+            ? "Welcome to Codetree"
+            : "Login to your account"}
+        </h2>
 
-          <label className="mb-2">Email *</label>
-          <input
-            className="border-2 border-black"
-            name="email"
-            type="email"
-            ref={register}
-          />
-          <small className="mt-1 mb-6 text-red-500">
-            {errors.email?.message}
-          </small>
+        <label className="mb-2">Email *</label>
+        <input
+          className="border-2 border-black"
+          name="email"
+          type="email"
+          ref={register}
+        />
+        <small className="mt-1 mb-6 text-red-500">
+          {errors.email?.message}
+        </small>
 
-          <label className="mb-2">Password *</label>
-          <input
-            className="border-2 border-black"
-            type="password"
-            name="min"
-            ref={register}
-          />
-          <small className="mt-1 text-red-500">{errors.min?.message}</small>
+        <label className="mb-2">Password *</label>
+        <input
+          className="border-2 border-black"
+          type="password"
+          name="min"
+          ref={register}
+        />
+        <small className="mt-1 text-red-500">{errors.min?.message}</small>
+
+        <div className="flex mt-3 justify-between">
+          <div className="mr-2 text-gray-500 text-sm ">
+            New to Codetree ?
+            <Link href="/auth/register">
+              <a className="text-green-500"> Join us</a>
+            </Link>
+          </div>
 
           <Link href="/auth/forgot-password">
-            <a className="mt-4 text-sm text-gray-500">Forgot your password ?</a>
+            <a className="text-sm text-gray-500 hover:text-green-500">
+              Forgot your password ?
+            </a>
           </Link>
-          <button
-            disabled={loading}
-            className={`bg-blue-600 text-white mt-8 h-10 mb-4 ${
-              loading ? "disabled:opacity-70" : ""
-            }`}
-          >
-            {loading ? "... Processing" : "Login"}
-          </button>
+        </div>
 
-          <div className="text-red-500">
-            {data?.type === responseType.error ? data?.data?.message : ""}
-          </div>
-        </form>
-      </div>
-    </>
+        <button
+          disabled={loading}
+          className={`bg-blue-600 text-white mt-7 h-10 mb-4 ${
+            loading ? "disabled:opacity-70" : ""
+          }`}
+        >
+          {loading ? "... Processing" : "Login"}
+        </button>
+
+        <div className="text-red-500">
+          {data?.type === responseType.error ? data?.data?.message : ""}
+        </div>
+      </form>
+    </div>
   );
 };
 

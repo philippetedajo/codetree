@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SettingsLayout } from "../../components/share";
+import { SettingsLayout } from "../../components/layouts";
 import { useForm } from "react-hook-form";
 import {
   checkSession,
