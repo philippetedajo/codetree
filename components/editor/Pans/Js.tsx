@@ -6,7 +6,7 @@ import {
   update_async_code_finished,
   editor_state,
 } from "../../../store/features/editorSlice";
-import Editor from "../Editor";
+import Monaco from "../Monaco";
 import bundler from "../../../bundler";
 import { _react, _empty, _p5 } from "../templates";
 
@@ -55,7 +55,7 @@ export const JsPanel: React.FC = () => {
   }
 
   return (
-    <Editor
+    <Monaco
       initialValue={initialValue}
       language="javascript"
       onChangeCodeInput={(value: string) => debounced(value)}

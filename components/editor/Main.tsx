@@ -11,7 +11,7 @@ const Main = () => {
   });
 
   return (
-    <main className="flex flex-grow flex-shrink-0  border-t-2 border-b-2 border-black bg-tree-hard">
+    <div className="flex flex-grow flex-shrink-0  border-t-2 border-b-2 border-black bg-tree-hard">
       <Split
         sizes={[50, 50]}
         minSize={100}
@@ -47,7 +47,7 @@ const Main = () => {
         </div>
       </Split>
       <EditorModal />
-    </main>
+    </div>
   );
 };
 

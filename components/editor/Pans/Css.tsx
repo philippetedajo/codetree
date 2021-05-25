@@ -4,7 +4,7 @@ import {
   editor_state,
   update_sync_code,
 } from "../../../store/features/editorSlice";
-import Editor from "../Editor";
+import Monaco from "../Monaco";
 import { useDebouncedCallback } from "use-debounce";
 import { _empty, _p5, _react } from "../templates";
 
@@ -43,7 +43,7 @@ export const CssPanel: React.FC = () => {
   }
 
   return (
-    <Editor
+    <Monaco
       initialValue={initialValue}
       language="css"
       onChangeCodeInput={(value: string) => debounced(value)}

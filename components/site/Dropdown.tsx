@@ -80,7 +80,9 @@ export default function Dropdown() {
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-4 py-2 text-sm"
                       )}
-                      onClick={() => Router.push("/playground")}
+                      onClick={
+                        () => Router.push("/playground/randomName1234") //TODO SET THE RANDOM NAME GENERATION
+                      }
                     >
                       Playground
                     </a>

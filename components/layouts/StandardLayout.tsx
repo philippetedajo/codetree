@@ -12,14 +12,13 @@ export const StandardLayout = ({ children }) => {
 
   return (
     <div>
-      {/*    =================================    */}
       <motion.div
         initial="initial"
         animate="animate"
         exit="exit"
         variants={menu}
         style={{ height: "8vh" }}
-        className="w-full cursor-pointer px-3 sm:px-7  flex justify-between items-center"
+        className="px-3 sm:px-7 flex justify-between items-center"
       >
         {/*===================================Left side=============================================*/}
         <motion.div variants={text_reveal}>

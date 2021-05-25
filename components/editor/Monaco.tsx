@@ -7,7 +7,7 @@ import parserCss from "prettier/parser-postcss";
 import parserHtml from "prettier/parser-html";
 import { CodeEditorProps } from "../../_types/editor_types";
 
-const Editor: React.FC<CodeEditorProps> = ({
+const Monaco: React.FC<CodeEditorProps> = ({
   initialValue,
   onChangeCodeInput,
   language,
@@ -127,4 +127,4 @@ const Editor: React.FC<CodeEditorProps> = ({
   );
 };
 
-export default Editor;
+export default Monaco;

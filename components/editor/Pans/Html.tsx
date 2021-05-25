@@ -6,7 +6,7 @@ import {
   update_sync_code,
 } from "../../../store/features/editorSlice";
 
-import Editor from "../Editor";
+import Monaco from "../Monaco";
 import { _empty, _p5, _react } from "../templates";
 
 export const HtmlPanel: React.FC = () => {
@@ -45,7 +45,7 @@ export const HtmlPanel: React.FC = () => {
   }
 
   return (
-    <Editor
+    <Monaco
       initialValue={initialValue}
       language="html"
       onChangeCodeInput={(value: string) => debounced(value)}
