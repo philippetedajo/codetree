@@ -14,7 +14,7 @@ import { store } from "../store/store";
 import NProgress from "nprogress";
 import {
   StandardLayout,
-  EditorLayout,
+  PlaygroundLayout,
   AuthLayout,
 } from "../components/layouts";
 import { ToastContainer } from "react-toastify";
@@ -41,9 +41,9 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </AuthLayout>
       ) : router.pathname.startsWith("/playground") ? (
-        <EditorLayout>
+        <PlaygroundLayout>
           <Component {...pageProps} />
-        </EditorLayout>
+        </PlaygroundLayout>
       ) : (
         <StandardLayout>
           <ToastContainer hideProgressBar={true} autoClose={8000} />

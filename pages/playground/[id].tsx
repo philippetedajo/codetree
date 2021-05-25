@@ -1,7 +1,8 @@
 import Head from "next/head";
-import BottomBar from "../components/editor/BottomBar";
-import Main from "../components/editor/Main";
+import BottomBar from "../../components/editor/BottomBar";
+import Main from "../../components/editor/Main";
 import React from "react";
+import { checkSession, withSession } from "../../utils";
 
 const Playground = () => {
   return (
@@ -22,3 +23,11 @@ const Playground = () => {
 };
 
 export default Playground;
+
+export const getServerSideProps = withSession(async ({ req, res }) => {
+  checkSession(req, res);
+
+  return {
+    props: {},
+  };
+});
