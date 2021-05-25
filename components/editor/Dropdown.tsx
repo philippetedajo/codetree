@@ -78,13 +78,12 @@ export default function Dropdown() {
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-4 py-2 text-sm cursor-pointer"
                       )}
-                      onClick={() => Router.push("/profile")}
+                      onClick={openModal}
                     >
-                      Profile
+                      New
                     </a>
                   )}
                 </Menu.Item>
-
                 <Menu.Item>
                   {({ active }) => (
                     <a
@@ -92,15 +91,27 @@ export default function Dropdown() {
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-4 py-2 text-sm cursor-pointer"
                       )}
-                      onClick={openModal}
                     >
-                      Options
+                      Save
                     </a>
                   )}
                 </Menu.Item>
               </div>
 
               <div className="py-1">
+                <Menu.Item>
+                  {({ active }) => (
+                    <a
+                      className={classNames(
+                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        "block px-4 py-2 text-sm cursor-pointer"
+                      )}
+                      onClick={() => Router.push("/profile")}
+                    >
+                      Profile
+                    </a>
+                  )}
+                </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
                     <a

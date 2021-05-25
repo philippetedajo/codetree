@@ -68,19 +68,6 @@ export default function Dropdown() {
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-4 py-2 text-sm cursor-pointer"
                       )}
-                      onClick={() => Router.push("/profile")}
-                    >
-                      Profile
-                    </a>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <a
-                      className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm cursor-pointer"
-                      )}
                       onClick={
                         () => Router.push("/playground/randomName1234") //TODO SET THE RANDOM NAME GENERATION
                       }
@@ -92,6 +79,19 @@ export default function Dropdown() {
               </div>
 
               <div className="py-1">
+                <Menu.Item>
+                  {({ active }) => (
+                    <a
+                      className={classNames(
+                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        "block px-4 py-2 text-sm cursor-pointer"
+                      )}
+                      onClick={() => Router.push("/profile")}
+                    >
+                      Profile
+                    </a>
+                  )}
+                </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
                     <a
