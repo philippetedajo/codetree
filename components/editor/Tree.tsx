@@ -3,7 +3,7 @@ import Split from "react-split";
 import dynamic from "next/dynamic";
 import Tabs, { TabPane } from "rc-tabs";
 import { JsPanel, HtmlPanel, CssPanel } from "./Pans";
-import EditorModal from "./modal";
+import Modal from "./Modal";
 
 const Tree = () => {
   const PreviewWithNoSSR = dynamic(() => import("./Preview"), {
@@ -46,7 +46,7 @@ const Tree = () => {
           <PreviewWithNoSSR />
         </div>
       </Split>
-      <EditorModal />
+      <Modal />
     </div>
   );
 };

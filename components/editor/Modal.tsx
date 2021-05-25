@@ -1,12 +1,9 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../store/hook";
-import {
-  editor_state,
-  update_modal,
-} from "../../../store/features/editorSlice";
+import { Fragment } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { editor_state, update_modal } from "../../store/features/editorSlice";
 
-const EditorModal = () => {
+const Modal = () => {
   const dispatch = useAppDispatch();
   const { isModalOpen } = useAppSelector(editor_state);
 
@@ -41,7 +38,7 @@ const EditorModal = () => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+              <div className="inline-block lg:w-7/12 h-96 p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded">
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
@@ -59,7 +56,6 @@ const EditorModal = () => {
                   <button
                     type="button"
                     className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                    onClick={closeModal}
                   >
                     Got it, thanks!
                   </button>
@@ -73,4 +69,6 @@ const EditorModal = () => {
   );
 };
 
-export default EditorModal;
+export default Modal;
+
+//onClick={closeModal}
