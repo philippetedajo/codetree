@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon, PlusIcon } from "@heroicons/react/solid";
+import { SaveIcon, UserIcon, LogoutIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import { fetcher } from "../../utils";
 import Router, { useRouter } from "next/router";
-
 import { useUser } from "../../hooks";
 import { update_modal } from "../../store/features/editorSlice";
 import { useAppDispatch } from "../../store/hook";
@@ -76,11 +76,15 @@ export default function Dropdown() {
                     <a
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm cursor-pointer"
+                        "block px-4 py-2 text-sm cursor-pointer flex items-center"
                       )}
                       onClick={openModal}
                     >
-                      New
+                      <PlusIcon
+                        className="h-5 w-5 text-gray-500"
+                        aria-hidden="true"
+                      />
+                      New tree
                     </a>
                   )}
                 </Menu.Item>
@@ -89,9 +93,13 @@ export default function Dropdown() {
                     <a
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm cursor-pointer"
+                        "block px-4 py-2 text-sm cursor-pointer flex items-center"
                       )}
                     >
+                      <SaveIcon
+                        className="h-5 w-5 mr-1 text-gray-500"
+                        aria-hidden="true"
+                      />
                       Save
                     </a>
                   )}
@@ -104,10 +112,14 @@ export default function Dropdown() {
                     <a
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm cursor-pointer"
+                        "block px-4 py-2 text-sm cursor-pointer flex items-center"
                       )}
                       onClick={() => Router.push("/profile")}
                     >
+                      <UserIcon
+                        className="h-5 w-5 mr-1 text-gray-500"
+                        aria-hidden="true"
+                      />
                       Profile
                     </a>
                   )}
@@ -118,9 +130,13 @@ export default function Dropdown() {
                       onClick={logout}
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm cursor-pointer"
+                        "block px-4 py-2 text-sm cursor-pointer flex items-center"
                       )}
                     >
+                      <LogoutIcon
+                        className="h-5 w-5 mr-1 text-gray-500"
+                        aria-hidden="true"
+                      />
                       Logout
                     </a>
                   )}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { fetcher } from "../../utils";
 import Router from "next/router";
 import { useUser } from "../../hooks";
+import { LogoutIcon, UserIcon, TerminalIcon } from "@heroicons/react/outline";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -66,12 +67,16 @@ export default function Dropdown() {
                     <a
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm cursor-pointer"
+                        "block px-4 py-2 text-sm cursor-pointer flex items-center"
                       )}
                       onClick={
                         () => Router.push("/playground/randomName1234") //TODO SET THE RANDOM NAME GENERATION
                       }
                     >
+                      <TerminalIcon
+                        className="h-5 w-5 mr-1 text-gray-500"
+                        aria-hidden="true"
+                      />{" "}
                       Playground
                     </a>
                   )}
@@ -84,10 +89,14 @@ export default function Dropdown() {
                     <a
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm cursor-pointer"
+                        "block px-4 py-2 text-sm cursor-pointer flex items-center"
                       )}
                       onClick={() => Router.push("/profile")}
                     >
+                      <UserIcon
+                        className="h-5 w-5 mr-1 text-gray-500"
+                        aria-hidden="true"
+                      />
                       Profile
                     </a>
                   )}
@@ -98,9 +107,13 @@ export default function Dropdown() {
                       onClick={logout}
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm cursor-pointer"
+                        "block px-4 py-2 text-sm cursor-pointer flex items-center"
                       )}
                     >
+                      <LogoutIcon
+                        className="h-5 w-5 mr-1 text-gray-500"
+                        aria-hidden="true"
+                      />
                       Logout
                     </a>
                   )}
