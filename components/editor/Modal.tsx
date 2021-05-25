@@ -1,7 +1,12 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { editor_state, update_modal } from "../../store/features/editorSlice";
+import Tabs, { TabPane } from "rc-tabs";
+import { CgTrees } from "react-icons/cg";
+import TemplateSelect from "./options/TemplateSelect";
+import { GiPartyPopper } from "react-icons/gi";
+import News from "./options/News";
 
 const Modal = () => {
   const dispatch = useAppDispatch();
@@ -38,28 +43,34 @@ const Modal = () => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block lg:w-7/12 h-96 p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded">
-                <Dialog.Title
-                  as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900"
+              <div className="inline-block lg:w-7/12 h-96 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded">
+                <Tabs
+                  className="option-modal-tabs"
+                  tabPosition="left"
+                  tabBarGutter={16}
                 >
-                  Payment successful
-                </Dialog.Title>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    Your payment has been successfully submitted. We’ve sent
-                    your an email with all of the details of your order.
-                  </p>
-                </div>
-
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                  <TabPane
+                    tab={
+                      <div className="flex">
+                        <CgTrees size={27} className="mr-2" />
+                        trees
+                      </div>
+                    }
+                    key="trees"
                   >
-                    Got it, thanks!
-                  </button>
-                </div>
+                    hello
+                  </TabPane>
+                  <TabPane
+                    tab={
+                      <div className="flex">
+                        <GiPartyPopper size={27} className="mr-2" /> News
+                      </div>
+                    }
+                    key="news"
+                  >
+                    world
+                  </TabPane>
+                </Tabs>
               </div>
             </Transition.Child>
           </div>
