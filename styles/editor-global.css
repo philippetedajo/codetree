@@ -41,10 +41,11 @@
   padding-top: 20px;
 }
 
-/* */
+/* Modal ============================================================================= */
 .option-modal-tabs {
   height: 100%;
   border: none !important;
+  color: white;
 }
 
 .option-modal-tabs .rc-tabs-tabpane {
@@ -72,32 +73,6 @@
 .rc-tabs-content,
 .rc-tabs-tabpane {
   height: 100%;
-}
-
-/*react-modal ======================================================================= */
-
-.ReactModal__Content {
-  width: 65% !important;
-  @apply text-white;
-}
-
-@media only screen and (max-width: 1100px) {
-  .ReactModal__Content {
-    width: 90% !important;
-  }
-}
-
-.ReactModal__Overlay {
-  opacity: 0;
-  transition: opacity 300ms ease-in-out;
-}
-
-.ReactModal__Overlay--after-open {
-  opacity: 1;
-}
-
-.ReactModal__Overlay--before-close {
-  opacity: 0;
 }
 
 /* preview ======================================================================= */

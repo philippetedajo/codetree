@@ -10,7 +10,7 @@ import bundler from "../../../bundler";
 import { CgTrees } from "react-icons/cg";
 import React from "react";
 
-const TemplateSelect = ({ setShowModal }) => {
+const TemplateSelect = ({ closeModal }) => {
   const dispatch = useAppDispatch();
 
   const manualBundleStart = async (value: any) => {
@@ -41,13 +41,13 @@ const TemplateSelect = ({ setShowModal }) => {
         manualBundleStart(_p5);
         break;
     }
-    setShowModal(false);
+    closeModal();
   };
 
   return (
     <div>
-      <h1 className="text-2xl font-bold pb-3 border-b border-tree-border">
-        Create your tree
+      <h1 className="text-2xl pb-3 border-b border-tree-border">
+        Select your tree
       </h1>
       <div className="pt-6">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">

@@ -43,7 +43,7 @@ const Modal = () => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block lg:w-7/12 h-96 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded">
+              <div className="inline-block lg:w-7/12 h-96 my-8 overflow-hidden text-left align-middle transition-all transform shadow-xl rounded">
                 <Tabs
                   className="option-modal-tabs"
                   tabPosition="left"
@@ -58,7 +58,7 @@ const Modal = () => {
                     }
                     key="trees"
                   >
-                    hello
+                    <TemplateSelect closeModal={closeModal} />
                   </TabPane>
                   <TabPane
                     tab={
@@ -68,7 +68,7 @@ const Modal = () => {
                     }
                     key="news"
                   >
-                    world
+                    <News />
                   </TabPane>
                 </Tabs>
               </div>
