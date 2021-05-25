@@ -15,9 +15,8 @@ export default function Dropdown() {
   const { mutateUser } = useUser();
 
   const logout = async () => {
-    await mutateUser(fetcher("/api/auth/logout", "POST")).then(() => {
-      Router.push("/auth/login");
-    });
+    await mutateUser(fetcher("/api/auth/logout", "POST"), false);
+    Router.push("/auth/login");
   };
 
   return (
