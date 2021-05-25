@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { menu, text_reveal } from "../../utils/framer-animation";
 import Dropdown from "../site/Dropdown";
 import { useUser } from "../../hooks";
+import { StarIcon } from "@heroicons/react/outline";
 
 export const StandardLayout = ({ children }) => {
   const { user } = useUser();
@@ -33,12 +34,15 @@ export const StandardLayout = ({ children }) => {
           {!user?.isLoggedIn &&
             router.pathname !== "/auth/register" &&
             router.pathname !== "/auth/login" && (
-              <div>
+              <div className="flex justify-center items-center">
                 <Link href="/auth/login">
-                  <a className="mr-5">Login</a>
-                </Link>{" "}
+                  <a className="mr-5 text-gray-600 tracking-wide">Login</a>
+                </Link>
                 <Link href="/auth/register">
-                  <a className="mr-5">Register</a>
+                  <div className="flex justify-center items-center mr-5 text-sm font-medium hover:bg-green-500 bg-green-400 px-4 py-1.5 rounded text-black tracking-wide">
+                    <StarIcon className="w-5 h-5 mr-1.5" />
+                    <a>SIGN UP FREE</a>
+                  </div>
                 </Link>
               </div>
             )}

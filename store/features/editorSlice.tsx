@@ -5,7 +5,7 @@ import { _empty } from "../../components/editor/templates";
 
 const initialEditorState = {
   codeEditor: _empty,
-  isConsoleOpen: false, //to set to false
+  isConsoleOpen: false,
   hasConsoleLogs: false,
   isModalOpen: false,
 };
