@@ -24,15 +24,12 @@ const Password = () => {
   const onSubmit = async (formData: UpdatePasswordForm) => {
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/auth/profile/updatePassword`;
 
-    console.log(formData);
     setLoading(true);
 
-    //TODO
-
-    // await fetcher(url, "POST", user.token, {
-    //   lastPassword: formData.last_password,
-    //   password: formData.password,
-    // }).then((result) => console.log(result));
+    await fetcher(url, "POST", user.token, {
+      lastPassword: formData.last_password,
+      password: formData.password,
+    });
 
     setLoading(false);
   };

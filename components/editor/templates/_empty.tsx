@@ -1,5 +1,8 @@
 export const _empty = {
+  name: "",
+  description: "",
   template: "empty",
+  public: true,
   js: {
     code: {
       data: `document.getElementById("root").innerHTML = \`
