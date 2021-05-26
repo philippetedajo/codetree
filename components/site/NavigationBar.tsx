@@ -2,11 +2,15 @@ import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Image from "next/image";
+import { useTheme } from "next-themes";
+import { LogoutIcon, UserIcon, TerminalIcon } from "@heroicons/react/outline";
+import Link from "next/link";
+import { FaRegMoon } from "react-icons/fa";
+import { SunIcon } from "@heroicons/react/solid";
+
 import { fetcher } from "../../utils";
 import Router from "next/router";
 import { useUser } from "../../hooks";
-import { LogoutIcon, UserIcon, TerminalIcon } from "@heroicons/react/outline";
-import Link from "next/link";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -18,6 +22,16 @@ export default function NavigationBar() {
   const logout = async () => {
     await mutateUser(fetcher("/api/auth/logout", "POST"));
     Router.push("/auth/login");
+  };
+
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
   };
 
   return (
@@ -34,6 +48,16 @@ export default function NavigationBar() {
 
       {/*=====================================Right side===========================================*/}
       <div className="flex items-center">
+        <div className="mr-4 flex cursor-pointer" onClick={toggleTheme}>
+          {theme === "light" ? (
+            <FaRegMoon className="w-5 h-5 text-gray-500" />
+          ) : theme === "dark" ? (
+            <SunIcon className="w-6 h-6" />
+          ) : (
+            <FaRegMoon className="w-5 h-5 text-gray-500" />
+          )}
+        </div>
+
         {/* User is not login  =========================================== */}
         {!user?.isLoggedIn && (
           <div>
