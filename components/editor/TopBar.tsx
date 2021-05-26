@@ -65,7 +65,7 @@ const TopBar = () => {
           {({ open }) => (
             <>
               <div>
-                <Menu.Button className="pt-1 border inline-flex justify-center items-center w-full border-gray-300 px-4 bg-white text-sm font-medium text-gray-700 focus:outline-none  ">
+                <Menu.Button className="bg-transparent pt-1 border inline-flex justify-center items-center w-full border-gray-300 px-4 bg-white text-sm font-medium text-gray-700 focus:outline-none  ">
                   {/* if user is in session return =========================================== */}
                   {user?.isLoggedIn && (
                     <div
