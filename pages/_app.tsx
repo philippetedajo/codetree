@@ -12,6 +12,7 @@ import Router, { useRouter } from "next/router";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
 import NProgress from "nprogress";
+import { ThemeProvider } from "next-themes";
 import {
   StandardLayout,
   PlaygroundLayout,
@@ -36,20 +37,22 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      {router.pathname.startsWith("/auth") ? (
-        <AuthLayout>
-          <Component {...pageProps} />
-        </AuthLayout>
-      ) : router.pathname.startsWith("/playground") ? (
-        <PlaygroundLayout>
-          <Component {...pageProps} />
-        </PlaygroundLayout>
-      ) : (
-        <StandardLayout>
-          <ToastContainer hideProgressBar={true} autoClose={8000} />
-          <Component {...pageProps} />
-        </StandardLayout>
-      )}
+      <ThemeProvider>
+        {router.pathname.startsWith("/auth") ? (
+          <AuthLayout>
+            <Component {...pageProps} />
+          </AuthLayout>
+        ) : router.pathname.startsWith("/playground") ? (
+          <PlaygroundLayout>
+            <Component {...pageProps} />
+          </PlaygroundLayout>
+        ) : (
+          <StandardLayout>
+            <ToastContainer hideProgressBar={true} autoClose={8000} />
+            <Component {...pageProps} />
+          </StandardLayout>
+        )}
+      </ThemeProvider>
     </Provider>
   );
 }
