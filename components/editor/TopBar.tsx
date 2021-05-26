@@ -27,8 +27,8 @@ const TopBar = () => {
   }
 
   const logout = async () => {
-    await mutateUser(fetcher("/api/auth/logout", "POST"), false);
-    Router.push("/auth/login");
+    await mutateUser(fetcher("/api/auth/logout", "POST"));
+    Router.push("/");
   };
 
   return (
@@ -64,7 +64,7 @@ const TopBar = () => {
           {({ open }) => (
             <>
               <div>
-                <Menu.Button className="pt-1 inline-flex justify-center items-center w-full border-gray-300 px-4 bg-white text-sm font-medium text-gray-700 focus:outline-none  ">
+                <Menu.Button className="pt-1 border inline-flex justify-center items-center w-full border-gray-300 px-4 bg-white text-sm font-medium text-gray-700 focus:outline-none  ">
                   {/* if user is in session return =========================================== */}
                   {user?.isLoggedIn && (
                     <div

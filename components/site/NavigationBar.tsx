@@ -3,7 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import { fetcher } from "../../utils";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import { useUser } from "../../hooks";
 import { LogoutIcon, UserIcon, TerminalIcon } from "@heroicons/react/outline";
 import Link from "next/link";
@@ -14,10 +14,9 @@ function classNames(...classes) {
 
 export default function NavigationBar() {
   const { user, mutateUser } = useUser();
-  const router = useRouter();
 
   const logout = async () => {
-    await mutateUser(fetcher("/api/auth/logout", "POST"), false);
+    await mutateUser(fetcher("/api/auth/logout", "POST"));
     Router.push("/auth/login");
   };
 
