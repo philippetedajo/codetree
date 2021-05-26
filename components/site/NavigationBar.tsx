@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { LogoutIcon, UserIcon, TerminalIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { FaRegMoon } from "react-icons/fa";
-import { SunIcon } from "@heroicons/react/solid";
+import { SunIcon, StarIcon } from "@heroicons/react/solid";
 
 import { fetcher } from "../../utils";
 import Router from "next/router";
@@ -60,15 +60,18 @@ export default function NavigationBar() {
 
         {/* User is not login  =========================================== */}
         {!user?.isLoggedIn && (
-          <div>
+          <div className="flex justify-center items-center">
             <Link href="/playground">
-              <a className="mr-5">Playground</a>
+              <a className="nav_item">Playground</a>
             </Link>
             <Link href="/auth/login">
-              <a className="mr-5">Login</a>
+              <a className="nav_item">Login</a>
             </Link>{" "}
             <Link href="/auth/register">
-              <a className="mr-5">Register</a>
+              <div className="flex justify-center items-center mr-5 text-sm font-medium hover:bg-green-500 bg-green-400 px-4 py-1.5 rounded text-black tracking-wide cursor-pointer">
+                <StarIcon className="w-5 h-5 mr-1.5" />
+                <a>SIGN UP FREE</a>
+              </div>
             </Link>
           </div>
         )}

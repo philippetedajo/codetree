@@ -7,7 +7,7 @@ import { useAppDispatch } from "../../store/hook";
 import { update_modal } from "../../store/features/editorSlice";
 import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
-import { ChevronDownIcon, PlusIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon, PlusIcon, StarIcon } from "@heroicons/react/solid";
 import { LogoutIcon, SaveIcon, UserIcon } from "@heroicons/react/outline";
 
 function classNames(...classes) {
@@ -43,19 +43,20 @@ const TopBar = () => {
       </div>
 
       <div className="flex items-center">
-        <div className="flex items-center">
-          {/* User is not login  =========================================== */}
-          {!user?.isLoggedIn && (
-            <div>
-              <Link href="/auth/login">
-                <a className="mr-5">Login</a>
-              </Link>{" "}
-              <Link href="/auth/register">
-                <a className="mr-5">Register</a>
-              </Link>
-            </div>
-          )}
-        </div>
+        {/* User is not login  =========================================== */}
+        {!user?.isLoggedIn && (
+          <div className="flex justify-center items-center">
+            <Link href="/auth/login">
+              <a className="nav_item">Login</a>
+            </Link>{" "}
+            <Link href="/auth/register">
+              <div className="flex justify-center items-center mr-5 text-sm font-medium hover:bg-green-500 bg-green-400 px-4 py-1.5 rounded text-black tracking-wide cursor-pointer">
+                <StarIcon className="w-5 h-5 mr-1.5" />
+                <a>SIGN UP FREE</a>
+              </div>
+            </Link>
+          </div>
+        )}
 
         <Menu
           as="div"

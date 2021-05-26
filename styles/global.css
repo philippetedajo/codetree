@@ -27,3 +27,7 @@ button {
 button:focus {
   outline: none !important;
 }
+
+.nav_item {
+  @apply mr-5 tracking-wide hover:text-gray-500 cursor-pointer;
+}
