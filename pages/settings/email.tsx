@@ -27,13 +27,11 @@ const Email = () => {
 
     setLoading(true);
 
-    //TODO
-
-    // const result = await fetcher(url, "POST", user.token, {
-    //   token: user?.token,
-    //   email: formData.email,
-    // });
-    // setData(result);
+    const result = await fetcher(url, "POST", user.token, {
+      token: user?.token,
+      email: formData.email,
+    });
+    setData(result);
 
     setLoading(false);
   };

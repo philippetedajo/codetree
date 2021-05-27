@@ -6,10 +6,12 @@ import {
   fetcher,
   withSession,
   updatePasswordSchema,
+  notify,
 } from "../../utils";
 import { UpdatePasswordForm } from "../../_types/profile_types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useUser } from "../../hooks";
+import { responseType } from "../../_types/share_types";
 
 const Password = () => {
   const { user } = useUser();
@@ -26,13 +28,23 @@ const Password = () => {
 
     setLoading(true);
 
-    await fetcher(url, "POST", user.token, {
+    await fetcher(url, "POST", user?.token, {
       lastPassword: formData.last_password,
       password: formData.password,
+    }).then((result) => {
+      if (result.data.code === 200) {
+        notify(
+          responseType.success,
+          "Your password has been updated successfully"
+        );
+      }
+      setData(result);
     });
 
     setLoading(false);
   };
+
+  console.log(data);
 
   return (
     <SettingsLayout>
@@ -71,9 +83,9 @@ const Password = () => {
           {loading ? "... Processing" : "Save"}
         </button>
 
-        <div className="text-red-500">
-          {data?.type === "error" ? data?.data?.message : ""}
-        </div>
+        {/*<div className="text-red-500">*/}
+        {/*  {data?.type === "error" ? data?.data?.message : ""}*/}
+        {/*</div>*/}
       </form>
     </SettingsLayout>
   );
