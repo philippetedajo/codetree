@@ -35,8 +35,10 @@ const Profile = () => {
         </div>
 
         <div className="flex flex-col justify-center">
-          <div> {user?.data?.name} </div>
-          <small className="text-gray-500">{user?.data?.description}</small>
+          <div> {user?.profile?.data?.data?.name} </div>
+          <small className="text-gray-500">
+            {user?.profile?.data?.data?.description}
+          </small>
           <button
             onClick={() => Router.push("/settings")}
             className="border mt-2 px-3 flex items-center justify-center shadow-md"
@@ -47,7 +49,7 @@ const Profile = () => {
       </div>
 
       <div className="flex text-2xl mt-5 leading-9 tracking-wide">
-        {user?.data?.status}
+        {user?.profile?.data?.data?.status}
       </div>
 
       <div className="mt-5 flex">

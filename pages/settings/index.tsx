@@ -14,30 +14,28 @@ import { useUser } from "../../hooks";
 import { responseType } from "../../_types/share_types";
 
 const Index = () => {
-  const { user } = useUser();
+  const { user, mutateUser } = useUser();
 
   const { register, handleSubmit, errors } = useForm<UpdateProfileForm>({
     resolver: yupResolver(updateProfileSchema),
   });
 
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any>({});
 
   const onSubmit = async (formData: UpdateProfileForm) => {
     setLoading(true);
 
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/auth/profile/update`;
-    await fetcher(url, "POST", user?.token, formData).then((result) => {
-      if (result.data.code === 200) {
-        notify(responseType.success, "We've saved your profile changes");
-      }
-      setData(result);
-    });
+    const response = await fetcher(url, "POST", user?.token, formData);
+    await mutateUser(response);
+
+    if (response.data.code === 200) {
+      notify(responseType.success, "We've saved your profile changes");
+    }
 
     setLoading(false);
   };
 
-  console.log(data);
   //TODO AVATAR UPDATE
 
   return (
@@ -109,9 +107,9 @@ const Index = () => {
           {loading ? "... Processing" : "Save"}
         </button>
 
-        <div className="text-red-500">
-          {data?.type === "error" ? data?.data?.message : ""}
-        </div>
+        {/*<div className="text-red-500">*/}
+        {/*  {data?.type === "error" ? data?.data?.message : ""}*/}
+        {/*</div>*/}
       </form>
     </SettingsLayout>
   );
