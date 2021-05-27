@@ -54,15 +54,11 @@ const Profile = () => {
 
       <div className="mt-5 flex">
         <div className="mr-10 flex flex-col items-center">
-          <small className="text-gray-500 ">Followers</small>
-          <div className="text-2xl">9034</div>
-        </div>
-        <div className="mr-10 flex flex-col items-center">
           <small className="text-gray-500 ">Likes</small>
           <div className="text-2xl">340</div>
         </div>
         <div className="mr-10 flex flex-col items-center">
-          <small className="text-gray-500 ">Following</small>
+          <small className="text-gray-500 ">Views</small>
           <div className="text-2xl">4567</div>
         </div>
       </div>

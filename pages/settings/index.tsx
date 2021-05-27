@@ -21,6 +21,7 @@ const Index = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<any>();
 
   const onSubmit = async (formData: UpdateProfileForm) => {
     setLoading(true);
@@ -28,15 +29,12 @@ const Index = () => {
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/auth/profile/update`;
     const response = await fetcher(url, "POST", user?.token, formData);
     await mutateUser(response);
-
-    if (response.data.code === 200) {
+    if (response.type === responseType.success) {
       notify(responseType.success, "We've saved your profile changes");
     }
-
+    setData(response);
     setLoading(false);
   };
-
-  //TODO AVATAR UPDATE
 
   return (
     <SettingsLayout>
@@ -54,7 +52,7 @@ const Index = () => {
               name="name"
               type="text"
               ref={register}
-              defaultValue={user?.profile?.data?.data?.name}
+              defaultValue={user?.profile?.data?.name}
             />
             <small className="mb-4 text-red-500">{errors.name?.message}</small>
           </div>
@@ -66,7 +64,7 @@ const Index = () => {
               name="username"
               type="text"
               ref={register}
-              defaultValue={user?.profile?.data?.data?.username}
+              defaultValue={user?.profile?.data?.username}
             />
             <small className="mb-4 text-red-500">
               {errors.username?.message}
@@ -80,7 +78,7 @@ const Index = () => {
           type="text"
           name="status"
           ref={register}
-          defaultValue={user?.profile?.data?.data?.status}
+          defaultValue={user?.profile?.data?.status}
         />
         <small className="mt-1 mb-6 text-red-500">
           {errors.status?.message}
@@ -92,7 +90,7 @@ const Index = () => {
           className="border-2 border-black rounded"
           name="description"
           ref={register}
-          defaultValue={user?.profile?.data?.data?.description}
+          defaultValue={user?.profile?.data?.description}
         />
         <small className="mt-1 text-red-500">
           {errors.description?.message}
@@ -107,9 +105,9 @@ const Index = () => {
           {loading ? "... Processing" : "Save"}
         </button>
 
-        {/*<div className="text-red-500">*/}
-        {/*  {data?.type === "error" ? data?.data?.message : ""}*/}
-        {/*</div>*/}
+        <div className="text-red-500">
+          {data?.type === "error" ? data?.data?.message : ""}
+        </div>
       </form>
     </SettingsLayout>
   );

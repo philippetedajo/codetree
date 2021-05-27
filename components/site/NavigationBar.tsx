@@ -80,9 +80,9 @@ export default function NavigationBar() {
         {user?.isLoggedIn && (
           <div className="flex items-center">
             <div className="flex flex-col text-right">
-              <div>{user?.profile?.data?.data?.username}</div>
+              <div>{user?.profile?.data?.username}</div>
               <small className="text-gray-500">
-                {user?.profile?.data?.data?.status}
+                {user?.profile?.data?.status}
               </small>
             </div>
             <Menu
