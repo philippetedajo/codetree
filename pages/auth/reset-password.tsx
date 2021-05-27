@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { fetcher, resetPasswordSchema } from "../../utils";
 import { useRouter } from "next/router";
 import { ToastContainer } from "react-toastify";
+import { responseType } from "../../_types/share_types";
 
 const ResetPassword = () => {
   //here we just check if user is already logged in and redirect to profile
@@ -41,7 +42,7 @@ const ResetPassword = () => {
     return <div>...loading</div>;
   }
 
-  if (data?.data?.code === 200) {
+  if (data?.type === responseType.success) {
     router.push({
       pathname: "/auth/login",
       query: { event_message: "Your password has been reset successfully !" },

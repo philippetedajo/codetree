@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { fetcher, notify } from "../../utils";
+import { fetcher } from "../../utils";
 import { useUser } from "../../hooks";
+import { responseType } from "../../_types/share_types";
 
 const Confirm = () => {
   const { user } = useUser({
@@ -32,7 +33,9 @@ const Confirm = () => {
     }
   }, [router]);
 
-  if (data?.data?.code === 200) {
+  console.log();
+
+  if (data?.type === responseType.success) {
     router.push({
       pathname: "/auth/login",
       query: {
@@ -51,12 +54,6 @@ const Confirm = () => {
         <title>Confirm | Codetree</title>
         <meta name="description" content="Create a Codetree account" />
       </Head>
-
-      {data?.data?.message !== 200 && !loading && (
-        <div className="flex justify-center items-center mt-48">
-          <div className="text-2xl">{data?.data?.message}</div>
-        </div>
-      )}
 
       {loading && (
         <div className="flex justify-center items-center mt-48">

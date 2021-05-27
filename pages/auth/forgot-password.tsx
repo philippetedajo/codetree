@@ -44,6 +44,8 @@ const ForgotPassword = () => {
     return <div>...loading</div>;
   }
 
+  console.log(data);
+
   return (
     <div>
       <Head>

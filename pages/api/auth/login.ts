@@ -16,9 +16,11 @@ export default withSession(async (req, res) => {
       await req.session.save();
       res.json(user);
     } else {
+      res.status();
       res.json(data.data);
     }
   } catch (error) {
+    res.status(error.response.status);
     res.json(error.response.data);
   }
 });

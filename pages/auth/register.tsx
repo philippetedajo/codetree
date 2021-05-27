@@ -135,7 +135,7 @@ const Register: React.FC = () => {
 
         <div className="text-red-500">
           {data?.type === responseType.error
-            ? data?.data?.data?.details?.email?.message
+            ? data?.data?.data?.details?.username?.message
             : ""}
         </div>
       </form>

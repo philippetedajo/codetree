@@ -50,7 +50,7 @@ const Login: React.FC = () => {
         className="flex flex-col w-80 md:w-112"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className="mb-5 text-xl text-green-500">
+        <h1 className="mb-5 text-xl text-center text-green-500">
           {router?.query?.event_message}
         </h1>
         <h2 className="mb-5 text-3xl text-center">
@@ -104,7 +104,7 @@ const Login: React.FC = () => {
         </button>
 
         <div className="text-red-500">
-          {data?.type === responseType.error ? data?.data?.message : ""}
+          {data?.type === responseType.error ? data?.data?.data?.message : ""}
         </div>
       </form>
     </div>

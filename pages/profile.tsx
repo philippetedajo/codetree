@@ -35,9 +35,9 @@ const Profile = () => {
         </div>
 
         <div className="flex flex-col justify-center">
-          <div> {user?.profile?.data?.data?.name} </div>
+          <div> {user?.profile?.data?.name} </div>
           <small className="text-gray-500">
-            {user?.profile?.data?.data?.description}
+            {user?.profile?.data?.description}
           </small>
           <button
             onClick={() => Router.push("/settings")}
@@ -49,7 +49,7 @@ const Profile = () => {
       </div>
 
       <div className="flex text-2xl mt-5 leading-9 tracking-wide">
-        {user?.profile?.data?.data?.status}
+        {user?.profile?.data?.status}
       </div>
 
       <div className="mt-5 flex">

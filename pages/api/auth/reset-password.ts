@@ -6,9 +6,9 @@ export default withSession(async (req, res) => {
 
   try {
     const data = await axios.post(url, req.body);
-
     res.json(data.data);
   } catch (error) {
-    res.json(error.response.data);
+    res.status(error.response.status);
+    res.json(error.response.data.data);
   }
 });
