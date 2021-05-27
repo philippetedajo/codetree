@@ -13,23 +13,12 @@ export const fetcher = async (
   try {
     const result = await axios({ url, method, headers, data });
 
-    switch (result.data.code) {
-      case 200:
-        return notifier(responseType.success, result.data);
-      case 400:
-        return notifier(responseType.error, result.data);
-      case 404:
-        return notifier(responseType.error, result.data);
-      case 500:
-        return notifier(responseType.error, result.data);
-      default:
-        return notifier(responseType.error, result.data);
-    }
+    return notifier(responseType.success, result);
   } catch (error) {
     if (!error.data) {
       error.data = { message: error.message };
     }
-    throw error;
+    return notifier(responseType.error, error.response);
   }
 };
 
