@@ -21,12 +21,13 @@ const Password = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any>({});
+  const [result, setResult] = useState<any>({});
 
   const onSubmit = async (formData: UpdatePasswordForm) => {
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/auth/profile/updatePassword`;
 
     setLoading(true);
+    setResult({});
 
     const response = await fetcher(url, "POST", user?.token, {
       lastPassword: formData.last_password,
@@ -39,7 +40,7 @@ const Password = () => {
         "Your password has been updated successfully"
       );
     }
-    setData(response);
+    setResult(response);
 
     setLoading(false);
   };
@@ -82,8 +83,8 @@ const Password = () => {
         </button>
 
         <div className="text-red-500">
-          {data?.type === "error"
-            ? data?.data?.data?.data?.details?.lastpassword?.message
+          {result?.type === "error"
+            ? result?.data?.data?.details?.lastpassword?.message
             : ""}
         </div>
       </form>

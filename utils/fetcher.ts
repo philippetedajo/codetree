@@ -18,11 +18,12 @@ export const fetcher = async (
     if (!error.data) {
       error.data = { message: error.message };
     }
-    return notifier(responseType.error, error.response);
+
+    return notifier(responseType.error, error.response.data);
   }
 };
 
 function notifier(type: string, data: any) {
-  // console.log({ type: type, data: data });
+  console.log({ type: type, data: data });
   return { type: type, data: data };
 }

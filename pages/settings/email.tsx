@@ -19,7 +19,7 @@ const Email = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any>({});
+  const [result, setResult] = useState<any>({});
 
   const onSubmit = async (formData: UpdateEmailForm) => {
     console.log(formData);
@@ -31,12 +31,11 @@ const Email = () => {
       token: user?.token,
       email: formData.email,
     });
-    setData(result);
+    setResult(result);
 
     setLoading(false);
   };
 
-  console.log(data);
   return (
     <SettingsLayout>
       <form
@@ -63,7 +62,7 @@ const Email = () => {
         </button>
 
         <div className="text-red-500">
-          {data?.type === "error" ? data?.data?.message : ""}
+          {result?.type === "error" ? result?.data?.message : ""}
         </div>
       </form>
     </SettingsLayout>

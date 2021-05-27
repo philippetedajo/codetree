@@ -23,7 +23,7 @@ const ResetPassword = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any>({});
+  const [result, setResult] = useState<any>({});
 
   const onSubmit = async (formData: ResetPasswordForm) => {
     setLoading(true);
@@ -33,7 +33,7 @@ const ResetPassword = () => {
       repeatPassword: formData.confirm_password,
       token: router.query.cmrk,
     });
-    setData(response);
+    setResult(response);
 
     setLoading(false);
   };
@@ -42,7 +42,7 @@ const ResetPassword = () => {
     return <div>...loading</div>;
   }
 
-  if (data?.type === responseType.success) {
+  if (result?.type === responseType.success) {
     router.push({
       pathname: "/auth/login",
       query: { event_message: "Your password has been reset successfully !" },
@@ -94,7 +94,7 @@ const ResetPassword = () => {
         </button>
 
         <div className="text-red-500">
-          {data?.type === "error" ? data?.data?.message : ""}
+          {result?.type === "error" ? result?.data?.message : ""}
         </div>
       </form>
     </div>

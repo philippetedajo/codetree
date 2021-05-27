@@ -18,7 +18,7 @@ const Register: React.FC = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any>({});
+  const [result, setResult] = useState<any>({});
 
   const onSubmit = async ({
     name,
@@ -27,6 +27,7 @@ const Register: React.FC = () => {
     password,
   }: RegisterForm) => {
     setLoading(true);
+    setResult({});
 
     const response = await fetcher("/api/auth/register", "POST", null, {
       name,
@@ -34,12 +35,12 @@ const Register: React.FC = () => {
       email,
       password,
     });
-    setData(response);
+    setResult(response);
 
     setLoading(false);
   };
 
-  if (data?.type === responseType.success) {
+  if (result?.type === responseType.success) {
     return <CheckYourMail />;
   }
 
@@ -134,8 +135,8 @@ const Register: React.FC = () => {
         </button>
 
         <div className="text-red-500">
-          {data?.type === responseType.error
-            ? data?.data?.data?.details?.username?.message
+          {result?.type === responseType.error
+            ? result?.data?.details?.username?.message
             : ""}
         </div>
       </form>

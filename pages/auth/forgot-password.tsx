@@ -20,10 +20,11 @@ const ForgotPassword = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any>({});
+  const [result, setResult] = useState<any>({});
 
   const onSubmit = async (formData: ForgotPasswordForm) => {
     setLoading(true);
+    setResult({});
 
     const response = await fetcher(
       "/api/auth/forgot-password",
@@ -31,20 +32,18 @@ const ForgotPassword = () => {
       null,
       formData
     );
-    setData(response);
+    setResult(response);
 
     setLoading(false);
   };
 
-  if (data?.type === responseType.success) {
+  if (result?.type === responseType.success) {
     return <CheckYourMail />;
   }
 
   if (!user || user.isLoggedIn) {
     return <div>...loading</div>;
   }
-
-  console.log(data);
 
   return (
     <div>
@@ -79,8 +78,8 @@ const ForgotPassword = () => {
         </button>
 
         <div className="text-red-500">
-          {data?.type === responseType.error
-            ? data?.data?.data?.details?.email?.message
+          {result?.type === responseType.error
+            ? result?.data?.details?.email?.message
             : ""}
         </div>
       </form>

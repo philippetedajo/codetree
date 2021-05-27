@@ -23,14 +23,15 @@ const Login: React.FC = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any>({});
+  const [result, setResult] = useState<any>({});
 
   const onSubmit = async (formData: LoginForm) => {
     setLoading(true);
+    setResult({});
 
     const response = await fetcher("/api/auth/login", "POST", null, formData);
     await mutateUser(response);
-    setData(response);
+    setResult(response);
 
     setLoading(false);
   };
@@ -50,7 +51,7 @@ const Login: React.FC = () => {
         className="flex flex-col w-80 md:w-112"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className="mb-5 text-xl text-center text-green-500">
+        <h1 className="mb-5 text-xl text-green-500 text-center">
           {router?.query?.event_message}
         </h1>
         <h2 className="mb-5 text-3xl text-center">
@@ -104,7 +105,7 @@ const Login: React.FC = () => {
         </button>
 
         <div className="text-red-500">
-          {data?.type === responseType.error ? data?.data?.data?.message : ""}
+          {result?.type === responseType.error ? result?.data?.message : ""}
         </div>
       </form>
     </div>

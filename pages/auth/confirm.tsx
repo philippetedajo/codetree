@@ -13,8 +13,8 @@ const Confirm = () => {
 
   const router = useRouter();
 
-  const [data, setData] = useState<any>();
   const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<any>({});
 
   useEffect(() => {
     const confirmPass = async (pass) => {
@@ -23,7 +23,7 @@ const Confirm = () => {
       const result = await fetcher("/api/auth/confirm", "POST", null, {
         token: pass,
       });
-      setData(result);
+      setResult(result);
 
       setLoading(false);
     };
@@ -35,7 +35,7 @@ const Confirm = () => {
 
   console.log();
 
-  if (data?.type === responseType.success) {
+  if (result?.type === responseType.success) {
     router.push({
       pathname: "/auth/login",
       query: {

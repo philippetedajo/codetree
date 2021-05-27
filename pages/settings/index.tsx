@@ -21,7 +21,7 @@ const Index = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any>();
+  const [result, setResult] = useState<any>({});
 
   const onSubmit = async (formData: UpdateProfileForm) => {
     setLoading(true);
@@ -32,7 +32,7 @@ const Index = () => {
     if (response.type === responseType.success) {
       notify(responseType.success, "We've saved your profile changes");
     }
-    setData(response);
+    setResult(response);
     setLoading(false);
   };
 
@@ -106,7 +106,7 @@ const Index = () => {
         </button>
 
         <div className="text-red-500">
-          {data?.type === "error" ? data?.data?.message : ""}
+          {result?.type === "error" ? result?.data?.message : ""}
         </div>
       </form>
     </SettingsLayout>
