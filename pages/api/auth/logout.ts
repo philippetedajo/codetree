@@ -8,5 +8,4 @@ export default withSession(async (req, res) => {
   await axios.post(url, { token });
   req.session.destroy();
   res.json({ isLoggedIn: false });
-  res.end();
 });
