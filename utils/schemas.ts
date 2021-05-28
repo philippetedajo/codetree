@@ -1,5 +1,8 @@
 import * as yup from "yup";
 
+const FILE_SIZE = 160 * 1024;
+const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/gif", "image/png"];
+
 let schemas = {
   name: yup.string().required("You must enter your full name").min(3).max(70),
   firstname: yup
@@ -27,6 +30,20 @@ let schemas = {
   confirm_password: yup
     .string()
     .oneOf([yup.ref("password"), null], "Passwords must match"),
+
+  picture: yup
+    .mixed()
+    .required("A file is required")
+    .test(
+      "fileSize",
+      "File too large",
+      (value) => value && value.size <= FILE_SIZE
+    )
+    .test(
+      "fileFormat",
+      "Unsupported Format",
+      (value) => value && SUPPORTED_FORMATS.includes(value.type)
+    ),
 };
 
 const {
@@ -39,6 +56,7 @@ const {
   last_password,
   status,
   description,
+  picture,
 } = schemas;
 
 export const loginSchema = yup.object().shape({
@@ -76,4 +94,8 @@ export const updateEmailSchema = yup.object().shape({
 export const updatePasswordSchema = yup.object().shape({
   last_password,
   password,
+});
+
+export const profilePictureSchema = yup.object().shape({
+  picture,
 });

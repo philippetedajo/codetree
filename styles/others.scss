@@ -1,0 +1,35 @@
+.file-upload {
+  height: 35px;
+  width: 35px;
+  border-radius: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer !important;
+  border: 3px solid #ffffff;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom, #9ca3af 0%, #f9a8d4 60%);
+  background-size: 100% 200%;
+  transition: all 1s;
+  color: #ffffff;
+  font-size: 100px;
+  top: -2rem;
+  left: 5rem;
+
+  input[type="file"] {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer !important;
+  }
+
+  &:hover {
+    color: black;
+    cursor: pointer !important;
+    transform: scale(1.4);
+  }
+}

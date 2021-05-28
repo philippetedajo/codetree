@@ -39,6 +39,8 @@
     "react-ga": "^3.3.0",
     "react-hook-form": "^6.15.5",
     "react-icons": "^4.2.0",
+    "react-images-upload": "^1.2.8",
+    "react-images-uploading": "^3.1.2",
     "react-redux": "^7.2.3",
     "react-split": "^2.0.11",
     "react-toastify": "^7.0.4",

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
 import {
@@ -5,7 +6,9 @@ import {
   ShieldCheckIcon,
   MailIcon,
   ChevronLeftIcon,
+  CameraIcon,
 } from "@heroicons/react/outline";
+import ImageUploader from "react-images-upload";
 
 export const SettingsLayout = ({ children }) => {
   return (
@@ -16,7 +19,24 @@ export const SettingsLayout = ({ children }) => {
           className="w-5 h-5 text-3xl mb-5 sm:mb-4 cursor-pointer"
         />
 
-        <div className="flex flex-row sm:pl-10 sm:flex-col justify-around sm:justify-start ">
+        <div className=" flex flex-row sm:pl-10 sm:flex-col justify-around sm:justify-start ">
+          <div
+            style={{ height: 120, width: 120 }}
+            className="relative inline-block p-0.5 sm:mb-24 bg-gradient-to-b from-gray-400 to-pink-300 rounded-full mr-5 shadow-lg"
+          >
+            <img
+              className="rounded-full"
+              height={120}
+              width={120}
+              src="/fake/profile6.png"
+              alt="Profile image"
+            />
+
+            <div className="file-upload">
+              <input type="file" />
+              <CameraIcon className="w-5 h-5 cursor-pointer" />
+            </div>
+          </div>
           <Link href="/settings">
             <a className="flex items-center sm:mb-4">
               <UserCircleIcon className="w-7 h-7 mr-2" />

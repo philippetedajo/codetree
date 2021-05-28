@@ -6,6 +6,7 @@ import "../styles/tabs.css";
 import "../styles/resizer.css";
 import "../node_modules/react-toastify/scss/main.scss";
 import "nprogress/nprogress.css";
+import "../styles/others.scss";
 
 import Head from "next/head";
 import Router, { useRouter } from "next/router";
