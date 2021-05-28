@@ -22,7 +22,7 @@ export const SettingsLayout = ({ children }) => {
         <div className="flex flex-row sm:pl-10 sm:flex-col justify-around sm:justify-start ">
           <div
             style={{ paddingBottom: "1px" }}
-            className="w-40 h-40 p-0.5 relative inline-block sm:mb-24  rounded-full mr-5 shadow-lg"
+            className="w-40 h-40 relative inline-block sm:mb-12  rounded-full mr-5 shadow-lg"
           >
             <img
               className="rounded-full w-40 h-40 object-cover"
