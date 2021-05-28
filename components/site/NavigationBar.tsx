@@ -93,17 +93,12 @@ export default function NavigationBar() {
                 <>
                   <div>
                     <Menu.Button className="bg-transparent pt-1 inline-flex justify-center items-center w-full border-gray-300 px-4 bg-white text-sm font-medium text-gray-700 focus:outline-none  ">
-                      <div
-                        style={{ height: 40, width: 40 }}
-                        className="rounded-full shadow-lg"
-                      >
-                        <Image
-                          height={40}
-                          width={40}
-                          src="/fake/profile6.png"
-                          alt="Profile image"
-                        />
-                      </div>
+                      <img
+                        className="rounded-full w-10 h-10 object-cover shadow-lg"
+                        src="/fakeProfile.jpg"
+                        alt="Profile image"
+                      />
+
                       <ChevronDownIcon
                         className="-mr-1 ml-2 h-5 w-5 text-gray-500"
                         aria-hidden="true"

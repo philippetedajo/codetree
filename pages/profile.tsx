@@ -3,6 +3,7 @@ import { PencilIcon } from "@heroicons/react/outline";
 import Router from "next/router";
 import { checkSession, withSession } from "../utils";
 import { useUser } from "../hooks";
+import { Menu } from "@headlessui/react";
 
 const Profile = () => {
   const { user } = useUser();
@@ -22,14 +23,13 @@ const Profile = () => {
     <div className="px-4 lg:px-24 pt-8">
       <div className="flex">
         <div
-          style={{ height: 90, width: 90 }}
-          className="p-0.5 bg-gradient-to-b from-gray-400 to-pink-300 rounded-full mr-5 shadow-lg"
+          style={{ height: 120, width: 120 }}
+          className="flex justify-center items-center bg-gradient-to-b from-gray-400 to-pink-300 rounded-full mr-5 shadow-lg"
         >
           <img
-            className="rounded-full"
-            height={90}
-            width={90}
-            src="/fake/profile6.png"
+            style={{ height: 110, width: 110 }}
+            className="rounded-full  object-cover shadow-lg"
+            src="/fakeProfile.jpg"
             alt="Profile image"
           />
         </div>
