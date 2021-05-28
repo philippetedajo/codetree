@@ -22,10 +22,10 @@ export const SettingsLayout = ({ children }) => {
         <div className="flex flex-row sm:pl-10 sm:flex-col justify-around sm:justify-start ">
           <div
             style={{ paddingBottom: "1px" }}
-            className="w-52 h-52 relative inline-block sm:mb-24 bg-gradient-to-b from-gray-400 to-pink-300 rounded-full mr-5 shadow-lg"
+            className="w-40 h-40 p-0.5 relative inline-block sm:mb-24 bg-gradient-to-b from-gray-400 to-pink-300 rounded-full mr-5 shadow-lg"
           >
             <img
-              className="rounded-full w-52 h-52 border-2 border-red-700"
+              className="rounded-full w-40 h-40"
               src="/fake/profile6.png"
               alt="Profile image"
             />
