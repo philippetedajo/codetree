@@ -37,18 +37,22 @@ export default function NavigationBar() {
   return (
     <div
       style={{ height: "8vh" }}
-      className="px-3 sm:px-7 flex justify-between items-center"
+      className="px-2 sm:px-7 flex justify-between items-center shadow-lg"
     >
       {/*===================================Left side=============================================*/}
-      <div>
-        <Link href="/">
-          <a className="text-2xl">Codetree</a>
-        </Link>
+      <div className="flex justify-center items-end">
+        <img alt="Codetree" className="w-12" src="/identity/Codetree.png" />
+        <div className="text-2xl hidden sm:block tracking-wide font-medium">
+          Codetree
+        </div>
       </div>
 
       {/*=====================================Right side===========================================*/}
       <div className="flex items-center">
-        <div className="mr-4 flex cursor-pointer" onClick={toggleTheme}>
+        <div
+          className="mr-4 flex cursor-pointer hidden sm:block"
+          onClick={toggleTheme}
+        >
           {theme === "light" ? (
             <FaRegMoon className="w-5 h-5 text-gray-500" />
           ) : theme === "dark" ? (
@@ -68,9 +72,11 @@ export default function NavigationBar() {
               <a className="nav_item">Login</a>
             </Link>{" "}
             <Link href="/auth/register">
-              <div className="flex justify-center items-center mr-5 text-sm font-medium hover:bg-green-500 bg-green-400 px-4 py-1.5 rounded text-black tracking-wide cursor-pointer">
-                <StarIcon className="w-5 h-5 mr-1.5" />
-                <a>SIGN UP FREE</a>
+              <div className="flex justify-center items-center text-sm font-medium hover:bg-green-500 bg-green-400 px-4 py-1.5 rounded text-black tracking-wide cursor-pointer">
+                <div className="hidden sm:block">
+                  <StarIcon className="w-5 h-5 mr-1.5" />
+                </div>
+                <a className="text-center text-sm">SIGN UP FREE</a>
               </div>
             </Link>
           </div>

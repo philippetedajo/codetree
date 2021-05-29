@@ -36,10 +36,11 @@ const TopBar = () => {
       style={{ height: "8vh" }}
       className="px-3 sm:px-7 flex justify-between items-center"
     >
-      <div>
-        <Link href="/">
-          <a className="text-2xl">Codetree</a>
-        </Link>
+      <div className="flex justify-center items-end">
+        <img alt="Codetree" className="w-12" src="/identity/Codetree.png" />
+        <div className="text-2xl hidden sm:block tracking-wide font-medium">
+          Codetree
+        </div>
       </div>
 
       <div className="flex items-center">
