@@ -29,7 +29,7 @@ const Profile = () => {
           <img
             style={{ height: 110, width: 110 }}
             className="rounded-full  object-cover shadow-lg"
-            src="/fakeProfile.jpg"
+            src={user?.profile?.data?.profile}
             alt="Profile image"
           />
         </div>

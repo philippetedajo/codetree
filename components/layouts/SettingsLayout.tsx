@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
 import {
@@ -8,7 +7,6 @@ import {
   ChevronLeftIcon,
   CameraIcon,
 } from "@heroicons/react/outline";
-import ImageUploader from "react-images-upload";
 
 export const SettingsLayout = ({ children }) => {
   return (

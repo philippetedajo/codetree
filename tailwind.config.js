@@ -1,6 +1,9 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
+  images: {
+    domains: ["https://codetree-bd.herokuapp.com"],
+  },
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
