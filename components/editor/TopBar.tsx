@@ -66,20 +66,14 @@ const TopBar = () => {
           {({ open }) => (
             <>
               <div>
-                <Menu.Button className="bg-transparent pt-1 border inline-flex justify-center items-center w-full border-gray-300 px-4 bg-white text-sm font-medium text-gray-700 focus:outline-none  ">
+                <Menu.Button className="bg-transparent pt-1 inline-flex justify-center items-center w-full px-4 bg-white text-sm font-medium text-gray-700 focus:outline-none  ">
                   {/* if user is in session return =========================================== */}
                   {user?.isLoggedIn && (
-                    <div
-                      style={{ height: 40, width: 40 }}
-                      className="rounded-full shadow-lg"
-                    >
-                      <Image
-                        height={40}
-                        width={40}
-                        src="/fake/profile6.png"
-                        alt="Profile image"
-                      />
-                    </div>
+                    <img
+                      className="rounded-full w-10 h-10 object-cover shadow-lg"
+                      src={user?.profile?.data?.profile}
+                      alt="Profile image"
+                    />
                   )}
                   {/*=========================================== */}
                   <ChevronDownIcon
