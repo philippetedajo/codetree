@@ -12,6 +12,7 @@ import {
 } from "@heroicons/react/outline";
 import { useUser } from "../../hooks";
 import { fetcher, profilePictureSchema } from "../../utils";
+import React, { useState } from "react";
 
 export const SettingsLayout = ({ children }) => {
   const { user } = useUser();
@@ -20,9 +21,26 @@ export const SettingsLayout = ({ children }) => {
     resolver: yupResolver(profilePictureSchema),
   });
 
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<any>({});
+
   const onSubmitPicture = async (data) => {
-    console.log(data);
+    const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/auth/profile/update/picture`;
+
+    console.log(data.profile_picture[0]);
+
+    const formData = new FormData();
+    formData.append("profile", data.profile_picture[0]);
+
+    setLoading(true);
+
+    const result = await fetcher(url, "POST", user.token, formData);
+    setResult(result);
+
+    setLoading(false);
   };
+
+  console.log(result);
 
   return (
     <div className="pt-4 sm:pt-8 px-3 lg:px-24 flex flex-col sm:flex-row">
@@ -45,7 +63,12 @@ export const SettingsLayout = ({ children }) => {
             />
 
             <div className="file-upload">
-              <input ref={register} type="file" name="profile_picture" />
+              <input
+                ref={register}
+                type="file"
+                name="profile_picture"
+                accept="image/png, image/jpe, image/jpeg"
+              />
               <CameraIcon className="w-5 h-5 cursor-pointer" />
             </div>
 
@@ -53,7 +76,8 @@ export const SettingsLayout = ({ children }) => {
               {errors.profile_picture?.message}
             </small>
             <button className="bg-green-500 flex justify-center items-center px-3 text-white py-1 absolute left-1 -bottom-16">
-              <UploadIcon className="w-4 h-4 mr-2" /> Upload photo
+              <UploadIcon className="w-4 h-4 mr-2" />{" "}
+              {loading ? "... Processing" : "Upload photo"}
             </button>
 
             {/* ====================================================*/}

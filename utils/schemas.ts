@@ -37,7 +37,7 @@ let schemas = {
       return value && value[0].size <= FILE_SIZE;
     })
     .test("type", "Only support png, jpg and jpeg", (value) => {
-      return value && value[0].type === SUPPORTED_FORMATS;
+      return value && SUPPORTED_FORMATS.includes(value[0].type);
     }),
 };
 
