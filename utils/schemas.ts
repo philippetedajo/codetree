@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-const FILE_SIZE = 5 * 1000000;
+const FILE_SIZE = 6 * 1000000;
 const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
 
 let schemas = {
