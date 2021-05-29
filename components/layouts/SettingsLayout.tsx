@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Router from "next/router";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import {
   UserCircleIcon,
   ShieldCheckIcon,
@@ -8,30 +10,14 @@ import {
   CameraIcon,
 } from "@heroicons/react/outline";
 import { useUser } from "../../hooks";
-import { useForm } from "react-hook-form";
-
-//
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { fetcher, profilePictureSchema } from "../../utils";
 
 export const SettingsLayout = ({ children }) => {
   const { user } = useUser();
 
-  //
-  const profilePictureSchema = yup.object().shape({
-    profile_picture: yup
-      .mixed()
-      .required("You must profile a file")
-      .test("fileSize", "The file is too large", (value) => {
-        return value && value[0].size <= 4000000;
-      }),
-  });
-
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(profilePictureSchema),
   });
-
-  //
 
   const onSubmitPicture = async (data) => {
     console.log(data);
@@ -39,7 +25,7 @@ export const SettingsLayout = ({ children }) => {
 
   return (
     <div className="pt-4 sm:pt-8 px-3 lg:px-24 flex flex-col sm:flex-row">
-      <nav className="sm:w-72 sm:pt-5">
+      <nav className="sm:w-72 sm:pt-5 border">
         <ChevronLeftIcon
           onClick={() => Router.push("/profile")}
           className="w-5 h-5 text-3xl mb-5 sm:mb-4 cursor-pointer"
@@ -62,7 +48,7 @@ export const SettingsLayout = ({ children }) => {
               <CameraIcon className="w-5 h-5 cursor-pointer" />
             </div>
 
-            <small className="text-red-500 absolute -bottom-5">
+            <small className="w-44 text-red-500 absolute left-1 -bottom-5">
               {errors.profile_picture?.message}
             </small>
             <button className="border-2 absolute left-1 -bottom-14">
