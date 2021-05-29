@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const Register: React.FC = () => {
   // here we just check if user is already logged in and redirect to profile
-  const { user } = useUser({ redirectTo: "/profile", redirectIfFound: true });
+  useUser({ redirectTo: "/profile", redirectIfFound: true });
 
   const { register, handleSubmit, errors } = useForm<RegisterForm>({
     resolver: yupResolver(registerSchema),
@@ -42,10 +42,6 @@ const Register: React.FC = () => {
 
   if (result?.type === responseType.success) {
     return <CheckYourMail />;
-  }
-
-  if (!user || user.isLoggedIn) {
-    return <div>...loading</div>;
   }
 
   return (

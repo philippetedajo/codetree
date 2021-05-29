@@ -6,7 +6,6 @@ import { fetcher } from "../../utils";
 import { useAppDispatch } from "../../store/hook";
 import { update_modal } from "../../store/features/editorSlice";
 import { Menu, Transition } from "@headlessui/react";
-import Image from "next/image";
 import { ChevronDownIcon, PlusIcon, StarIcon } from "@heroicons/react/solid";
 import { LogoutIcon, SaveIcon, UserIcon } from "@heroicons/react/outline";
 

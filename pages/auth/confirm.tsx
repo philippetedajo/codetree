@@ -6,7 +6,7 @@ import { useUser } from "../../hooks";
 import { responseType } from "../../_types/share_types";
 
 const Confirm = () => {
-  const { user } = useUser({
+  useUser({
     redirectTo: "/profile",
     redirectIfFound: true,
   });
@@ -42,10 +42,6 @@ const Confirm = () => {
         event_message: "Your account has been activated successfully !",
       },
     });
-  }
-
-  if (!user || user.isLoggedIn) {
-    return <div>...loading</div>;
   }
 
   return (

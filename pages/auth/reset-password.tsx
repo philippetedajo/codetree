@@ -11,7 +11,7 @@ import { responseType } from "../../_types/share_types";
 
 const ResetPassword = () => {
   //here we just check if user is already logged in and redirect to profile
-  const { user } = useUser({
+  useUser({
     redirectTo: "/profile",
     redirectIfFound: true,
   });
@@ -37,10 +37,6 @@ const ResetPassword = () => {
 
     setLoading(false);
   };
-
-  if (!user || user.isLoggedIn) {
-    return <div>...loading</div>;
-  }
 
   if (result?.type === responseType.success) {
     router.push({

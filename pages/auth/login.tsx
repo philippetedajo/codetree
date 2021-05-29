@@ -11,7 +11,7 @@ import { responseType } from "../../_types/share_types";
 
 const Login: React.FC = () => {
   //here we just check if user is already logged in and redirect to profile
-  const { user, mutateUser } = useUser({
+  const { mutateUser } = useUser({
     redirectTo: "/profile",
     redirectIfFound: true,
   });
@@ -35,10 +35,6 @@ const Login: React.FC = () => {
 
     setLoading(false);
   };
-
-  if (!user || user.isLoggedIn) {
-    return <div>...loading</div>;
-  }
 
   return (
     <div>

@@ -8,7 +8,7 @@ const CheckYourMail = () => {
         <title>Verify your email | Codetree</title>
         <meta name="description" content="Create a Codetree account" />
       </Head>
-      <div className="flex justify-center items-center mt-48">
+      <div className="flex justify-center items-center mt-20">
         <div className="text-2xl">Please confirm your email to login</div>
       </div>
     </>

@@ -10,7 +10,7 @@ import CheckYourMail from "../../components/site/CheckYourMail";
 
 const ForgotPassword = () => {
   //here we just check if user is already logged in and redirect to profile
-  const { user } = useUser({
+  useUser({
     redirectTo: "/profile",
     redirectIfFound: true,
   });
@@ -39,10 +39,6 @@ const ForgotPassword = () => {
 
   if (result?.type === responseType.success) {
     return <CheckYourMail />;
-  }
-
-  if (!user || user.isLoggedIn) {
-    return <div>...loading</div>;
   }
 
   return (
