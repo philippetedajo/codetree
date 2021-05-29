@@ -8,6 +8,7 @@ import {
   MailIcon,
   ChevronLeftIcon,
   CameraIcon,
+  UploadIcon,
 } from "@heroicons/react/outline";
 import { useUser } from "../../hooks";
 import { fetcher, profilePictureSchema } from "../../utils";
@@ -25,7 +26,7 @@ export const SettingsLayout = ({ children }) => {
 
   return (
     <div className="pt-4 sm:pt-8 px-3 lg:px-24 flex flex-col sm:flex-row">
-      <nav className="sm:w-72 sm:pt-5 border">
+      <nav className="sm:w-72 sm:pt-5">
         <ChevronLeftIcon
           onClick={() => Router.push("/profile")}
           className="w-5 h-5 text-3xl mb-5 sm:mb-4 cursor-pointer"
@@ -35,7 +36,7 @@ export const SettingsLayout = ({ children }) => {
           <form
             onSubmit={handleSubmit(onSubmitPicture)}
             style={{ paddingBottom: "1px" }}
-            className="w-40 h-40 relative inline-block mb-10 sm:mb-20 rounded-full mr-5 shadow-lg"
+            className="w-40 h-40 relative inline-block mb-12 sm:mb-20 rounded-full mr-5 shadow-lg"
           >
             <img
               className="rounded-full w-40 h-40 object-cover"
@@ -48,11 +49,11 @@ export const SettingsLayout = ({ children }) => {
               <CameraIcon className="w-5 h-5 cursor-pointer" />
             </div>
 
-            <small className="w-44 text-red-500 absolute left-1 -bottom-5">
+            <small className="w-44 text-red-500 absolute left-1 -bottom-6">
               {errors.profile_picture?.message}
             </small>
-            <button className="border-2 absolute left-1 -bottom-14">
-              Upload photo
+            <button className="bg-green-500 flex justify-center items-center px-3 text-white py-1 absolute left-1 -bottom-16">
+              <UploadIcon className="w-4 h-4 mr-2" /> Upload photo
             </button>
 
             {/* ====================================================*/}
