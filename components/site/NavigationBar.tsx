@@ -21,7 +21,7 @@ export default function NavigationBar() {
 
   const logout = async () => {
     await mutateUser(fetcher("/api/auth/logout", "POST"));
-    Router.push("/auth/login");
+    await Router.push("/auth/login");
   };
 
   const { theme, setTheme } = useTheme();

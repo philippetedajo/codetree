@@ -28,7 +28,7 @@ const TopBar = () => {
 
   const logout = async () => {
     await mutateUser(fetcher("/api/auth/logout", "POST"));
-    Router.push("/");
+    await Router.push("/");
   };
 
   return (
