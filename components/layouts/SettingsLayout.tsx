@@ -8,9 +8,34 @@ import {
   CameraIcon,
 } from "@heroicons/react/outline";
 import { useUser } from "../../hooks";
+import { useForm } from "react-hook-form";
+
+//
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export const SettingsLayout = ({ children }) => {
   const { user } = useUser();
+
+  //
+  const profilePictureSchema = yup.object().shape({
+    profile_picture: yup
+      .mixed()
+      .required("You must profile a file")
+      .test("fileSize", "The file is too large", (value) => {
+        return value && value[0].size <= 4000000;
+      }),
+  });
+
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(profilePictureSchema),
+  });
+
+  //
+
+  const onSubmitPicture = async (data) => {
+    console.log(data);
+  };
 
   return (
     <div className="pt-4 sm:pt-8 px-3 lg:px-24 flex flex-col sm:flex-row">
@@ -21,9 +46,10 @@ export const SettingsLayout = ({ children }) => {
         />
 
         <div className="flex flex-row sm:pl-10 sm:flex-col justify-around sm:justify-start ">
-          <div
+          <form
+            onSubmit={handleSubmit(onSubmitPicture)}
             style={{ paddingBottom: "1px" }}
-            className="w-40 h-40 relative inline-block sm:mb-12  rounded-full mr-5 shadow-lg"
+            className="w-40 h-40 relative inline-block mb-10 sm:mb-20 rounded-full mr-5 shadow-lg"
           >
             <img
               className="rounded-full w-40 h-40 object-cover"
@@ -32,10 +58,19 @@ export const SettingsLayout = ({ children }) => {
             />
 
             <div className="file-upload">
-              <input type="file" />
+              <input ref={register} type="file" name="profile_picture" />
               <CameraIcon className="w-5 h-5 cursor-pointer" />
             </div>
-          </div>
+
+            <small className="text-red-500 absolute -bottom-5">
+              {errors.profile_picture?.message}
+            </small>
+            <button className="border-2 absolute left-1 -bottom-14">
+              Upload photo
+            </button>
+
+            {/* ====================================================*/}
+          </form>
 
           <Link href="/settings">
             <a className="flex items-center sm:mb-4">
