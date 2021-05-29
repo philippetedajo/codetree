@@ -15,7 +15,7 @@ import { fetcher, profilePictureSchema } from "../../utils";
 import React, { useState } from "react";
 
 export const SettingsLayout = ({ children }) => {
-  const { user } = useUser();
+  const { user, mutateUser } = useUser();
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(profilePictureSchema),
@@ -34,7 +34,8 @@ export const SettingsLayout = ({ children }) => {
 
     setLoading(true);
 
-    const result = await fetcher(url, "POST", user.token, formData);
+    const response = await fetcher(url, "POST", user.token, formData);
+    await mutateUser(response);
     setResult(result);
 
     setLoading(false);
