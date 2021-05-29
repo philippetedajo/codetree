@@ -95,7 +95,7 @@ export default function NavigationBar() {
                     <Menu.Button className="bg-transparent pt-1 inline-flex justify-center items-center w-full border-gray-300 px-4 bg-white text-sm font-medium text-gray-700 focus:outline-none  ">
                       <img
                         className="rounded-full w-10 h-10 object-cover shadow-lg"
-                        src="/fakeProfile.jpg"
+                        src={user?.profile?.data?.profile}
                         alt="Profile image"
                       />
 

@@ -3,7 +3,6 @@ import { PencilIcon } from "@heroicons/react/outline";
 import Router from "next/router";
 import { checkSession, withSession } from "../utils";
 import { useUser } from "../hooks";
-import { Menu } from "@headlessui/react";
 
 const Profile = () => {
   const { user } = useUser();

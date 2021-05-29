@@ -7,8 +7,11 @@ import {
   ChevronLeftIcon,
   CameraIcon,
 } from "@heroicons/react/outline";
+import { useUser } from "../../hooks";
 
 export const SettingsLayout = ({ children }) => {
+  const { user } = useUser();
+
   return (
     <div className="pt-4 sm:pt-8 px-3 lg:px-24 flex flex-col sm:flex-row">
       <nav className="sm:w-72 sm:pt-5">
@@ -24,7 +27,7 @@ export const SettingsLayout = ({ children }) => {
           >
             <img
               className="rounded-full w-40 h-40 object-cover"
-              src="/fakeProfile.jpg"
+              src={user?.profile?.data?.profile}
               alt="Profile image"
             />
 
