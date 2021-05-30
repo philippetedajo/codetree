@@ -4,6 +4,7 @@ module.exports = {
   images: {
     domains: ["https://codetree-bd.herokuapp.com"],
   },
+  darkMode: "class",
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -28,7 +29,7 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       white: colors.white,
-      black: "black",
+      black: "#121212",
       transparent: "transparent",
       tree: {
         hard: "#171E25",

@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <ThemeProvider>
+      <ThemeProvider attribute="class">
         {router.pathname.startsWith("/auth") ? (
           <AuthLayout>
             <Component {...pageProps} />

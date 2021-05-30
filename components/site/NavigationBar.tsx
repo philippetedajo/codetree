@@ -3,7 +3,12 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { LogoutIcon, UserIcon, TerminalIcon } from "@heroicons/react/outline";
+import {
+  LogoutIcon,
+  UserIcon,
+  TerminalIcon,
+  ChevronLeftIcon,
+} from "@heroicons/react/outline";
 import Link from "next/link";
 import { FaRegMoon } from "react-icons/fa";
 import { SunIcon, StarIcon } from "@heroicons/react/solid";
@@ -37,10 +42,13 @@ export default function NavigationBar() {
   return (
     <div
       style={{ height: "8vh" }}
-      className="px-2 sm:px-7 flex justify-between items-center shadow-lg"
+      className="fixed w-full bg-white dark:bg-black px-2 sm:px-7 flex justify-between items-center shadow-lg"
     >
       {/*===================================Left side=============================================*/}
-      <div className="flex justify-center items-end">
+      <div
+        className="flex justify-center items-end cursor-pointer"
+        onClick={() => Router.push("/")}
+      >
         <img alt="Codetree" className="w-12" src="/identity/Codetree.png" />
         <div className="text-2xl hidden sm:block tracking-wide font-medium">
           Codetree

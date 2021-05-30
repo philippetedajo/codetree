@@ -6,7 +6,7 @@ export const StandardLayout = ({ children }) => {
   return (
     <div>
       <NavigationBar />
-      {children}
+      <div className="pt-20">{children}</div>
     </div>
   );
 };

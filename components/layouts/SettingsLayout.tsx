@@ -27,8 +27,6 @@ export const SettingsLayout = ({ children }) => {
   const onSubmitPicture = async (data) => {
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/auth/profile/update/picture`;
 
-    console.log(data.profile_picture[0]);
-
     const formData = new FormData();
     formData.append("profile", data.profile_picture[0]);
 
@@ -40,8 +38,6 @@ export const SettingsLayout = ({ children }) => {
 
     setLoading(false);
   };
-
-  console.log(result);
 
   return (
     <div className="pt-4 sm:pt-8 px-3 lg:px-24 flex flex-col sm:flex-row">
