@@ -47,6 +47,10 @@ function MyApp({ Component, pageProps }) {
           <PlaygroundLayout>
             <Component {...pageProps} />
           </PlaygroundLayout>
+        ) : router.pathname.startsWith("/settings") ? (
+          <div>
+            <Component {...pageProps} />
+          </div>
         ) : (
           <StandardLayout>
             <ToastContainer hideProgressBar={true} autoClose={8000} />
