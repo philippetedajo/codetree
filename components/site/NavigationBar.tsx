@@ -48,9 +48,6 @@ export default function NavigationBar() {
         <Link href="/">
           <div className="flex justify-center items-end cursor-pointer">
             <img alt="Codetree" className="w-12" src="/identity/Codetree.png" />
-            <div className="text-2xl hidden sm:block tracking-wide font-medium">
-              Codetree
-            </div>
           </div>
         </Link>
       </div>
