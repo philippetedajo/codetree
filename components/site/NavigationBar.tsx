@@ -40,8 +40,6 @@ export default function NavigationBar() {
     }
   };
 
-  console.log(!user?.isLoggedIn, !user);
-
   return (
     <div
       style={{ height: "8vh" }}
