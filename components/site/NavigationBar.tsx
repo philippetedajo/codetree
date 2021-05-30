@@ -13,7 +13,7 @@ import { FaRegMoon } from "react-icons/fa";
 import { SunIcon, StarIcon } from "@heroicons/react/solid";
 
 import { fetcher } from "../../utils";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { useUser } from "../../hooks";
 
 function classNames(...classes) {
@@ -22,6 +22,8 @@ function classNames(...classes) {
 
 export default function NavigationBar() {
   const { user, mutateUser } = useUser();
+
+  const router = useRouter();
 
   const logout = async () => {
     await mutateUser(fetcher("/api/auth/logout", "POST"));
@@ -68,7 +70,7 @@ export default function NavigationBar() {
         </div>
 
         {/* User is not login  =========================================== */}
-        {!user?.isLoggedIn && (
+        {!user?.isLoggedIn && router.pathname === "/" && (
           <div className="flex justify-center items-center">
             <Link href="/playground">
               <a className="nav_item">Playground</a>
