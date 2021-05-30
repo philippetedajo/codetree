@@ -55,7 +55,7 @@ export const SettingsLayout = ({ children }) => {
           >
             <img
               className="rounded-full w-40 h-40 object-cover"
-              src={user?.profile?.data?.profile}
+              src={user?.profile?.data?.profile || "/blank-profile.png"}
               alt="Profile image"
             />
 

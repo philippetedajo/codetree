@@ -28,7 +28,7 @@ const Profile = () => {
           <img
             style={{ height: 110, width: 110 }}
             className="rounded-full  object-cover shadow-lg"
-            src={user?.profile?.data?.profile}
+            src={user?.profile?.data?.profile || "/blank-profile.png"}
             alt="Profile image"
           />
         </div>

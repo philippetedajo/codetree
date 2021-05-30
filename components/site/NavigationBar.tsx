@@ -40,6 +40,8 @@ export default function NavigationBar() {
     }
   };
 
+  console.log(!user?.isLoggedIn, !user);
+
   return (
     <div
       style={{ height: "8vh" }}
@@ -69,7 +71,7 @@ export default function NavigationBar() {
           )}
         </div>
 
-        {/* User is not login  =========================================== */}
+        {/* User is not login and on homepage  =========================================== */}
         {!user?.isLoggedIn && router.pathname === "/" && (
           <div className="flex justify-center items-center">
             <Link href="/playground">
@@ -88,6 +90,8 @@ export default function NavigationBar() {
             </Link>
           </div>
         )}
+
+        {!user?.isLoggedIn && router.pathname !== "/" && <div>...loading</div>}
 
         {/* User is login and is not on register or login page =========================================== */}
         {user?.isLoggedIn && (
