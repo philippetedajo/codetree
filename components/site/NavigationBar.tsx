@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import Image from "next/image";
 import { useTheme } from "next-themes";
 import {
   LogoutIcon,
@@ -45,14 +44,15 @@ export default function NavigationBar() {
       className="fixed w-full bg-white dark:bg-black px-2 sm:px-7 flex justify-between items-center shadow-lg"
     >
       {/*===================================Left side=============================================*/}
-      <div
-        className="flex justify-center items-end cursor-pointer"
-        onClick={() => Router.push("/")}
-      >
-        <img alt="Codetree" className="w-12" src="/identity/Codetree.png" />
-        <div className="text-2xl hidden sm:block tracking-wide font-medium">
-          Codetree
-        </div>
+      <div>
+        <Link href="/">
+          <div className="flex justify-center items-end cursor-pointer">
+            <img alt="Codetree" className="w-12" src="/identity/Codetree.png" />
+            <div className="text-2xl hidden sm:block tracking-wide font-medium">
+              Codetree
+            </div>
+          </div>
+        </Link>
       </div>
 
       {/*=====================================Right side===========================================*/}

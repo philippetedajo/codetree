@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { useUser } from "../../hooks";
 
 export const AuthLayout = ({ children }) => {
@@ -11,7 +12,9 @@ export const AuthLayout = ({ children }) => {
   return (
     <div className="h-screen flex flex-col items-center pt-14">
       <div className="flex items-center justify-center cursor-pointer">
-        <img alt="Codetree" className="w-32" src="/identity/Codetree.png" />
+        <Link href="/">
+          <img alt="Codetree" className="w-32" src="/identity/Codetree.png" />
+        </Link>
       </div>
       {children}
     </div>
