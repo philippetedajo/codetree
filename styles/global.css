@@ -45,8 +45,11 @@ button:focus {
   background-size: cover;
 }
 
-input {
-  @apply dark:bg-black border-gray-300;
+input,
+textarea,
+select {
+  background: transparent !important;
+  @apply border-2 border-gray-300;
 }
 
 input:-webkit-autofill,
@@ -59,5 +62,4 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-box-shadow: none;
-  transition: background-color 5000s ease-in-out 0s;
 }

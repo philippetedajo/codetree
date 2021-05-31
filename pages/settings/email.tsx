@@ -44,12 +44,7 @@ const Email = () => {
       >
         <h2 className="my-4 text-3xl ">Change your email </h2>
         <label className="mb-2">Email *</label>
-        <input
-          className="border-2 border-black"
-          name="email"
-          type="email"
-          ref={register}
-        />
+        <input name="email" type="email" ref={register} />
         <small className="mt-1 text-red-500">{errors.email?.message}</small>
 
         <button

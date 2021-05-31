@@ -54,23 +54,13 @@ const Password = () => {
         <h2 className="my-4 text-3xl ">Change your password </h2>
 
         <label className="mb-2">Your last password *</label>
-        <input
-          className="border-2 border-black"
-          type="password"
-          name="last_password"
-          ref={register}
-        />
+        <input type="password" name="last_password" ref={register} />
         <small className="mt-1 mb-6 text-red-500">
           {errors.last_password?.message}
         </small>
 
         <label className="mb-2">Your new password *</label>
-        <input
-          className="border-2 border-black"
-          type="password"
-          name="password"
-          ref={register}
-        />
+        <input type="password" name="password" ref={register} />
         <small className="mt-1 text-red-500">{errors.password?.message}</small>
 
         <button

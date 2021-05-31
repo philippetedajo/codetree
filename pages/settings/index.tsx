@@ -48,7 +48,7 @@ const Index = () => {
           <div className="w-full flex flex-col md:pr-2">
             <label className="mb-2">Full name *</label>
             <input
-              className="border-2 border-black mb-1"
+              className="mb-1"
               name="name"
               type="text"
               ref={register}
@@ -60,7 +60,7 @@ const Index = () => {
           <div className="flex flex-col w-full">
             <label className="mb-2">Username *</label>
             <input
-              className="border-2 border-black mb-1"
+              className="mb-1"
               name="username"
               type="text"
               ref={register}
@@ -74,7 +74,6 @@ const Index = () => {
 
         <label className="mb-2">Your status</label>
         <input
-          className="border-2 border-black"
           type="text"
           name="status"
           ref={register}
@@ -87,7 +86,7 @@ const Index = () => {
         <label className="mb-2">Your Bio</label>
         <textarea
           rows={5}
-          className="border-2 border-black rounded"
+          className="rounded"
           name="description"
           ref={register}
           defaultValue={user?.profile?.data?.description}
