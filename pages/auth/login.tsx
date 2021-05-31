@@ -37,16 +37,13 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="w-full flex justify-center">
       <Head>
         <title>Login | Codetree</title>
         <meta name="description" content="Login to your Codetree account" />
       </Head>
 
-      <form
-        className="flex flex-col w-80 md:w-112"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="auth_form" onSubmit={handleSubmit(onSubmit)}>
         <h1 className="mb-5 text-xl text-green-500 text-center">
           {router?.query?.event_message}
         </h1>

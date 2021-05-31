@@ -46,16 +46,13 @@ const ResetPassword = () => {
   }
 
   return (
-    <div>
+    <div className="w-full flex justify-center">
       <Head>
         <title>Reset password | Codetree</title>
         <meta name="description" content="Login to your Codetree account" />
       </Head>
 
-      <form
-        className="flex flex-col mt-3 w-80 md:w-112"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="auth_form" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="mb-5 text-3xl text-center">Please set a new password</h2>
 
         <label className="mb-2">Password *</label>

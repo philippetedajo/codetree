@@ -45,16 +45,13 @@ const Register: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="w-full flex justify-center">
       <Head>
         <title>Register | Codetree</title>
         <meta name="description" content="Create a Codetree account" />
       </Head>
 
-      <form
-        className="flex flex-col mt-3 w-80 md:w-112"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="auth_form" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="mb-6 text-3xl text-center">Create an account </h2>
 
         {/*    */}

@@ -30,3 +30,7 @@ button:focus {
 .nav_item {
   @apply mr-5 tracking-wide hover:text-gray-500 cursor-pointer;
 }
+
+.auth_form {
+  @apply flex flex-col mt-3 w-80 md:w-3/6 lg:w-2/6;
+}
