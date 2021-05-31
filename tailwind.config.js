@@ -30,6 +30,7 @@ module.exports = {
       pink: colors.pink,
       white: colors.white,
       black: "#121212",
+      dark_mode_white: "#eee",
       transparent: "transparent",
       tree: {
         hard: "#171E25",
