@@ -46,5 +46,5 @@ button:focus {
 }
 
 input {
-  @apply text-black;
+  @apply dark:bg-black border-2 border-gray-300;
 }

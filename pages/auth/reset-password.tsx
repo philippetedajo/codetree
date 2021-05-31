@@ -56,23 +56,13 @@ const ResetPassword = () => {
         <h2 className="mb-5 text-3xl text-center">Please set a new password</h2>
 
         <label className="mb-2">Password *</label>
-        <input
-          className="border-2 border-black"
-          name="password"
-          type="password"
-          ref={register}
-        />
+        <input name="password" type="password" ref={register} />
         <small className="mt-1 mb-6 text-red-500">
           {errors.password?.message}
         </small>
 
         <label className="mb-2">Confirm password *</label>
-        <input
-          className="border-2 border-black"
-          type="password"
-          name="confirm_password"
-          ref={register}
-        />
+        <input type="password" name="confirm_password" ref={register} />
         <small className="mt-1 text-red-500">
           {errors.confirm_password?.message}
         </small>

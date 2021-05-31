@@ -58,12 +58,7 @@ const Register: React.FC = () => {
         <div className="flex flex-col md:flex-row">
           <div className="w-full flex flex-col md:pr-2">
             <label className="mb-2">Full name *</label>
-            <input
-              className="border-2 border-black mb-1"
-              name="name"
-              type="text"
-              ref={register}
-            />
+            <input className="mb-1" name="name" type="text" ref={register} />
             <small className="mt-1 mb-4 text-red-500">
               {errors.name?.message}
             </small>
@@ -72,7 +67,7 @@ const Register: React.FC = () => {
           <div className="flex flex-col w-full">
             <label className="mb-2">Username *</label>
             <input
-              className="border-2 border-black mb-1"
+              className="mb-1"
               name="username"
               type="text"
               ref={register}
@@ -87,12 +82,7 @@ const Register: React.FC = () => {
 
         <div className="flex flex-col">
           <label className="mb-2">Email *</label>
-          <input
-            className="border-2 border-black mb-1"
-            name="email"
-            type="email"
-            ref={register}
-          />
+          <input className="mb-1" name="email" type="email" ref={register} />
           <small className="mt-1 mb-5 text-red-500">
             {errors.email?.message}
           </small>
@@ -101,7 +91,7 @@ const Register: React.FC = () => {
         <div className="flex flex-col">
           <label className="mb-2 ">Password *</label>
           <input
-            className="border-2 border-black mb-1"
+            className="mb-1"
             type="password"
             name="password"
             ref={register}

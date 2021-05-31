@@ -54,23 +54,13 @@ const Login: React.FC = () => {
         </h2>
 
         <label className="mb-2">Email *</label>
-        <input
-          className="border-2 border-black"
-          name="email"
-          type="email"
-          ref={register}
-        />
+        <input name="email" type="email" ref={register} />
         <small className="mt-1 mb-6 text-red-500">
           {errors.email?.message}
         </small>
 
         <label className="mb-2">Password *</label>
-        <input
-          className="border-2 border-black"
-          type="password"
-          name="min"
-          ref={register}
-        />
+        <input type="password" name="min" ref={register} />
         <small className="mt-1 text-red-500">{errors.min?.message}</small>
 
         <div className="flex mt-3 justify-between">
