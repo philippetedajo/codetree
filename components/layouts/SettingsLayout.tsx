@@ -40,7 +40,10 @@ export const SettingsLayout = ({ children }) => {
   };
 
   return (
-    <div className="pt-4 sm:pt-8 px-3 lg:px-24 flex flex-col sm:flex-row">
+    <div
+      style={{ paddingTop: "20vh" }}
+      className="pt-4 sm:pt-8 px-3 lg:px-24 flex flex-col sm:flex-row"
+    >
       <nav className="sm:w-72 sm:pt-5">
         <ChevronLeftIcon
           onClick={() => Router.push("/profile")}

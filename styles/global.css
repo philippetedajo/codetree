@@ -34,3 +34,12 @@ button:focus {
 .auth_form {
   @apply flex flex-col mt-3 w-80 md:w-3/6 lg:w-2/6;
 }
+
+.hero-pattern {
+  background: url("/wp1851993-low-poly-wallpapers.jpg") no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

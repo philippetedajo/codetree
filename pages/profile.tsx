@@ -19,7 +19,7 @@ const Profile = () => {
   ));
 
   return (
-    <div className="px-4 lg:px-24 pt-8">
+    <div style={{ paddingTop: "20vh" }} className="px-4 lg:px-24 pt-8">
       <div className="flex">
         <div
           style={{ height: 120, width: 120 }}
