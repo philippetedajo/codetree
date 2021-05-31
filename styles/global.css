@@ -46,5 +46,18 @@ button:focus {
 }
 
 input {
-  @apply dark:bg-black border-2 border-gray-300;
+  @apply dark:bg-black border-gray-300;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
 }
