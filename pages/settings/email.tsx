@@ -39,7 +39,7 @@ const Email = () => {
   return (
     <SettingsLayout>
       <form
-        className="flex flex-col pt-3 w-80 md:w-112"
+        className="flex flex-col pt-3 w-full md:w-2/3"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2 className="my-4 text-3xl ">Change your email </h2>
