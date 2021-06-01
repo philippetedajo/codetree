@@ -21,7 +21,7 @@ export const SkeletonProfile = () => {
           className="rounded-full bg-gray-300 shadow-lg mr-5"
         />
 
-        <div className="flex flex-col justify-center border w-40">
+        <div className="flex flex-col justify-center w-40">
           <div className="h-3 bg-gray-300 mb-2.5 rounded w-3/4 " />
           <div className="h-3 bg-gray-300 mb-2.5 rounded w-full " />
           <div className="h-3 bg-gray-300 rounded w-full " />
