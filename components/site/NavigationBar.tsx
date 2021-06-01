@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { FaRegMoon } from "react-icons/fa";
 import { SunIcon, StarIcon } from "@heroicons/react/solid";
+import { SkeletonProfile } from "../Skeleton";
 
 import { fetcher } from "../../utils";
 import Router, { useRouter } from "next/router";
@@ -89,7 +90,7 @@ export default function NavigationBar() {
           </div>
         )}
 
-        {!user?.isLoggedIn && router.pathname !== "/" && <div>...loading</div>}
+        {!user?.isLoggedIn && router.pathname !== "/" && <SkeletonProfile />}
 
         {/* User is login and is not on register or login page =========================================== */}
         {user?.isLoggedIn && (
