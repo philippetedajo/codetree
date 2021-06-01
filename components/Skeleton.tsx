@@ -32,3 +32,9 @@ export const SkeletonProfile = () => {
     </div>
   );
 };
+
+export const SettingPictureSkeleton = () => {
+  return (
+    <div className="animate-pulse rounded-full bg-gray-300 w-40 h-40 shadow-lg" />
+  );
+};

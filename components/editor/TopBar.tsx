@@ -78,7 +78,9 @@ const TopBar = () => {
                     {user?.isLoggedIn && (
                       <img
                         className="rounded-full w-10 h-10 object-cover shadow-lg"
-                        src={user?.profile?.data?.profile}
+                        src={
+                          user?.profile?.data?.profile || "/blank-profile.png"
+                        }
                         alt="Profile image"
                       />
                     )}

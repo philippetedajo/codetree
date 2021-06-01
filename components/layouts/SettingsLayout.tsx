@@ -13,6 +13,7 @@ import {
 import { useUser } from "../../hooks";
 import { fetcher, profilePictureSchema } from "../../utils";
 import React, { useState } from "react";
+import { SettingPictureSkeleton } from "../Skeleton";
 
 export const SettingsLayout = ({ children }) => {
   const { user, mutateUser } = useUser();
@@ -56,11 +57,15 @@ export const SettingsLayout = ({ children }) => {
             style={{ paddingBottom: "1px" }}
             className="w-40 h-40 relative inline-block mb-12 sm:mb-20 rounded-full mr-5 shadow-lg"
           >
-            <img
-              className="rounded-full w-40 h-40 object-cover"
-              src={user?.profile?.data?.profile || "/blank-profile.png"}
-              alt="Profile image"
-            />
+            {user ? (
+              <img
+                className="rounded-full w-40 h-40 object-cover"
+                src={user?.profile?.data?.profile || "/blank-profile.png"}
+                alt="Profile image"
+              />
+            ) : (
+              <SettingPictureSkeleton />
+            )}
 
             <div className="file-upload">
               <input
