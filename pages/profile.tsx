@@ -3,6 +3,7 @@ import { PencilIcon } from "@heroicons/react/outline";
 import Router from "next/router";
 import { checkSession, withSession } from "../utils";
 import { useUser } from "../hooks";
+import { SkeletonProfile } from "../components/Skeleton";
 
 const Profile = () => {
   const { user } = useUser();
@@ -22,36 +23,41 @@ const Profile = () => {
 
   return (
     <div style={{ paddingTop: "20vh" }} className="px-4 lg:px-24 pt-8">
-      <div className="flex">
-        <div
-          style={{ height: 120, width: 120 }}
-          className="flex justify-center items-center bg-gradient-to-b from-gray-400 to-pink-300 rounded-full mr-5 shadow-lg"
-        >
-          <img
-            style={{ height: 110, width: 110 }}
-            className="rounded-full  object-cover shadow-lg"
-            src={user?.profile?.data?.profile || "/blank-profile.png"}
-            alt="Profile image"
-          />
-        </div>
+      {user ? (
+        <div>
+          <div className="flex">
+            <div
+              style={{ height: 120, width: 120 }}
+              className="flex justify-center items-center bg-gradient-to-b from-gray-400 to-pink-300 rounded-full mr-5 shadow-lg"
+            >
+              <img
+                style={{ height: 110, width: 110 }}
+                className="rounded-full  object-cover shadow-lg"
+                src={user?.profile?.data?.profile || "/blank-profile.png"}
+                alt="Profile image"
+              />
+            </div>
 
-        <div className="flex flex-col justify-center">
-          <div> {user?.profile?.data?.name} </div>
-          <small className="text-gray-500">
-            {user?.profile?.data?.description}
-          </small>
-          <button
-            onClick={() => Router.push("/settings")}
-            className="border mt-2 px-3 flex items-center justify-center shadow-md"
-          >
-            Edit profile <PencilIcon className="w-4 h-4 ml-1" />
-          </button>
+            <div className="flex flex-col justify-center">
+              <div> {user?.profile?.data?.name} </div>
+              <small className="text-gray-500">
+                {user?.profile?.data?.description}
+              </small>
+              <button
+                onClick={() => Router.push("/settings")}
+                className="border mt-2 px-3 flex items-center justify-center shadow-md"
+              >
+                Edit profile <PencilIcon className="w-4 h-4 ml-1" />
+              </button>
+            </div>
+          </div>
+          <div className="flex text-2xl mt-4 leading-9 tracking-wide">
+            {user?.profile?.data?.status}
+          </div>
         </div>
-      </div>
-
-      <div className="flex text-2xl mt-5 leading-9 tracking-wide">
-        {user?.profile?.data?.status}
-      </div>
+      ) : (
+        <SkeletonProfile />
+      )}
 
       <div className="mt-5 flex">
         <div className="mr-10 flex flex-col items-center">

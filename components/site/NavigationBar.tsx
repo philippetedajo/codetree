@@ -2,16 +2,11 @@ import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { useTheme } from "next-themes";
-import {
-  LogoutIcon,
-  UserIcon,
-  TerminalIcon,
-  ChevronLeftIcon,
-} from "@heroicons/react/outline";
+import { LogoutIcon, UserIcon, TerminalIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { FaRegMoon } from "react-icons/fa";
 import { SunIcon, StarIcon } from "@heroicons/react/solid";
-import { SkeletonProfile } from "../Skeleton";
+import { SkeletonMinProfile } from "../Skeleton";
 
 import { fetcher } from "../../utils";
 import Router, { useRouter } from "next/router";
@@ -90,7 +85,7 @@ export default function NavigationBar() {
           </div>
         )}
 
-        {!user?.isLoggedIn && router.pathname !== "/" && <SkeletonProfile />}
+        {!user?.isLoggedIn && router.pathname !== "/" && <SkeletonMinProfile />}
 
         {/* User is login and is not on register or login page =========================================== */}
         {user?.isLoggedIn && (
