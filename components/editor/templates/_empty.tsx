@@ -3,10 +3,9 @@ export const _empty = {
   description: "",
   template: "empty",
   public: true,
-  languages: {
-    js: {
-      code: {
-        data: `document.getElementById("root").innerHTML = \`
+  js: {
+    code: {
+      data: `document.getElementById("root").innerHTML = \`
 <h1>Hello VanillaTree</h1>
 <div>
   We use the same configuration as Esbuild to bundle this sandbox, you can find more
@@ -15,30 +14,29 @@ export const _empty = {
 </div>
 \`;
 `,
-        error: "",
-        loading: false,
-      },
-      transformer: "js",
+      error: "",
+      loading: false,
     },
-    css: {
-      code: {
-        data: `body {
+    transformer: "js",
+  },
+  css: {
+    code: {
+      data: `body {
   font-family: sans-serif;
   text-align: center;
 }
 `,
-        error: "",
-        loading: false,
-      },
-      transformer: "css",
+      error: "",
+      loading: false,
     },
-    html: {
-      code: {
-        data: `<div id="root"></div>`,
-        error: "",
-        loading: false,
-      },
-      transformer: "html",
+    transformer: "css",
+  },
+  html: {
+    code: {
+      data: `<div id="root"></div>`,
+      error: "",
+      loading: false,
     },
+    transformer: "html",
   },
 };

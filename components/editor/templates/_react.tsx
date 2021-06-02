@@ -1,12 +1,8 @@
 export const _react = {
-  name: "",
-  description: "",
   template: "react",
-  public: true,
-  languages: {
-    js: {
-      code: {
-        data: `import React, { useState } from "react";
+  js: {
+    code: {
+      data: `import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
 function App() {
@@ -26,30 +22,29 @@ function App() {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 `,
-        error: "",
-        loading: false,
-      },
-      transformer: "js",
+      error: "",
+      loading: false,
     },
-    css: {
-      code: {
-        data: `.App {
+    transformer: "js",
+  },
+  css: {
+    code: {
+      data: `.App {
   font-family: sans-serif;
   text-align: center;
 }
 `,
-        error: "",
-        loading: false,
-      },
-      transformer: "css",
+      error: "",
+      loading: false,
     },
-    html: {
-      code: {
-        data: `<div id="root"></div>`,
-        error: "",
-        loading: false,
-      },
-      transformer: "html",
+    transformer: "css",
+  },
+  html: {
+    code: {
+      data: `<div id="root"></div>`,
+      error: "",
+      loading: false,
     },
+    transformer: "html",
   },
 };

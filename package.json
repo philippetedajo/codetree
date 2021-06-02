@@ -25,7 +25,6 @@
     "deployment-badge": "^1.1.0",
     "esbuild-wasm": "0.8.57",
     "framer-motion": "^4",
-    "html2canvas": "^1.0.0-rc.7",
     "localforage": "^1.9.0",
     "monaco-editor": "^0.23.0",
     "monaco-jsx-highlighter": "^1.1.8",

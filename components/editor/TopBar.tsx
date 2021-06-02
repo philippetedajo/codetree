@@ -3,8 +3,8 @@ import Link from "next/link";
 import { useUser } from "../../hooks";
 import Router, { useRouter } from "next/router";
 import { fetcher } from "../../utils";
-import { useAppDispatch, useAppSelector } from "../../store/hook";
-import { editor_state, update_modal } from "../../store/features/editorSlice";
+import { useAppDispatch } from "../../store/hook";
+import { update_modal } from "../../store/features/editorSlice";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, PlusIcon, StarIcon } from "@heroicons/react/solid";
 import { LogoutIcon, SaveIcon, UserIcon } from "@heroicons/react/outline";
@@ -15,12 +15,11 @@ function classNames(...classes) {
 
 const TopBar = () => {
   const { user } = useUser();
+  const router = useRouter();
 
   const { mutateUser } = useUser();
 
   const dispatch = useAppDispatch();
-
-  const { codeEditor } = useAppSelector(editor_state);
 
   function openModal() {
     dispatch(update_modal(true));
@@ -29,10 +28,6 @@ const TopBar = () => {
   const logout = async () => {
     await mutateUser(fetcher("/api/auth/logout", "POST"));
     await Router.push("/");
-  };
-
-  const save = async () => {
-    console.log(codeEditor);
   };
 
   return (
@@ -134,7 +129,6 @@ const TopBar = () => {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            onClick={save}
                             className={classNames(
                               active
                                 ? "bg-gray-100 text-gray-900"

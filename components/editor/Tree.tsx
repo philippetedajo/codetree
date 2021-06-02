@@ -7,7 +7,7 @@ import Modal from "./Modal";
 import BottomBar from "./BottomBar";
 import TopBar from "./TopBar";
 
-const Tree = ({ jsBlock, cssBlock, htmlBlock }) => {
+const Tree = () => {
   const PreviewWithNoSSR = dynamic(() => import("./Preview"), {
     ssr: false,
   });
@@ -39,32 +39,22 @@ const Tree = ({ jsBlock, cssBlock, htmlBlock }) => {
                 className="programming-language-tabs"
                 defaultActiveKey="js"
               >
-                <TabPane
-                  tab={<div className="text-base">{jsBlock.transformer}</div>}
-                  key="js"
-                >
+                <TabPane tab={<div className="text-base">Js </div>} key="js">
                   <JsPanel />
                 </TabPane>
                 <TabPane
-                  tab={<div className="text-base">{htmlBlock.transformer}</div>}
+                  tab={<div className="text-base">Html </div>}
                   key="html"
                 >
                   <HtmlPanel />
                 </TabPane>
-                <TabPane
-                  tab={<div className="text-base">{cssBlock.transformer}</div>}
-                  key="css"
-                >
+                <TabPane tab={<div className="text-base">Css</div>} key="css">
                   <CssPanel />
                 </TabPane>
               </Tabs>
             </div>
             <div>
-              <PreviewWithNoSSR
-                jsBlock={jsBlock}
-                cssBlock={cssBlock}
-                htmlBlock={htmlBlock}
-              />
+              <PreviewWithNoSSR />
             </div>
           </Split>
           <Modal />

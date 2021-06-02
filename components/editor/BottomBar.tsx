@@ -4,7 +4,7 @@ import { editor_state, toggle_console } from "../../store/features/editorSlice";
 
 const BottomBar: React.FC = () => {
   const {
-    codeEditor: { languages },
+    codeEditor: { js },
     hasConsoleLogs,
   } = useAppSelector(editor_state);
 
@@ -19,11 +19,7 @@ const BottomBar: React.FC = () => {
       className={`flex flex-shrink-0 h-6 justify-between bg-tree-soft text-white item-center px-5 text-sm z-50`}
     >
       <div className="flex">
-        {languages.js.code.loading ? (
-          <div className="mr-3">Transpiling...</div>
-        ) : (
-          ""
-        )}
+        {js.code.loading ? <div className="mr-3">Transpiling...</div> : ""}
       </div>
 
       <div className="flex justify-center items-center">

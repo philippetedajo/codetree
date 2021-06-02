@@ -1,12 +1,8 @@
 export const _p5 = {
-  name: "",
-  description: "",
   template: "p5",
-  public: true,
-  languages: {
-    js: {
-      code: {
-        data: `import p5 from "p5";
+  js: {
+    code: {
+      data: `import p5 from "p5";
 
 let sketch = function (p) {
   p.setup = function () {
@@ -22,14 +18,14 @@ let sketch = function (p) {
  
 new p5(sketch, window.document.getElementById("container"));
 `,
-        error: "",
-        loading: false,
-      },
-      transformer: "js",
+      error: "",
+      loading: false,
     },
-    css: {
-      code: {
-        data: `body {
+    transformer: "js",
+  },
+  css: {
+    code: {
+      data: `body {
   margin: 0px;
   font-family: sans-serif;
 }
@@ -37,18 +33,17 @@ canvas {
   margin: 0px;
 }
 `,
-        error: "",
-        loading: false,
-      },
-      transformer: "css",
+      error: "",
+      loading: false,
     },
-    html: {
-      code: {
-        data: `<div id="root"></div>`,
-        error: "",
-        loading: false,
-      },
-      transformer: "html",
+    transformer: "css",
+  },
+  html: {
+    code: {
+      data: `<div id="root"></div>`,
+      error: "",
+      loading: false,
     },
+    transformer: "html",
   },
 };
