@@ -14,11 +14,7 @@ import { Provider } from "react-redux";
 import { store } from "../store/store";
 import NProgress from "nprogress";
 import { ThemeProvider } from "next-themes";
-import {
-  StandardLayout,
-  PlaygroundLayout,
-  AuthLayout,
-} from "../components/layouts";
+import { StandardLayout, AuthLayout } from "../components/layouts";
 import { ToastContainer } from "react-toastify";
 import React from "react";
 
@@ -44,9 +40,7 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </AuthLayout>
         ) : router.pathname.startsWith("/playground") ? (
-          <PlaygroundLayout>
-            <Component {...pageProps} />
-          </PlaygroundLayout>
+          <Component {...pageProps} />
         ) : (
           <StandardLayout>
             <ToastContainer hideProgressBar={true} autoClose={8000} />

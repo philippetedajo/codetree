@@ -40,17 +40,17 @@ export const JsPanel: React.FC = () => {
     [debounced]
   );
 
-  let initialValue = _empty.js.code.data;
+  let initialValue = _empty.languages.js.code.data;
 
   switch (template) {
     case "react":
-      initialValue = _react.js.code.data;
+      initialValue = _react.languages.js.code.data;
       break;
     case "empty":
-      initialValue = _empty.js.code.data;
+      initialValue = _empty.languages.js.code.data;
       break;
     case "p5":
-      initialValue = _p5.js.code.data;
+      initialValue = _p5.languages.js.code.data;
       break;
   }
 

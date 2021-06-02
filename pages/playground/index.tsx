@@ -6,7 +6,7 @@ import { editor_state } from "../../store/features/editorSlice";
 
 const Playground = () => {
   const {
-    codeEditor: { js, html, css },
+    codeEditor: { languages },
   } = useAppSelector(editor_state);
 
   return (
@@ -15,7 +15,11 @@ const Playground = () => {
         <meta charSet="utf-8" />
         <title>Playground | Codetree </title>
       </Head>
-      <Tree jsBlock={js} cssBlock={css} htmlBlock={html} />
+      <Tree
+        jsBlock={languages.js}
+        cssBlock={languages.css}
+        htmlBlock={languages.html}
+      />
     </>
   );
 };
