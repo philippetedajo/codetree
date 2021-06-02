@@ -1,6 +1,4 @@
 import React from "react";
-import Router from "next/router";
-import { PencilIcon } from "@heroicons/react/outline";
 
 export const SkeletonMinProfile = () => {
   return (
