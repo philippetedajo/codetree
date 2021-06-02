@@ -18,8 +18,6 @@ const Playground = () => {
 export default Playground;
 
 export const getServerSideProps = withSession(async ({ req, res }) => {
-  checkSession(req, res);
-
   return {
     props: {},
   };
