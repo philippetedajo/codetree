@@ -1,4 +1,6 @@
 import React from "react";
+import Router from "next/router";
+import { PencilIcon } from "@heroicons/react/outline";
 
 export const SkeletonMinProfile = () => {
   return (
@@ -16,19 +18,15 @@ export const SkeletonProfile = () => {
   return (
     <div className="animate-pulse">
       <div className="flex">
-        <div
-          style={{ height: 120, width: 120 }}
-          className="rounded-full bg-gray-300 shadow-lg mr-5"
-        />
+        <div className="profile-pic-wrapper rounded-full bg-gray-300 shadow-lg mr-5" />
 
-        <div className="flex flex-col justify-center w-40">
+        <div className="flex flex-col justify-center  w-40">
           <div className="h-3 bg-gray-300 mb-2.5 rounded w-3/4 " />
-          <div className="h-3 bg-gray-300 mb-2.5 rounded w-full " />
-          <div className="h-3 bg-gray-300 rounded w-full " />
+          <div className="h-3 bg-gray-300 mb-2.5 mt-1 rounded w-full " />
+          <div className="h-3 bg-gray-300 mb-2.5 mt-3 rounded w-full " />
+          <div className="h-3 bg-gray-300 rounded mt-3 w-full " />
         </div>
       </div>
-      <div className="h-3 bg-gray-300 mt-4 rounded w-64 " />
-      <div className="h-3 bg-gray-300 mt-2.5 rounded w-52 " />
     </div>
   );
 };

@@ -9,8 +9,6 @@ import { SkeletonProfile } from "../components/Skeleton";
 const Profile = () => {
   const { user } = useUser();
 
-  console.log(user);
-
   let fakeBox = ["box", "box", "box", "box", "box", "box", "box", "box", "box"];
 
   const trees = fakeBox.map((tree, id) => (
