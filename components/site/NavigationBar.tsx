@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import Image from "next/image";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { useTheme } from "next-themes";

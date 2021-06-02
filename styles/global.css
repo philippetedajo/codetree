@@ -65,3 +65,25 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px transparent inset;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+.profile-pic-wrapper {
+  height: 260px;
+  width: 260px;
+}
+
+.profile-pic {
+  height: 245px;
+  width: 245px;
+}
+
+@media only screen and (max-width: 640px) {
+  .profile-pic-wrapper {
+    height: 160px;
+    width: 160px;
+  }
+
+  .profile-pic {
+    height: 145px;
+    width: 145px;
+  }
+}
