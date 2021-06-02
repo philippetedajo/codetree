@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Tree from "../../components/editor/Tree";
 import React from "react";
-import {  useAppSelector } from "../../store/hook";
+import { useAppSelector } from "../../store/hook";
 import { editor_state } from "../../store/features/editorSlice";
 
 const Playground = () => {
