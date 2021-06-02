@@ -9,13 +9,10 @@ import {
 import EditorLoader from "./others/EditorLoader";
 import Logs from "./Logs";
 
-const Preview: React.FC = () => {
+const Preview = ({ jsBlock, cssBlock, htmlBlock }) => {
   const iframe = useRef<any>();
   const dispatch = useAppDispatch();
-  const {
-    codeEditor: { js, html, css },
-    isConsoleOpen,
-  } = useAppSelector(editor_state);
+  const { isConsoleOpen } = useAppSelector(editor_state);
 
   //local state
   const [logs, setLogs] = useState([]);
@@ -33,11 +30,11 @@ const Preview: React.FC = () => {
   <head>
     <title>Codetree</title>
     <style>
-      ${css.code.data}
+      ${cssBlock.code.data}
     </style>
   </head>
   <body>
-    ${html.code.data}
+    ${htmlBlock.code.data}
     <script>
       //====== send massage to iframe
       window.onerror = function (err) {
@@ -83,14 +80,14 @@ const Preview: React.FC = () => {
 
   //====== send massage to iframe
   useEffect(() => {
-    if (!js.code.loading && js.code.data) {
+    if (!jsBlock.code.loading && jsBlock.code.data) {
       iframe.current.srcdoc = htmlFrameContent;
 
       setTimeout(() => {
-        iframe?.current?.contentWindow?.postMessage(js.code.data, "*");
+        iframe?.current?.contentWindow?.postMessage(jsBlock.code.data, "*");
       }, 50);
     }
-  }, [js.code, htmlFrameContent]);
+  }, [jsBlock.code, htmlFrameContent]);
 
   const clearConsole = () => {
     setLogs([]);
@@ -98,11 +95,11 @@ const Preview: React.FC = () => {
 
   return (
     <div className="preview-wrapper">
-      {!js.code.data || js.code.loading ? (
+      {!jsBlock.code.data || jsBlock.code.loading ? (
         <EditorLoader />
       ) : (
         <iframe
-          className={`${js.code.loading ? "opacity-10" : ""}`}
+          className={`${jsBlock.code.loading ? "opacity-10" : ""}`}
           frameBorder="0"
           ref={iframe}
           title="previewWindow"

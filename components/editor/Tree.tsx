@@ -5,7 +5,7 @@ import Tabs, { TabPane } from "rc-tabs";
 import { JsPanel, HtmlPanel, CssPanel } from "./Pans";
 import Modal from "./Modal";
 
-const Tree = () => {
+const Tree = ({ jsBlock, cssBlock, htmlBlock }) => {
   const PreviewWithNoSSR = dynamic(() => import("./Preview"), {
     ssr: false,
   });
@@ -43,7 +43,11 @@ const Tree = () => {
           </Tabs>
         </div>
         <div>
-          <PreviewWithNoSSR />
+          <PreviewWithNoSSR
+            jsBlock={jsBlock}
+            cssBlock={cssBlock}
+            htmlBlock={htmlBlock}
+          />
         </div>
       </Split>
       <Modal />
