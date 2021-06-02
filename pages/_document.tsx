@@ -10,7 +10,7 @@ class CodetreeDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="shortcut icon" href="/identity/Codetree 32x32.png" />
+          <link rel="shortcut icon" href="/identity/Codetree32x32.png" />
           <meta
             name="description"
             content="Codetree is a lightning fast online code playground with automatic npm module detection."

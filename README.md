@@ -1,6 +1,6 @@
 
 <h1 align="center">
-  <img alt="Logo" src="public/identity/Codetree 64x64.png" width="55" />
+  <img alt="Logo" src="public/identity/Codetree2048x2048.png" width="55" />
 </h1>
 <p align="center">
   The Future of online editor Playground, built with <a href="https://nextjs.org/" target="_blank">Next</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>
