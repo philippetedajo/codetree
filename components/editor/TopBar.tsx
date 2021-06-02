@@ -15,7 +15,6 @@ function classNames(...classes) {
 
 const TopBar = () => {
   const { user } = useUser();
-  const router = useRouter();
 
   const { mutateUser } = useUser();
 
@@ -126,24 +125,46 @@ const TopBar = () => {
                           </a>
                         )}
                       </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm cursor-pointer flex items-center"
-                            )}
-                          >
-                            <SaveIcon
-                              className="h-5 w-5 mr-1 text-gray-500"
-                              aria-hidden="true"
-                            />
-                            Save
-                          </a>
-                        )}
-                      </Menu.Item>
+
+                      {user?.isLoggedIn ? (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              className={classNames(
+                                active
+                                  ? "bg-gray-100 text-gray-900"
+                                  : "text-gray-700",
+                                "block px-4 py-2 text-sm cursor-pointer flex items-center"
+                              )}
+                            >
+                              <SaveIcon
+                                className="h-5 w-5 mr-1 text-gray-500"
+                                aria-hidden="true"
+                              />
+                              Save
+                            </a>
+                          )}
+                        </Menu.Item>
+                      ) : (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              className={classNames(
+                                active
+                                  ? "bg-gray-100 text-gray-900"
+                                  : "text-gray-700",
+                                "block px-4 py-2 text-sm cursor-pointer flex items-center"
+                              )}
+                            >
+                              <SaveIcon
+                                className="h-5 w-5 mr-1 text-gray-500"
+                                aria-hidden="true"
+                              />
+                              Login and save
+                            </a>
+                          )}
+                        </Menu.Item>
+                      )}
                     </div>
 
                     {/* if user is in session return  =========================================== */}
