@@ -28,17 +28,17 @@ export const CssPanel: React.FC = () => {
     1000
   );
 
-  let initialValue = _empty.js.code.data;
+  let initialValue = _empty.languages.js.code.data;
 
   switch (template) {
     case "react":
-      initialValue = _react.css.code.data;
+      initialValue = _react.languages.css.code.data;
       break;
     case "empty":
-      initialValue = _empty.css.code.data;
+      initialValue = _empty.languages.css.code.data;
       break;
     case "p5":
-      initialValue = _p5.css.code.data;
+      initialValue = _p5.languages.css.code.data;
       break;
   }
 

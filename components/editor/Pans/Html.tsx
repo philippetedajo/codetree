@@ -30,19 +30,19 @@ export const HtmlPanel: React.FC = () => {
     1000
   );
 
-  let initialValue = _empty.html.code.data;
+  let initialValue = _empty.languages.html.code.data;
 
   console.log(initialValue);
 
   switch (template) {
     case "react":
-      initialValue = _react.html.code.data;
+      initialValue = _react.languages.html.code.data;
       break;
     case "empty":
-      initialValue = _empty.html.code.data;
+      initialValue = _empty.languages.html.code.data;
       break;
     case "p5":
-      initialValue = _p5.html.code.data;
+      initialValue = _p5.languages.html.code.data;
       break;
   }
 
