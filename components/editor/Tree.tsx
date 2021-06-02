@@ -31,13 +31,22 @@ const Tree = ({ jsBlock, cssBlock, htmlBlock }) => {
             className="programming-language-tabs"
             defaultActiveKey="js"
           >
-            <TabPane tab={<div className="text-base">Js </div>} key="js">
+            <TabPane
+              tab={<div className="text-base">{jsBlock.transformer}</div>}
+              key="js"
+            >
               <JsPanel />
             </TabPane>
-            <TabPane tab={<div className="text-base">Html </div>} key="html">
+            <TabPane
+              tab={<div className="text-base">{htmlBlock.transformer}</div>}
+              key="html"
+            >
               <HtmlPanel />
             </TabPane>
-            <TabPane tab={<div className="text-base">Css</div>} key="css">
+            <TabPane
+              tab={<div className="text-base">{cssBlock.transformer}</div>}
+              key="css"
+            >
               <CssPanel />
             </TabPane>
           </Tabs>
