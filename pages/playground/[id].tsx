@@ -9,7 +9,7 @@ const Id = () => {
         <meta charSet="utf-8" />
         <title>Playground | Codetree </title>
       </Head>
-      <Tree />
+      <Tree jsBlock={``} cssBlock={``} htmlBlock={``} />
     </>
   );
 };
