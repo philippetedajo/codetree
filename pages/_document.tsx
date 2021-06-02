@@ -10,30 +10,14 @@ class CodetreeDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="shortcut icon" href="/favicon-16x16.png" />
+          <link rel="shortcut icon" href="/identity/Codetree 32x32.png" />
           <meta
             name="description"
             content="Codetree is a lightning fast online code playground with automatic npm module detection."
           />
           <meta charSet="utf-8" />
           <link rel="canonical" href="https://codetree.vercel.app/" />
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/apple-touch-icon.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
-          />
+
           <meta name="author" content="Philippe Tedajo" />
 
           <meta
