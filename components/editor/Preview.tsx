@@ -89,7 +89,7 @@ const Preview = () => {
       iframe.current.srcdoc = htmlFrameContent;
 
       setTimeout(() => {
-        iframe.current.contentWindow.postMessage(js.code.data, "*");
+        iframe?.current?.contentWindow?.postMessage(js.code.data, "*");
       }, 50);
     }
   }, [js.code, htmlFrameContent]);
