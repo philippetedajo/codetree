@@ -9,7 +9,7 @@ import {
 import EditorLoader from "./others/EditorLoader";
 import Logs from "./Logs";
 
-const Preview: React.FC = () => {
+const Preview = () => {
   const iframe = useRef<any>();
   const dispatch = useAppDispatch();
   const {
