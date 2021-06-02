@@ -32,8 +32,6 @@ export const HtmlPanel: React.FC = () => {
 
   let initialValue = _empty.languages.html.code.data;
 
-  console.log(initialValue);
-
   switch (template) {
     case "react":
       initialValue = _react.languages.html.code.data;

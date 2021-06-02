@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
 import { useUser } from "../../hooks";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import { fetcher } from "../../utils";
-import { useAppDispatch } from "../../store/hook";
-import { update_modal } from "../../store/features/editorSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { editor_state, update_modal } from "../../store/features/editorSlice";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, PlusIcon, StarIcon } from "@heroicons/react/solid";
 import { LogoutIcon, SaveIcon, UserIcon } from "@heroicons/react/outline";
@@ -15,14 +15,25 @@ function classNames(...classes) {
 
 const TopBar = () => {
   const { user } = useUser();
-
   const { mutateUser } = useUser();
 
   const dispatch = useAppDispatch();
 
+  const { codeEditor } = useAppSelector(editor_state);
+
   function openModal() {
     dispatch(update_modal(true));
   }
+
+  const unauthorizedAndSave = () => {
+    console.log("should authorize user by register or login the save editor");
+  };
+
+  const save = () => {
+    //get the current state of the editor
+    console.log(codeEditor);
+    //send it to the server with axios and fetcher
+  };
 
   const logout = async () => {
     await mutateUser(fetcher("/api/auth/logout", "POST"));
@@ -130,6 +141,7 @@ const TopBar = () => {
                         <Menu.Item>
                           {({ active }) => (
                             <a
+                              onClick={save}
                               className={classNames(
                                 active
                                   ? "bg-gray-100 text-gray-900"
@@ -149,6 +161,7 @@ const TopBar = () => {
                         <Menu.Item>
                           {({ active }) => (
                             <a
+                              onClick={unauthorizedAndSave}
                               className={classNames(
                                 active
                                   ? "bg-gray-100 text-gray-900"
