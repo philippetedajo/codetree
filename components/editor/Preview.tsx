@@ -33,7 +33,7 @@ const Preview = () => {
   const htmlFrameContent = `
   <html lang="en">
   <head>
-    <title>Codetree</title>
+    <title>Codetree </title>
     <style>
       ${css.code.data}
     </style>
