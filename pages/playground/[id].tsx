@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Tree from "../../components/editor/Tree";
 import React from "react";
-import { checkSession, withSession } from "../../utils";
+import { withSession } from "../../utils";
 
 const Playground = () => {
   return (
