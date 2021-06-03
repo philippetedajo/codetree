@@ -144,7 +144,7 @@ export default function NavigationBar() {
                                   : "text-gray-700",
                                 "block px-4 py-2 text-sm cursor-pointer flex items-center"
                               )}
-                              onClick={() => Router.push("/playground")}
+                              onClick={() => Router.push("/playground/new")}
                             >
                               <TerminalIcon
                                 className="h-5 w-5 mr-1 text-gray-500"
