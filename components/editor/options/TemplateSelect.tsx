@@ -7,7 +7,6 @@ import {
 import { useAppDispatch } from "../../../store/hook";
 import { _empty, _react, _p5 } from "../templates";
 import bundler from "../../../bundler";
-import { CgTrees } from "react-icons/cg";
 import React from "react";
 
 const TemplateSelect = ({ closeModal }) => {
@@ -17,7 +16,7 @@ const TemplateSelect = ({ closeModal }) => {
     dispatch(update_template(value));
 
     dispatch(update_async_code_start({ code: "", type: "js", error: "" }));
-    const output = await bundler(value.js.code.data);
+    const output = await bundler(value.languages.js.code.data);
     dispatch(
       update_async_code_finished({
         code: output.code,
