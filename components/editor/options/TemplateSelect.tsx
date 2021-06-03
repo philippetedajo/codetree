@@ -27,8 +27,6 @@ const TemplateSelect = ({ closeModal }) => {
   };
 
   const onSelect = (event) => {
-    console.log(event.target);
-
     switch (event.target.name) {
       case "vanilla":
         manualBundleStart(_empty);

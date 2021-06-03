@@ -5,7 +5,7 @@ import { Console } from "console-feed";
 const Logs = ({ logs, clearConsole }) => {
   return (
     <div>
-      <div className="text-white flex justify-end text-sm shadow px-5 py-1 ">
+      <div className="bg-tree-hard w-full z-50 fixed flex  text-sm shadow px-5 py-1">
         <div onClick={clearConsole}>
           <Image
             src="/icons/clear-outlined.svg"
@@ -16,17 +16,18 @@ const Logs = ({ logs, clearConsole }) => {
           />
         </div>
       </div>
-
-      <Console
-        styles={{
-          BASE_FONT_FAMILY: '"Rubik", sans-serif;',
-          BASE_FONT_SIZE: 14,
-          BASE_BACKGROUND_COLOR: "#171E25",
-          LOG_BORDER: "#303b47",
-        }}
-        logs={logs}
-        variant="dark"
-      />
+      <div className="pt-10">
+        <Console
+          styles={{
+            BASE_FONT_FAMILY: '"Rubik", sans-serif;',
+            BASE_FONT_SIZE: 14,
+            BASE_BACKGROUND_COLOR: "#171E25",
+            LOG_BORDER: "#303b47",
+          }}
+          logs={logs}
+          variant="dark"
+        />
+      </div>
     </div>
   );
 };
