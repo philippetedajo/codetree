@@ -1,18 +1,19 @@
 /* react-split ============================================================================= */
+
 .gutter {
-  @apply bg-tree-border;
+  background-color: #eee;
   background-repeat: no-repeat;
   background-position: 50%;
 }
 
-.gutter.gutter-horizontal {
-  cursor: col-resize;
-  @apply bg-gray-300;
+.gutter.gutter-vertical {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=");
+  cursor: row-resize;
 }
 
-.gutter.gutter-vertical {
-  cursor: row-resize;
-  @apply bg-gray-300;
+.gutter.gutter-horizontal {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=");
+  cursor: col-resize;
 }
 
 /* rc-tabs ============================================================================= */

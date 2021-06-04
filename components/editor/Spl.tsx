@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Resizable } from "re-resizable";
+import Split from "react-split";
+
 import { Hook } from "console-feed";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import {
@@ -10,7 +11,7 @@ import {
 import Logs from "./Logs";
 import { createIframeContent, EditorLoader, ErrorScreen } from "./tools";
 
-const Preview = () => {
+const Spl = () => {
   const iframe = useRef<any>();
   const dispatch = useAppDispatch();
   const {
@@ -66,54 +67,49 @@ const Preview = () => {
     setLogs([]);
   };
 
+  console.log(isConsoleOpen);
+
   return (
-    <div className="preview-wrapper">
-      {(!js.code.data || iframeErr) && <ErrorScreen err={iframeErr || ""} />}
+    <Split
+      sizes={isConsoleOpen ? [60, 40] : [100, 0]}
+      minSize={0}
+      expandToMin={false}
+      gutterSize={10}
+      gutterAlign="center"
+      snapOffset={30}
+      dragInterval={1}
+      direction="vertical"
+      cursor="row-resize"
+      className="h-full"
+    >
+      <div className="preview-wrapper">
+        {(!js.code.data || iframeErr) && <ErrorScreen err={iframeErr || ""} />}
 
-      {js.code.loading ? (
-        <EditorLoader />
-      ) : (
-        <iframe
-          frameBorder="0"
-          ref={iframe}
-          title="previewWindow"
-          // sandbox="allow-scripts allow-modals"
-          srcDoc={htmlFrameContent}
-          onLoad={() => {
-            Hook(
-              iframe.current.contentWindow.console,
-              (log) => {
-                setLogs((currLogs): any => [...currLogs, log]);
-              },
-              false
-            );
-          }}
-        />
-      )}
+        {js.code.loading ? (
+          <EditorLoader />
+        ) : (
+          <iframe
+            frameBorder="0"
+            ref={iframe}
+            title="previewWindow"
+            // sandbox="allow-scripts allow-modals"
+            srcDoc={htmlFrameContent}
+            onLoad={() => {
+              Hook(
+                iframe.current.contentWindow.console,
+                (log) => {
+                  setLogs((currLogs): any => [...currLogs, log]);
+                },
+                false
+              );
+            }}
+          />
+        )}
+      </div>
 
-      <Resizable
-        minWidth="100%"
-        minHeight="10vh"
-        maxHeight="60vh"
-        defaultSize={{ width: "100%", height: "40vh" }}
-        className={`${
-          isConsoleOpen ? "flex flex-col overflow-auto" : "hidden"
-        } `}
-        enable={{
-          top: true,
-          right: false,
-          bottom: false,
-          left: false,
-          topRight: false,
-          bottomRight: false,
-          bottomLeft: false,
-          topLeft: false,
-        }}
-      >
-        <Logs logs={logs} clearConsole={clearConsole} />
-      </Resizable>
-    </div>
+      <Logs logs={logs} clearConsole={clearConsole} />
+    </Split>
   );
 };
 
-export default Preview;
+export default Spl;

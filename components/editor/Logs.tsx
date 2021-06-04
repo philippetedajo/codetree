@@ -4,17 +4,7 @@ import { Console } from "console-feed";
 
 const Logs = ({ logs, clearConsole }) => {
   return (
-    <div>
-      <div className="bg-tree-hard border-b-2 border-tree-border w-full z-50 fixed flex items-center text-sm px-5 h-10">
-        <Image
-          onClick={clearConsole}
-          src="/icons/clear-outlined.svg"
-          alt="clear"
-          width={23}
-          height={23}
-          className="cursor-pointer"
-        />
-      </div>
+    <div className="overflow-auto absolute">
       <div className="pt-10">
         <Console
           styles={{
