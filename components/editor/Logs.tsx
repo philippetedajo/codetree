@@ -5,7 +5,7 @@ import { Console } from "console-feed";
 const Logs = ({ logs, clearConsole }) => {
   return (
     <div className="overflow-auto absolute">
-      <div className="pt-10">
+      <div className="border-2 border-red-600">
         <Console
           styles={{
             BASE_FONT_FAMILY: '"Rubik", sans-serif;',
