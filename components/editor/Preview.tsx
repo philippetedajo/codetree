@@ -6,8 +6,9 @@ import {
   editor_state,
   update_console_logs,
 } from "../../store/features/editorSlice";
-import EditorLoader from "./others/EditorLoader";
+import EditorLoader from "./tools/EditorLoader";
 import Logs from "./Logs";
+import { createIframeContent } from "./tools/createIframeContent";
 
 const Preview = () => {
   const iframe = useRef<any>();
@@ -30,44 +31,7 @@ const Preview = () => {
     }
   }, [logs, dispatch]);
 
-  const htmlFrameContent = `
-  <html lang="en">
-  <head>
-    <title>Codetree </title>
-    <style>
-      ${css.code.data}
-    </style>
-  </head>
-  <body>
-    ${html.code.data}
-    <script>
-      //====== send massage to iframe
-      window.onerror = function (err) {
-        window.parent.postMessage(
-          { source: "iframe", type: "iframe_error", message: err },
-          "*"
-        );
-      };
-
-      window.onunhandledrejection = function (err) {
-        window.parent.postMessage(
-          { source: "iframe", type: "iframe_error", message: err.reason },
-          "*"
-        );
-      };
-
-      //====== listen to income message of parent
-      window.onmessage = function (event) {
-        try {
-          eval(event.data);
-        } catch (error) {
-          throw error;
-        }
-      };
-    </script>
-  </body>
-</html>
-  `;
+  const htmlFrameContent = createIframeContent(css.code.data, html.code.data);
 
   //====== TODO: listen to income ERROR message of iframe
   useEffect(() => {
