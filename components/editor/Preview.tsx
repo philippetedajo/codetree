@@ -33,7 +33,7 @@ const Preview = () => {
 
   const htmlFrameContent = createIframeContent(css.code.data, html.code.data);
 
-  //====== TODO: listen to income ERROR message of iframe
+  //======
   useEffect(() => {
     window.onmessage = function (response: MessageEvent) {
       if (response.data && response.data.source === "iframe") {

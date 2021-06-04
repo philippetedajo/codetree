@@ -55,7 +55,7 @@ export const unpkgFetchPlugin = (inputCode: string | undefined) => {
 
       build.onLoad({ filter: /.*/ }, async (args: esbuild.OnLoadArgs) => {
         console.log("..start");
-        console.log(`fetching ${args.path}`);
+        console.log(`...fetching ${args.path}`);
         const { data, request } = await axios.get(args.path);
 
         const result: esbuild.OnLoadResult = {
