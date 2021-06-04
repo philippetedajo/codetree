@@ -68,9 +68,9 @@ const Preview = () => {
 
   return (
     <div className="preview-wrapper">
-      {iframeErr && <ErrorScreen />}
+      {(!js.code.data || iframeErr) && <ErrorScreen />}
 
-      {(!js.code.data || js.code.loading) && !iframeErr ? (
+      {js.code.loading ? (
         <EditorLoader />
       ) : (
         <iframe
