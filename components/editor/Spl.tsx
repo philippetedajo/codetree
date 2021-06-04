@@ -83,7 +83,9 @@ const Spl = () => {
       className="h-full"
     >
       <div className="preview-wrapper">
-        {(!js.code.data || iframeErr) && <ErrorScreen err={iframeErr || ""} />}
+        {(!js.code.data || iframeErr) && (
+          <ErrorScreen err={iframeErr || "Build Error.."} />
+        )}
 
         {js.code.loading ? (
           <EditorLoader />
@@ -107,7 +109,7 @@ const Spl = () => {
         )}
       </div>
 
-      <Logs logs={logs} clearConsole={clearConsole} />
+      <Logs logs={logs} />
     </Split>
   );
 };
