@@ -8,6 +8,7 @@ const initialEditorState = {
   isConsoleOpen: false,
   hasConsoleLogs: false,
   isModalOpen: false,
+  iframeErr: null,
 };
 
 export const editorSlice = createSlice({
@@ -45,6 +46,9 @@ export const editorSlice = createSlice({
     toggle_console: (state) => {
       state.isConsoleOpen = !state.isConsoleOpen;
     },
+    update_iframe_error: (state, { payload }) => {
+      state.iframeErr = payload;
+    },
   },
 });
 
@@ -56,6 +60,7 @@ export const {
   update_template,
   toggle_console,
   update_modal,
+  update_iframe_error,
 } = editorSlice.actions;
 
 export const editor_state = (state: RootState) => state.editor;

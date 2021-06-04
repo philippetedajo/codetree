@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hook";
 import {
   editor_state,
   update_console_logs,
+  update_iframe_error,
 } from "../../store/features/editorSlice";
 import EditorLoader from "./tools/EditorLoader";
 import Logs from "./Logs";
@@ -42,6 +43,8 @@ const Preview = () => {
           id: Date.now(),
           data: [`${response.data.message}`],
         };
+
+        dispatch(update_iframe_error(response.data.message));
         setLogs((currLogs): any => [...currLogs, errorObject]);
       }
     };
@@ -53,6 +56,7 @@ const Preview = () => {
       iframe.current.srcdoc = htmlFrameContent;
 
       setTimeout(() => {
+        dispatch(update_iframe_error(null));
         iframe?.current?.contentWindow?.postMessage(js.code.data, "*");
       }, 50);
     }
