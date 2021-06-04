@@ -54,6 +54,8 @@ export const unpkgFetchPlugin = (inputCode: string | undefined) => {
       //=================================================
 
       build.onLoad({ filter: /.*/ }, async (args: esbuild.OnLoadArgs) => {
+        console.log("..start");
+        console.log(`fetching ${args.path}`);
         const { data, request } = await axios.get(args.path);
 
         const result: esbuild.OnLoadResult = {
@@ -64,6 +66,7 @@ export const unpkgFetchPlugin = (inputCode: string | undefined) => {
         };
         //store response in cache
         await fileCache.setItem(args.path, result);
+        console.log("end");
         return result;
       });
     },
