@@ -33,7 +33,7 @@ const Preview = () => {
 
   const htmlFrameContent = createIframeContent(css.code.data, html.code.data);
 
-  //======
+  //================================================== listen from incoming message
   useEffect(() => {
     window.onmessage = function (response: MessageEvent) {
       if (response.data && response.data.source === "iframe") {
@@ -47,7 +47,7 @@ const Preview = () => {
     };
   }, [dispatch]);
 
-  //====== send massage to iframe
+  //====================================================== send massage to iframe
   useEffect(() => {
     if (!js.code.loading && js.code.data) {
       iframe.current.srcdoc = htmlFrameContent;
