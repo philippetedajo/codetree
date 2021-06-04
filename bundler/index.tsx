@@ -28,6 +28,8 @@ const bundler = async (rawCode: string | undefined) => {
       error: "",
     };
   } catch (err) {
+    //TODO : put err in bundler Slice
+    console.log("there is something err");
     return {
       code: "",
       error: err.message,
