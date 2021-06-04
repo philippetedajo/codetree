@@ -104,7 +104,6 @@ const Preview = () => {
         <EditorLoader />
       ) : (
         <iframe
-          className={`${js.code.loading ? "opacity-10" : ""}`}
           frameBorder="0"
           ref={iframe}
           title="previewWindow"
