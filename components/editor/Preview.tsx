@@ -7,9 +7,8 @@ import {
   update_console_logs,
   update_iframe_error,
 } from "../../store/features/editorSlice";
-import EditorLoader from "./tools/EditorLoader";
 import Logs from "./Logs";
-import { createIframeContent } from "./tools/createIframeContent";
+import { createIframeContent, EditorLoader, ErrorScreen } from "./tools";
 
 const Preview = () => {
   const iframe = useRef<any>();
@@ -18,6 +17,7 @@ const Preview = () => {
     codeEditor: {
       languages: { js, html, css },
     },
+    iframeErr,
     isConsoleOpen,
   } = useAppSelector(editor_state);
 
@@ -68,7 +68,9 @@ const Preview = () => {
 
   return (
     <div className="preview-wrapper">
-      {!js.code.data || js.code.loading ? (
+      {iframeErr && <ErrorScreen />}
+
+      {(!js.code.data || js.code.loading) && !iframeErr ? (
         <EditorLoader />
       ) : (
         <iframe

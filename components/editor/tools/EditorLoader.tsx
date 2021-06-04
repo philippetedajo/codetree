@@ -1,6 +1,6 @@
 import React from "react";
 
-const EditorLoader = () => {
+export const EditorLoader = () => {
   return (
     <div className="h-full bg-white flex flex-col items-center justify-center">
       <div className="bg-white  flex flex-col items-center justify-center fade-loader">
@@ -20,5 +20,3 @@ const EditorLoader = () => {
     </div>
   );
 };
-
-export default EditorLoader;
