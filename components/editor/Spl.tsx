@@ -71,10 +71,10 @@ const Spl = () => {
 
   return (
     <Split
-      sizes={isConsoleOpen ? [60, 40] : [100, 0]}
+      sizes={isConsoleOpen ? [60, 30] : [100, 0]}
       minSize={0}
       expandToMin={false}
-      gutterSize={10}
+      gutterSize={5}
       gutterAlign="center"
       snapOffset={30}
       dragInterval={1}

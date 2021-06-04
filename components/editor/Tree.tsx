@@ -14,7 +14,7 @@ const Tree = () => {
   });
 
   return (
-    <div className="overflow-hidden h-screen">
+    <div>
       <TopBar />
       <div
         style={{ height: "92vh" }}
