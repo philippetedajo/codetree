@@ -78,12 +78,12 @@ const TopBar = () => {
           </div>
           <Menu
             as="div"
-            className="relative inline-block text-left z-10 bg-transparent"
+            className="relative inline-block text-left z-50 bg-transparent"
           >
             {({ open }) => (
               <>
                 <div>
-                  <Menu.Button className="bg-transparent pt-1 inline-flex justify-center items-center w-full px-4 bg-white text-sm font-medium text-gray-700 focus:outline-none  ">
+                  <Menu.Button className="bg-transparent pt-1 inline-flex justify-center items-center w-full px-4 bg-white text-sm font-medium text-gray-700 focus:outline-none">
                     {/* if user is in session return =========================================== */}
                     {user?.isLoggedIn && (
                       <img
