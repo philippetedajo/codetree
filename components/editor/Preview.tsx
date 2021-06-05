@@ -101,7 +101,9 @@ const Preview = () => {
         maxHeight="60vh"
         defaultSize={{ width: "100%", height: "40vh" }}
         className={`${
-          isConsoleOpen ? "flex flex-col overflow-auto " : "hidden"
+          isConsoleOpen
+            ? "flex flex-col overflow-auto z-50 border-t-2 border-gray-400"
+            : "hidden"
         } `}
         enable={{
           top: true,
