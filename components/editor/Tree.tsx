@@ -6,10 +6,9 @@ import { JsPanel, HtmlPanel, CssPanel } from "./Pans";
 import Modal from "./Modal";
 import BottomBar from "./BottomBar";
 import TopBar from "./TopBar";
-import Spl from "./Spl";
 
 const Tree = () => {
-  const Spl = dynamic(() => import("./Spl"), {
+  const Preview = dynamic(() => import("./Preview"), {
     ssr: false,
   });
 
@@ -55,7 +54,7 @@ const Tree = () => {
               </Tabs>
             </div>
             <div>
-              <Spl />
+              <Preview />
             </div>
           </Split>
           <Modal />
