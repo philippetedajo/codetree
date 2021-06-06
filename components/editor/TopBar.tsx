@@ -28,14 +28,11 @@ const TopBar = ({ inSession }) => {
     dispatch(update_modal(true));
   }
 
-  const unauthorizedAndSave = () => {
-    console.log("should authorize user by register or login the save editor");
-  };
-
   const [loading, setLoading] = useState(false);
 
   const save = () => {
-    // const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/create`;
+    //update tree
+    // const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/update/${hash}`;
     // console.log(url);
 
     const json = JSON.stringify(codeEditor.languages);
@@ -154,7 +151,7 @@ const TopBar = ({ inSession }) => {
                         )}
                       </Menu.Item>
 
-                      {user?.isLoggedIn ? (
+                      {user?.isLoggedIn && (
                         <Menu.Item>
                           {({ active }) => (
                             <a
@@ -171,26 +168,6 @@ const TopBar = ({ inSession }) => {
                                 aria-hidden="true"
                               />
                               Save
-                            </a>
-                          )}
-                        </Menu.Item>
-                      ) : (
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              onClick={unauthorizedAndSave}
-                              className={classNames(
-                                active
-                                  ? "bg-gray-100 text-gray-900"
-                                  : "text-gray-700",
-                                "block px-4 py-2 text-sm cursor-pointer flex items-center"
-                              )}
-                            >
-                              <SaveIcon
-                                className="h-5 w-5 mr-1 text-gray-500"
-                                aria-hidden="true"
-                              />
-                              Login and save
                             </a>
                           )}
                         </Menu.Item>

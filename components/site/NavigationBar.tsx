@@ -37,6 +37,20 @@ export default function NavigationBar() {
     }
   };
 
+  const generatePlayground = () => {
+    const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/create`;
+    // create a new tree
+    //
+    // setLoading(true);
+    //
+    // const result = await fetcher(url, "POST", user.token, {});
+    //
+    // setLoading(false);
+
+    //redirect to the fresh created tree
+    // Router.push(`playground/${hash}`)
+  };
+
   return (
     <div
       style={{ height: "8vh" }}
@@ -144,13 +158,13 @@ export default function NavigationBar() {
                                   : "text-gray-700",
                                 "block px-4 py-2 text-sm cursor-pointer flex items-center"
                               )}
-                              onClick={() => Router.push("/playground/new")}
+                              onClick={generatePlayground}
                             >
                               <TerminalIcon
                                 className="h-5 w-5 mr-1 text-gray-500"
                                 aria-hidden="true"
                               />{" "}
-                              Playground
+                              New
                             </a>
                           )}
                         </Menu.Item>
