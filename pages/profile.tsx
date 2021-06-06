@@ -6,7 +6,7 @@ import { checkSession, withSession } from "../utils";
 import { useUser } from "../hooks";
 import { SkeletonProfile } from "../components/Skeleton";
 
-const Profile = () => {
+const Home = () => {
   const { user } = useUser();
 
   let fakeBox = ["box", "box", "box", "box", "box", "box", "box", "box", "box"];
@@ -54,21 +54,6 @@ const Profile = () => {
         ) : (
           <SkeletonProfile />
         )}
-
-        <div className="mt-5 flex">
-          <div className="mr-10 flex flex-col items-center">
-            <small className="text-gray-500 flex items-center">
-              Likes <HeartIcon className="w-4 h-4 ml-1" />
-            </small>
-            <div className="text-3xl">340</div>
-          </div>
-          <div className="mr-10 flex flex-col items-center">
-            <small className="text-gray-500 flex items-center ">
-              Views <EyeIcon className="w-4 h-4 ml-1" />
-            </small>
-            <div className="text-3xl">4567</div>
-          </div>
-        </div>
       </div>
       <div className="mt-5 mb-3 text-2xl">Trees</div>
       <div className="pb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -78,7 +63,7 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Home;
 
 export const getServerSideProps = withSession(async ({ req, res }) => {
   checkSession(req, res);

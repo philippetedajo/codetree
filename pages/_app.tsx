@@ -39,10 +39,6 @@ function MyApp({ Component, pageProps }) {
           <AuthLayout>
             <Component {...pageProps} />
           </AuthLayout>
-        ) : router.pathname.startsWith("/playground") ? (
-          <div className="overflow-hidden h-screen">
-            <Component {...pageProps} />
-          </div>
         ) : (
           <StandardLayout>
             <ToastContainer hideProgressBar={true} autoClose={8000} />

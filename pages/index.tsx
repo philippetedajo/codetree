@@ -1,19 +1,24 @@
+import Head from "next/head";
+import Tree from "../components/editor/Tree";
 import React from "react";
+import { withSession } from "../utils";
 
-const Index = () => {
+const Playground = () => {
   return (
-    <div style={{ paddingTop: "8vh" }}>
-      <div className="w-full h-96 bg-red-300 hero-pattern" />
-      <div>
-        <div>Welcome to the next gen online playground</div>
-        <div>Discover, Learn, Connect, Share code in just one point</div>
-        <div>Get started for free</div>
-      </div>
-      <div>
-        content <br />
-      </div>
-    </div>
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <title>Playground | Codetree </title>
+      </Head>
+      <Tree />
+    </>
   );
 };
 
-export default Index;
+export default Playground;
+
+export const getServerSideProps = withSession(async ({ req, res }) => {
+  return {
+    props: {},
+  };
+});
