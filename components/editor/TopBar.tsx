@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Link from "next/link";
 import { useUser } from "../../hooks";
 import Router from "next/router";
@@ -29,12 +29,20 @@ const TopBar = () => {
     console.log("should authorize user by register or login the save editor");
   };
 
+  const [loading, setLoading] = useState(false);
+
   const save = () => {
-    const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/create`;
-    console.log(url);
-    //get the current state of the editor
-    console.log(codeEditor);
-    //send it to the server with axios and fetcher
+    // const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/create`;
+    // console.log(url);
+
+    const json = JSON.stringify(codeEditor.languages);
+    console.log(json);
+    //
+    // setLoading(true);
+    //
+    // const result = await fetcher(url, "POST", user.token, {});
+    //
+    // setLoading(false);
   };
 
   const logout = async () => {
