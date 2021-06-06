@@ -39,11 +39,15 @@ function MyApp({ Component, pageProps }) {
           <AuthLayout>
             <Component {...pageProps} />
           </AuthLayout>
-        ) : (
+        ) : router.pathname.startsWith("/profile") ? (
           <StandardLayout>
             <ToastContainer hideProgressBar={true} autoClose={8000} />
             <Component {...pageProps} />
           </StandardLayout>
+        ) : (
+          <>
+            <Component {...pageProps} />
+          </>
         )}
       </ThemeProvider>
     </Provider>

@@ -1,6 +1,5 @@
 import React from "react";
 import { PencilIcon } from "@heroicons/react/outline";
-import { HeartIcon, EyeIcon } from "@heroicons/react/solid";
 import Router from "next/router";
 import { checkSession, withSession } from "../utils";
 import { useUser } from "../hooks";
