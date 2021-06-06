@@ -7,14 +7,14 @@ import Modal from "./Modal";
 import BottomBar from "./BottomBar";
 import TopBar from "./TopBar";
 
-const Tree = () => {
+const Tree = ({ inSession }) => {
   const Preview = dynamic(() => import("./Preview"), {
     ssr: false,
   });
 
   return (
     <div>
-      <TopBar />
+      <TopBar inSession={inSession} />
       <div
         style={{ height: "92vh" }}
         className=" flex flex-col bg-editor_secondary"

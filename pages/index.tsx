@@ -3,14 +3,14 @@ import Tree from "../components/editor/Tree";
 import React from "react";
 import { withSession } from "../utils";
 
-const Playground = () => {
+const Playground = ({ inSession }) => {
   return (
     <>
       <Head>
         <meta charSet="utf-8" />
         <title>Playground | Codetree </title>
       </Head>
-      <Tree />
+      <Tree inSession={inSession} />
     </>
   );
 };
@@ -18,7 +18,19 @@ const Playground = () => {
 export default Playground;
 
 export const getServerSideProps = withSession(async ({ req, res }) => {
+  const user = req.session.get("user");
+
+  if (!user) {
+    return {
+      props: {
+        inSession: false,
+      },
+    };
+  }
+
   return {
-    props: {},
+    props: {
+      inSession: true,
+    },
   };
 });

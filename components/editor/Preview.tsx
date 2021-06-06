@@ -66,8 +66,6 @@ const Preview = () => {
     setLogs([]);
   };
 
-  console.log(isConsoleOpen);
-
   return (
     <div className="preview-wrapper">
       {(!js.code.data || iframeErr) && (

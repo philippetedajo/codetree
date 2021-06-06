@@ -13,9 +13,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const TopBar = () => {
+const TopBar = ({ inSession }) => {
   const { user } = useUser();
   const { mutateUser } = useUser();
+
+  console.log(inSession);
 
   const dispatch = useAppDispatch();
 
@@ -65,7 +67,7 @@ const TopBar = () => {
 
       <div className="flex items-center">
         {/* User is not login  =========================================== */}
-        {!user?.isLoggedIn && (
+        {!inSession && (
           <div className="flex justify-center items-center">
             <Link href="/auth/login">
               <a className="nav_item">Login</a>
