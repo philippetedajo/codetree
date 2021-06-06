@@ -22,7 +22,6 @@ const Email = () => {
   const [result, setResult] = useState<any>({});
 
   const onSubmit = async (formData: UpdateEmailForm) => {
-    console.log(formData);
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/auth/profile/updateEmail`;
 
     setLoading(true);

@@ -30,6 +30,8 @@ const TopBar = () => {
   };
 
   const save = () => {
+    const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/create`;
+    console.log(url);
     //get the current state of the editor
     console.log(codeEditor);
     //send it to the server with axios and fetcher
