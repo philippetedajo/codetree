@@ -8,6 +8,7 @@ import { editor_state, update_modal } from "../../store/features/editorSlice";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, PlusIcon, StarIcon } from "@heroicons/react/solid";
 import { LogoutIcon, SaveIcon, UserIcon } from "@heroicons/react/outline";
+import { SkeletonMinProfile } from "../Skeleton";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -82,12 +83,16 @@ const TopBar = ({ inSession }) => {
         )}
 
         <div className="flex items-center">
-          <div className="flex flex-col text-right">
-            <div>{user?.profile?.data?.username}</div>
-            <small className="text-gray-500">
-              {user?.profile?.data?.status}
-            </small>
-          </div>
+          {user ? (
+            <div className="flex flex-col text-right">
+              <div>{user?.profile?.data?.username}</div>
+              <small className="text-gray-500">
+                {user?.profile?.data?.status}
+              </small>
+            </div>
+          ) : (
+            <SkeletonMinProfile />
+          )}
           <Menu
             as="div"
             className="relative inline-block text-left z-50 bg-transparent"
