@@ -1,22 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PencilIcon } from "@heroicons/react/outline";
+import Link from "next/link";
 import Router from "next/router";
 import { checkSession, withSession } from "../utils";
 import { useUser } from "../hooks";
 import { SkeletonProfile } from "../components/Skeleton";
+import { fetcher } from "../utils";
 
 const Home = () => {
   const { user } = useUser();
 
-  let fakeBox = ["box", "box", "box", "box", "box", "box", "box", "box", "box"];
+  const [allTrees, setAllTrees] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const trees = fakeBox.map((tree, id) => (
-    <div
-      className="border h-72 rounded shadow-md flex items-center justify-center"
-      key={id}
-    >
-      {tree}
-    </div>
+  useEffect(() => {
+    const getAllTree = async () => {
+      setIsLoading(true);
+      const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/mine`;
+
+      const result = await fetcher(url, "GET", user?.token);
+      setAllTrees(result?.data?.data?.data);
+      setIsLoading(false);
+    };
+
+    if (user) {
+      getAllTree();
+    }
+  }, [user]);
+
+  console.log(allTrees);
+
+  const trees = allTrees.map(({ hash, description, name }) => (
+    <Link href={`/playground/${hash}`}>
+      <div
+        className="border h-72 rounded-md overflow-hidden shadow-md flex flex-col"
+        key={hash}
+      >
+        <div className=" w-full h-4/5 bg-black cursor-pointer" />
+        <div className=" w-full h-1/5 flex flex-col px-5">
+          <p>{name}</p>
+          <p>{description}</p>
+        </div>
+      </div>
+    </Link>
   ));
 
   return (
@@ -56,7 +82,7 @@ const Home = () => {
       </div>
       <div className="mt-5 mb-3 text-2xl">Trees</div>
       <div className="pb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {trees}
+        {isLoading ? <div>...loading</div> : trees}
       </div>
     </div>
   );
