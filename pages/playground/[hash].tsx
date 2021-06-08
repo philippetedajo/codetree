@@ -2,9 +2,18 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { checkSession, withSession } from "../../utils";
 import Tree from "../../components/editor/Tree";
+import { manualBundleStart } from "../../components/editor/tools/manualBundleStart";
+import { _empty } from "../../components/editor/templates";
+import { useAppDispatch } from "../../store/hook";
 
 const Hash = ({ inSession, tree }) => {
   console.log(tree);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    manualBundleStart(_empty, dispatch);
+  }, []);
+
   return <Tree inSession={inSession} />;
 };
 

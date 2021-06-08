@@ -28,14 +28,9 @@ const Home = () => {
     }
   }, [user]);
 
-  console.log(allTrees);
-
   const trees = allTrees.map(({ hash, description, name }) => (
-    <Link href={`/playground/${hash}`}>
-      <div
-        className="border h-72 rounded-md overflow-hidden shadow-md flex flex-col"
-        key={hash}
-      >
+    <Link key={hash} href={`/playground/${hash}`}>
+      <div className="border h-72 rounded-md overflow-hidden shadow-md flex flex-col">
         <div className=" w-full h-4/5 bg-black cursor-pointer" />
         <div className=" w-full h-1/5 flex flex-col px-5">
           <p>{name}</p>
