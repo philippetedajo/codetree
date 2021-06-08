@@ -3,7 +3,6 @@ import axios from "axios";
 import { checkSession, withSession } from "../../utils";
 import Tree from "../../components/editor/Tree";
 import { manualBundleStart } from "../../components/editor/tools/manualBundleStart";
-import { _empty } from "../../components/editor/templates";
 import { useAppDispatch } from "../../store/hook";
 
 const Hash = ({ inSession, tree }) => {
