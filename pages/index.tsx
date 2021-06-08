@@ -20,17 +20,17 @@ export default Playground;
 export const getServerSideProps = withSession(async ({ req, res }) => {
   const user = req.session.get("user");
 
-  if (!user) {
+  if (user) {
     return {
       props: {
-        inSession: false,
+        inSession: true,
       },
     };
   }
 
   return {
     props: {
-      inSession: true,
+      inSession: false,
     },
   };
 });
