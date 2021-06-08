@@ -34,8 +34,8 @@ const TopBar = ({ inSession }) => {
     //update tree
     // const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/update/${hash}`;
     // console.log(url);
-
-    const json = JSON.stringify(codeEditor.languages);
+    console.log(codeEditor.languages);
+    const json = JSON.stringify({ ...codeEditor.languages });
     console.log(json);
     //
     // setLoading(true);

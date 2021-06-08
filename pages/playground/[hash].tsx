@@ -7,11 +7,10 @@ import { _empty } from "../../components/editor/templates";
 import { useAppDispatch } from "../../store/hook";
 
 const Hash = ({ inSession, tree }) => {
-  console.log(tree);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    manualBundleStart(_empty, dispatch);
+    manualBundleStart(tree.data, dispatch);
   }, []);
 
   return <Tree inSession={inSession} />;
@@ -22,6 +21,8 @@ export default Hash;
 export const getServerSideProps = withSession(async (context) => {
   checkSession(context.req, context.res);
   const user = context.req.session.get("user");
+
+  console.log(user.token);
 
   if (user) {
     let hash = context.query.hash;

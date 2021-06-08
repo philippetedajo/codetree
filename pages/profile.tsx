@@ -32,7 +32,7 @@ const Home = () => {
     <Link key={hash} href={`/playground/${hash}`}>
       <div className="border h-72 rounded-md overflow-hidden shadow-md flex flex-col">
         <div className=" w-full h-4/5 bg-black cursor-pointer" />
-        <div className=" w-full h-1/5 flex flex-col px-5">
+        <div className=" w-full h-1/5 flex flex-col px-5 pt-1">
           <p>{name}</p>
           <p>{description}</p>
         </div>
