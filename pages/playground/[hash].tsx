@@ -4,8 +4,7 @@ import { checkSession, withSession } from "../../utils";
 import Tree from "../../components/editor/Tree";
 
 const Hash = ({ inSession, tree }) => {
-  console.log(tree);
-  return <Tree inSession={inSession} tree={tree.languages} />;
+  return <Tree inSession={inSession} tree={tree} />;
 };
 
 export default Hash;
