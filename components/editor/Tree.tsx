@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Split from "react-split";
 import Tabs, { TabPane } from "rc-tabs";
 import { JsPanel, HtmlPanel, CssPanel } from "./Pans";
-import Modal from "./Modal";
+import { TemplateModal } from "./modals";
 import BottomBar from "./BottomBar";
 import TopBar from "./TopBar";
 
@@ -57,7 +57,7 @@ const Tree = ({ inSession }) => {
               <Preview />
             </div>
           </Split>
-          <Modal />
+          <TemplateModal />
         </div>
         <BottomBar />
       </div>

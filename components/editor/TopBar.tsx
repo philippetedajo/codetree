@@ -4,7 +4,10 @@ import { useUser } from "../../hooks";
 import Router from "next/router";
 import { fetcher } from "../../utils";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
-import { editor_state, update_modal } from "../../store/features/editorSlice";
+import {
+  editor_state,
+  update_template_modal,
+} from "../../store/features/editorSlice";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, PlusIcon, StarIcon } from "@heroicons/react/solid";
 import { LogoutIcon, SaveIcon, UserIcon } from "@heroicons/react/outline";
@@ -23,7 +26,7 @@ const TopBar = ({ inSession }) => {
   const { codeEditor } = useAppSelector(editor_state);
 
   function openModal() {
-    dispatch(update_modal(true));
+    dispatch(update_template_modal(true));
   }
 
   const [loading, setLoading] = useState(false);

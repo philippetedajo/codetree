@@ -6,12 +6,19 @@ import { checkSession, withSession } from "../utils";
 import { useUser } from "../hooks";
 import { SkeletonProfile } from "../components/Skeleton";
 import { fetcher } from "../utils";
+import { update_create_tree_modal } from "../store/features/editorSlice";
+import { useAppDispatch } from "../store/hook";
 
 const Home = () => {
   const { user } = useUser();
+  const dispatch = useAppDispatch();
 
   const [allTrees, setAllTrees] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  function openModal() {
+    dispatch(update_create_tree_modal(true));
+  }
 
   useEffect(() => {
     const getAllTree = async () => {
@@ -42,9 +49,9 @@ const Home = () => {
 
   return (
     <div style={{ paddingTop: "15vh" }} className="px-4 lg:px-24 pt-4">
-      <div className="flex flex-col sm:flex-row w-full justify-between">
+      <div className="flex flex-col sm:flex-row w-full justify-between border-2">
         {user ? (
-          <div>
+          <div className="border-2">
             <div className="flex">
               <div className="profile-pic-wrapper flex justify-center items-center bg-gradient-to-b from-gray-400 to-pink-300 rounded-full mr-5 shadow-lg">
                 <img
@@ -74,6 +81,8 @@ const Home = () => {
         ) : (
           <SkeletonProfile />
         )}
+
+        <button onClick={openModal}>Create New Tree</button>
       </div>
       <div className="mt-5 mb-3 text-2xl">Trees</div>
       <div className="pb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

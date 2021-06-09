@@ -1,24 +1,27 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hook";
-import { editor_state, update_modal } from "../../store/features/editorSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hook";
+import {
+  editor_state,
+  update_template_modal,
+} from "../../../store/features/editorSlice";
 import Tabs, { TabPane } from "rc-tabs";
 import { CgTrees } from "react-icons/cg";
-import TemplateSelect from "./options/TemplateSelect";
+import TemplateSelect from "../options/TemplateSelect";
 import { GiPartyPopper } from "react-icons/gi";
-import News from "./options/News";
+import News from "../options/News";
 
-const Modal = () => {
+export const TemplateModal = () => {
   const dispatch = useAppDispatch();
-  const { isModalOpen } = useAppSelector(editor_state);
+  const { isTemplateModalOpen } = useAppSelector(editor_state);
 
   function closeModal() {
-    dispatch(update_modal(false));
+    dispatch(update_template_modal(false));
   }
 
   return (
     <>
-      <Transition appear show={isModalOpen} as={Fragment}>
+      <Transition appear show={isTemplateModalOpen} as={Fragment}>
         <Dialog
           as="div"
           className="fixed inset-0 z-50 overflow-y-auto"
@@ -79,7 +82,3 @@ const Modal = () => {
     </>
   );
 };
-
-export default Modal;
-
-//onClick={closeModal}
