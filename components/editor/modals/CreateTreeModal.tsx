@@ -5,14 +5,29 @@ import {
   editor_state,
   update_create_tree_modal,
 } from "../../../store/features/editorSlice";
+import { fetcher } from "../../../utils";
+import { useUser } from "../../../hooks";
 
 export const CreateTreeModal = () => {
+  const { user } = useUser();
   const dispatch = useAppDispatch();
   const { isCreateTreeModalOpen } = useAppSelector(editor_state);
 
   function closeModal() {
     dispatch(update_create_tree_modal(false));
   }
+
+  const CreateNewTree = async () => {
+    const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/create`;
+    await fetcher(url, "POST", user.token, {
+      name: "Alpha",
+      languages:
+        '{"js":{"code":{"data":"document.getElementById(\\"root\\").innerHTML = `\\n<h1>Welcome to your new Playground</h1>\\n<div>\\n  We use the same configuration as Esbuild to bundle this sandbox, you can find more\\n  info about Esbuild \\n  <a href=\\"https://esbuild.github.io/\\" target=\\"_blank\\" rel=\\"noopener noreferrer\\">here</a>.\\n</div>\\n`;\\n","error":"","loading":false},"transformer":"js"},"css":{"code":{"data":"body {\\n  font-family: sans-serif;\\n  text-align: center;\\n}\\n","error":"","loading":false},"transformer":"css"},"html":{"code":{"data":"<div id=\\"root\\"></div>","error":"","loading":false},"transformer":"html"}}',
+      public: true,
+      template: "custom",
+      description: "New tree",
+    }).then((data) => console.log(data));
+  };
 
   return (
     <>
