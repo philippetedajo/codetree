@@ -7,10 +7,12 @@ import Modal from "./Modal";
 import BottomBar from "./BottomBar";
 import TopBar from "./TopBar";
 
-const Tree = ({ inSession }) => {
+const Tree = ({ inSession, tree }) => {
   const Preview = dynamic(() => import("./Preview"), {
     ssr: false,
   });
+
+  console.log(tree);
 
   return (
     <div>

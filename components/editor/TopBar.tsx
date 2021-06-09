@@ -18,8 +18,6 @@ const TopBar = ({ inSession }) => {
   const { user } = useUser();
   const { mutateUser } = useUser();
 
-  console.log(inSession);
-
   const dispatch = useAppDispatch();
 
   const { codeEditor } = useAppSelector(editor_state);

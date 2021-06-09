@@ -4,7 +4,8 @@ import { checkSession, withSession } from "../../utils";
 import Tree from "../../components/editor/Tree";
 
 const Hash = ({ inSession, tree }) => {
-  return <Tree inSession={inSession} />;
+  console.log(tree);
+  return <Tree inSession={inSession} tree={tree.languages} />;
 };
 
 export default Hash;
@@ -12,8 +13,6 @@ export default Hash;
 export const getServerSideProps = withSession(async (context) => {
   checkSession(context.req, context.res);
   const user = context.req.session.get("user");
-
-  console.log(user.token);
 
   if (user) {
     let hash = context.query.hash;
