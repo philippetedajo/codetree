@@ -5,6 +5,7 @@ import { _empty } from "../../components/editor/templates";
 
 const initialEditorState = {
   codeEditor: _empty,
+  fetchData: null,
   isConsoleOpen: false,
   hasConsoleLogs: false,
   isModalOpen: false,
@@ -49,6 +50,9 @@ export const editorSlice = createSlice({
     update_iframe_error: (state, { payload }) => {
       state.iframeErr = payload;
     },
+    set_fetch_data: (state, { payload }) => {
+      state.fetchData = payload;
+    },
   },
 });
 
@@ -61,6 +65,7 @@ export const {
   toggle_console,
   update_modal,
   update_iframe_error,
+  set_fetch_data,
 } = editorSlice.actions;
 
 export const editor_state = (state: RootState) => state.editor;

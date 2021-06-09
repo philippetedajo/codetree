@@ -6,8 +6,6 @@ import {
 import bundler from "../../../bundler";
 
 export const manualBundleStart = async (value: any, dispatch) => {
-  dispatch(update_template(value));
-
   dispatch(update_async_code_start({ code: "", type: "js", error: "" }));
   const output = await bundler(value.languages.js.code.data);
   dispatch(
