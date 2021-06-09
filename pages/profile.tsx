@@ -6,12 +6,21 @@ import { checkSession, withSession } from "../utils";
 import { useUser } from "../hooks";
 import { SkeletonProfile } from "../components/Skeleton";
 import { fetcher } from "../utils";
+import { CreateTreeModal } from "../components/editor/modals";
+import { useAppDispatch } from "../store/hook";
+import { update_create_tree_modal } from "../store/features/editorSlice";
 
 const Home = () => {
   const { user } = useUser();
 
   const [allTrees, setAllTrees] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const dispatch = useAppDispatch();
+
+  function openModal() {
+    dispatch(update_create_tree_modal(true));
+  }
 
   useEffect(() => {
     const getAllTree = async () => {
@@ -87,12 +96,13 @@ const Home = () => {
           <SkeletonProfile />
         )}
 
-        <button onClick={CreateNewTree}>Create New Tree</button>
+        <button onClick={openModal}>Create New Tree</button>
       </div>
       <div className="mt-5 mb-3 text-2xl">Trees</div>
       <div className="pb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {isLoading ? <div>...loading</div> : trees}
       </div>
+      <CreateTreeModal />
     </div>
   );
 };

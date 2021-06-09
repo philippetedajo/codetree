@@ -9,6 +9,7 @@ const initialEditorState = {
   isConsoleOpen: false,
   hasConsoleLogs: false,
   isTemplateModalOpen: false,
+  isCreateTreeModalOpen: false,
   iframeErr: null,
 };
 
@@ -44,6 +45,9 @@ export const editorSlice = createSlice({
     update_template_modal: (state, { payload }) => {
       state.isTemplateModalOpen = payload;
     },
+    update_create_tree_modal: (state, { payload }) => {
+      state.isCreateTreeModalOpen = payload;
+    },
     toggle_console: (state) => {
       state.isConsoleOpen = !state.isConsoleOpen;
     },
@@ -64,6 +68,7 @@ export const {
   update_template,
   toggle_console,
   update_template_modal,
+  update_create_tree_modal,
   update_iframe_error,
   set_fetch_data,
 } = editorSlice.actions;
