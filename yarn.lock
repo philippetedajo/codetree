@@ -488,11 +488,6 @@ acorn@^7.0.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
-add@^2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
-  integrity sha1-JI8Kn25aUo7yKV2+7DBTITCuIjU=
-
 anser@1.4.9:
   version "1.4.9"
   resolved "https://registry.yarnpkg.com/anser/-/anser-1.4.9.tgz#1f85423a5dcf8da4631a341665ff675b96845760"
@@ -987,14 +982,6 @@ core-util-is@~1.0.0:
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
 
-cors@^2.8.5:
-  version "2.8.5"
-  resolved "https://registry.yarnpkg.com/cors/-/cors-2.8.5.tgz#eac11da51592dd86b9f06f6e7ac293b3df875d29"
-  integrity sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==
-  dependencies:
-    object-assign "^4"
-    vary "^1"
-
 cosmiconfig@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-6.0.0.tgz#da4fee853c52f6b1e6935f41c1a2fc50bd4a9982"
@@ -1130,13 +1117,6 @@ depd@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
-
-deployment-badge@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/deployment-badge/-/deployment-badge-1.1.0.tgz#777d529bd6cb771c0ae01e7c2f7bcb91c460f52d"
-  integrity sha512-G3uq6JBSJHMDDBMjBINyNNY8LrUZbfgThk57XLf3CuTVOKguq2UVrFyC4Gd2+aIKKjlHQgS6kurnlSSVCPY6Wg==
-  dependencies:
-    cors "^2.8.5"
 
 dequal@2.0.2:
   version "2.0.2"
@@ -2202,7 +2182,7 @@ nprogress@^0.2.0:
   resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
   integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
 
-object-assign@^4, object-assign@^4.1.1:
+object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
@@ -3317,11 +3297,6 @@ util@^0.11.0:
   dependencies:
     inherits "2.0.3"
 
-vary@^1:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
-  integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
-
 vm-browserify@1.1.2, vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
@@ -3387,11 +3362,6 @@ yaml@^1.7.2:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
-
-yarn@^1.22.10:
-  version "1.22.10"
-  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.10.tgz#c99daa06257c80f8fa2c3f1490724e394c26b18c"
-  integrity sha512-IanQGI9RRPAN87VGTF7zs2uxkSyQSrSPsju0COgbsKQOOXr5LtcVPeyXWgwVa0ywG3d8dg6kSYKGBuYK021qeA==
 
 yocto-queue@^0.1.0:
   version "0.1.0"

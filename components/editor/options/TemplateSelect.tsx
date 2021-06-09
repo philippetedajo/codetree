@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useAppDispatch } from "../../../store/hook";
 import { _empty, _react, _p5 } from "../templates";
 
-import { manualBundleStart } from "../tools/manualBundleStart";
+import { manualBundleStart } from "../utils/manualBundleStart";
 import React from "react";
 
 const TemplateSelect = ({ closeModal }) => {

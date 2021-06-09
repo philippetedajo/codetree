@@ -7,7 +7,8 @@ import {
   update_iframe_error,
 } from "../../store/features/editorSlice";
 import Logs from "./Logs";
-import { createIframeContent, EditorLoader, ErrorScreen } from "./tools";
+import { EditorLoader, ErrorScreen } from "./FrameScreen";
+import { createIframeContent } from "./utils";
 import { Resizable } from "re-resizable";
 
 const Preview = () => {

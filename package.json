@@ -1,5 +1,5 @@
 {
-  "name": "migrationtree",
+  "name": "codetree",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -19,10 +19,8 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "add": "^2.0.6",
     "axios": "^0.21.1",
     "console-feed": "^3.2.2",
-    "deployment-badge": "^1.1.0",
     "esbuild-wasm": "0.8.57",
     "framer-motion": "^4",
     "localforage": "^1.9.0",
@@ -46,7 +44,6 @@
     "sass": "^1.32.13",
     "swr": "^0.5.6",
     "use-debounce": "^6.0.0",
-    "yarn": "^1.22.10",
     "yup": "^0.32.9"
   },
   "devDependencies": {

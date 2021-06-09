@@ -65,19 +65,19 @@ const TopBar = ({ inSession }) => {
 
       <div className="flex items-center">
         {/* User is not login  =========================================== */}
-        {/*{!inSession && (*/}
-        {/*  <div className="flex justify-center items-center">*/}
-        {/*    <Link href="/auth/login">*/}
-        {/*      <a className="nav_item">Login</a>*/}
-        {/*    </Link>{" "}*/}
-        {/*    <Link href="/auth/register">*/}
-        {/*      <div className="flex justify-center items-center mr-5 text-sm font-medium hover:bg-green-500 bg-green-400 px-4 py-1.5 rounded text-black tracking-wide cursor-pointer">*/}
-        {/*        <StarIcon className="w-5 h-5 mr-1.5" />*/}
-        {/*        <a>SIGN UP FREE</a>*/}
-        {/*      </div>*/}
-        {/*    </Link>*/}
-        {/*  </div>*/}
-        {/*)}*/}
+        {!inSession && (
+          <div className="flex justify-center items-center">
+            <Link href="/auth/login">
+              <a className="nav_item">Login</a>
+            </Link>{" "}
+            <Link href="/auth/register">
+              <div className="flex justify-center items-center mr-5 text-sm font-medium hover:bg-green-500 bg-green-400 px-4 py-1.5 rounded text-black tracking-wide cursor-pointer">
+                <StarIcon className="w-5 h-5 mr-1.5" />
+                <a>SIGN UP FREE</a>
+              </div>
+            </Link>
+          </div>
+        )}
 
         <div className="flex items-center">
           {user ? (
