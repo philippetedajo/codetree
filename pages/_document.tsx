@@ -16,13 +16,13 @@ class CodetreeDocument extends Document {
             content="Codetree is a lightning fast online code playground with automatic npm module detection."
           />
           <meta charSet="utf-8" />
-          <link rel="canonical" href="https://codetree.vercel.app/" />
+          <link rel="canonical" href="https://codetree-beta.vercel.app/" />
 
           <meta name="author" content="Philippe Tedajo" />
 
           <meta
             property="og:url"
-            content="https://codetree.vercel.app/"
+            content="https://codetree-beta.vercel.app/"
             key="ogurl"
           />
           <meta
