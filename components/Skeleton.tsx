@@ -29,6 +29,20 @@ export const SkeletonProfile = () => {
   );
 };
 
+export const SkeletonTree = () => {
+  return (
+    <div className="animate-pulse">
+      <div className="border h-72 rounded-md overflow-hidden shadow-md flex flex-col">
+        <div className=" w-full h-4/5 bg-gray-300 cursor-pointer" />
+        <div className=" w-full h-1/5 flex flex-col px-5 pt-1">
+          <div className="h-3 bg-gray-300 mb-2.5 mt-2 rounded w-1/2" />{" "}
+          <div className="h-3 bg-gray-300 rounded w-3/4" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const SettingPictureSkeleton = () => {
   return (
     <div className="animate-pulse rounded-full bg-gray-300 w-40 h-40 shadow-lg" />

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Router from "next/router";
 import { checkSession, withSession } from "../utils";
 import { useUser } from "../hooks";
-import { SkeletonProfile } from "../components/Skeleton";
+import { SkeletonProfile, SkeletonTree } from "../components/Skeleton";
 import { fetcher } from "../utils";
 import { CreateTreeModal } from "../components/editor/modals";
 import { useAppDispatch } from "../store/hook";
@@ -95,7 +95,8 @@ const Home = () => {
         </div>
       </div>
       <div className="pb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {isLoading ? <div>...loading</div> : trees}
+        {/*{isLoading ? <SkeletonTree /> : trees}*/}
+        <SkeletonTree />
       </div>
       <CreateTreeModal />
     </div>
