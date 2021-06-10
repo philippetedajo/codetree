@@ -104,7 +104,7 @@ export const CreateTreeModal = () => {
                       isLoading ? "disabled:opacity-70" : ""
                     }`}
                   >
-                    {isLoading ? "... Processing" : "Create"}
+                    {isLoading ? "..." : "Create"}
                   </button>
                 </form>
               </div>
