@@ -94,9 +94,8 @@ const Home = () => {
           New Tree
         </div>
       </div>
-      <div className="pb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {/*{isLoading ? <SkeletonTree /> : trees}*/}
-        <SkeletonTree />
+      <div className="pb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+        {isLoading ? <SkeletonTree /> : trees}
       </div>
       <CreateTreeModal />
     </div>
