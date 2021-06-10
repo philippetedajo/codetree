@@ -35,9 +35,9 @@ const TopBar = ({ inSession }) => {
 
     console.log(codeEditor.languages);
 
-    // await fetcher(url, "PUT", user.token, {
-    //   languages: json,
-    // }).then((data) => console.log(data.data));
+    await fetcher(url, "PUT", user.token, {
+      languages: json,
+    }).then((data) => console.log(data.data));
   };
 
   const logout = async () => {
