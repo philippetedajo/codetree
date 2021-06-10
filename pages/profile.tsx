@@ -51,9 +51,9 @@ const Home = () => {
 
   return (
     <div style={{ paddingTop: "15vh" }} className="px-4 lg:px-24 pt-4">
-      <div className="flex flex-col sm:flex-row w-full justify-between border-2">
+      <div className="flex flex-col sm:flex-row w-full justify-between">
         {user ? (
-          <div className="border-2">
+          <div className="">
             <div className="flex">
               <div className="profile-pic-wrapper flex justify-center items-center bg-gradient-to-b from-gray-400 to-pink-300 rounded-full mr-5 shadow-lg">
                 <img
