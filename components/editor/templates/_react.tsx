@@ -45,7 +45,7 @@ ReactDOM.render(<App />, rootElement);
     },
     html: {
       code: {
-        data: `<div id="root"></div>`,
+        data: ``,
         error: "",
         loading: false,
       },

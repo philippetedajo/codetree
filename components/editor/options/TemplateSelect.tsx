@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useAppDispatch } from "../../../store/hook";
 import { set_initial_Monaco_Value } from "../../../store/features/editorSlice";
-import { _empty, _react, _p5 } from "../templates";
+import { _vanilla, _react, _p5 } from "../templates";
 
 import { manualBundleStart } from "../utils/manualBundleStart";
 import React from "react";
@@ -12,12 +12,12 @@ const TemplateSelect = ({ closeModal }) => {
   const onSelect = (event) => {
     switch (event.target.name) {
       case "vanilla":
-        manualBundleStart(_empty, dispatch);
+        manualBundleStart(_vanilla, dispatch);
         dispatch(
           set_initial_Monaco_Value({
-            js: _empty.languages.js.code.data,
-            html: _empty.languages.html.code.data,
-            css: _empty.languages.css.code.data,
+            js: _vanilla.languages.js.code.data,
+            html: _vanilla.languages.html.code.data,
+            css: _vanilla.languages.css.code.data,
           })
         );
         break;

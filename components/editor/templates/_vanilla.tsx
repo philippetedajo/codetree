@@ -1,26 +1,19 @@
-export const _p5 = {
+export const _vanilla = {
   name: "",
   description: "",
-  template: "p5",
+  template: "empty",
   public: true,
   languages: {
     js: {
       code: {
-        data: `import p5 from "p5";
-
-let sketch = function (p) {
-  p.setup = function () {
-    p.createCanvas(window.innerWidth, window.innerHeight);
-    p.background(0);
-  };
-  p.draw = () => {
-    // sketch.background(100);
-    p.fill(255);
-    p.ellipse(p.mouseX, p.mouseY, 50, 50);
-  };
-};
- 
-new p5(sketch, window.document.getElementById("container"));
+        data: `document.getElementById("root").innerHTML = \`
+<h1>Hello VanillaTree</h1>
+<div>
+  We use the same configuration as Esbuild to bundle this sandbox, you can find more
+  info about Esbuild 
+  <a href="https://esbuild.github.io/" target="_blank" rel="noopener noreferrer">here</a>.
+</div>
+\`;
 `,
         error: "",
         loading: false,
@@ -30,11 +23,8 @@ new p5(sketch, window.document.getElementById("container"));
     css: {
       code: {
         data: `body {
-  margin: 0px;
   font-family: sans-serif;
-}
-canvas {
-  margin: 0px;
+  text-align: center;
 }
 `,
         error: "",

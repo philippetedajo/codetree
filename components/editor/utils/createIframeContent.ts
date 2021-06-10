@@ -8,7 +8,9 @@ export const createIframeContent = (css, html) => {
     </style>
   </head>
   <body>
+   <div id="root">
     ${html}
+   </div>
     <script>
       //====== send massage to iframe
       window.onerror = function (err) {
