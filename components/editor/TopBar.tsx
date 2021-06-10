@@ -39,11 +39,7 @@ const TopBar = ({ inSession }) => {
     setIsLoading(true);
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/update/${router.query.hash}`;
     await fetcher(url, "POST", user.token, {
-      name: "",
       languages: json2,
-      public: true,
-      template: "",
-      description: "",
     }).then((data) => console.log(data));
     setIsLoading(false);
   };

@@ -34,7 +34,10 @@ export const SkeletonTree = () => {
 
   for (let i = 0; i < 3; i++) {
     trees.push(
-      <div className="border h-72 rounded-md overflow-hidden shadow-md flex flex-col">
+      <div
+        key={i}
+        className="border h-72 rounded-md overflow-hidden shadow-md flex flex-col"
+      >
         <div className=" w-full h-4/5 bg-gray-300 cursor-pointer" />
         <div className=" w-full h-1/5 flex flex-col px-5 pt-1">
           <div className="h-3 bg-gray-300 mb-2.5 mt-2 rounded w-1/2" />{" "}
