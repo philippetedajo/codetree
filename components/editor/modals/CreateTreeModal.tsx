@@ -92,7 +92,6 @@ export const CreateTreeModal = () => {
                   <small className="mt-1 border-none text-red-500">
                     {errors.new_tree_name?.message}
                   </small>
-                  {/*<small className="mt-1 border-none">{result}</small>*/}
                   <small className="text-red-500 mt-2">
                     {result?.type === responseType.error
                       ? result?.data?.data?.name

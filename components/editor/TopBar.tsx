@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Link from "next/link";
 import { useUser } from "../../hooks";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { fetcher } from "../../utils";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import {
@@ -24,26 +24,23 @@ const TopBar = ({ inSession }) => {
   const dispatch = useAppDispatch();
 
   const { codeEditor } = useAppSelector(editor_state);
+  const router = useRouter();
 
   function openModal() {
     dispatch(update_template_modal(true));
   }
 
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const save = () => {
-    //update tree
-    // const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/update/${hash}`;
-    // console.log(url);
-    console.log(codeEditor.languages);
-    const json = JSON.stringify({ ...codeEditor.languages });
-    console.log(json);
-    //
-    // setLoading(true);
-    //
-    // const result = await fetcher(url, "POST", user.token, {});
-    //
-    // setLoading(false);
+  const save = async () => {
+    const json = JSON.stringify(codeEditor.languages);
+
+    setIsLoading(true);
+    const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/update/${router.query.hash}`;
+    await fetcher(url, "POST", user.token, {
+      languages: json,
+    }).then((data) => console.log(data));
+    setIsLoading(false);
   };
 
   const logout = async () => {
