@@ -98,11 +98,11 @@ export const CreateTreeModal = () => {
 
                   <button
                     disabled={isLoading}
-                    className={`bg-blue-600 text-white w-44 mt-7 h-10 mb-4 ${
+                    className={` border-2 text-white w-44 mt-7 h-10 mb-4 ${
                       isLoading ? "disabled:opacity-70" : ""
                     }`}
                   >
-                    {isLoading ? "... Processing" : "Save"}
+                    {isLoading ? "... Processing" : "Create"}
                   </button>
                 </form>
               </div>
