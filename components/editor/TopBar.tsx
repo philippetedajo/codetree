@@ -13,6 +13,8 @@ import { ChevronDownIcon, PlusIcon, StarIcon } from "@heroicons/react/solid";
 import { LogoutIcon, SaveIcon, UserIcon } from "@heroicons/react/outline";
 import { SkeletonMinProfile } from "../Skeleton";
 
+import axios from "axios";
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -33,15 +35,14 @@ const TopBar = ({ inSession }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const save = async () => {
-    const json = JSON.stringify(codeEditor.languages);
-    const json2 = JSON.stringify(json);
-
-    setIsLoading(true);
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/update/${router.query.hash}`;
-    await fetcher(url, "POST", user.token, {
-      languages: json2,
-    }).then((data) => console.log(data));
-    setIsLoading(false);
+    const json = await JSON.stringify(codeEditor.languages);
+
+    console.log(json);
+
+    // await fetcher(url, "PUT", user.token, {
+    //   languages: json,
+    // }).then((data) => console.log(data.data));
   };
 
   const logout = async () => {
