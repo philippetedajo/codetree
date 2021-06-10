@@ -1,6 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hook";
+import { responseType } from "../../../_types/share_types";
 import {
   editor_state,
   update_create_tree_modal,
@@ -23,23 +24,28 @@ export const CreateTreeModal = () => {
     resolver: yupResolver(newTreeSchema),
   });
 
-  const CreateNewTree = async () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [result, setResult] = useState(null);
+
+  const CreateNewTree = async (name: string) => {
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/create`;
+    setIsLoading(true);
     await fetcher(url, "POST", user.token, {
-      name: "Alpha",
+      name,
       languages:
         '{"js":{"code":{"data":"document.getElementById(\\"root\\").innerHTML = `\\n<h1>Welcome to your new Playground</h1>\\n<div>\\n  We use the same configuration as Esbuild to bundle this sandbox, you can find more\\n  info about Esbuild \\n  <a href=\\"https://esbuild.github.io/\\" target=\\"_blank\\" rel=\\"noopener noreferrer\\">here</a>.\\n</div>\\n`;\\n","error":"","loading":false},"transformer":"js"},"css":{"code":{"data":"body {\\n  font-family: sans-serif;\\n  text-align: center;\\n}\\n","error":"","loading":false},"transformer":"css"},"html":{"code":{"data":"<div id=\\"root\\"></div>","error":"","loading":false},"transformer":"html"}}',
       public: true,
       template: "custom",
       description: "New tree",
-    }).then((data) => console.log(data));
+    }).then((data) => setResult(data));
+    setIsLoading(false);
   };
 
-  const [isLoading, setIsLoading] = useState(false);
-
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = ({ new_tree_name }) => {
+    CreateNewTree(new_tree_name);
   };
+
+  console.log(result?.data?.data?.name);
 
   return (
     <>
@@ -80,10 +86,16 @@ export const CreateTreeModal = () => {
                   <small className="mt-1 border-none">
                     {errors.new_tree_name?.message}
                   </small>
+                  {/*<small className="mt-1 border-none">{result}</small>*/}
+                  <small className="text-red-500 mt-2">
+                    {result?.type === responseType.error
+                      ? result?.data?.data?.name
+                      : ""}
+                  </small>
 
                   <button
                     disabled={isLoading}
-                    className={` border-2 text-white w-44 mt-7 h-10 mb-4 ${
+                    className={` border-2 text-white w-44 mt-5 h-10 mb-4 ${
                       isLoading ? "disabled:opacity-70" : ""
                     }`}
                   >
