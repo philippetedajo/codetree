@@ -7,14 +7,11 @@ import {
 } from "../../../store/features/editorSlice";
 
 import Monaco from "../Monaco";
-import { _empty, _p5, _react } from "../templates";
 
 export const HtmlPanel: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const {
-    codeEditor: { template },
-  } = useAppSelector(editor_state);
+  const { initialMonacoValue } = useAppSelector(editor_state);
 
   const debounced = useDebouncedCallback(
     (value) => {
@@ -30,23 +27,9 @@ export const HtmlPanel: React.FC = () => {
     1000
   );
 
-  let initialValue = _empty.languages.html.code.data;
-
-  switch (template) {
-    case "react":
-      initialValue = _react.languages.html.code.data;
-      break;
-    case "empty":
-      initialValue = _empty.languages.html.code.data;
-      break;
-    case "p5":
-      initialValue = _p5.languages.html.code.data;
-      break;
-  }
-
   return (
     <Monaco
-      initialValue={initialValue}
+      initialValue={initialMonacoValue.html}
       language="html"
       onChangeCodeInput={(value: string) => debounced(value)}
     />

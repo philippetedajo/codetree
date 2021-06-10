@@ -8,11 +8,11 @@ import {
 } from "../../../store/features/editorSlice";
 import Monaco from "../Monaco";
 import bundler from "../../../bundler";
-import { _react, _empty, _p5 } from "../templates";
 
 export const JsPanel = () => {
   const dispatch = useAppDispatch();
-  const { fetchData, codeEditor } = useAppSelector(editor_state);
+
+  const { initialMonacoValue } = useAppSelector(editor_state);
 
   const debounced = useDebouncedCallback(
     async (value) => {
@@ -38,29 +38,9 @@ export const JsPanel = () => {
     [debounced]
   );
 
-  let initialValue;
-
-  if (fetchData.template === "custom") {
-    initialValue = fetchData.languages.js.code.data;
-  } else {
-    initialValue = _empty.languages.js.code.data;
-
-    switch (codeEditor.template) {
-      case "react":
-        initialValue = _react.languages.js.code.data;
-        break;
-      case "empty":
-        initialValue = _empty.languages.js.code.data;
-        break;
-      case "p5":
-        initialValue = _p5.languages.js.code.data;
-        break;
-    }
-  }
-
   return (
     <Monaco
-      initialValue={initialValue}
+      initialValue={initialMonacoValue.js}
       language="javascript"
       onChangeCodeInput={(value: string) => debounced(value)}
     />

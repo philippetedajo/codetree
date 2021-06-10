@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useAppDispatch } from "../../../store/hook";
+import { set_initial_Monaco_Value } from "../../../store/features/editorSlice";
 import { _empty, _react, _p5 } from "../templates";
 
 import { manualBundleStart } from "../utils/manualBundleStart";
@@ -12,12 +13,33 @@ const TemplateSelect = ({ closeModal }) => {
     switch (event.target.name) {
       case "vanilla":
         manualBundleStart(_empty, dispatch);
+        dispatch(
+          set_initial_Monaco_Value({
+            js: _empty.languages.js.code.data,
+            html: _empty.languages.html.code.data,
+            css: _empty.languages.css.code.data,
+          })
+        );
         break;
       case "react":
         manualBundleStart(_react, dispatch);
+        dispatch(
+          set_initial_Monaco_Value({
+            js: _react.languages.js.code.data,
+            html: _react.languages.html.code.data,
+            css: _react.languages.css.code.data,
+          })
+        );
         break;
       case "p5":
         manualBundleStart(_p5, dispatch);
+        dispatch(
+          set_initial_Monaco_Value({
+            js: _p5.languages.js.code.data,
+            html: _p5.languages.html.code.data,
+            css: _p5.languages.css.code.data,
+          })
+        );
         break;
     }
     closeModal();

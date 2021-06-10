@@ -6,6 +6,7 @@ import { _empty } from "../../components/editor/templates";
 const initialEditorState = {
   codeEditor: _empty,
   fetchData: null,
+  initialMonacoValue: { js: "", html: "", css: "" },
   isConsoleOpen: false,
   hasConsoleLogs: false,
   isTemplateModalOpen: false,
@@ -57,6 +58,9 @@ export const editorSlice = createSlice({
     set_fetch_data: (state, { payload }) => {
       state.fetchData = payload;
     },
+    set_initial_Monaco_Value: (state, { payload }) => {
+      state.initialMonacoValue = payload;
+    },
   },
 });
 
@@ -71,6 +75,7 @@ export const {
   update_create_tree_modal,
   update_iframe_error,
   set_fetch_data,
+  set_initial_Monaco_Value,
 } = editorSlice.actions;
 
 export const editor_state = (state: RootState) => state.editor;
