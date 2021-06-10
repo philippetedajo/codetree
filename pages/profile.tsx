@@ -6,9 +6,12 @@ import { checkSession, withSession } from "../utils";
 import { useUser } from "../hooks";
 import { SkeletonProfile, SkeletonTree } from "../components/Skeleton";
 import { fetcher } from "../utils";
-import { CreateTreeModal } from "../components/editor/modals";
+import { CreateTreeModal, DeleteTreeModal } from "../components/editor/modals";
 import { useAppDispatch } from "../store/hook";
-import { update_create_tree_modal } from "../store/features/editorSlice";
+import {
+  update_create_tree_modal,
+  update_delete_tree_modal,
+} from "../store/features/editorSlice";
 
 const Home = () => {
   const { user } = useUser();
@@ -18,8 +21,12 @@ const Home = () => {
 
   const dispatch = useAppDispatch();
 
-  function openModal() {
+  function openCreateModal() {
     dispatch(update_create_tree_modal(true));
+  }
+
+  function openDeleteModal() {
+    dispatch(update_delete_tree_modal(true));
   }
 
   useEffect(() => {
@@ -41,9 +48,12 @@ const Home = () => {
     <Link key={hash} href={`/playground/${hash}`}>
       <div className="border h-72 rounded-md overflow-hidden shadow-md flex flex-col">
         <div className=" w-full h-4/5 bg-black cursor-pointer" />
-        <div className=" w-full h-1/5 flex flex-col px-5 pt-1">
-          <p>{name}</p>
-          <p>{description}</p>
+        <div className=" w-full h-1/5 flex px-5 pt-1">
+          <div>
+            <p>{name}</p>
+            <p>{description}</p>
+          </div>
+          <div onClick={openDeleteModal}>delete</div>
         </div>
       </div>
     </Link>
@@ -88,7 +98,7 @@ const Home = () => {
         <div>Trees</div>
         <div
           className="flex items-center text-xl text-gray-400 cursor-pointer"
-          onClick={openModal}
+          onClick={openCreateModal}
         >
           <ViewGridAddIcon className="w-6 h-6 mr-2" />
           New Tree
@@ -98,6 +108,7 @@ const Home = () => {
         {isLoading ? <SkeletonTree /> : trees}
       </div>
       <CreateTreeModal />
+      <DeleteTreeModal />
     </div>
   );
 };
