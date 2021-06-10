@@ -39,6 +39,12 @@ let schemas = {
     .test("type", "Only support png, jpg and jpeg", (value) => {
       return value && SUPPORTED_FORMATS.includes(value[0].type);
     }),
+  new_tree_name: yup
+    .string()
+    .required("You must a name for your new tree")
+    .min(3)
+    .max(70),
+  new_tree_description: yup.string(),
 };
 
 const {
@@ -52,6 +58,8 @@ const {
   status,
   description,
   profile_picture,
+  new_tree_name,
+  new_tree_description,
 } = schemas;
 
 export const loginSchema = yup.object().shape({
@@ -93,4 +101,9 @@ export const updatePasswordSchema = yup.object().shape({
 
 export const profilePictureSchema = yup.object().shape({
   profile_picture,
+});
+
+export const newTreeSchema = yup.object().shape({
+  new_tree_name,
+  new_tree_description,
 });

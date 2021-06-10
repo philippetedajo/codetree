@@ -5,8 +5,10 @@ import {
   editor_state,
   update_create_tree_modal,
 } from "../../../store/features/editorSlice";
-import { fetcher } from "../../../utils";
+import { fetcher, newTreeSchema } from "../../../utils";
 import { useUser } from "../../../hooks";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export const CreateTreeModal = () => {
   const { user } = useUser();
@@ -16,6 +18,10 @@ export const CreateTreeModal = () => {
   function closeModal() {
     dispatch(update_create_tree_modal(false));
   }
+
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(newTreeSchema),
+  });
 
   const CreateNewTree = async () => {
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/create`;
@@ -27,6 +33,12 @@ export const CreateTreeModal = () => {
       template: "custom",
       description: "New tree",
     }).then((data) => console.log(data));
+  };
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
   return (
@@ -56,29 +68,43 @@ export const CreateTreeModal = () => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                <Dialog.Title
-                  as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900"
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-tree-soft shadow-xl rounded">
+                <form
+                  className="flex flex-col mt-3 text-white "
+                  onSubmit={handleSubmit(onSubmit)}
                 >
-                  Payment successful
-                </Dialog.Title>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    Your payment has been successfully submitted. We’ve sent
-                    your an email with all of the details of your order.
-                  </p>
-                </div>
+                  <h2 className="mb-5 text-3xl">Create a new tree</h2>
 
-                <div className="mt-4">
+                  <label className="mb-2">Name *</label>
+                  <input
+                    name="new_tree_name border-none"
+                    type="text"
+                    ref={register}
+                  />
+                  <small className="mt-1 mb-6 text-red-500">
+                    {errors.new_tree_name?.message}
+                  </small>
+
+                  <label className="mb-2">Description </label>
+                  <textarea
+                    rows={4}
+                    className="rounded"
+                    name="new_tree_description"
+                    ref={register}
+                  />
+                  <small className="mt-1 text-red-500">
+                    {errors.new_tree_description?.message}
+                  </small>
+
                   <button
-                    type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                    onClick={closeModal}
+                    disabled={isLoading}
+                    className={`bg-blue-600 text-white w-44 mt-7 h-10 mb-4 ${
+                      isLoading ? "disabled:opacity-70" : ""
+                    }`}
                   >
-                    Got it, thanks!
+                    {isLoading ? "... Processing" : "Save"}
                   </button>
-                </div>
+                </form>
               </div>
             </Transition.Child>
           </div>
