@@ -1,5 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useState } from "react";
+import Router from "next/router";
 import { useAppDispatch, useAppSelector } from "../../../store/hook";
 import { responseType } from "../../../_types/share_types";
 import {
@@ -37,15 +38,20 @@ export const CreateTreeModal = () => {
       public: true,
       template: "custom",
       description: "New tree",
-    }).then((data) => setResult(data));
+    }).then((data) => {
+      let hash = data?.data?.data?.data?.hash;
+      if (data?.type === responseType.success) {
+        closeModal();
+        Router.push(`/playground/${hash}`);
+      }
+      setResult(data);
+    });
     setIsLoading(false);
   };
 
   const onSubmit = ({ new_tree_name }) => {
     CreateNewTree(new_tree_name);
   };
-
-  console.log(result?.data?.data?.name);
 
   return (
     <>
@@ -83,7 +89,7 @@ export const CreateTreeModal = () => {
 
                   <label className="mb-2">Name *</label>
                   <input name="new_tree_name" type="text" ref={register} />
-                  <small className="mt-1 border-none">
+                  <small className="mt-1 border-none text-red-500">
                     {errors.new_tree_name?.message}
                   </small>
                   {/*<small className="mt-1 border-none">{result}</small>*/}
