@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { PencilIcon } from "@heroicons/react/outline";
+import { PencilIcon, ViewGridAddIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import Router from "next/router";
 import { checkSession, withSession } from "../utils";
@@ -83,10 +83,17 @@ const Home = () => {
         ) : (
           <SkeletonProfile />
         )}
-
-        <button onClick={openModal}>Create New Tree</button>
       </div>
-      <div className="mt-5 mb-3 text-2xl">Trees</div>
+      <div className="mt-5 mb-3 flex justify-between text-2xl">
+        <div>Trees</div>
+        <div
+          className="flex items-center text-xl text-gray-400"
+          onClick={openModal}
+        >
+          <ViewGridAddIcon className="w-6 h-6 mr-2" />
+          New Tree
+        </div>
+      </div>
       <div className="pb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {isLoading ? <div>...loading</div> : trees}
       </div>
