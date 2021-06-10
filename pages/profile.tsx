@@ -16,10 +16,6 @@ const Home = () => {
   const { user } = useUser();
   const { tree, mutateTree } = useTree();
 
-  const [treeDelete, setIsLoadingDelete] = useState(false);
-
-  console.log(tree?.type);
-
   const dispatch = useAppDispatch();
 
   function openCreateModal() {
@@ -28,10 +24,8 @@ const Home = () => {
 
   const DeleteTree = async (hash) => {
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/delete/${hash}`;
-    setIsLoadingDelete(true);
     const response = await fetcher(url, "DELETE", user.token);
     await mutateTree(response);
-    setIsLoadingDelete(false);
   };
 
   const trees = tree?.trees?.data?.map(({ hash, description, name }) => (

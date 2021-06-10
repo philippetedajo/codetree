@@ -12,16 +12,14 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, PlusIcon, StarIcon } from "@heroicons/react/solid";
 import { LogoutIcon, SaveIcon, UserIcon } from "@heroicons/react/outline";
 import { SkeletonMinProfile } from "../Skeleton";
-
-import axios from "axios";
+import { useTree } from "../../hooks/useTree";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const TopBar = ({ inSession }) => {
-  const { user } = useUser();
-  const { mutateUser } = useUser();
+  const { user, mutateUser } = useUser();
 
   const dispatch = useAppDispatch();
 
