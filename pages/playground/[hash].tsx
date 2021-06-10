@@ -3,15 +3,21 @@ import axios from "axios";
 import { checkSession, withSession } from "../../utils";
 import Tree from "../../components/editor/Tree";
 import { useAppDispatch } from "../../store/hook";
-import { set_fetch_data } from "../../store/features/editorSlice";
 import { manualBundleStart } from "../../components/editor/utils/manualBundleStart";
+import { set_initial_Monaco_Value } from "../../store/features/editorSlice";
 
 const Hash = ({ inSession, tree }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(set_fetch_data(tree.data));
     manualBundleStart(tree.data, dispatch);
+    dispatch(
+      set_initial_Monaco_Value({
+        js: tree.data.languages.js.code.data,
+        html: tree.data.languages.html.code.data,
+        css: tree.data.languages.css.code.data,
+      })
+    );
   }, []);
 
   return <Tree inSession={inSession} />;
