@@ -100,7 +100,7 @@ export const CreateTreeModal = () => {
 
                   <button
                     disabled={isLoading}
-                    className={` border-2 text-white w-44 mt-5 h-10 mb-4 ${
+                    className={` border-2 border-gray-400 text-gray-400 w-20 mt-5 h-10 mb-4 ${
                       isLoading ? "disabled:opacity-70" : ""
                     }`}
                   >

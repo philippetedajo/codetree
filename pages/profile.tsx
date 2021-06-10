@@ -87,7 +87,7 @@ const Home = () => {
       <div className="mt-5 mb-3 flex justify-between text-2xl">
         <div>Trees</div>
         <div
-          className="flex items-center text-xl text-gray-400"
+          className="flex items-center text-xl text-gray-400 cursor-pointer"
           onClick={openModal}
         >
           <ViewGridAddIcon className="w-6 h-6 mr-2" />
