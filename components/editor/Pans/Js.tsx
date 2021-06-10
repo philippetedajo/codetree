@@ -40,7 +40,7 @@ export const JsPanel = () => {
 
   let initialValue;
 
-  if (codeEditor.template === "custom") {
+  if (fetchData.template === "custom") {
     initialValue = fetchData.languages.js.code.data;
   } else {
     initialValue = _empty.languages.js.code.data;
