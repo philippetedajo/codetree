@@ -44,7 +44,6 @@ let schemas = {
     .required("You must a name for your new tree")
     .min(3)
     .max(70),
-  new_tree_description: yup.string(),
 };
 
 const {
@@ -59,7 +58,6 @@ const {
   description,
   profile_picture,
   new_tree_name,
-  new_tree_description,
 } = schemas;
 
 export const loginSchema = yup.object().shape({
@@ -105,5 +103,4 @@ export const profilePictureSchema = yup.object().shape({
 
 export const newTreeSchema = yup.object().shape({
   new_tree_name,
-  new_tree_description,
 });

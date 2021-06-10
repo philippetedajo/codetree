@@ -76,24 +76,9 @@ export const CreateTreeModal = () => {
                   <h2 className="mb-5 text-3xl">Create a new tree</h2>
 
                   <label className="mb-2">Name *</label>
-                  <input
-                    name="new_tree_name border-none"
-                    type="text"
-                    ref={register}
-                  />
-                  <small className="mt-1 mb-6 text-red-500">
+                  <input name="new_tree_name" type="text" ref={register} />
+                  <small className="mt-1 border-none">
                     {errors.new_tree_name?.message}
-                  </small>
-
-                  <label className="mb-2">Description </label>
-                  <textarea
-                    rows={4}
-                    className="rounded"
-                    name="new_tree_description"
-                    ref={register}
-                  />
-                  <small className="mt-1 text-red-500">
-                    {errors.new_tree_description?.message}
                   </small>
 
                   <button
