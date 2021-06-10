@@ -12,7 +12,6 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, PlusIcon, StarIcon } from "@heroicons/react/solid";
 import { LogoutIcon, SaveIcon, UserIcon } from "@heroicons/react/outline";
 import { SkeletonMinProfile } from "../Skeleton";
-import { useTree } from "../../hooks/useTree";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -23,20 +22,18 @@ const TopBar = ({ inSession }) => {
 
   const dispatch = useAppDispatch();
 
-  const { codeEditor } = useAppSelector(editor_state);
+  const { codeEditor, singleTree } = useAppSelector(editor_state);
   const router = useRouter();
 
   function openModal() {
     dispatch(update_template_modal(true));
   }
 
-  const [isLoading, setIsLoading] = useState(false);
-
   const save = async () => {
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/update/${router.query.hash}`;
     const json = await JSON.stringify(codeEditor.languages);
 
-    console.log(json);
+    console.log(codeEditor.languages);
 
     // await fetcher(url, "PUT", user.token, {
     //   languages: json,
@@ -54,11 +51,31 @@ const TopBar = ({ inSession }) => {
       className="px-3 sm:px-7 flex justify-between items-center"
     >
       <div className="flex justify-center items-end">
-        <Link href="/">
-          <div className="flex justify-center items-end cursor-pointer">
-            <img alt="Codetree" className="w-12" src="/identity/Codetree.png" />
+        <div>
+          <Link href="/">
+            <div className="flex justify-center items-end cursor-pointer">
+              <img
+                alt="Codetree"
+                className="w-12"
+                src="/identity/Codetree.png"
+              />
+            </div>
+          </Link>
+        </div>
+
+        {singleTree ? (
+          <div className="flex flex-col ml-3">
+            <h2 className="text-2xl font-medium">{singleTree?.data?.name}</h2>
+            <small className="text-gray-500">
+              {singleTree?.data?.description}
+            </small>
           </div>
-        </Link>
+        ) : (
+          <div className="flex flex-col ml-3">
+            <h2 className="text-2xl font-medium">No name</h2>
+            <small className="text-gray-500">No description</small>
+          </div>
+        )}
       </div>
 
       <div className="flex items-center">

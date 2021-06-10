@@ -11,6 +11,7 @@ const initialEditorState = {
   isTemplateModalOpen: false,
   isCreateTreeModalOpen: false,
   iframeErr: null,
+  singleTree: null,
 };
 
 export const editorSlice = createSlice({
@@ -57,6 +58,9 @@ export const editorSlice = createSlice({
     set_initial_Monaco_Value: (state, { payload }) => {
       state.initialMonacoValue = payload;
     },
+    set_single_tree: (state, { payload }) => {
+      state.singleTree = payload;
+    },
   },
 });
 
@@ -71,6 +75,7 @@ export const {
   update_create_tree_modal,
   update_iframe_error,
   set_initial_Monaco_Value,
+  set_single_tree,
 } = editorSlice.actions;
 
 export const editor_state = (state: RootState) => state.editor;

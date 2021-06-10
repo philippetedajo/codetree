@@ -4,12 +4,16 @@ import { checkSession, withSession } from "../../utils";
 import Tree from "../../components/editor/Tree";
 import { useAppDispatch } from "../../store/hook";
 import { manualBundleStart } from "../../components/editor/utils/manualBundleStart";
-import { set_initial_Monaco_Value } from "../../store/features/editorSlice";
+import {
+  set_initial_Monaco_Value,
+  set_single_tree,
+} from "../../store/features/editorSlice";
 
 const Hash = ({ inSession, tree }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    dispatch(set_single_tree(tree));
     manualBundleStart(tree.data, dispatch);
     dispatch(
       set_initial_Monaco_Value({
