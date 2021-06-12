@@ -36,6 +36,8 @@ const Preview = () => {
     }
   }, [logs, dispatch]);
 
+  console.log(css.code.data);
+
   const htmlFrameContent = createIframeContent(css.code.data, html.code.data);
 
   //================================================== listen from incoming message
@@ -78,7 +80,11 @@ const Preview = () => {
     <div className="preview-wrapper">
       {iframeErr && <ErrorScreen err={iframeErr || "Build Error.."} />}
 
-      {isTranspiling && <EditorLoader />}
+      {isTranspiling && (
+        <div className="h-full w-full absolute bg-gray-50 z-50">
+          <EditorLoader />
+        </div>
+      )}
 
       <iframe
         frameBorder="0"
