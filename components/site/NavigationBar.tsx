@@ -83,7 +83,7 @@ export default function NavigationBar() {
         {/* User is not login and on homepage  =========================================== */}
         {!user?.isLoggedIn && router.pathname === "/" && (
           <div className="flex justify-center items-center">
-            <Link href="/playground/new">
+            <Link href="/playground">
               <a className="nav_item">Playground</a>
             </Link>
             <Link href="/auth/login">
