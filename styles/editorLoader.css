@@ -1,180 +1,179 @@
-.fade-loader {
-  animation: fadeIn 1s;
-}
-.loader {
-  width: 40px;
-  height: 40px;
+.boxes {
+  z-index: 1000;
+  --size: 32px;
+  --duration: 800ms;
+  height: calc(var(--size) * 2);
+  width: calc(var(--size) * 3);
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  margin-top: calc(var(--size) * 1.5 * -1);
+  transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px)
+    translate(-50%, -50%);
 }
-.loader .center {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  animation: center 3.2s ease-in-out infinite;
-}
-.loader .item {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  top: 15px;
+
+.boxes .box {
+  width: var(--size);
+  height: var(--size);
+  top: 0;
   left: 0;
-  right: 0;
-  margin: auto;
-  border-radius: 50%;
+  position: absolute;
+  transform-style: preserve-3d;
 }
 
-.item-1 {
-  animation: anim-1 3.2s ease-in-out infinite 0.2s;
-  animation-fill-mode: backwards;
+.boxes .box:nth-child(1) {
+  transform: translate(100%, 0);
+  -webkit-animation: box1 var(--duration) linear infinite;
+  animation: box1 var(--duration) linear infinite;
 }
 
-@keyframes anim-1 {
+.boxes .box:nth-child(2) {
+  transform: translate(0, 100%);
+  -webkit-animation: box2 var(--duration) linear infinite;
+  animation: box2 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(3) {
+  transform: translate(100%, 100%);
+  -webkit-animation: box3 var(--duration) linear infinite;
+  animation: box3 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(4) {
+  transform: translate(200%, 0);
+  -webkit-animation: box4 var(--duration) linear infinite;
+  animation: box4 var(--duration) linear infinite;
+}
+
+.boxes .box > div {
+  --background: #5c8df6;
+  --top: auto;
+  --right: auto;
+  --bottom: auto;
+  --left: auto;
+  --translateZ: calc(var(--size) / 2);
+  --rotateY: 0deg;
+  --rotateX: 0deg;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  top: var(--top);
+  right: var(--right);
+  bottom: var(--bottom);
+  left: var(--left);
+  transform: rotateY(var(--rotateY)) rotateX(var(--rotateX))
+    translateZ(var(--translateZ));
+}
+
+.boxes .box > div:nth-child(1) {
+  --top: 0;
+  --left: 0;
+}
+
+.boxes .box > div:nth-child(2) {
+  --background: #145af2;
+  --right: 0;
+  --rotateY: 90deg;
+}
+
+.boxes .box > div:nth-child(3) {
+  --background: #447cf5;
+  --rotateX: -90deg;
+}
+
+.boxes .box > div:nth-child(4) {
+  --background: #dbe3f4;
+  --top: 0;
+  --left: 0;
+  --translateZ: calc(var(--size) * 3 * -1);
+}
+
+@-webkit-keyframes box1 {
   0%,
-  60%,
-  100% {
-    transform: rotate(45deg) translateX(40px) scale(1);
-  }
-  10%,
   50% {
-    transform: rotate(45deg) translateX(0) scale(1.5);
+    transform: translate(100%, 0);
   }
-}
-.item-2 {
-  animation: anim-2 3.2s ease-in-out infinite 0.4s;
-  animation-fill-mode: backwards;
+  100% {
+    transform: translate(200%, 0);
+  }
 }
 
-@keyframes anim-2 {
+@keyframes box1 {
   0%,
-  60%,
-  100% {
-    transform: rotate(90deg) translateX(40px) scale(1);
-  }
-  10%,
   50% {
-    transform: rotate(90deg) translateX(0) scale(1.5);
+    transform: translate(100%, 0);
   }
-}
-.item-3 {
-  animation: anim-3 3.2s ease-in-out infinite 0.6s;
-  animation-fill-mode: backwards;
-}
-
-@keyframes anim-3 {
-  0%,
-  60%,
   100% {
-    transform: rotate(135deg) translateX(40px) scale(1);
-  }
-  10%,
-  50% {
-    transform: rotate(135deg) translateX(0) scale(1.5);
-  }
-}
-.item-4 {
-  animation: anim-4 3.2s ease-in-out infinite 0.8s;
-  animation-fill-mode: backwards;
-}
-
-@keyframes anim-4 {
-  0%,
-  60%,
-  100% {
-    transform: rotate(180deg) translateX(40px) scale(1);
-  }
-  10%,
-  50% {
-    transform: rotate(180deg) translateX(0) scale(1.5);
-  }
-}
-.item-5 {
-  animation: anim-5 3.2s ease-in-out infinite 1s;
-  animation-fill-mode: backwards;
-}
-
-@keyframes anim-5 {
-  0%,
-  60%,
-  100% {
-    transform: rotate(225deg) translateX(40px) scale(1);
-  }
-  10%,
-  50% {
-    transform: rotate(225deg) translateX(0) scale(1.5);
-  }
-}
-.item-6 {
-  animation: anim-6 3.2s ease-in-out infinite 1.2s;
-  animation-fill-mode: backwards;
-}
-
-@keyframes anim-6 {
-  0%,
-  60%,
-  100% {
-    transform: rotate(270deg) translateX(40px) scale(1);
-  }
-  10%,
-  50% {
-    transform: rotate(270deg) translateX(0) scale(1.5);
-  }
-}
-.item-7 {
-  animation: anim-7 3.2s ease-in-out infinite 1.4s;
-  animation-fill-mode: backwards;
-}
-
-@keyframes anim-7 {
-  0%,
-  60%,
-  100% {
-    transform: rotate(315deg) translateX(40px) scale(1);
-  }
-  10%,
-  50% {
-    transform: rotate(315deg) translateX(0) scale(1.5);
-  }
-}
-.item-8 {
-  animation: anim-8 3.2s ease-in-out infinite 1.6s;
-  animation-fill-mode: backwards;
-}
-
-@keyframes anim-8 {
-  0%,
-  60%,
-  100% {
-    transform: rotate(360deg) translateX(40px) scale(1);
-  }
-  10%,
-  50% {
-    transform: rotate(360deg) translateX(0) scale(1.5);
-  }
-}
-@keyframes center {
-  0%,
-  10%,
-  90%,
-  100% {
-    transform: scale(0.7);
-  }
-  45%,
-  55% {
-    transform: scale(1);
+    transform: translate(200%, 0);
   }
 }
 
-@keyframes fadeIn {
+@-webkit-keyframes box2 {
   0% {
-    opacity: 0;
+    transform: translate(0, 100%);
   }
   50% {
-    opacity: 0;
+    transform: translate(0, 0);
   }
-
   100% {
-    opacity: 1;
+    transform: translate(100%, 0);
+  }
+}
+
+@keyframes box2 {
+  0% {
+    transform: translate(0, 100%);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+@-webkit-keyframes box3 {
+  0%,
+  50% {
+    transform: translate(100%, 100%);
+  }
+  100% {
+    transform: translate(0, 100%);
+  }
+}
+
+@keyframes box3 {
+  0%,
+  50% {
+    transform: translate(100%, 100%);
+  }
+  100% {
+    transform: translate(0, 100%);
+  }
+}
+
+@-webkit-keyframes box4 {
+  0% {
+    transform: translate(200%, 0);
+  }
+  50% {
+    transform: translate(200%, 100%);
+  }
+  100% {
+    transform: translate(100%, 100%);
+  }
+}
+
+@keyframes box4 {
+  0% {
+    transform: translate(200%, 0);
+  }
+  50% {
+    transform: translate(200%, 100%);
+  }
+  100% {
+    transform: translate(100%, 100%);
   }
 }

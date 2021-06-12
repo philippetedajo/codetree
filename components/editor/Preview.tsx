@@ -74,8 +74,6 @@ const Preview = () => {
     setLogs([]);
   };
 
-  console.log(isTranspiling);
-
   return (
     <div className="preview-wrapper">
       {iframeErr && <ErrorScreen err={iframeErr || "Build Error.."} />}
