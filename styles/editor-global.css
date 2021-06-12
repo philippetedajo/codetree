@@ -122,8 +122,8 @@
 /* ============================================================== spinner*/
 .loader-spinner {
   border-top-color: #34d399;
-  -webkit-animation: spinner 1s linear infinite;
-  animation: spinner 1s linear infinite;
+  -webkit-animation: spinner 0.7s linear infinite;
+  animation: spinner 0.7s linear infinite;
 }
 
 @-webkit-keyframes spinner {
