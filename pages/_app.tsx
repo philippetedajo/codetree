@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
           <AuthLayout>
             <Component {...pageProps} />
           </AuthLayout>
-        ) : router.pathname !== "/playground" ? (
+        ) : router.pathname !== "/playground/[]" ? (
           <StandardLayout>
             <ToastContainer hideProgressBar={true} autoClose={8000} />
             <Component {...pageProps} />
