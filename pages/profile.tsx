@@ -5,7 +5,7 @@ import Link from "next/link";
 import Router from "next/router";
 import { useUser } from "../hooks";
 import { SkeletonProfile, SkeletonTree } from "../components/Skeleton";
-import { fetcher } from "../utils";
+import { fetcher, notify } from "../utils";
 import { CreateTreeModal } from "../components/editor/modals";
 import { useAppDispatch } from "../store/hook";
 import { update_create_tree_modal } from "../store/features/editorSlice";
@@ -42,7 +42,11 @@ const Home = () => {
     const response = await fetcher(url, "DELETE", user.token);
     setIsDeletingTrees(false);
 
-    if (response.type === responseType.success) setAllTree(newTreesList);
+    console.log(response);
+    if (response.type === responseType.success) {
+      notify(responseType.success, "Your tree has been delete");
+      setAllTree(newTreesList);
+    }
   };
 
   const trees = allTrees.map(({ hash, description, name }) => (
