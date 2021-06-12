@@ -64,7 +64,7 @@ const TopBar = ({ inSession }) => {
         </div>
 
         {singleTree ? (
-          <div className="flex flex-col ml-3">
+          <div className="flex flex-col ml-3 z-50">
             <h2 className="text-2xl font-medium">{singleTree?.data?.name}</h2>
             <small className="text-gray-500">
               {singleTree?.data?.description}
