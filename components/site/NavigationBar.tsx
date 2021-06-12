@@ -12,6 +12,12 @@ import { SkeletonMinProfile } from "../Skeleton";
 import { fetcher } from "../../utils";
 import Router, { useRouter } from "next/router";
 import { useUser } from "../../hooks";
+import {
+  update_create_tree_modal,
+  update_template_modal,
+} from "../../store/features/editorSlice";
+import { useAppDispatch } from "../../store/hook";
+import { CreateTreeModal } from "../editor/modals";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -19,6 +25,7 @@ function classNames(...classes) {
 
 export default function NavigationBar() {
   const { user, mutateUser } = useUser();
+  const dispatch = useAppDispatch();
 
   const router = useRouter();
 
@@ -37,19 +44,9 @@ export default function NavigationBar() {
     }
   };
 
-  const generatePlayground = () => {
-    const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/create`;
-    // create a new tree
-    //
-    // setLoading(true);
-    //
-    // const result = await fetcher(url, "POST", user.token, {});
-    //
-    // setLoading(false);
-
-    //redirect to the fresh created tree
-    // Router.push(`playground/${hash}`)
-  };
+  function openCreateModal() {
+    dispatch(update_create_tree_modal(true));
+  }
 
   return (
     <div
@@ -158,7 +155,7 @@ export default function NavigationBar() {
                                   : "text-gray-700",
                                 "block px-4 py-2 text-sm cursor-pointer flex items-center"
                               )}
-                              onClick={generatePlayground}
+                              onClick={openCreateModal}
                             >
                               <TerminalIcon
                                 className="h-5 w-5 mr-1 text-gray-500"
@@ -218,6 +215,7 @@ export default function NavigationBar() {
           </div>
         )}
       </div>
+      <CreateTreeModal />
     </div>
   );
 }
