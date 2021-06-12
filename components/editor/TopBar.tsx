@@ -94,7 +94,7 @@ const TopBar = ({ inSession }) => {
         )}
 
         <div className="flex items-center">
-          {user ? (
+          {user  ? (
             <div className="flex flex-col text-right">
               <div>{user?.profile?.data?.username}</div>
               <small className="text-gray-500">
