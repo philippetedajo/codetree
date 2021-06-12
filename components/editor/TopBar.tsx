@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hook";
 import {
   editor_state,
   update_template_modal,
+  update_is_saving_editor,
 } from "../../store/features/editorSlice";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, PlusIcon, StarIcon } from "@heroicons/react/solid";
@@ -32,12 +33,10 @@ const TopBar = ({ inSession }) => {
   const save = async () => {
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/update/${router.query.hash}`;
     const json = await JSON.stringify(codeEditor.languages);
-
-    console.log(codeEditor.languages);
-
+    dispatch(update_is_saving_editor(true));
     await fetcher(url, "PUT", user.token, {
       languages: json,
-    }).then((data) => console.log(data.data));
+    }).then(() => dispatch(update_is_saving_editor(false)));
   };
 
   const logout = async () => {

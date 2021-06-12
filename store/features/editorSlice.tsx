@@ -8,6 +8,7 @@ const initialEditorState = {
   initialMonacoValue: { js: "", html: "", css: "" },
   isConsoleOpen: false,
   hasConsoleLogs: false,
+  isSavingEditor: false,
   isTemplateModalOpen: false,
   isCreateTreeModalOpen: false,
   iframeErr: null,
@@ -36,6 +37,9 @@ export const editorSlice = createSlice({
     update_iframe_error: (state, { payload }) => {
       state.iframeErr = payload;
     },
+    update_is_saving_editor: (state, { payload }) => {
+      state.isSavingEditor = payload;
+    },
     set_initial_Monaco_Value: (state, { payload }) => {
       state.initialMonacoValue = payload;
     },
@@ -52,6 +56,7 @@ export const {
   update_template_modal,
   update_create_tree_modal,
   update_iframe_error,
+  update_is_saving_editor,
   set_initial_Monaco_Value,
   set_single_tree,
 } = editorSlice.actions;

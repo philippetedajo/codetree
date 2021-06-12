@@ -6,6 +6,7 @@ const BottomBar: React.FC = () => {
   const {
     codeEditor: { languages },
     hasConsoleLogs,
+    isSavingEditor,
   } = useAppSelector(editor_state);
 
   const dispatch = useAppDispatch();
@@ -20,7 +21,18 @@ const BottomBar: React.FC = () => {
     >
       <div className="flex">
         {languages.js.code.loading ? (
-          <div className="mr-3">Transpiling...</div>
+          <div className="flex items-center ">
+            <div className="mr-3"> Transpiling code ...</div>
+            <div className="loader-spinner ease-linear rounded-full border-8 border-t-8 border-gray-300 h-4 w-4" />
+          </div>
+        ) : (
+          ""
+        )}
+        {isSavingEditor ? (
+          <div className="flex items-center ">
+            <div className="mr-3"> Saving your tree ...</div>
+            <div className="loader-spinner ease-linear rounded-full border-8 border-t-8 border-gray-300 h-4 w-4" />
+          </div>
         ) : (
           ""
         )}
