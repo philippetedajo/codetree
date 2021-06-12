@@ -1,37 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PencilIcon, ViewGridAddIcon } from "@heroicons/react/outline";
 import { XCircleIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import Router from "next/router";
-import { checkSession, withSession } from "../utils";
 import { useUser } from "../hooks";
 import { SkeletonProfile, SkeletonTree } from "../components/Skeleton";
 import { fetcher } from "../utils";
 import { CreateTreeModal } from "../components/editor/modals";
 import { useAppDispatch } from "../store/hook";
 import { update_create_tree_modal } from "../store/features/editorSlice";
-import { useTree } from "../hooks/useTree";
+import { responseType } from "../_types/share_types";
 
 const Home = () => {
   const { user } = useUser();
-  const { tree, mutateTree } = useTree();
-
   const dispatch = useAppDispatch();
 
   function openCreateModal() {
     dispatch(update_create_tree_modal(true));
   }
 
+  const [allTrees, setAllTree] = useState([]);
+  const [isLoadingAllTrees, setIsLoadingAllTrees] = useState(false);
+  const [isDeletingTrees, setIsDeletingTrees] = useState(false);
+
+  useEffect(() => {
+    const getAllTrees = async () => {
+      const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/mine`;
+      setIsLoadingAllTrees(true);
+      await fetcher(url, "GET", user.token, null).then((data) => {
+        setAllTree(data?.data?.data?.data);
+        setIsLoadingAllTrees(false);
+      });
+    };
+    if (user) getAllTrees();
+  }, [user]);
+
   const DeleteTree = async (hash) => {
+    const newTreesList = allTrees.filter((el) => el.hash !== hash);
     const url = `${process.env.NEXT_PUBLIC_CODETREE_API}/tree/delete/${hash}`;
+    setIsDeletingTrees(true);
     const response = await fetcher(url, "DELETE", user.token);
-    await mutateTree(response);
+    setIsDeletingTrees(false);
+
+    if (response.type === responseType.success) setAllTree(newTreesList);
   };
 
-  const trees = tree?.trees?.data?.map(({ hash, description, name }) => (
+  const trees = allTrees.map(({ hash, description, name }) => (
     <div
       key={hash}
-      className="border h-72 rounded-md overflow-hidden shadow-md flex flex-col"
+      className="border h-72 rounded-md overflow-hidden shadow-md flex flex-col transform hover:scale-105 transition-all duration-500"
     >
       <Link href={`/playground/${hash}`}>
         <div className=" w-full h-4/5 bg-black cursor-pointer" />
@@ -41,8 +58,15 @@ const Home = () => {
           <p>{name}</p>
           <p>{description}</p>
         </div>
-        <div className="cursor-pointer" onClick={() => DeleteTree(hash)}>
-          <XCircleIcon className="w-6 h-6 mt-3 text-gray-400" />
+        <div
+          className="cursor-pointer transform hover:scale-110 transition-all duration-700"
+          onClick={() => DeleteTree(hash)}
+        >
+          {isDeletingTrees ? (
+            "Loading..."
+          ) : (
+            <XCircleIcon className="w-6 h-6 mt-3 text-gray-400" />
+          )}
         </div>
       </div>
     </div>
@@ -94,7 +118,11 @@ const Home = () => {
         </div>
       </div>
       <div className="pb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-        {!tree || tree?.type === "success" ? <SkeletonTree /> : trees}
+        {isLoadingAllTrees ? <SkeletonTree /> : trees}
+
+        {allTrees.length === 0 && (
+          <div className="text-xl">You have no tree yet...</div>
+        )}
       </div>
       <CreateTreeModal />
     </div>
@@ -102,11 +130,3 @@ const Home = () => {
 };
 
 export default Home;
-
-export const getServerSideProps = withSession(async ({ req, res }) => {
-  checkSession(req, res);
-
-  return {
-    props: {},
-  };
-});

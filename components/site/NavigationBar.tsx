@@ -17,7 +17,6 @@ import {
   update_template_modal,
 } from "../../store/features/editorSlice";
 import { useAppDispatch } from "../../store/hook";
-import { CreateTreeModal } from "../editor/modals";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -215,7 +214,6 @@ export default function NavigationBar() {
           </div>
         )}
       </div>
-      <CreateTreeModal />
     </div>
   );
 }

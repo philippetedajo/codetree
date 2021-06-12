@@ -2,6 +2,7 @@ import React from "react";
 import { withSession } from "../utils";
 import FadeBackground from "../components/site/slider";
 import dynamic from "next/dynamic";
+import { CreateTreeModal } from "../components/editor/modals";
 
 const Index = () => {
   const ArtInP5 = dynamic(() => import("../components/site/ArtInP5"), {
@@ -12,6 +13,7 @@ const Index = () => {
     <div style={{ paddingTop: "8vh" }}>
       <FadeBackground />
       <ArtInP5 />
+      <CreateTreeModal />
     </div>
   );
 };
