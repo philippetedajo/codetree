@@ -81,7 +81,7 @@ const Preview = () => {
       {iframeErr && <ErrorScreen err={iframeErr || "Build Error.."} />}
 
       {isTranspiling && (
-        <div className="h-full w-full absolute bg-gray-50 z-50">
+        <div className="h-full w-full absolute bg-gray-50 z-50 transition-all duration-500">
           <EditorLoader />
         </div>
       )}
