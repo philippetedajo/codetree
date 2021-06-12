@@ -54,7 +54,7 @@ export default function NavigationBar() {
   return (
     <div
       style={{ height: "8vh" }}
-      className="fixed w-full bg-white opacity-90 dark:bg-black px-2 sm:px-7 flex justify-between items-center shadow-lg"
+      className="fixed z-50 w-full bg-white opacity-90 dark:bg-black px-2 sm:px-7 flex justify-between items-center shadow-lg"
     >
       {/*===================================Left side=============================================*/}
       <div>

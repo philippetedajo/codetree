@@ -1,0 +1,13 @@
+.fade-background-a {
+  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/fs/9a84c455283801.5bb6446d75c0f.jpg");
+  background-position: bottom; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.fade-background-b {
+  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/fs/673b3a121171765.60c072dea37c3.jpeg");
+  background-position: bottom; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}

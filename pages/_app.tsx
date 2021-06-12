@@ -7,6 +7,9 @@ import "../styles/resizer.css";
 import "../node_modules/react-toastify/scss/main.scss";
 import "nprogress/nprogress.css";
 import "../styles/others.scss";
+import "../styles/site-global.css";
+import "../node_modules/slick-carousel/slick/slick.css";
+import "../node_modules/slick-carousel/slick/slick-theme.css";
 
 import Head from "next/head";
 import Router, { useRouter } from "next/router";
