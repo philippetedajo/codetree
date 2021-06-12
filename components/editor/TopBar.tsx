@@ -42,7 +42,7 @@ const TopBar = ({ inSession }) => {
 
   const logout = async () => {
     await mutateUser(fetcher("/api/auth/logout", "POST"));
-    await Router.push("/");
+    await Router.push("/auth/login");
   };
 
   return (
