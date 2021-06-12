@@ -6,6 +6,7 @@ import { _empty } from "../../components/editor/templates";
 const initialEditorState = {
   codeEditor: _empty,
   initialMonacoValue: { js: "", html: "", css: "" },
+  isTranspiling: false,
   isConsoleOpen: false,
   hasConsoleLogs: false,
   isSavingEditor: false,
@@ -25,6 +26,9 @@ export const editorSlice = createSlice({
     update_console_logs: (state, action: PayloadAction<boolean>) => {
       state.hasConsoleLogs = action.payload;
     },
+    update_transpiling: (state, action: PayloadAction<boolean>) => {
+      state.isTranspiling = action.payload;
+    },
     update_template_modal: (state, { payload }) => {
       state.isTemplateModalOpen = payload;
     },
@@ -37,7 +41,7 @@ export const editorSlice = createSlice({
     update_iframe_error: (state, { payload }) => {
       state.iframeErr = payload;
     },
-    update_is_saving_editor: (state, { payload }) => {
+    update_saving_editor: (state, { payload }) => {
       state.isSavingEditor = payload;
     },
     set_initial_Monaco_Value: (state, { payload }) => {
@@ -53,10 +57,11 @@ export const {
   update_sync_code,
   update_console_logs,
   toggle_console,
+  update_transpiling,
   update_template_modal,
   update_create_tree_modal,
   update_iframe_error,
-  update_is_saving_editor,
+  update_saving_editor,
   set_initial_Monaco_Value,
   set_single_tree,
 } = editorSlice.actions;

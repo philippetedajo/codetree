@@ -5,6 +5,7 @@ import {
   editor_state,
   update_console_logs,
   update_iframe_error,
+  update_transpiling,
 } from "../../store/features/editorSlice";
 import Logs from "./Logs";
 import { EditorLoader, ErrorScreen } from "./FrameScreen";
@@ -21,11 +22,11 @@ const Preview = () => {
     },
     iframeErr,
     isConsoleOpen,
+    isTranspiling,
   } = useAppSelector(editor_state);
 
   //local state
   const [logs, setLogs] = useState([]);
-  const [isTranspiling, setIsTranspiling] = useState(false);
 
   useEffect(() => {
     if (logs.length > 0) {
@@ -61,9 +62,9 @@ const Preview = () => {
       setTimeout(async () => {
         dispatch(update_iframe_error(null));
         //esbuild bundler action
-        setIsTranspiling(true);
+        dispatch(update_transpiling(true));
         const output = await bundler(js.code.data);
-        setIsTranspiling(false);
+        dispatch(update_transpiling(false));
         iframe?.current?.contentWindow?.postMessage(output.code, "*");
       }, 50);
     }

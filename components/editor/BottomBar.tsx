@@ -7,6 +7,7 @@ const BottomBar: React.FC = () => {
     codeEditor: { languages },
     hasConsoleLogs,
     isSavingEditor,
+    isTranspiling,
   } = useAppSelector(editor_state);
 
   const dispatch = useAppDispatch();
@@ -20,7 +21,7 @@ const BottomBar: React.FC = () => {
       className={`flex flex-shrink-0 h-6 justify-between bg-tree-soft text-white item-center px-5 text-sm z-50`}
     >
       <div className="flex">
-        {languages.js.code.loading ? (
+        {isTranspiling ? (
           <div className="flex items-center ">
             <div className="mr-3"> Transpiling code ...</div>
             <div className="loader-spinner ease-linear rounded-full border-8 border-t-8 border-gray-300 h-4 w-4" />
