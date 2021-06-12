@@ -58,12 +58,9 @@ const Home = () => {
           <p>{name}</p>
           <p>{description}</p>
         </div>
-        <div
-          className="cursor-pointer transform hover:scale-110 transition-all duration-700"
-          onClick={() => DeleteTree(hash)}
-        >
+        <div className="cursor-pointer" onClick={() => DeleteTree(hash)}>
           {isDeletingTrees ? (
-            "Loading..."
+            "..."
           ) : (
             <XCircleIcon className="w-6 h-6 mt-3 text-gray-400" />
           )}
@@ -114,15 +111,11 @@ const Home = () => {
           onClick={openCreateModal}
         >
           <ViewGridAddIcon className="w-6 h-6 mr-2" />
-          New Tree
+          New
         </div>
       </div>
-      <div className="pb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+      <div className="pb-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-6">
         {isLoadingAllTrees ? <SkeletonTree /> : trees}
-
-        {allTrees.length === 0 && (
-          <div className="text-xl">You have no tree yet...</div>
-        )}
       </div>
       <CreateTreeModal />
     </div>
