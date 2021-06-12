@@ -10,6 +10,7 @@ import Logs from "./Logs";
 import { EditorLoader, ErrorScreen } from "./FrameScreen";
 import { createIframeContent } from "./utils";
 import { Resizable } from "re-resizable";
+import bundler from "../../bundler";
 
 const Preview = () => {
   const iframe = useRef<any>();
@@ -56,9 +57,11 @@ const Preview = () => {
     if (!js.code.loading && js.code.data) {
       iframe.current.srcdoc = htmlFrameContent;
 
-      setTimeout(() => {
+      setTimeout(async () => {
         dispatch(update_iframe_error(null));
-        iframe?.current?.contentWindow?.postMessage(js.code.data, "*");
+        //esbuild bundler action
+        const output = await bundler(js.code.data);
+        iframe?.current?.contentWindow?.postMessage(output.code, "*");
       }, 50);
     }
   }, [js.code, htmlFrameContent]);

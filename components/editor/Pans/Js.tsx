@@ -2,12 +2,10 @@ import React, { useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { useAppDispatch, useAppSelector } from "../../../store/hook";
 import {
-  update_async_code_start,
-  update_async_code_finished,
   editor_state,
+  update_sync_code,
 } from "../../../store/features/editorSlice";
 import Monaco from "../Monaco";
-import bundler from "../../../bundler";
 
 export const JsPanel = () => {
   const dispatch = useAppDispatch();
@@ -16,13 +14,11 @@ export const JsPanel = () => {
 
   const debounced = useDebouncedCallback(
     async (value) => {
-      dispatch(update_async_code_start({ code: "", type: "js", error: "" }));
-      const output = await bundler(value);
       dispatch(
-        update_async_code_finished({
-          code: output.code,
+        update_sync_code({
+          code: value,
           type: "js",
-          error: output.error,
+          error: "",
         })
       );
     },

@@ -1,18 +1,11 @@
-import {
-  update_async_code_finished,
-  update_async_code_start,
-  update_template,
-} from "../../../store/features/editorSlice";
-import bundler from "../../../bundler";
+import { update_sync_code } from "../../../store/features/editorSlice";
 
 export const manualBundleStart = async (value: any, dispatch) => {
-  dispatch(update_async_code_start({ code: "", type: "js", error: "" }));
-  const output = await bundler(value.languages.js.code.data);
   dispatch(
-    update_async_code_finished({
-      code: output.code,
+    update_sync_code({
+      code: value.languages.js.code.data,
       type: "js",
-      error: output.error,
+      error: "",
     })
   );
 };
