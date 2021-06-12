@@ -1,11 +1,17 @@
 import React from "react";
 import { withSession } from "../utils";
 import FadeBackground from "../components/site/slider";
+import dynamic from "next/dynamic";
 
 const Index = () => {
+  const ArtInP5 = dynamic(() => import("../components/site/ArtInP5"), {
+    ssr: false,
+  });
+
   return (
     <div style={{ paddingTop: "8vh" }}>
       <FadeBackground />
+      <ArtInP5 />
     </div>
   );
 };
