@@ -12,7 +12,6 @@ const Index = () => {
   return (
     <div style={{ paddingTop: "8vh" }}>
       <FadeBackground />
-      <ArtInP5 />
       <CreateTreeModal />
     </div>
   );
