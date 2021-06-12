@@ -21,6 +21,7 @@ export const notify = (type: responseType, message: string) => {
     <small className="font-weight-normal text-gray-500 flex">
       {icon}
       {message}
-    </small>
+    </small>,
+    { className: "shadow-xl" }
   );
 };
