@@ -25,6 +25,7 @@ const Preview = () => {
 
   //local state
   const [logs, setLogs] = useState([]);
+  const [isTranspiling, setIsTranspiling] = useState(false);
 
   useEffect(() => {
     if (logs.length > 0) {
@@ -54,13 +55,15 @@ const Preview = () => {
 
   //====================================================== send massage to iframe
   useEffect(() => {
-    if (!js.code.loading && js.code.data) {
+    if (js.code.data) {
       iframe.current.srcdoc = htmlFrameContent;
 
       setTimeout(async () => {
         dispatch(update_iframe_error(null));
         //esbuild bundler action
+        setIsTranspiling(true);
         const output = await bundler(js.code.data);
+        setIsTranspiling(false);
         iframe?.current?.contentWindow?.postMessage(output.code, "*");
       }, 50);
     }
@@ -70,30 +73,30 @@ const Preview = () => {
     setLogs([]);
   };
 
+  console.log(isTranspiling);
+
   return (
     <div className="preview-wrapper">
       {iframeErr && <ErrorScreen err={iframeErr || "Build Error.."} />}
 
-      {js.code.loading ? (
-        <EditorLoader />
-      ) : (
-        <iframe
-          frameBorder="0"
-          ref={iframe}
-          title="previewWindow"
-          // sandbox="allow-scripts allow-modals"
-          srcDoc={htmlFrameContent}
-          onLoad={() => {
-            Hook(
-              iframe.current.contentWindow.console,
-              (log) => {
-                setLogs((currLogs): any => [...currLogs, log]);
-              },
-              false
-            );
-          }}
-        />
-      )}
+      {isTranspiling && <EditorLoader />}
+
+      <iframe
+        frameBorder="0"
+        ref={iframe}
+        title="previewWindow"
+        // sandbox="allow-scripts allow-modals"
+        srcDoc={htmlFrameContent}
+        onLoad={() => {
+          Hook(
+            iframe.current.contentWindow.console,
+            (log) => {
+              setLogs((currLogs): any => [...currLogs, log]);
+            },
+            false
+          );
+        }}
+      />
 
       <Resizable
         minWidth="100%"
