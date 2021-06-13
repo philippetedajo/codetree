@@ -36,8 +36,6 @@ const Preview = () => {
     }
   }, [logs, dispatch]);
 
-  console.log(css.code.data);
-
   const htmlFrameContent = createIframeContent(css.code.data, html.code.data);
 
   //================================================== listen from incoming message
