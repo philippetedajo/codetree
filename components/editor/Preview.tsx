@@ -87,6 +87,9 @@ const Preview = () => {
       )}
 
       <iframe
+        sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+        allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi; clipboard-read; clipboard-write"
+        scrolling="auto"
         frameBorder="0"
         ref={iframe}
         title="previewWindow"
