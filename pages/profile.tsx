@@ -5,13 +5,13 @@ import Link from "next/link";
 import Router from "next/router";
 import { useUser } from "../hooks";
 import { SkeletonProfile, SkeletonTree } from "../components/Skeleton";
-import { fetcher, notify } from "../utils";
+import { checkSession, fetcher, notify, withSession } from "../utils";
 import { CreateTreeModal } from "../components/editor/modals";
 import { useAppDispatch } from "../store/hook";
 import { update_create_tree_modal } from "../store/features/editorSlice";
 import { responseType } from "../_types/share_types";
 
-const Home = () => {
+const Profile = () => {
   const { user } = useUser();
   const dispatch = useAppDispatch();
 
@@ -42,7 +42,6 @@ const Home = () => {
     const response = await fetcher(url, "DELETE", user.token);
     setIsDeletingTrees(false);
 
-    console.log(response);
     if (response.type === responseType.success) {
       notify(responseType.success, "Your tree has been delete");
       setAllTree(newTreesList);
@@ -126,4 +125,12 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Profile;
+
+export const getServerSideProps = withSession(async ({ req, res }) => {
+  checkSession(req, res);
+
+  return {
+    props: {},
+  };
+});
