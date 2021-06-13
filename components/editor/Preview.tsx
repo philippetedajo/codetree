@@ -91,7 +91,6 @@ const Preview = () => {
         frameBorder="0"
         ref={iframe}
         title="previewWindow"
-        // sandbox="allow-scripts allow-modals"
         srcDoc={htmlFrameContent}
         onLoad={() => {
           Hook(
