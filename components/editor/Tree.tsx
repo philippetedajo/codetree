@@ -9,7 +9,7 @@ import TopBar from "./TopBar";
 import { useBreakpoints } from "react-use-size";
 
 const Tree = ({ inSession }) => {
-  const [isSmall, isMedium] = useBreakpoints([640, 1024]);
+  const [isSmall, isMedium] = useBreakpoints([768, 1024]);
 
   return (
     <div>
