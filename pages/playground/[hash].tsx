@@ -1,15 +1,19 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { checkSession, withSession } from "../../utils";
-import Tree from "../../components/editor/Tree";
 import { useAppDispatch } from "../../store/hook";
 import { manualBundleStart } from "../../components/editor/utils/manualBundleStart";
 import {
   set_initial_Monaco_Value,
   set_single_tree,
 } from "../../store/features/editorSlice";
+import dynamic from "next/dynamic";
 
 const Hash = ({ inSession, tree }) => {
+  const Tree = dynamic(() => import("../../components/editor/Tree"), {
+    ssr: false,
+  });
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {

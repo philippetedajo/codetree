@@ -1,9 +1,13 @@
 import Head from "next/head";
-import Tree from "../../components/editor/Tree";
 import React from "react";
 import { withSession } from "../../utils";
+import dynamic from "next/dynamic";
 
 const Playground = ({ inSession }) => {
+  const Tree = dynamic(() => import("../../components/editor/Tree"), {
+    ssr: false,
+  });
+
   return (
     <>
       <Head>

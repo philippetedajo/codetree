@@ -1,16 +1,15 @@
 import React from "react";
-import dynamic from "next/dynamic";
+import Preview from "./Preview";
 import Split from "react-split";
 import Tabs, { TabPane } from "rc-tabs";
 import { JsPanel, HtmlPanel, CssPanel } from "./Pans";
 import { TemplateModal } from "./modals";
 import BottomBar from "./BottomBar";
 import TopBar from "./TopBar";
+import { useBreakpoints } from "react-use-size";
 
 const Tree = ({ inSession }) => {
-  const Preview = dynamic(() => import("./Preview"), {
-    ssr: false,
-  });
+  const [isSmall, isMedium] = useBreakpoints([640, 1024]);
 
   return (
     <div>
@@ -30,7 +29,7 @@ const Tree = ({ inSession }) => {
             dragInterval={1}
             direction="horizontal"
             cursor="col-resize"
-            className="flex flex-grow "
+            className={`flex flex-grow`}
           >
             <div>
               <Tabs

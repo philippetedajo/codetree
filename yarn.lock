@@ -2796,6 +2796,11 @@ react-toastify@^7.0.4:
   dependencies:
     clsx "^1.1.1"
 
+react-use-size@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-use-size/-/react-use-size-2.0.2.tgz#cc235818dac6ba2566c57de9b0c4668af77038b4"
+  integrity sha512-QOxUwzy/91zR+/GCaw7LTsgiR9TujF5rDLy0WMbrq1gxC/3MTfve9UBB8pERTorS9dWR5+MuVMVQ5McKa4chXA==
+
 react@17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
