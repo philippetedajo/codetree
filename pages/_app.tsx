@@ -42,15 +42,13 @@ function MyApp({ Component, pageProps }) {
           <AuthLayout>
             <Component {...pageProps} />
           </AuthLayout>
-        ) : router.pathname !== "/playground/[]" ? (
+        ) : router.pathname.startsWith("/playground") ? (
+          <Component {...pageProps} />
+        ) : (
           <StandardLayout>
             <ToastContainer hideProgressBar={true} autoClose={5000} />
             <Component {...pageProps} />
           </StandardLayout>
-        ) : (
-          <>
-            <Component {...pageProps} />
-          </>
         )}
       </ThemeProvider>
     </Provider>
@@ -58,3 +56,5 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
+
+//router.pathname == "/profile" || router.pathname == "/settings"
