@@ -1,23 +1,25 @@
+import Head from "next/head";
 import React from "react";
 import { withSession } from "../utils";
-import FadeBackground from "../components/site/slider";
 import dynamic from "next/dynamic";
-import { CreateTreeModal } from "../components/editor/modals";
 
-const Index = () => {
-  const ArtInP5 = dynamic(() => import("../components/site/ArtInP5"), {
+const Playground = ({ inSession }) => {
+  const Tree = dynamic(() => import("../components/editor/Tree"), {
     ssr: false,
   });
 
   return (
-    <div style={{ paddingTop: "8vh" }}>
-      <FadeBackground />
-      <CreateTreeModal />
-    </div>
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <title>Playground | Codetree </title>
+      </Head>
+      <Tree inSession={inSession} />
+    </>
   );
 };
 
-export default Index;
+export default Playground;
 
 export const getServerSideProps = withSession(async ({ req, res }) => {
   const user = req.session.get("user");

@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
           <AuthLayout>
             <Component {...pageProps} />
           </AuthLayout>
-        ) : router.pathname.startsWith("/playground") ? (
+        ) : router.pathname === "/" ? (
           <Component {...pageProps} />
         ) : (
           <StandardLayout>
@@ -56,5 +56,3 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-
-//router.pathname == "/profile" || router.pathname == "/settings"
