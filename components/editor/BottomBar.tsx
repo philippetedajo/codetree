@@ -20,8 +20,17 @@ const BottomBar: React.FC = () => {
     <footer
       className={`flex flex-shrink-0 h-6 justify-between bg-tree-soft text-white item-center px-5 text-sm z-50`}
     >
-      <div className="flex">
-        {isTranspiling ? (
+      <div className="flex items-center">
+        <a
+          href="https://github.com/philippetedajo/Codetree"
+          target="_blank"
+          rel="noreferrer"
+          className="mr-3 hover:text-green-500"
+        >
+          Support us ❤️.️
+        </a>
+
+        {!isTranspiling ? (
           <div className="flex items-center ">
             <div className="mr-3"> Transpiling code ...</div>
             <div className="loader-spinner ease-linear rounded-full border-8 border-t-8 border-gray-300 h-4 w-4" />
@@ -40,7 +49,10 @@ const BottomBar: React.FC = () => {
       </div>
 
       <div className="flex justify-center items-center">
-        <span className="cursor-pointer mr-4" onClick={handleToggleConsole}>
+        <span
+          className="cursor-pointer mr-4 hover:text-green-500"
+          onClick={handleToggleConsole}
+        >
           Console
         </span>
 
