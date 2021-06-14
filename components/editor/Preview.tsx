@@ -124,7 +124,14 @@ const Preview = () => {
           topLeft: false,
         }}
       >
-        <Logs logs={logs} />
+        <div>
+          <div className="fixed h-7 z-50 w-full text-white bg-tree-hard flex items-center">
+            <div onClick={() => setLogs([])} className="px-4 cursor-pointer">
+              Clear
+            </div>
+          </div>
+          <Logs logs={logs} />
+        </div>
       </Resizable>
     </div>
   );
