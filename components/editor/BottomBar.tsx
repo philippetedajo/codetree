@@ -30,7 +30,7 @@ const BottomBar: React.FC = () => {
           Support us ❤️.️
         </a>
 
-        {!isTranspiling ? (
+        {isTranspiling ? (
           <div className="flex items-center ">
             <div className="mr-3"> Transpiling code ...</div>
             <div className="loader-spinner ease-linear rounded-full border-8 border-t-8 border-gray-300 h-4 w-4" />
