@@ -131,11 +131,7 @@ const Preview = () => {
               onClick={() => setLogs([])}
               className="px-4 cursor-pointer flex items-center hover:text-green-500"
             >
-              <TrashIcon
-                className="h-5 w-5 mr-1 text-gray-400"
-                aria-hidden="true"
-              />{" "}
-              Clear console{" "}
+              🗑 Clear console{" "}
             </small>
           </div>
           <Logs logs={logs} />
