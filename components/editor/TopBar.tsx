@@ -47,7 +47,7 @@ const TopBar = ({ inSession }) => {
   return (
     <div
       style={{ height: "8vh" }}
-      className="px-3 sm:px-7 flex justify-between items-center"
+      className="px-3 sm:px-7 flex justify-between items-center bg-tree-soft text-white"
     >
       <div className="flex justify-center items-end">
         <div>
