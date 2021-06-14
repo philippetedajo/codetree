@@ -12,6 +12,7 @@ import { EditorLoader, ErrorScreen } from "./FrameScreen";
 import { createIframeContent } from "./utils";
 import { Resizable } from "re-resizable";
 import bundler from "../../bundler";
+import { TrashIcon } from "@heroicons/react/outline";
 
 const Preview = () => {
   const iframe = useRef<any>();
@@ -125,10 +126,17 @@ const Preview = () => {
         }}
       >
         <div>
-          <div className="fixed h-7 z-50 w-full text-white bg-tree-hard flex items-center">
-            <div onClick={() => setLogs([])} className="px-4 cursor-pointer">
-              Clear
-            </div>
+          <div className="fixed h-7 z-50 w-full text-white bg-tree-hard flex items-center border-b-2 border-black">
+            <small
+              onClick={() => setLogs([])}
+              className="px-4 cursor-pointer flex items-center hover:text-green-500"
+            >
+              <TrashIcon
+                className="h-5 w-5 mr-1 text-gray-400"
+                aria-hidden="true"
+              />{" "}
+              Clear console{" "}
+            </small>
           </div>
           <Logs logs={logs} />
         </div>
