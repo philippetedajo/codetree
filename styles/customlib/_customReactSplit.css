@@ -1,0 +1,23 @@
+.gutter {
+  background-color: #eee;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.gutter.gutter-vertical {
+  cursor: row-resize;
+  @apply bg-black;
+}
+
+.gutter.gutter-vertical:hover {
+  @apply bg-tree-border;
+}
+
+.gutter.gutter-horizontal {
+  cursor: col-resize;
+  @apply bg-black;
+}
+
+.gutter.gutter-horizontal:hover {
+  @apply bg-tree-border;
+}
