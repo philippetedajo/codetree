@@ -13,7 +13,8 @@ export const Monaco = ({ language }: EditorProps) => {
   const { onChange, onMount, code } = useMonaco();
 
   useEffect(() => {
-    dispatch(update_editor_code({ type: language, content: code }));
+    if (code && code?.length >= 1)
+      dispatch(update_editor_code({ type: language, content: code }));
   }, [code, dispatch, language]);
 
   return (
