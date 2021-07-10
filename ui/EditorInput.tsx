@@ -13,7 +13,7 @@ export const EditorInput = () => {
 
   const tabPane = dataToMap.map((item, key) => (
     <TabPane tab={<div>{item[1].title}</div>} key={key}>
-      <Monaco language={item[1].monacoLanguage} />
+      <Monaco tab={item[0]} monacoLanguage={item[1].monacoLanguage} />
     </TabPane>
   ));
 
