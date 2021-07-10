@@ -16,8 +16,8 @@ export const Monaco = ({ monacoLanguage, tab }: MonacoType) => {
 
   useEffect(() => {
     if (code && code?.length >= 1)
-      dispatch(update_editor_code({ type: monacoLanguage, content: code }));
-  }, [code, dispatch, monacoLanguage]);
+      dispatch(update_editor_code({ type: tab, content: code }));
+  }, [code, dispatch, tab]);
 
   return (
     <MonacoEditor
