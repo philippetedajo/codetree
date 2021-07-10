@@ -14,15 +14,12 @@ export const IFrame = () => {
   const iframe = useRef<any>();
   const dispatch = useAppDispatch();
   const {
-    editorValue: { languages },
+    editorValue: { tabs },
   } = useAppSelector(editor_state);
 
   const { output, isCompiling } = useAppSelector(compiler_state);
 
-  const htmlFrameContent = createIframeContent(
-    languages.css.data,
-    languages.html.data
-  );
+  const htmlFrameContent = createIframeContent(tabs.css.data, tabs.html.data);
 
   useEffect(() => {
     //=== incoming message
@@ -38,15 +35,15 @@ export const IFrame = () => {
     };
 
     //=== outgoing massage
-    if (languages.javascript.data) {
+    if (tabs.javascript.data) {
       iframe.current.srcdoc = htmlFrameContent;
 
       setTimeout(async () => {
-        dispatch(getCompileCode(languages.javascript.data));
+        dispatch(getCompileCode(tabs.javascript.data));
         iframe?.current?.contentWindow?.postMessage(output.code, "*");
       }, 50);
     }
-  }, [dispatch, languages, htmlFrameContent, output]);
+  }, [dispatch, tabs, htmlFrameContent, output]);
 
   return (
     <div>

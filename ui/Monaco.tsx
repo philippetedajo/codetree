@@ -26,7 +26,7 @@ export const Monaco = ({ language }: EditorProps) => {
       options={options}
       className="h-full"
       // @ts-ignore
-      value={monacoInputValue.languages[language].data}
+      value={monacoInputValue.tabs[language].data}
     />
   );
 };

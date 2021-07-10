@@ -4,7 +4,7 @@ export const treeTemplates = {
     description: "By codetree",
     public: true,
     iconSrc: "/icons/vanilla.svg",
-    languages: {
+    tabs: {
       javascript: {
         data: ``,
         transformer: "javascript",
@@ -24,7 +24,7 @@ export const treeTemplates = {
     description: "By codetree",
     public: true,
     iconSrc: "/icons/vanilla.svg",
-    languages: {
+    tabs: {
       javascript: {
         data: `import gsap from "gsap"
 
@@ -39,7 +39,7 @@ tl.to("h1", 30, { backgroundPosition: "-960px 0" });
 </div> `,
         transformer: "html",
       },
-        css: {
+      css: {
         data: `body {
   background-color: #1d1d1d;
   margin: 0;
@@ -76,7 +76,7 @@ h1 {
     description: "By codetree",
     public: true,
     iconSrc: "/icons/p5-dot-js.svg",
-    languages: {
+    tabs: {
       javascript: {
         data: `import p5 from "p5";
 
@@ -118,7 +118,7 @@ canvas {
     description: "By codetree",
     public: true,
     iconSrc: "/icons/reactjs.svg",
-    languages: {
+    tabs: {
       javascript: {
         data: `import React, { useState } from "react";
 import ReactDOM from "react-dom";
