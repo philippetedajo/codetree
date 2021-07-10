@@ -1,17 +1,19 @@
 import React from "react";
 import Tabs, { TabPane } from "rc-tabs";
 import { Monaco } from "./Monaco";
+import { useAppSelector } from "../store/hook";
+import { editor_state } from "../store/features/editorSlice";
 
 export const EditorInput = () => {
-  const data = [
-    { title: "Js", lang: "javascript" },
-    { title: "Html", lang: "html" },
-    { title: "Css", lang: "css" },
-  ];
+  const { editorValue } = useAppSelector(editor_state);
 
-  const tabPane = data.map((item) => (
-    <TabPane tab={<div>{item.title}</div>} key={item.lang}>
-      <Monaco language={item.lang} />
+  const dataToMap = Object.entries(editorValue.tabs);
+
+  console.log(dataToMap);
+
+  const tabPane = dataToMap.map((item, key) => (
+    <TabPane tab={<div>{item[1].title}</div>} key={key}>
+      <Monaco language={item[1].monacoLanguage} />
     </TabPane>
   ));
 

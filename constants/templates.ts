@@ -10,14 +10,14 @@ export const treeTemplates = {
         monacoLanguage: "javascript",
         data: ``,
       },
-      css: {
-        title: "Css",
-        monacoLanguage: "css",
-        data: ``,
-      },
       html: {
         title: "Html",
         monacoLanguage: "html",
+        data: ``,
+      },
+      css: {
+        title: "Css",
+        monacoLanguage: "css",
         data: ``,
       },
     },
@@ -52,6 +52,11 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 `,
       },
+      html: {
+        title: "Html",
+        monacoLanguage: "html",
+        data: ``,
+      },
       css: {
         title: "Css",
         monacoLanguage: "css",
@@ -60,11 +65,6 @@ ReactDOM.render(<App />, rootElement);
   text-align: center;
 }
 `,
-      },
-      html: {
-        title: "Html",
-        monacoLanguage: "html",
-        data: ``,
       },
     },
   },
