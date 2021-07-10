@@ -4,18 +4,21 @@ export const treeTemplates = {
     description: "By codetree",
     public: true,
     iconSrc: "/icons/vanilla.svg",
-    languages: {
+    tabs: {
       javascript: {
+        title: "Js/Jsx",
+        monacoLanguage: "javascript",
         data: ``,
-        transformer: "javascript",
-      },
-      css: {
-        data: ``,
-        transformer: "css",
       },
       html: {
+        title: "Html",
+        monacoLanguage: "html",
         data: ``,
-        transformer: "html",
+      },
+      css: {
+        title: "Css",
+        monacoLanguage: "css",
+        data: ``,
       },
     },
   },
@@ -24,22 +27,156 @@ export const treeTemplates = {
     description: "By codetree",
     public: true,
     iconSrc: "/icons/vanilla.svg",
-    languages: {
+    tabs: {
       javascript: {
+        title: "Js/Jsx",
+        monacoLanguage: "javascript",
+        data: `document.getElementById("app").innerHTML = \`
+<h1>Vanilla</h1>
+<div>
+  Bare minimal javascript template
+</div>
+\`;
+`,
+      },
+      html: {
+        title: "Html",
+        monacoLanguage: "html",
+        data: `<div id="app"></div>`,
+      },
+      css: {
+        title: "Css",
+        monacoLanguage: "css",
+        data: `body {
+  font-family: sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+`,
+      },
+    },
+  },
+  _p5: {
+    name: "P5js",
+    description: "By codetree",
+    public: true,
+    iconSrc: "/icons/p5-dot-js.svg",
+    tabs: {
+      javascript: {
+        title: "Js/Jsx",
+        monacoLanguage: "javascript",
+        data: `import p5 from "p5";
+
+let sketch = function (p) {
+  p.setup = function () {
+    p.createCanvas(window.innerWidth, window.innerHeight);
+    p.background(0);
+  };
+  p.draw = () => {
+    // sketch.background(100);
+    p.fill(255);
+    p.ellipse(p.mouseX, p.mouseY, 50, 50);
+  };
+};
+ 
+new p5(sketch, window.document.getElementById("container"));
+`,
+      },
+      html: {
+        title: "Html",
+        monacoLanguage: "html",
+        data: ``,
+      },
+      css: {
+        title: "Css",
+        monacoLanguage: "css",
+        data: `body {
+  margin: 0px;
+  font-family: sans-serif;
+}
+canvas {
+  margin: 0px;
+}
+`,
+      },
+    },
+  },
+  _react: {
+    name: "React",
+    description: "By codetree",
+    public: true,
+    iconSrc: "/icons/reactjs.svg",
+    tabs: {
+      javascript: {
+        title: "Js/Jsx",
+        monacoLanguage: "javascript",
+        data: `import React, { useState } from "react";
+import ReactDOM from "react-dom";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="App">
+      <h1>Hello ReactTree</h1>
+      <h2>You clicked {count} times!</h2>
+
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+`,
+      },
+      html: {
+        title: "Html",
+        monacoLanguage: "html",
+        data: ``,
+      },
+      css: {
+        title: "Css",
+        monacoLanguage: "css",
+        data: `.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+`,
+      },
+    },
+  },
+  _gsap: {
+    name: "Gsap",
+    description: "By codetree",
+    public: true,
+    iconSrc: "/icons/gsap-greensock.svg",
+    tabs: {
+      javascript: {
+        title: "Js/Jsx",
+        monacoLanguage: "javascript",
         data: `import gsap from "gsap"
 
 var tl = gsap.timeline({ repeat: -1 });
 tl.to("h1", 30, { backgroundPosition: "-960px 0" });
 `,
-        transformer: "js",
       },
       html: {
+        title: "Html",
+        monacoLanguage: "html",
         data: `<div class="wrapper">
   <h1 class="title">Codetree<h1>
 </div> `,
-        transformer: "html",
       },
-        css: {
+      css: {
+        title: "Css",
+        monacoLanguage: "css",
         data: `body {
   background-color: #1d1d1d;
   margin: 0;
@@ -67,92 +204,6 @@ h1 {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }`,
-        transformer: "css",
-      },
-    },
-  },
-  _p5: {
-    name: "P5js",
-    description: "By codetree",
-    public: true,
-    iconSrc: "/icons/p5-dot-js.svg",
-    languages: {
-      javascript: {
-        data: `import p5 from "p5";
-
-let sketch = function (p) {
-  p.setup = function () {
-    p.createCanvas(window.innerWidth, window.innerHeight);
-    p.background(0);
-  };
-  p.draw = () => {
-    // sketch.background(100);
-    p.fill(255);
-    p.ellipse(p.mouseX, p.mouseY, 50, 50);
-  };
-};
- 
-new p5(sketch, window.document.getElementById("container"));
-`,
-        transformer: "javascript",
-      },
-      css: {
-        data: `body {
-  margin: 0px;
-  font-family: sans-serif;
-}
-canvas {
-  margin: 0px;
-}
-`,
-        transformer: "css",
-      },
-      html: {
-        data: ``,
-        transformer: "html",
-      },
-    },
-  },
-  _react: {
-    name: "React",
-    description: "By codetree",
-    public: true,
-    iconSrc: "/icons/reactjs.svg",
-    languages: {
-      javascript: {
-        data: `import React, { useState } from "react";
-import ReactDOM from "react-dom";
-
-function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div className="App">
-      <h1>Hello ReactTree</h1>
-      <h2>You clicked {count} times!</h2>
-
-      <button onClick={() => setCount(count - 1)}>Decrement</button>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-    </div>
-  );
-}
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
-`,
-        transformer: "javascript",
-      },
-      css: {
-        data: `.App {
-  font-family: sans-serif;
-  text-align: center;
-}
-`,
-        transformer: "css",
-      },
-      html: {
-        data: ``,
-        transformer: "html",
       },
     },
   },

@@ -1,6 +1,7 @@
 export interface LanguagePropsInterface {
+  title: string;
+  monacoLanguage: string;
   data: string;
-  transformer: string;
 }
 
 export interface IObjectKeys {
@@ -17,5 +18,5 @@ export interface EditorValueInterface {
   name: string;
   description: string;
   public: boolean;
-  languages: LanguagesInterface;
+  tabs: LanguagesInterface;
 }

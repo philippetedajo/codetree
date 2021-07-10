@@ -31,7 +31,7 @@ export const editorSlice = createSlice({
       state.editorValue = payload;
     },
     update_editor_code: (state: InitialStateType, { payload }) => {
-      state.editorValue.languages[payload.type].data = payload.content;
+      state.editorValue.tabs[payload.type].data = payload.content;
     },
     update_logs: (state: InitialStateType, { payload }) => {
       state.logs = [...state.logs, payload];
