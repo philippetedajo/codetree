@@ -6,17 +6,29 @@ const fileCache = localForage.createInstance({
   name: "fileCache",
 });
 
-export const unpkgFetchPlugin = (inputCode: string | undefined) => {
+export const unpkgFetchPlugin = (
+  inputCode: string | undefined,
+  entryPoint: string
+) => {
   return {
-    name: "unpkg-fecth-plugin",
+    name: "unpkg-fetch-plugin",
     setup(build: esbuild.PluginBuild) {
-      //match entry file "index.js"
-      build.onLoad({ filter: /(^index\.js$)/ }, () => {
-        return {
-          loader: "jsx",
-          contents: inputCode,
-        };
-      });
+      //match entrypoint
+      if (entryPoint === "index.ts") {
+        build.onLoad({ filter: /(^index\.ts$)/ }, () => {
+          return {
+            loader: "tsx",
+            contents: inputCode,
+          };
+        });
+      } else {
+        build.onLoad({ filter: /(^index\.js$)/ }, () => {
+          return {
+            loader: "jsx",
+            contents: inputCode,
+          };
+        });
+      }
 
       build.onLoad({ filter: /.*/ }, async (args: esbuild.OnLoadArgs) => {
         const cacheResult = await fileCache.getItem<esbuild.OnLoadResult>(

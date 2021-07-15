@@ -7,16 +7,19 @@ export const treeTemplates = {
     tabs: {
       javascript: {
         title: "Js/Jsx",
+        entryPoints: "index.js",
         monacoLanguage: "javascript",
         data: ``,
       },
       html: {
         title: "Html",
+        entryPoints: "index.html",
         monacoLanguage: "html",
         data: ``,
       },
       css: {
         title: "Css",
+        entryPoints: "main.css",
         monacoLanguage: "css",
         data: ``,
       },
@@ -30,6 +33,7 @@ export const treeTemplates = {
     tabs: {
       javascript: {
         title: "Js/Jsx",
+        entryPoints: "index.js",
         monacoLanguage: "javascript",
         data: `document.getElementById("app").innerHTML = \`
 <h1>Vanilla</h1>
@@ -41,11 +45,59 @@ export const treeTemplates = {
       },
       html: {
         title: "Html",
+        entryPoints: "index.html",
         monacoLanguage: "html",
         data: `<div id="app"></div>`,
       },
       css: {
         title: "Css",
+        entryPoints: "main.css",
+        monacoLanguage: "css",
+        data: `body {
+  font-family: sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+`,
+      },
+    },
+  },
+  _typescript: {
+    name: "Typescript",
+    description: "By codetree",
+    public: true,
+    iconSrc: "/icons/typescript.svg",
+    tabs: {
+      javascript: {
+        title: "Ts/Tsx",
+        entryPoints: "index.ts",
+        monacoLanguage: "typescript",
+        data: `function add(x: number, y: number): number {
+  return x + y;
+}
+
+const result = add(2,5)
+
+console.log(result)`,
+      },
+      html: {
+        title: "Html",
+        entryPoints: "index.html",
+        monacoLanguage: "html",
+        data: `<div id="app">
+  <h1>Typescript</h1>
+  <div>Bare minimal Typescript template 🚀</div>
+</div>
+`,
+      },
+      css: {
+        title: "Css",
+        entryPoints: "main.css",
         monacoLanguage: "css",
         data: `body {
   font-family: sans-serif;
@@ -69,6 +121,7 @@ export const treeTemplates = {
     tabs: {
       javascript: {
         title: "Js/Jsx",
+        entryPoints: "index.js",
         monacoLanguage: "javascript",
         data: `import p5 from "p5";
 
@@ -89,11 +142,13 @@ new p5(sketch, window.document.getElementById("container"));
       },
       html: {
         title: "Html",
+        entryPoints: "index.html",
         monacoLanguage: "html",
         data: ``,
       },
       css: {
         title: "Css",
+        entryPoints: "main.css",
         monacoLanguage: "css",
         data: `body {
   margin: 0px;
@@ -114,6 +169,7 @@ canvas {
     tabs: {
       javascript: {
         title: "Js/Jsx",
+        entryPoints: "index.js",
         monacoLanguage: "javascript",
         data: `import React, { useState } from "react";
 import ReactDOM from "react-dom";
@@ -138,11 +194,13 @@ ReactDOM.render(<App />, rootElement);
       },
       html: {
         title: "Html",
+        entryPoints: "index.html",
         monacoLanguage: "html",
         data: ``,
       },
       css: {
         title: "Css",
+        entryPoints: "main.css",
         monacoLanguage: "css",
         data: `.App {
   font-family: sans-serif;
@@ -160,6 +218,7 @@ ReactDOM.render(<App />, rootElement);
     tabs: {
       javascript: {
         title: "Js/Jsx",
+        entryPoints: "index.js",
         monacoLanguage: "javascript",
         data: `import gsap from "gsap"
 
@@ -169,6 +228,7 @@ tl.to("h1", 30, { backgroundPosition: "-960px 0" });
       },
       html: {
         title: "Html",
+        entryPoints: "index.html",
         monacoLanguage: "html",
         data: `<div class="wrapper">
   <h1 class="title">Codetree<h1>
@@ -176,6 +236,7 @@ tl.to("h1", 30, { backgroundPosition: "-960px 0" });
       },
       css: {
         title: "Css",
+        entryPoints: "main.css",
         monacoLanguage: "css",
         data: `body {
   background-color: #1d1d1d;

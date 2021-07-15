@@ -1,5 +1,6 @@
 export interface LanguagePropsInterface {
   title: string;
+  entryPoints: string;
   monacoLanguage: string;
   data: string;
 }
