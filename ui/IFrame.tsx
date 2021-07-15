@@ -21,6 +21,8 @@ export const IFrame = () => {
 
   const htmlFrameContent = createIframeContent(tabs.css.data, tabs.html.data);
 
+  console.log(htmlFrameContent);
+
   //=== incoming message
   useEffect(() => {
     window.onmessage = function (response: MessageEvent) {
@@ -35,7 +37,6 @@ export const IFrame = () => {
     };
 
     if (tabs.javascript && esbuildStatus.isReady) {
-      console.log("is trigger");
       setTimeout(async () => {
         dispatch(getCompileCode(tabs.javascript.data));
       }, 50);
@@ -48,7 +49,7 @@ export const IFrame = () => {
 
     setTimeout(async () => {
       iframe?.current?.contentWindow?.postMessage(output.code, "*");
-    }, 50);
+    }, 40);
   }, [htmlFrameContent, output]);
 
   return (
