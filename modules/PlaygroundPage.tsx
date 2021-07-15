@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { SplitEditor, EditorHead, EditorFooter } from "../ui/layouts";
 import { EditorInput, IFrame, ConsoleLog } from "../ui";
-import { SettingsModal } from "../ui/EditorSettings";
+import { SettingsModal } from "../ui/Modals";
 import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
 import { useAppDispatch, useAppSelector } from "../store/hook";
-import { TemplateModal } from "../ui/EditorSettings/TemplateModal";
+import { TemplateModal } from "../ui/Modals/TemplateModal";
 
 const PlaygroundPage = () => {
   const dispatch = useAppDispatch();

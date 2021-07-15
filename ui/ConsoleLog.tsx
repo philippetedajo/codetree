@@ -7,7 +7,6 @@ import {
   toggle_logs_tab,
 } from "../store/features/editorSlice";
 import { TiMinus } from "react-icons/ti";
-import { FcFullTrash } from "react-icons/fc";
 
 export const ConsoleLog = () => {
   const dispatch = useAppDispatch();

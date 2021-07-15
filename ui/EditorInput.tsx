@@ -9,8 +9,6 @@ export const EditorInput = () => {
 
   const dataToMap = Object.entries(editorValue.tabs);
 
-  console.log(dataToMap);
-
   const tabPane = dataToMap.map((item, key) => (
     <TabPane tab={<div>{item[1].title}</div>} key={key}>
       <Monaco tab={item[0]} monacoLanguage={item[1].monacoLanguage} />

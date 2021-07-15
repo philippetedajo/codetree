@@ -17,12 +17,12 @@ export const IFrame = () => {
     editorValue: { tabs },
   } = useAppSelector(editor_state);
 
-  const { output, isCompiling } = useAppSelector(compiler_state);
+  const { output, isCompiling, esbuildStatus } = useAppSelector(compiler_state);
 
   const htmlFrameContent = createIframeContent(tabs.css.data, tabs.html.data);
 
+  //=== incoming message
   useEffect(() => {
-    //=== incoming message
     window.onmessage = function (response: MessageEvent) {
       if (response.data && response.data.source === "iframe") {
         let errorObject = {
@@ -34,16 +34,21 @@ export const IFrame = () => {
       }
     };
 
-    //=== outgoing massage
-    if (tabs.javascript.data) {
-      iframe.current.srcdoc = htmlFrameContent;
-
+    if (tabs.javascript && esbuildStatus.isReady) {
       setTimeout(async () => {
         dispatch(getCompileCode(tabs.javascript.data));
-        iframe?.current?.contentWindow?.postMessage(output.code, "*");
       }, 50);
     }
-  }, [dispatch, tabs, htmlFrameContent, output]);
+  }, [dispatch, tabs, esbuildStatus.isReady]);
+
+  //=== outgoing massage
+  useEffect(() => {
+    iframe.current.srcdoc = htmlFrameContent;
+
+    setTimeout(async () => {
+      iframe?.current?.contentWindow?.postMessage(output.code, "*");
+    }, 40);
+  }, [htmlFrameContent, output]);
 
   return (
     <div>
