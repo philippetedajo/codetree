@@ -22,6 +22,7 @@ export const TreeTab = () => {
       className="hover:bg-tree-soft p-2 rounded-sm"
     >
       <div className="flex pointer-events-none">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           alt={template[1].name}
           src={template[1].iconSrc}
