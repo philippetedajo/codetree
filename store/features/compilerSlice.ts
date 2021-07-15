@@ -81,16 +81,19 @@ export function initEsbuild() {
   };
 }
 
-export function getCompileCode(rawCode: string) {
+export function getCompileCode(rawCode: string, entryPoint: string) {
   return async (dispatch: any) => {
     dispatch(compiled());
 
     try {
       const result = await esbuild.build({
-        entryPoints: ["index.js"],
+        entryPoints: [`${entryPoint}`],
         bundle: true,
         write: false,
-        plugins: [unpkgPathPlugin(), unpkgFetchPlugin(rawCode)],
+        plugins: [
+          unpkgPathPlugin(entryPoint),
+          unpkgFetchPlugin(rawCode, entryPoint),
+        ],
         define: {
           global: "window",
           "process.env.NODE_ENV": '"production"',

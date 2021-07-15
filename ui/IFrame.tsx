@@ -36,7 +36,9 @@ export const IFrame = () => {
 
     if (tabs.javascript && esbuildStatus.isReady) {
       setTimeout(async () => {
-        dispatch(getCompileCode(tabs.javascript.data));
+        dispatch(
+          getCompileCode(tabs.javascript.data, tabs.javascript.entryPoints)
+        );
       }, 50);
     }
   }, [dispatch, tabs, esbuildStatus.isReady]);
