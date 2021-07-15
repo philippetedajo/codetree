@@ -21,8 +21,6 @@ export const IFrame = () => {
 
   const htmlFrameContent = createIframeContent(tabs.css.data, tabs.html.data);
 
-  console.log(htmlFrameContent);
-
   //=== incoming message
   useEffect(() => {
     window.onmessage = function (response: MessageEvent) {
