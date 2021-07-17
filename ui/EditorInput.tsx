@@ -4,7 +4,7 @@ import { Monaco } from "./Monaco";
 import { useAppSelector } from "../store/hook";
 import { editor_state } from "../store/features/editorSlice";
 
-export const EditorInput = () => {
+const EditorInput = () => {
   const { editorValue } = useAppSelector(editor_state);
 
   const dataToMap = Object.entries(editorValue.tabs);
@@ -26,3 +26,5 @@ export const EditorInput = () => {
     </Tabs>
   );
 };
+
+export default EditorInput;

@@ -1,10 +1,3 @@
-import dynamic from "next/dynamic";
+import PlaygroundPage from "../modules/PlaygroundPage";
 
-const Playground = () => {
-  const PlaygroundPage = dynamic(() => import("../modules/PlaygroundPage"), {
-    ssr: false,
-  });
-  return <PlaygroundPage />;
-};
-
-export default Playground;
+export default PlaygroundPage;
