@@ -26,3 +26,5 @@ export const EditorInput = () => {
     </Tabs>
   );
 };
+
+export default EditorInput;

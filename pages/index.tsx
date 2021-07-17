@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
-const PlaygroundPage = dynamic(() => import("../modules/PlaygroundPage"));
+import PlaygroundPage from "../modules/PlaygroundPage";
 
 export default PlaygroundPage;

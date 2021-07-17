@@ -1,5 +1,5 @@
 import React from "react";
-import { Console } from "console-feed";
+
 import { useAppSelector, useAppDispatch } from "../store/hook";
 import {
   editor_state,
@@ -7,6 +7,9 @@ import {
   toggle_logs_tab,
 } from "../store/features/editorSlice";
 import { TiMinus } from "react-icons/ti";
+import dynamic from "next/dynamic";
+
+const Console = dynamic(import("console-feed/lib/Component"), { ssr: false });
 
 export const ConsoleLog = () => {
   const dispatch = useAppDispatch();
@@ -44,3 +47,5 @@ export const ConsoleLog = () => {
     </div>
   );
 };
+
+export default ConsoleLog;

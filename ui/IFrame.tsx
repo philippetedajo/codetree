@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import { Hook } from "console-feed";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { editor_state, update_logs } from "../store/features/editorSlice";
 import {
@@ -75,7 +74,8 @@ export const IFrame = () => {
           ref={iframe}
           title="previewWindow"
           srcDoc={htmlFrameContent}
-          onLoad={() => {
+          onLoad={async () => {
+            const Hook = (await import("console-feed")).Hook;
             Hook(
               iframe.current.contentWindow.console,
               (log) => {
@@ -89,3 +89,5 @@ export const IFrame = () => {
     </div>
   );
 };
+
+export default IFrame;
