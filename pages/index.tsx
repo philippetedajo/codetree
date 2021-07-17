@@ -1,9 +1,7 @@
 import dynamic from "next/dynamic";
 
 const Playground = () => {
-  const PlaygroundPage = dynamic(() => import("../modules/PlaygroundPage"), {
-    ssr: false,
-  });
+  const PlaygroundPage = dynamic(() => import("../modules/PlaygroundPage"));
   return <PlaygroundPage />;
 };
 
