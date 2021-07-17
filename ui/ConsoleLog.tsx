@@ -11,7 +11,7 @@ import dynamic from "next/dynamic";
 
 const Console = dynamic(import("console-feed/lib/Component"), { ssr: false });
 
-export const ConsoleLog = () => {
+const ConsoleLog = () => {
   const dispatch = useAppDispatch();
   const { logs } = useAppSelector(editor_state);
 

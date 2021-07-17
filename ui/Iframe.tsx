@@ -9,7 +9,7 @@ import { createIframeContent } from "../tools";
 import { IframeLoaderScreen } from "./IframeLoaderScreen";
 import { IframeErrorScreen } from "./IframeErrorScreen";
 
-export const IFrame = () => {
+const Iframe = () => {
   const iframe = useRef<any>();
   const dispatch = useAppDispatch();
   const {
@@ -90,4 +90,4 @@ export const IFrame = () => {
   );
 };
 
-export default IFrame;
+export default Iframe;

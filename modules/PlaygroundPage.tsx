@@ -4,10 +4,9 @@ import { SettingsModal } from "../ui/Modals";
 import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { TemplateModal } from "../ui/Modals/TemplateModal";
-
 import EditorInput from "../ui/EditorInput";
 import ConsoleLog from "../ui/ConsoleLog";
-import IFrame from "../ui/IFrame";
+import Iframe from "../ui/Iframe";
 
 const PlaygroundPage = () => {
   const dispatch = useAppDispatch();
@@ -26,7 +25,7 @@ const PlaygroundPage = () => {
         <EditorInput />
         <div>
           <SplitEditor isVertical={true}>
-            <IFrame />
+            <Iframe />
             <ConsoleLog />
           </SplitEditor>
         </div>
