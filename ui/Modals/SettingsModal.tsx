@@ -7,7 +7,7 @@ import {
   editor_state,
   set_settings_modal,
 } from "../../store/features/editorSlice";
-import OptionsTab from "./OptionsTab";
+import { OptionsTab } from "./Tabs";
 
 export const SettingsModal = () => {
   const { isSettingsOpen } = useAppSelector(editor_state);

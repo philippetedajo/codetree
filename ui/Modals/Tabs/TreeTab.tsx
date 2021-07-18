@@ -1,20 +1,20 @@
-import { useTree } from "../../hooks";
-import { treeTemplates } from "../../constants";
-import { useAppSelector } from "../../store/hook";
-import { compiler_state } from "../../store/features/compilerSlice";
-import { TemplateSelectionSkeleton } from "../Skeleton";
+import React from "react";
+import { useAppSelector } from "../../../store/hook";
+import { compiler_state } from "../../../store/features/compilerSlice";
+import { treeTemplates } from "../../../constants";
+import { useTree } from "../../../hooks";
+import { TemplateSelectionSkeleton } from "../../Skeleton";
 
 export const TreeTab = () => {
   const { esbuildStatus } = useAppSelector(compiler_state);
   const { setTree } = useTree();
-
-  let arr = [];
+  let treeArr = [];
 
   for (const item of Object.entries(treeTemplates)) {
-    arr.push(item);
+    treeArr.push(item);
   }
 
-  const templates = arr.map((template, key) => (
+  const TreeTemplates = treeArr.map((template, key) => (
     <button
       key={key}
       name={template[1].name}
@@ -42,7 +42,7 @@ export const TreeTab = () => {
         Select your tree
       </h1>
       <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {esbuildStatus.isReady ? templates : <TemplateSelectionSkeleton />}
+        {esbuildStatus.isReady ? TreeTemplates : <TemplateSelectionSkeleton />}
       </div>
     </div>
   );

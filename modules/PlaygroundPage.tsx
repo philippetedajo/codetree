@@ -1,24 +1,26 @@
 import React, { useEffect } from "react";
-import { SplitEditor, EditorHead, EditorFooter } from "../ui/layouts";
-import { SettingsModal } from "../ui/Modals";
-import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
-import { useAppDispatch, useAppSelector } from "../store/hook";
-import { TemplateModal } from "../ui/Modals/TemplateModal";
+import { EditorFooter, EditorHead, SplitEditor } from "../ui/layouts";
 
 //Main components
 import EditorInput from "../ui/EditorInput";
 import ConsoleLog from "../ui/ConsoleLog";
 import Iframe from "../ui/Iframe";
+import { SettingsModal } from "../ui/Modals";
+import { TemplateModal } from "../ui/Modals/TemplateModal";
+import { useAppDispatch, useAppSelector } from "../store/hook";
+import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
 
 const PlaygroundPage = () => {
   const dispatch = useAppDispatch();
   const { esbuildStatus } = useAppSelector(compiler_state);
 
+  //  init Esbuild compiler
   useEffect(() => {
     if (!esbuildStatus.isReady) {
       dispatch(initEsbuild());
     }
   }, [dispatch, esbuildStatus]);
+
 
   return (
     <div className="h-screen flex flex-col overflow-hidden bg-tree-soft">

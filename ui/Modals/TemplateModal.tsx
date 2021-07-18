@@ -8,8 +8,7 @@ import {
   editor_state,
   set_template_modal,
 } from "../../store/features/editorSlice";
-import { TreeTab } from "./TreeTab";
-import { News } from "./NewsTab";
+import { TreeTab, News } from "./Tabs";
 
 export const TemplateModal = () => {
   const { isTemplateOpen } = useAppSelector(editor_state);
