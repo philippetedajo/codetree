@@ -20,6 +20,5 @@ export interface EditorValueInterface {
   description: string;
   public: boolean;
   iconSrc: string;
-  editor: string;
   tabs: TabInterface;
 }
