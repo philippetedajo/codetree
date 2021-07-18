@@ -1,8 +1,12 @@
 import React from "react";
+import { useAppSelector } from "../../../store/hook";
+import { compiler_state } from "../../../store/features/compilerSlice";
 import { treeTemplates } from "../../../constants";
 import { useTree } from "../../../hooks";
+import { TemplateSelectionSkeleton } from "../../Skeleton";
 
 export const TreeTab = () => {
+  const { esbuildStatus } = useAppSelector(compiler_state);
   const { setTree } = useTree();
   let treeArr = [];
 
@@ -38,7 +42,7 @@ export const TreeTab = () => {
         Select your tree
       </h1>
       <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {TreeTemplates}
+        {esbuildStatus.isReady ? TreeTemplates : <TemplateSelectionSkeleton />}
       </div>
     </div>
   );
