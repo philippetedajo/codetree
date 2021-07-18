@@ -14,7 +14,7 @@ const PlaygroundPage = () => {
   const dispatch = useAppDispatch();
   const { esbuildStatus } = useAppSelector(compiler_state);
 
-  //  init Esbuild compiler
+  // --- init Esbuild compiler
   useEffect(() => {
     if (!esbuildStatus.isReady) {
       dispatch(initEsbuild());
