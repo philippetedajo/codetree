@@ -1,12 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { webTemplates } from "../../../constants";
 import { useTree } from "../../../hooks";
-import { TemplateSelectionSkeleton } from "../../Skeleton";
-import { useAppSelector } from "../../../store/hook";
-import { compiler_state } from "../../../store/features/compilerSlice";
 
 const WebTrees = () => {
-  const { esbuildStatus } = useAppSelector(compiler_state);
   const { setTree } = useTree();
   let webArr = [];
 
@@ -38,7 +34,7 @@ const WebTrees = () => {
 
   return (
     <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      {esbuildStatus.isReady ? WebTemplates : <TemplateSelectionSkeleton />}
+      {WebTemplates}
     </div>
   );
 };
