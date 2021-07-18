@@ -1,1 +1,1 @@
-export * from "./PlaygroundPage";
+export * from "./WebModule";
