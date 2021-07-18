@@ -8,13 +8,14 @@ import {
 } from "../store/features/editorSlice";
 import { EditorValueInterface } from "../_types/editorTypes";
 import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
+import { EDITOR_TYPES } from "../_types/editorTypes";
 
 export const useTree = () => {
   const dispatch = useAppDispatch();
   const { esbuildStatus } = useAppSelector(compiler_state);
 
   const setTree = (data: EditorValueInterface) => {
-    if (!esbuildStatus.isReady) {
+    if (!esbuildStatus.isReady && data.editor === EDITOR_TYPES.WebEditor) {
       dispatch(initEsbuild());
     }
 
