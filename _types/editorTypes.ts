@@ -1,3 +1,8 @@
+export enum EDITOR_TYPES {
+  WebEditor = "WebEditor",
+  PythonEditor = "PythonEditor",
+}
+
 export interface LanguagePropsInterface {
   title: string;
   entryPoints: string;

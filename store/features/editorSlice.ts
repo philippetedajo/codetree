@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { EditorValueInterface } from "../../_types/editorTypes";
+import { EditorValueInterface, EDITOR_TYPES } from "../../_types/editorTypes";
 import { webTemplates, monacoOptions, pythonTemplate } from "../../constants";
 
 type InitialStateType = {
+  editorType: EDITOR_TYPES;
   editorValue: EditorValueInterface;
   monacoInputValue: EditorValueInterface;
   logs: any;
@@ -14,8 +15,9 @@ type InitialStateType = {
 };
 
 const initialState = {
-  editorValue: pythonTemplate["_empty"],
-  monacoInputValue: pythonTemplate["_empty"],
+  editorType: EDITOR_TYPES.WebEditor,
+  editorValue: webTemplates["_empty"],
+  monacoInputValue: webTemplates["_empty"],
   logs: [],
   isLogTabOpen: false,
   isTemplateOpen: true,
@@ -27,6 +29,9 @@ export const editorSlice = createSlice({
   name: "editor",
   initialState: initialState,
   reducers: {
+    set_editor_type: (state: InitialStateType, { payload }) => {
+      state.editorType = payload;
+    },
     set_editor_value: (state: InitialStateType, { payload }) => {
       state.editorValue = payload;
     },
@@ -62,6 +67,7 @@ export const editorSlice = createSlice({
 });
 
 export const {
+  set_editor_type,
   update_editor_code,
   update_logs,
   clear_logs,

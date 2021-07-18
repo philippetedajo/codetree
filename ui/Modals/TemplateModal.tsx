@@ -8,7 +8,7 @@ import {
   editor_state,
   set_template_modal,
 } from "../../store/features/editorSlice";
-import { TreeTab } from "./TreeTab";
+import { TreeTabs } from "./TreeTabs";
 import { News } from "./NewsTab";
 
 export const TemplateModal = () => {
@@ -56,7 +56,7 @@ export const TemplateModal = () => {
                     }
                     key="trees"
                   >
-                    <TreeTab />
+                    <TreeTabs />
                   </TabPane>
                   <TabPane
                     tab={
