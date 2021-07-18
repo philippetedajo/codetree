@@ -54,7 +54,7 @@ export const TemplateModal = () => {
                         trees
                       </div>
                     }
-                    key="web-trees"
+                    key="web"
                   >
                     <WebTab />
                   </TabPane>
@@ -65,7 +65,7 @@ export const TemplateModal = () => {
                         trees
                       </div>
                     }
-                    key="python-trees"
+                    key="python"
                   >
                     <PythonTab />
                   </TabPane>

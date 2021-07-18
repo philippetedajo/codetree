@@ -33,8 +33,13 @@ export const PythonTab = () => {
   ));
 
   return (
-    <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      {PythonTemplates}
+    <div>
+      <h1 className="text-2xl pb-3 border-b border-tree-border">
+        Select your tree
+      </h1>
+      <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {PythonTemplates}
+      </div>
     </div>
   );
 };

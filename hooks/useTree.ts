@@ -18,7 +18,7 @@ export const useTree = () => {
       dispatch(initEsbuild());
     }
 
-    dispatch(set_editor_type("ASDF"));
+    // dispatch(set_editor_type("ASDF"));
     dispatch(clear_logs());
     dispatch(set_monaco_input_value(data));
     dispatch(set_editor_value(data));
