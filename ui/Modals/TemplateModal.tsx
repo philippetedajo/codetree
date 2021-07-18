@@ -8,7 +8,7 @@ import {
   editor_state,
   set_template_modal,
 } from "../../store/features/editorSlice";
-import { WebTab, News } from "./Tabs";
+import { TreeTab, News } from "./Tabs";
 
 export const TemplateModal = () => {
   const { isTemplateOpen } = useAppSelector(editor_state);
@@ -53,9 +53,9 @@ export const TemplateModal = () => {
                         trees
                       </div>
                     }
-                    key="web"
+                    key="trees"
                   >
-                    <WebTab />
+                    <TreeTab />
                   </TabPane>
                   <TabPane
                     tab={

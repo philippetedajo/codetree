@@ -1,10 +1,9 @@
-export const webTemplates = {
+export const treeTemplates = {
   _empty: {
     name: "Empty",
     description: "By codetree",
     public: true,
     iconSrc: "/icons/vanilla.svg",
-    editor: "WebEditor",
     tabs: {
       javascript: {
         title: "Js/Jsx",
@@ -31,7 +30,6 @@ export const webTemplates = {
     description: "By codetree",
     public: true,
     iconSrc: "/icons/vanilla.svg",
-    editor: "WebEditor",
     tabs: {
       javascript: {
         title: "Js/Jsx",
@@ -74,7 +72,6 @@ export const webTemplates = {
     description: "By codetree",
     public: true,
     iconSrc: "/icons/typescript.svg",
-    editor: "WebEditor",
     tabs: {
       javascript: {
         title: "Ts/Tsx",
@@ -121,7 +118,6 @@ console.log(result)`,
     description: "By codetree",
     public: true,
     iconSrc: "/icons/p5-dot-js.svg",
-    editor: "WebEditor",
     tabs: {
       javascript: {
         title: "Js/Jsx",
@@ -170,7 +166,6 @@ canvas {
     description: "By codetree",
     public: true,
     iconSrc: "/icons/reactjs.svg",
-    editor: "WebEditor",
     tabs: {
       javascript: {
         title: "Js/Jsx",
@@ -220,7 +215,6 @@ ReactDOM.render(<App />, rootElement);
     description: "By codetree",
     public: true,
     iconSrc: "/icons/gsap-greensock.svg",
-    editor: "WebEditor",
     tabs: {
       javascript: {
         title: "Js/Jsx",

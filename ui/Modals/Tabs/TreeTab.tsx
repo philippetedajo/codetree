@@ -1,16 +1,16 @@
 import React from "react";
-import { webTemplates } from "../../../constants";
+import { treeTemplates } from "../../../constants";
 import { useTree } from "../../../hooks";
 
-export const WebTab = () => {
+export const TreeTab = () => {
   const { setTree } = useTree();
-  let webArr = [];
+  let treeArr = [];
 
-  for (const item of Object.entries(webTemplates)) {
-    webArr.push(item);
+  for (const item of Object.entries(treeTemplates)) {
+    treeArr.push(item);
   }
 
-  const WebTemplates = webArr.map((template, key) => (
+  const TreeTemplates = treeArr.map((template, key) => (
     <button
       key={key}
       name={template[1].name}
@@ -38,7 +38,7 @@ export const WebTab = () => {
         Select your tree
       </h1>
       <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {WebTemplates}
+        {TreeTemplates}
       </div>
     </div>
   );

@@ -1,7 +1,3 @@
-export enum EDITOR_TYPES {
-  WebEditor = "WebEditor",
-}
-
 export interface LanguagePropsInterface {
   title: string;
   entryPoints: string;
@@ -13,7 +9,7 @@ export interface IObjectKeys {
   [key: string]: LanguagePropsInterface;
 }
 
-export interface WebInterface extends IObjectKeys {
+export interface TabInterface extends IObjectKeys {
   javascript: LanguagePropsInterface;
   css: LanguagePropsInterface;
   html: LanguagePropsInterface;
@@ -25,5 +21,5 @@ export interface EditorValueInterface {
   public: boolean;
   iconSrc: string;
   editor: string;
-  tabs: WebInterface;
+  tabs: TabInterface;
 }
