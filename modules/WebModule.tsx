@@ -23,7 +23,7 @@ const WebModule = () => {
       <EditorInput />
       <div>
         <SplitEditor isVertical={true}>
-          {/*<Iframe />*/}
+          <Iframe />
           <ConsoleLog />
         </SplitEditor>
       </div>
