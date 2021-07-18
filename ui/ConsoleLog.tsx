@@ -9,7 +9,7 @@ import {
 import { TiMinus } from "react-icons/ti";
 import dynamic from "next/dynamic";
 
-const Console = dynamic(import("console-feed/lib/Component"), { ssr: false });
+const Console = dynamic(import("console-feed/lib/Component"));
 
 const ConsoleLog = () => {
   const dispatch = useAppDispatch();
