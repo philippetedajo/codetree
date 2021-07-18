@@ -275,23 +275,3 @@ h1 {
     },
   },
 };
-
-export const pythonTemplate = {
-  _empty: {
-    name: "Python",
-    description: "By codetree",
-    public: true,
-    iconSrc: "/icons/python.svg",
-    editor: "PythonEditor",
-    tabs: {
-      python: {
-        title: "Python",
-        entryPoints: "main.py",
-        monacoLanguage: "python",
-        data: `def my_function():
-  print("Hello from a function")
-`,
-      },
-    },
-  },
-};

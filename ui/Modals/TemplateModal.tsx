@@ -8,7 +8,7 @@ import {
   editor_state,
   set_template_modal,
 } from "../../store/features/editorSlice";
-import { WebTab, PythonTab, News } from "./Tabs";
+import { WebTab, News } from "./Tabs";
 
 export const TemplateModal = () => {
   const { isTemplateOpen } = useAppSelector(editor_state);
@@ -56,17 +56,6 @@ export const TemplateModal = () => {
                     key="web"
                   >
                     <WebTab />
-                  </TabPane>
-                  <TabPane
-                    tab={
-                      <div className="flex">
-                        <CgTrees size={27} className="mr-2" />
-                        trees
-                      </div>
-                    }
-                    key="python"
-                  >
-                    <PythonTab />
                   </TabPane>
                   <TabPane
                     tab={
