@@ -2,7 +2,7 @@ import React from "react";
 import { pythonTemplate } from "../../../constants";
 import { useTree } from "../../../hooks";
 
-const PythonTrees = () => {
+export const PythonTab = () => {
   const { setTree } = useTree();
   let pyArr = [];
 
@@ -38,5 +38,3 @@ const PythonTrees = () => {
     </div>
   );
 };
-
-export default PythonTrees;

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { webTemplates } from "../../../constants";
 import { useTree } from "../../../hooks";
 
-const WebTrees = () => {
+export const WebTab = () => {
   const { setTree } = useTree();
   let webArr = [];
 
@@ -38,5 +38,3 @@ const WebTrees = () => {
     </div>
   );
 };
-
-export default WebTrees;

@@ -8,7 +8,7 @@ import {
   editor_state,
   set_template_modal,
 } from "../../store/features/editorSlice";
-import { TreeTabs } from "./TreeTabs";
+import { WebTab, PythonTab } from "./TreeTabs";
 import { News } from "./NewsTab";
 
 export const TemplateModal = () => {
@@ -54,9 +54,20 @@ export const TemplateModal = () => {
                         trees
                       </div>
                     }
-                    key="trees"
+                    key="web-trees"
                   >
-                    <TreeTabs />
+                    <WebTab />
+                  </TabPane>
+                  <TabPane
+                    tab={
+                      <div className="flex">
+                        <CgTrees size={27} className="mr-2" />
+                        trees
+                      </div>
+                    }
+                    key="python-trees"
+                  >
+                    <PythonTab />
                   </TabPane>
                   <TabPane
                     tab={
