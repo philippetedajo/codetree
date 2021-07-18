@@ -21,6 +21,7 @@ const PlaygroundPage = () => {
     }
   }, [dispatch, esbuildStatus]);
 
+
   return (
     <div className="h-screen flex flex-col overflow-hidden bg-tree-soft">
       <EditorHead />
