@@ -275,7 +275,7 @@ export const pythonTemplate = {
     name: "Python",
     description: "By codetree",
     public: true,
-    iconSrc: "/icons/vanilla.svg",
+    iconSrc: "/icons/python.svg",
     tabs: {
       python: {
         title: "Python",
