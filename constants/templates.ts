@@ -1,4 +1,4 @@
-export const treeTemplates = {
+export const webTemplates = {
   _empty: {
     name: "Empty",
     description: "By codetree",
@@ -265,6 +265,23 @@ h1 {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }`,
+      },
+    },
+  },
+};
+
+export const pythonTemplate = {
+  _empty: {
+    name: "Python",
+    description: "By codetree",
+    public: true,
+    iconSrc: "/icons/vanilla.svg",
+    tabs: {
+      python: {
+        title: "Python",
+        entryPoints: "main.py",
+        monacoLanguage: "python",
+        data: ``,
       },
     },
   },

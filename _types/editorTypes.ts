@@ -9,15 +9,19 @@ export interface IObjectKeys {
   [key: string]: LanguagePropsInterface;
 }
 
-export interface LanguagesInterface extends IObjectKeys {
+export interface WebInterface extends IObjectKeys {
   javascript: LanguagePropsInterface;
   css: LanguagePropsInterface;
   html: LanguagePropsInterface;
+}
+
+export interface PythonInterface extends IObjectKeys {
+  python: LanguagePropsInterface;
 }
 
 export interface EditorValueInterface {
   name: string;
   description: string;
   public: boolean;
-  tabs: LanguagesInterface;
+  tabs: WebInterface | PythonInterface;
 }

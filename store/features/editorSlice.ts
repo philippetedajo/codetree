@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { EditorValueInterface } from "../../_types/editorTypes";
-import { treeTemplates, monacoOptions } from "../../constants";
+import { webTemplates, monacoOptions, pythonTemplate } from "../../constants";
 
 type InitialStateType = {
   editorValue: EditorValueInterface;
@@ -14,8 +14,8 @@ type InitialStateType = {
 };
 
 const initialState = {
-  editorValue: treeTemplates["_empty"],
-  monacoInputValue: treeTemplates["_empty"],
+  editorValue: pythonTemplate["_empty"],
+  monacoInputValue: pythonTemplate["_empty"],
   logs: [],
   isLogTabOpen: false,
   isTemplateOpen: true,
