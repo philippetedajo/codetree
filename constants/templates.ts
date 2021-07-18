@@ -281,7 +281,9 @@ export const pythonTemplate = {
         title: "Python",
         entryPoints: "main.py",
         monacoLanguage: "python",
-        data: ``,
+        data: `def my_function():
+  print("Hello from a function")
+`,
       },
     },
   },
