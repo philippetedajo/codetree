@@ -15,6 +15,7 @@ export const useTree = () => {
   const { esbuildStatus } = useAppSelector(compiler_state);
 
   const setTree = (data: EditorValueInterface) => {
+    // if we are on the web Editor, init Esbuild compiler
     if (!esbuildStatus.isReady && data.editor === EDITOR_TYPES.WebEditor) {
       dispatch(initEsbuild());
     }
