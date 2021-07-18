@@ -28,5 +28,7 @@ export interface EditorValueInterface {
   name: string;
   description: string;
   public: boolean;
+  iconSrc: string;
+  editor: string;
   tabs: WebInterface | PythonInterface;
 }
