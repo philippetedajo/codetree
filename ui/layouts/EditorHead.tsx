@@ -1,6 +1,5 @@
 import React from "react";
 import { HiPlus, HiCog } from "react-icons/hi";
-import { GoSettings } from "react-icons/go";
 
 import { useAppDispatch } from "../../store/hook";
 import {
@@ -12,9 +11,9 @@ export const EditorHead = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <header className="flex justify-between items-center h-10 z-50 bg-tree-hard text-gray-200 border-b-2 px-5 border-black">
+    <header className="flex justify-between items-center h-12 z-50 bg-tree-hard text-gray-200 border-b-2 px-5 border-black">
       <div>
-        <div className="text-xl">Codetree</div>
+        <div className="text-2xl text-gray-300 codetree">Codetree</div>
       </div>
       <div className="flex items-center">
         <HiPlus
