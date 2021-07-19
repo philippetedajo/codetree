@@ -29,6 +29,8 @@ a {
 
 .codetree {
   font-family: "Righteous", cursive;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
 
 /* editor settings forms ====================================*/
