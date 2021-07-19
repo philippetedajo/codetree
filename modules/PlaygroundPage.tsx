@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Head from "next/head";
 import { EditorFooter, EditorHead, SplitEditor } from "../ui/layouts";
 
 //Main components
@@ -22,21 +23,30 @@ const PlaygroundPage = () => {
   }, [dispatch, esbuildStatus]);
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden bg-tree-soft">
-      <EditorHead />
-      <SplitEditor>
-        <EditorInput />
-        <div>
-          <SplitEditor isVertical={true}>
-            <Iframe />
-            <ConsoleLog />
-          </SplitEditor>
-        </div>
-      </SplitEditor>
-      <EditorFooter />
-      <SettingsModal />
-      <TemplateModal />
-    </div>
+    <>
+      <Head>
+        <title>Codetree</title>
+        <meta
+          name="description"
+          content="Lightning fast online code playground with automatic npm module detection, built on top of Esbuild "
+        />
+      </Head>
+      <div className="h-screen flex flex-col overflow-hidden bg-tree-soft">
+        <EditorHead />
+        <SplitEditor>
+          <EditorInput />
+          <div>
+            <SplitEditor isVertical={true}>
+              <Iframe />
+              <ConsoleLog />
+            </SplitEditor>
+          </div>
+        </SplitEditor>
+        <EditorFooter />
+        <SettingsModal />
+        <TemplateModal />
+      </div>
+    </>
   );
 };
 
