@@ -1,3 +1,7 @@
-import PlaygroundPage from "../modules/PlaygroundPage";
+import React from "react";
 
-export default PlaygroundPage;
+const Index = () => {
+  return <div>Home</div>;
+};
+
+export default Index;
