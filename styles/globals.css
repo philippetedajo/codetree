@@ -19,7 +19,7 @@ body {
   margin: 0;
   font-family: ddin, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  @apply bg-tree-hard text-gray-200 text-base;
+  @apply bg-tree-hard text-gray-300 text-base;
 }
 
 a {
@@ -35,7 +35,15 @@ a {
   outline: none !important;
 }
 
-/* Logo ====================================*/
+/* dashboard ====================================*/
+
+.dashboard-header {
+  @apply h-14 border-b border-black;
+}
+
+.dashboard-link {
+  @apply hover:bg-tree-soft hover:text-gray-200 h-8 pl-2 rounded cursor-pointer flex items-center;
+}
 
 /* editor settings forms ====================================*/
 
