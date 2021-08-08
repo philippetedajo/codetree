@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["www.themebeta.com"],
+    domains: ["cdn.dribbble.com"],
   },
 };
