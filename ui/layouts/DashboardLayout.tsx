@@ -6,8 +6,8 @@ import { ImFilesEmpty } from "react-icons/im";
 export const DashboardLayout: React.FC = ({ children }) => {
   return (
     <div className="flex h-screen">
-      <div className="border-r border-gray-800 w-60 flex flex-col justify-between fixed h-full">
-        <div className="h-14 border-b border-gray-800 flex items-center px-5">
+      <div className="border-r border-black w-60 flex flex-col justify-between fixed h-full">
+        <div className="h-14 border-b border-black flex items-center px-5">
           p -- lastname
         </div>
         <nav className="flex-1">
@@ -33,7 +33,7 @@ export const DashboardLayout: React.FC = ({ children }) => {
             </ActiveLink>
           </ul>
         </nav>
-        <div className="h-20 border-t border-gray-800 px-5">
+        <div className="h-20 border-t border-black px-5">
           <div className="mt-4 text-sm">Feedback and support</div>
           <div className="mt-1 text-sm">Community</div>
         </div>

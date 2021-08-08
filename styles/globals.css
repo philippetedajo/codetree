@@ -19,7 +19,7 @@ body {
   margin: 0;
   font-family: ddin, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  @apply bg-gray-900 text-gray-300 text-base;
+  @apply bg-tree-hard text-gray-300 text-base;
 }
 
 a {
@@ -38,15 +38,15 @@ a {
 /* dashboard ====================================*/
 
 .dashboard-header {
-  @apply h-14 border-b border-gray-800 bg-gray-900 z-50 flex items-center px-5 fixed w-full;
+  @apply h-14 border-b border-black bg-tree-hard z-50 flex items-center px-5 fixed w-full;
 }
 
 .dashboard-link {
-  @apply hover:bg-gray-800 hover:text-gray-200 h-8 pl-2 rounded cursor-pointer flex items-center;
+  @apply hover:bg-tree-soft hover:text-gray-200 h-8 pl-2 rounded cursor-pointer flex items-center;
 }
 
 .dashboard-link-active {
-  @apply bg-gray-800 hover:text-gray-200 h-8 pl-2 rounded cursor-pointer flex items-center;
+  @apply bg-tree-soft hover:text-gray-200 h-8 pl-2 rounded cursor-pointer flex items-center;
 }
 
 .custom-project-img {
