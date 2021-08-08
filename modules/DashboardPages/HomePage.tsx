@@ -5,7 +5,9 @@ import { Project } from "../../ui";
 const HomePage = () => {
   return (
     <div className="ml-60">
-      <div className="dashboard-header">Home</div>
+      <div className="dashboard-header">
+        <div>Home</div>
+      </div>
       <div className="grid grid-cols-4 gap-8 overflow-auto px-7 pt-24">
         <Project
           title="title"
