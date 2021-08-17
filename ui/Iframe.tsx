@@ -1,16 +1,16 @@
 import React, { useRef, useEffect } from "react";
+import io from "socket.io-client";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { editor_state, update_logs } from "../store/features/editorSlice";
 import {
   compiler_state,
   getCompileCode,
 } from "../store/features/compilerSlice";
-import { createIframeContent } from "../tools";
 import { IframeLoaderScreen } from "./IframeLoaderScreen";
 import { IframeErrorScreen } from "./IframeErrorScreen";
 
 const Iframe = () => {
-  const iframe = useRef<any>();
+  const socket = io("http://localhost:5000");
   const dispatch = useAppDispatch();
   const {
     editorValue: { tabs },
@@ -18,21 +18,7 @@ const Iframe = () => {
 
   const { output, isCompiling, esbuildStatus } = useAppSelector(compiler_state);
 
-  const htmlFrameContent = createIframeContent(tabs.css.data, tabs.html.data);
-
-  //=== incoming message
   useEffect(() => {
-    window.onmessage = function (response: MessageEvent) {
-      if (response.data && response.data.source === "iframe") {
-        let errorObject = {
-          method: "error",
-          id: Date.now(),
-          data: [`${response.data.message}`],
-        };
-        dispatch(update_logs(errorObject));
-      }
-    };
-
     if (tabs.javascript && esbuildStatus.isReady) {
       setTimeout(async () => {
         dispatch(
@@ -42,14 +28,15 @@ const Iframe = () => {
     }
   }, [dispatch, tabs, esbuildStatus.isReady]);
 
-  //=== outgoing massage
   useEffect(() => {
-    iframe.current.srcdoc = htmlFrameContent;
-
     setTimeout(async () => {
-      iframe?.current?.contentWindow?.postMessage(output.code, "*");
+      await socket.emit("message", {
+        html: tabs.html.data,
+        css: tabs.css.data,
+        javascript: output?.code,
+      });
     }, 40);
-  }, [htmlFrameContent, output]);
+  }, [socket, output, tabs]);
 
   return (
     <div>
@@ -67,23 +54,12 @@ const Iframe = () => {
         )}
 
         <iframe
+          src="http://localhost:5000"
           sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
           allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi; clipboard-read; clipboard-write"
           scrolling="auto"
           frameBorder="0"
-          ref={iframe}
           title="previewWindow"
-          srcDoc={htmlFrameContent}
-          onLoad={async () => {
-            const Hook = (await import("console-feed")).Hook;
-            Hook(
-              iframe.current.contentWindow.console,
-              (log) => {
-                dispatch(update_logs(log));
-              },
-              false
-            );
-          }}
         />
       </div>
     </div>
