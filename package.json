@@ -6,13 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"",
+    "db:seed": "npx prisma db seed --preview-feature",
+    "db:migrate": "npx prisma migrate dev --name init",
+    "db:studio": "npx prisma studio"
   },
   "dependencies": {
     "@babel/parser": "^7.14.6",
     "@babel/traverse": "^7.14.5",
     "@headlessui/react": "^1.3.0",
     "@monaco-editor/react": "^4.2.0",
+    "@prisma/client": "^2.29.1",
     "@reduxjs/toolkit": "^1.6.0",
     "@types/babel__traverse": "^7.11.1",
     "@types/nprogress": "^0.2.0",
@@ -33,10 +38,12 @@
     "react-redux": "^7.2.4",
     "react-split": "^2.0.11",
     "socket.io-client": "^4.1.3",
+    "ts-node": "^10.2.1",
     "use-debounce": "^7.0.0",
     "yarn": "^1.22.10"
   },
   "devDependencies": {
+    "@types/node": "^16.6.2",
     "@types/prettier": "^2.3.0",
     "autoprefixer": "^10.2.6",
     "eslint": "7.29.0",
