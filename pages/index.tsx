@@ -3,6 +3,7 @@ import { GetStaticProps } from "next";
 import prisma from "../libs/prisma";
 import { ProjectProps } from "../_types/prismaTypes";
 import { Project } from "../ui";
+import { CommonPageLayout } from "../ui/layouts";
 
 export const getStaticProps: GetStaticProps = async () => {
   const projects = await prisma.project.findMany({
@@ -37,12 +38,14 @@ const Home = (props: Props) => {
   ));
 
   return (
-    <div className="px-8 md:px-12 pt-20">
-      <h1 className="text-4xl">All public projects</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 overflow-auto pt-14">
-        {projectList}
+    <CommonPageLayout>
+      <div className="">
+        <h1 className="text-4xl">All public projects</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 overflow-auto pt-14">
+          {projectList}
+        </div>
       </div>
-    </div>
+    </CommonPageLayout>
   );
 };
 
