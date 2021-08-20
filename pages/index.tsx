@@ -37,9 +37,9 @@ const Home = (props: Props) => {
   ));
 
   return (
-    <div className="px-16 pt-20">
+    <div className="px-8 md:px-12 pt-20">
       <h1 className="text-4xl">All public projects</h1>
-      <div className="grid grid-cols-4 gap-8 overflow-auto pt-14">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 overflow-auto pt-14">
         {projectList}
       </div>
     </div>

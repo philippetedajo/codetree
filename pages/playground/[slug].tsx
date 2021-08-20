@@ -17,12 +17,18 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 };
 
 type Props = {
-  projects: ProjectProps;
+  project: ProjectProps;
 };
 
-const Slug = (props: Props) => {
-  console.log(props.projects);
-  return <div>Playground by id</div>;
+const Slug = ({ project }: Props) => {
+  console.log(project);
+  return (
+    <div>
+      <p className="text-xl"> {project?.author} </p>
+      <p> {project?.title} </p>
+      <p> {project?.description} </p>
+    </div>
+  );
 };
 
 export default Slug;

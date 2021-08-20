@@ -2,6 +2,11 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const main = async () => {
+  // clean db before seed : ONLY IN DEV MODE
+  await prisma.user.deleteMany({});
+  await prisma.project.deleteMany({});
+
+  // seed db
   const ben = await prisma.user.create({
     data: {
       name: "Ben Wolf",
@@ -33,6 +38,11 @@ const main = async () => {
             title: "Learn Typescript",
             description:
               "TypeScript is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language. TypeScript is designed for the development of large applications and transcompiles to JavaScript.",
+          },
+          {
+            title: "Dynamic Programming",
+            description:
+              "Dynamic Programming (DP) is an algorithmic technique for solving an optimization problem by breaking it down into simpler subproblems and utilizing the fact that the optimal solution to the overall problem depends upon the optimal solution to its subproblems.",
           },
         ],
       },
