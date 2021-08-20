@@ -10,8 +10,8 @@ export const CommonPageLayout: React.FC = ({ children }) => {
   // @ts-ignore
   return (
     <div className="">
-      <div className="h-12 px-8 md:px-12 flex items-center justify-between">
-        <div>Name</div>
+      <div className="h-14 px-8 md:px-12 flex items-center justify-between">
+        <div>Codetree</div>
         {isLoading ? <div>Loading ...</div> : ""}
         {session && !isLoading ? (
           <div className="flex">
