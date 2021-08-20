@@ -7,11 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
+model Project {
   id            Int         @id @default(autoincrement())
   title         String
-  content       String?
-  published     Boolean     @default(false)
+  description   String?
+  private       Boolean     @default(false)
   authorId      Int?
   author        User?       @relation(fields: [authorId], references: [id])
 }
@@ -22,7 +22,7 @@ model User {
   updatedAt     DateTime    @updatedAt @map(name: "updated_at")
   name          String?
   email         String?     @unique
-  posts         Post[]
+  projects      Project[]
   @@map(name: "users")
 }
 

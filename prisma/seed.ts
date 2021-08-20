@@ -2,21 +2,15 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const main = async () => {
-  // ======= Clean db
-  await prisma.user.deleteMany({});
-  await prisma.post.deleteMany({});
-
-  // ======= Seed db
   const ben = await prisma.user.create({
     data: {
       name: "Ben Wolf",
       email: "ben@wolf.com",
-      posts: {
+      projects: {
         create: [
           {
             title: "Learn C",
-            content: "An introduction to C programming language",
-            published: false,
+            description: "An introduction to C programming language",
           },
         ],
       },
@@ -27,17 +21,15 @@ const main = async () => {
     data: {
       name: "Lucy Snow",
       email: "lucy@snow.com",
-      posts: {
+      projects: {
         create: [
           {
             title: "Basic Data structure and algorithms",
-            content: "An introduction to data structure and algorithms",
-            published: false,
+            description: "An introduction to data structure and algorithms",
           },
           {
             title: "Learn Typescript",
-            content: "Everyone should learn Typescript",
-            published: false,
+            description: "Everyone should learn Typescript",
           },
         ],
       },

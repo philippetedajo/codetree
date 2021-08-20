@@ -1,6 +1,6 @@
 import React from "react";
 
-const SettingsPage = () => {
+const Settings = () => {
   return (
     <div className="ml-60">
       <div className="dashboard-header">Settings</div>
@@ -9,4 +9,4 @@ const SettingsPage = () => {
   );
 };
 
-export default SettingsPage;
+export default Settings;

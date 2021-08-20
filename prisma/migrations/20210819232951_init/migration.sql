@@ -1,9 +1,9 @@
 -- CreateTable
-CREATE TABLE "Post" (
+CREATE TABLE "Project" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
-    "content" TEXT,
-    "published" BOOLEAN NOT NULL DEFAULT false,
+    "description" TEXT,
+    "private" BOOLEAN NOT NULL DEFAULT false,
     "authorId" INTEGER,
 
     PRIMARY KEY ("id")
@@ -24,4 +24,4 @@ CREATE TABLE "users" (
 CREATE UNIQUE INDEX "users.email_unique" ON "users"("email");
 
 -- AddForeignKey
-ALTER TABLE "Post" ADD FOREIGN KEY ("authorId") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Project" ADD FOREIGN KEY ("authorId") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;

@@ -11,7 +11,7 @@ import { TemplateModal } from "../ui/Modals/TemplateModal";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
 
-const PlaygroundPage = () => {
+const Playground = () => {
   const dispatch = useAppDispatch();
   const { esbuildStatus } = useAppSelector(compiler_state);
 
@@ -50,4 +50,4 @@ const PlaygroundPage = () => {
   );
 };
 
-export default PlaygroundPage;
+export default Playground;
