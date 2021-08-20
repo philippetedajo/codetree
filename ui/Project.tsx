@@ -15,9 +15,13 @@ export const Project: React.FC<{ props: ProjectProps }> = ({ props }) => {
           src="https://cdn.dribbble.com/users/2624832/screenshots/15457526/media/e155407d8d3f0b64c0be314aa7ac8cc6.png"
         />
       </div>
-      <div className="mt-2.5 leading-4">
-        <p className="font-bold">{props.title}</p>
-        <p className="text-sm text-gray-500">{props.description}</p>
+      <div className="mt-2.5">
+        <p className="text-xs text-gray-500">May 24, 2021.</p>
+        <p className="text-xl font-bold my-2 truncate ">{props.title}</p>
+        <p className="text-sm text-gray-500 line-clamp mb-3">
+          {props.description}
+        </p>
+        <p className="text-sm">By {props.author?.name}</p>
       </div>
     </div>
   );

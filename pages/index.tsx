@@ -9,6 +9,15 @@ export const getStaticProps: GetStaticProps = async () => {
     where: {
       private: false,
     },
+    include: {
+      author: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+        },
+      },
+    },
   });
 
   return {
@@ -29,7 +38,7 @@ const Home = (props: Props) => {
 
   return (
     <div className="px-16 pt-20">
-      <h1 className="text-2xl">All public projects</h1>
+      <h1 className="text-4xl">All public projects</h1>
       <div className="grid grid-cols-4 gap-8 overflow-auto pt-14">
         {projectList}
       </div>
