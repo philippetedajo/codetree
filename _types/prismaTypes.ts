@@ -1,7 +1,7 @@
 export interface ProjectProps {
   id: number;
   title: string;
-  description: string;
+  content: string;
   private: boolean;
   authorId: number;
   author: {

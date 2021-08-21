@@ -15,8 +15,6 @@ const main = async () => {
         create: [
           {
             title: "Learn C",
-            description:
-              "Like most procedural languages in the ALGOL tradition, C has facilities for structured programming and allows lexical variable scope and recursion. Its static type system prevents unintended operations.",
           },
         ],
       },
@@ -31,18 +29,12 @@ const main = async () => {
         create: [
           {
             title: "Basic Data structure and algorithms",
-            description:
-              "In computer science, a data structure is a data organization, management, and storage format that enables efficient access and modification.",
           },
           {
             title: "Learn Typescript",
-            description:
-              "TypeScript is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language. TypeScript is designed for the development of large applications and transcompiles to JavaScript.",
           },
           {
             title: "Dynamic Programming",
-            description:
-              "Dynamic Programming (DP) is an algorithmic technique for solving an optimization problem by breaking it down into simpler subproblems and utilizing the fact that the optimal solution to the overall problem depends upon the optimal solution to its subproblems.",
           },
         ],
       },
