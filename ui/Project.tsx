@@ -23,9 +23,11 @@ export const Project: React.FC<{ props: ProjectProps }> = ({ props }) => {
           />
         </div>
         <div className="mt-2.5">
-          <p className="text-xs text-gray-500">May 24, 2021.</p>
-          <p className="text-xl font-bold my-2 truncate ">{props.title}</p>
-          <p className="text-sm">By {props.author?.name}</p>
+          <p className="text-xs ">May 24, 2021.</p>
+          <p className="text-xl font-bold mt-2.5 mb-1 truncate">
+            {props.title}
+          </p>
+          <p className="text-gray-500 text-sm">By {props.author?.name}</p>
         </div>
       </a>
     </Link>
