@@ -1,18 +1,16 @@
 import React, { useRef, useEffect } from "react";
-import io from "socket.io-client";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { editor_state, update_logs } from "../store/features/editorSlice";
 import {
   compiler_state,
   getCompileCode,
 } from "../store/features/compilerSlice";
+import { createIframeContent } from "../tools";
 import { IframeLoaderScreen } from "./IframeLoaderScreen";
 import { IframeErrorScreen } from "./IframeErrorScreen";
-import config from "../config/config";
 
 const Iframe = () => {
-  const socket = io(config.server.url);
-  const iframeRef = useRef<any>();
+  const iframe = useRef<any>();
   const dispatch = useAppDispatch();
   const {
     editorValue: { tabs },
@@ -20,7 +18,21 @@ const Iframe = () => {
 
   const { output, isCompiling, esbuildStatus } = useAppSelector(compiler_state);
 
+  const htmlFrameContent = createIframeContent(tabs.css.data, tabs.html.data);
+
+  //=== incoming message
   useEffect(() => {
+    window.onmessage = function (response: MessageEvent) {
+      if (response.data && response.data.source === "iframe") {
+        let errorObject = {
+          method: "error",
+          id: Date.now(),
+          data: [`${response.data.message}`],
+        };
+        dispatch(update_logs(errorObject));
+      }
+    };
+
     if (tabs.javascript && esbuildStatus.isReady) {
       setTimeout(async () => {
         dispatch(
@@ -30,34 +42,21 @@ const Iframe = () => {
     }
   }, [dispatch, tabs, esbuildStatus.isReady]);
 
+  //=== outgoing massage
   useEffect(() => {
-    setTimeout(async () => {
-      await socket.emit("message", {
-        html: tabs.html.data,
-        css: tabs.css.data,
-        javascript: output?.code,
-      });
-    }, 40);
-  }, [socket, output, tabs]);
+    iframe.current.srcdoc = htmlFrameContent;
 
-  useEffect(() => {
-    socket.on("onError", (error) => {
-      if (error.data && error.data.source === "iframe") {
-        let errorObject = {
-          method: "error",
-          id: Date.now(),
-          data: [`${error.data.message}`],
-        };
-        dispatch(update_logs(errorObject));
-      }
-    });
-  }, [socket, dispatch]);
+    setTimeout(async () => {
+      iframe?.current?.contentWindow?.postMessage(output.code, "*");
+    }, 40);
+  }, [htmlFrameContent, output]);
 
   return (
     <div>
       <div className="iframe-container">
         {/* build error */}
         {output.error ? <IframeErrorScreen err={output.error} /> : ""}
+
         {/* Loading screen */}
         {isCompiling ? (
           <div className="absolute h-full w-full bg-gray-50 z-40">
@@ -66,18 +65,19 @@ const Iframe = () => {
         ) : (
           ""
         )}
+
         <iframe
-          src={`${config.server.url}/api/live-preview`}
           sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
           allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi; clipboard-read; clipboard-write"
           scrolling="auto"
           frameBorder="0"
+          ref={iframe}
           title="previewWindow"
-          ref={iframeRef}
+          srcDoc={htmlFrameContent}
           onLoad={async () => {
             const Hook = (await import("console-feed")).Hook;
             Hook(
-              window.console,
+              iframe.current.contentWindow.console,
               (log) => {
                 dispatch(update_logs(log));
               },
