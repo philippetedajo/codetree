@@ -6,10 +6,11 @@ import "../styles/customlib/_customMonacoEditor.css";
 
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
-import { store } from "../store/store";
-
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
+
+import { store } from "../store/store";
+import { DashboardLayout } from "../ui/layouts";
 import "nprogress/nprogress.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -17,9 +18,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   Router.events.on("routeChangeComplete", () => NProgress.done());
   Router.events.on("routeChangeError", () => NProgress.done());
 
+  const router = useRouter();
+
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      {router.pathname.startsWith("/dashboard") ? (
+        <DashboardLayout>
+          <Component {...pageProps} />
+        </DashboardLayout>
+      ) : (
+        <Component {...pageProps} />
+      )}
     </Provider>
   );
 }

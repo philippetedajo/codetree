@@ -1,15 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fonts */
+@font-face {
+  font-family: "ddin";
+  src: local("ddin"), url("/fonts/d-din.regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ddinbold";
+  src: local("ddinbold"), url("/fonts/d-din.bold.ttf") format("truetype");
+}
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: ddin, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  @apply bg-tree-hard text-gray-300 text-base;
 }
 
 a {
@@ -25,12 +35,32 @@ a {
   outline: none !important;
 }
 
-/* Logo ====================================*/
+/* dashboard ====================================*/
 
-.codetree {
-  font-family: "Righteous", cursive;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
+.dashboard-header {
+  @apply h-14 border-b border-black bg-tree-hard z-50 flex items-center px-5;
+}
+
+.dashboard-link {
+  @apply hover:bg-tree-soft hover:text-gray-200 h-8 pl-2 rounded cursor-pointer flex items-center;
+}
+
+.dashboard-link-active {
+  @apply bg-tree-soft hover:text-gray-200 h-8 pl-2 rounded cursor-pointer flex items-center;
+}
+
+.custom-project-img {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+}
+
+.unset-img {
+  width: 100%;
+}
+.unset-img > div {
+  position: unset !important;
 }
 
 /* editor settings forms ====================================*/

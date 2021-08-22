@@ -19,14 +19,12 @@ export const createIframeContent = (css: string, html: string) => {
           "*"
         );
       };
-
       window.onunhandledrejection = function (err) {
         window.parent.postMessage(
           { source: "iframe", type: "iframe_error", message: err.reason },
           "*"
         );
       };
-
       //====== listen to income message of parent
       window.onmessage = function (event) {
         try {

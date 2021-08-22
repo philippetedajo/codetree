@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
-import { EditorFooter, EditorHead, SplitEditor } from "../ui/layouts";
+import { EditorFooter, EditorHead, SplitEditor } from "../../ui/layouts";
 
 //Main components
-import EditorInput from "../ui/EditorInput";
-import ConsoleLog from "../ui/ConsoleLog";
-import Iframe from "../ui/Iframe";
-import { SettingsModal } from "../ui/Modals";
-import { TemplateModal } from "../ui/Modals/TemplateModal";
-import { useAppDispatch, useAppSelector } from "../store/hook";
-import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
+import EditorInput from "../../ui/EditorInput";
+import ConsoleLog from "../../ui/ConsoleLog";
+import Iframe from "../../ui/Iframe";
+import { SettingsModal } from "../../ui/Modals";
+import { TemplateModal } from "../../ui/Modals/TemplateModal";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import {
+  compiler_state,
+  initEsbuild,
+} from "../../store/features/compilerSlice";
 
-const PlaygroundPage = () => {
+const Index = () => {
   const dispatch = useAppDispatch();
   const { esbuildStatus } = useAppSelector(compiler_state);
 
@@ -50,4 +53,4 @@ const PlaygroundPage = () => {
   );
 };
 
-export default PlaygroundPage;
+export default Index;
