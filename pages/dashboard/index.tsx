@@ -56,8 +56,8 @@ const Index = (props: Props) => {
         title: generatedName.dashed,
         content: "",
       },
-      onSuccess: (response) => {
-        Router.push(`/playground/${response.title}`);
+      onSuccess: async (response) => {
+        await Router.push(`/playground/${response.title}?key=${response.id}`);
       },
     });
   };
