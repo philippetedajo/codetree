@@ -13,18 +13,24 @@ export const DashboardLayout: React.FC = ({ children }) => {
     <div className="flex h-screen">
       <div className="border-r border-black w-2/12 flex flex-col justify-between h-full">
         <div className="h-14 border-b border-black flex items-center px-5">
-          <Link href="/">
-            <a className="mr-4 flex items-center">
-              <Image
-                src={`${session?.user?.image || "/"}`}
-                width={40}
-                height={40}
-                className="rounded-full"
-                alt="avatar"
-              />
-              <span className="ml-3 text-gray-500">{session?.user?.name}</span>
-            </a>
-          </Link>
+          {isLoading ? (
+            "loading..."
+          ) : (
+            <Link href="/">
+              <a className="mr-4 flex items-center">
+                <Image
+                  src={`${session?.user?.image}`}
+                  width={40}
+                  height={40}
+                  className="rounded-full"
+                  alt="avatar"
+                />
+                <span className="ml-3 text-gray-500">
+                  {session?.user?.name}
+                </span>
+              </a>
+            </Link>
+          )}
         </div>
         <nav className="flex-1">
           <ul className="mt-5 px-3 flex flex-col space-y-2 text-sm">
