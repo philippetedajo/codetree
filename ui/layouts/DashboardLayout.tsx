@@ -6,7 +6,7 @@ import { ImFilesEmpty } from "react-icons/im";
 export const DashboardLayout: React.FC = ({ children }) => {
   return (
     <div className="flex h-screen">
-      <div className="border-r border-black w-60 flex flex-col justify-between fixed h-full">
+      <div className="border-r border-black w-2/12 flex flex-col justify-between h-full">
         <div className="h-14 border-b border-black flex items-center px-5">
           p -- lastname
         </div>
@@ -39,7 +39,7 @@ export const DashboardLayout: React.FC = ({ children }) => {
         </div>
       </div>
 
-      <div className="w-full">{children}</div>
+      <div className="w-10/12">{children}</div>
     </div>
   );
 };

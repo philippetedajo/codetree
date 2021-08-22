@@ -24,9 +24,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
 const DashboardHome = () => {
   const onCreateProject = () => {};
+
   return (
-    <div className="ml-60">
-      <div className="dashboard-header">
+    <div className="">
+      <div className="dashboard-header flex justify-between">
         <div className="mr-2">Home</div>
         <div onClick={onCreateProject}>Create project</div>
       </div>
