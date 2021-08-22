@@ -2,7 +2,7 @@ import React from "react";
 import { GetServerSideProps } from "next";
 import generate from "project-name-generator";
 import Router from "next/router";
-import { getSession, session } from "next-auth/client";
+import { getSession } from "next-auth/client";
 import { useAxios } from "../../hooks/useAxios";
 import prisma from "../../libs/prisma";
 import { Project } from "../../ui";
@@ -70,7 +70,7 @@ const Index = (props: Props) => {
 
   return (
     <div className="">
-      <div className="dashboard-header flex justify-between">
+      <nav className="dashboard-header flex fixed w-full">
         <div className="mr-2">Home</div>
         {isLoading ? (
           "Loading..."
@@ -79,7 +79,7 @@ const Index = (props: Props) => {
             Create project
           </div>
         )}
-      </div>
+      </nav>
       <div className="grid grid-cols-4 gap-8 overflow-auto px-7 pt-24">
         {projectListByUser}
       </div>

@@ -38,7 +38,7 @@ a {
 /* dashboard ====================================*/
 
 .dashboard-header {
-  @apply h-14 border-b border-black bg-tree-hard z-50 flex items-center px-5 w-full;
+  @apply h-14 border-b border-black bg-tree-hard z-50 flex items-center px-5;
 }
 
 .dashboard-link {
