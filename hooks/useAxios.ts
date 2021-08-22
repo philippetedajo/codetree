@@ -6,7 +6,7 @@ interface UseAxiosProps {
   method?: Method;
   input?: object;
   token?: string;
-  onFinish?: () => void;
+  onSuccess?: (params: any) => void;
 }
 
 export const useAxios = () => {
@@ -19,7 +19,7 @@ export const useAxios = () => {
     method = "GET",
     input,
     token,
-    onFinish,
+    onSuccess,
   }: UseAxiosProps) => {
     let header = { "Content-Type": "application/json" };
     if (token) {
@@ -38,15 +38,13 @@ export const useAxios = () => {
       .then((response) => {
         setData(response);
         setIsLoading(false);
+        if (onSuccess) {
+          onSuccess(response?.data);
+        }
       })
       .then((error: any) => {
         setError(error);
         setIsLoading(false);
-      })
-      .then(() => {
-        if (onFinish) {
-          onFinish();
-        }
       });
   };
 

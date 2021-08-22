@@ -21,7 +21,6 @@ type Props = {
 };
 
 const Slug = ({ project }: Props) => {
-  console.log(project);
   return (
     <div>
       <p> {project?.title} </p>

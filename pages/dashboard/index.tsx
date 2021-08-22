@@ -6,6 +6,7 @@ import { getSession, session } from "next-auth/client";
 import { useAxios } from "../../hooks/useAxios";
 import prisma from "../../libs/prisma";
 import { Project } from "../../ui";
+import { ProjectProps } from "../../_types/prismaTypes";
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req });
@@ -16,7 +17,16 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   const projects = await prisma.project.findMany({
     where: {
-      author: { email: session?.user?.name },
+      author: { email: session?.user?.email },
+    },
+    include: {
+      author: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+        },
+      },
     },
   });
 
@@ -25,7 +35,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   };
 };
 
-const Index = () => {
+type Props = {
+  projects: ProjectProps[];
+};
+
+const Index = (props: Props) => {
   const { getData, isLoading, data } = useAxios();
 
   const onCreateProject = async () => {
@@ -42,13 +56,17 @@ const Index = () => {
         title: generatedName.dashed,
         content: "",
       },
-      onFinish: () => {
-        console.log("real callback");
+      onSuccess: (response) => {
+        Router.push(`/playground/${response.title}`);
       },
     });
   };
 
-  console.log(data);
+  const projectListByUser = props.projects.map((project) => (
+    <div key={project.id}>
+      <Project props={project} />
+    </div>
+  ));
 
   return (
     <div className="">
@@ -63,7 +81,7 @@ const Index = () => {
         )}
       </div>
       <div className="grid grid-cols-4 gap-8 overflow-auto px-7 pt-24">
-        {/**/}
+        {projectListByUser}
       </div>
     </div>
   );
