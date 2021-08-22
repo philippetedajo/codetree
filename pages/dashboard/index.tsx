@@ -11,7 +11,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req });
   if (!session) {
     res.statusCode = 403;
-    console.log("no session");
     return { props: { projects: [] } };
   }
 
@@ -42,6 +41,9 @@ const Index = () => {
       input: {
         title: generatedName.dashed,
         content: "",
+      },
+      onFinish: () => {
+        console.log("real callback");
       },
     });
   };
