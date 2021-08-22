@@ -16,7 +16,7 @@ export const DashboardLayout: React.FC = ({ children }) => {
           <Link href="/">
             <a className="mr-4 flex items-center">
               <Image
-                src={`${session?.user?.image}`}
+                src={`${session?.user?.image || "/"}`}
                 width={40}
                 height={40}
                 className="rounded-full"
