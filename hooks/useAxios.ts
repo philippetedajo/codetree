@@ -20,8 +20,8 @@ export const useAxios = () => {
       header["Authorization"] = token;
     }
 
-    console.log(input);
     setIsLoading(true);
+
     axios({
       url: url,
       method: method,
@@ -37,6 +37,9 @@ export const useAxios = () => {
         setIsLoading(false);
       });
   };
+
+  // to debugging
+  // console.log(data);
 
   return { getData, data, isLoading, error };
 };
