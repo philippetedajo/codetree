@@ -1,7 +1,14 @@
 import React from "react";
 import { GetServerSideProps } from "next";
+import { useForm } from "react-hook-form";
+import Router from "next/router";
+import { useAxios } from "../../hooks/useAxios";
 import prisma from "../../libs/prisma";
 import { ProjectProps } from "../../_types/prismaTypes";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { projectForm } from "../../_types/form";
+import { projectSchema } from "../../utils/formSchema";
+import { use } from "ast-types";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const project = await prisma.project.findUnique({
@@ -21,9 +28,49 @@ type Props = {
 };
 
 const Slug = ({ project }: Props) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<projectForm>({
+    resolver: yupResolver(projectSchema),
+  });
+
+  const { getData, data } = useAxios();
+
+  const onSubmit = async (data: projectForm) => {
+    await getData({
+      url: `/api/project/${project.id}`,
+      method: "PUT",
+      input: {
+        title: data.project_title,
+      },
+      onSuccess: (response) => {
+        Router.push(
+          `/playground/${response.title}?key=${response.id}`,
+          undefined,
+          { shallow: true }
+        );
+      },
+    });
+  };
+
+  console.log(data);
+
   return (
     <div className="p-10">
-      <p> {project?.title} </p>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          className=" bg-transparent"
+          defaultValue={project.title}
+          {...register("project_title")}
+        />
+        <small className="mb-1 text-red-500">
+          {errors.project_title?.message}
+        </small>
+
+        <button type="submit">Change</button>
+      </form>
     </div>
   );
 };

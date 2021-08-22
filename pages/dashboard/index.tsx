@@ -40,7 +40,7 @@ type Props = {
 };
 
 const Index = (props: Props) => {
-  const { getData, isLoading, data } = useAxios();
+  const { getData, isLoading } = useAxios();
 
   const onCreateProject = async () => {
     const generatedName = generate({

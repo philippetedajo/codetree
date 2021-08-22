@@ -7,6 +7,7 @@ interface UseAxiosProps {
   input?: object;
   token?: string;
   onSuccess?: (params: any) => void;
+  onFail?: (params: any) => void;
 }
 
 export const useAxios = () => {
@@ -20,6 +21,7 @@ export const useAxios = () => {
     input,
     token,
     onSuccess,
+    onFail,
   }: UseAxiosProps) => {
     let header = { "Content-Type": "application/json" };
     if (token) {
@@ -45,6 +47,9 @@ export const useAxios = () => {
       .then((error: any) => {
         setError(error);
         setIsLoading(false);
+        if (onFail) {
+          onFail(error);
+        }
       });
   };
 
