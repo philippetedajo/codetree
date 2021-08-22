@@ -80,7 +80,7 @@ const Index = (props: Props) => {
           </div>
         )}
       </nav>
-      <div className="grid grid-cols-4 gap-8 overflow-auto px-7 pt-24">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-8 overflow-auto px-7 pt-24">
         {projectListByUser}
       </div>
     </div>

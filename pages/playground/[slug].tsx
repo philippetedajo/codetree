@@ -22,7 +22,7 @@ type Props = {
 
 const Slug = ({ project }: Props) => {
   return (
-    <div>
+    <div className="p-10">
       <p> {project?.title} </p>
     </div>
   );
