@@ -4,11 +4,10 @@ import { useForm } from "react-hook-form";
 import Router from "next/router";
 import { useAxios } from "../../hooks/useAxios";
 import prisma from "../../libs/prisma";
-import { ProjectProps } from "../../_types/prismaTypes";
+import { ProjectProps } from "../../_types/uiTypes";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { projectForm } from "../../_types/form";
 import { projectSchema } from "../../utils/formSchema";
-import { use } from "ast-types";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const project = await prisma.project.findUnique({
@@ -54,8 +53,6 @@ const Slug = ({ project }: Props) => {
       },
     });
   };
-
-  console.log(data);
 
   return (
     <div className="p-10">

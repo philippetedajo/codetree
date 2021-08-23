@@ -6,7 +6,7 @@ import { getSession } from "next-auth/client";
 import { useAxios } from "../../hooks/useAxios";
 import prisma from "../../libs/prisma";
 import { Project } from "../../ui";
-import { ProjectProps } from "../../_types/prismaTypes";
+import { ProjectProps } from "../../_types/uiTypes";
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req });
@@ -45,7 +45,7 @@ const Index = (props: Props) => {
   const onCreateProject = async () => {
     const generatedName = generate({
       words: 2,
-      number: false,
+      number: true,
       alliterative: true,
     });
 
@@ -80,7 +80,7 @@ const Index = (props: Props) => {
           </div>
         )}
       </nav>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-8 overflow-auto px-7 pt-24">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 overflow-auto px-7 pt-24 pb-16">
         {projectListByUser}
       </div>
     </div>
