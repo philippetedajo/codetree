@@ -5,7 +5,9 @@ export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === "PUT") {
+  if (req.method === "GET") {
+    await getProject(req, res);
+  } else if (req.method === "PUT") {
     await updateProject(req, res);
   } else if (req.method === "DELETE") {
     await deleteProject(req, res);
@@ -16,9 +18,19 @@ export default async function handle(
   }
 }
 
+// GET /api/post/:id
+async function getProject(req: NextApiRequest, res: NextApiResponse) {
+  const result = await prisma.project.findUnique({
+    where: {
+      id: Number(req.query?.id) || -1,
+    },
+  });
+  res.json(result);
+}
+
 // UPDATE /api/post/:id
 async function updateProject(req: NextApiRequest, res: NextApiResponse) {
-  const project = await prisma.project.update({
+  const result = await prisma.project.update({
     where: {
       id: Number(req.query.id),
     },
@@ -26,13 +38,13 @@ async function updateProject(req: NextApiRequest, res: NextApiResponse) {
       title: req.body.title,
     },
   });
-  res.json(project);
+  res.json(result);
 }
 
 // DELETE /api/post/:id
 async function deleteProject(req: NextApiRequest, res: NextApiResponse) {
-  const post = await prisma.project.delete({
+  const result = await prisma.project.delete({
     where: { id: Number(req.query.id) },
   });
-  res.json(post);
+  res.json(result);
 }

@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { GiCrossedBones } from "react-icons/gi";
+import { BiWorld } from "react-icons/Bi";
 import { ProjectProps } from "../_types/uiTypes";
 
 export const Project: React.FC<{ props: ProjectProps; onDelete?: () => void }> =
