@@ -35,7 +35,7 @@ const Slug = ({ project }: Props) => {
     resolver: yupResolver(projectSchema),
   });
 
-  const { getData, data } = useAxios();
+  const { getData } = useAxios();
 
   const onSubmit = async (data: projectForm) => {
     await getData({

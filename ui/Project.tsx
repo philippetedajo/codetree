@@ -42,11 +42,15 @@ export const Project: React.FC<{ props: ProjectProps }> = ({ props }) => {
         <div className="flex items-center justify-between">
           <p className="text-lg font-bold truncate">{props.title}</p>
           {router.pathname === "/dashboard" ? (
-            <GiCrossedBones
-              className="cursor-pointer mr-2.5"
-              size={16}
-              onClick={onDeleteProject}
-            />
+            isLoading ? (
+              "Loading..."
+            ) : (
+              <GiCrossedBones
+                className="cursor-pointer mr-2.5"
+                size={16}
+                onClick={onDeleteProject}
+              />
+            )
           ) : (
             ""
           )}
