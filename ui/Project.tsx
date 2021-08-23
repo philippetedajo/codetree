@@ -33,7 +33,7 @@ export const Project: React.FC<{ props: ProjectProps; onDelete?: () => void }> =
             <p className="text-lg font-bold truncate">{props.title}</p>
             {onDelete ? (
               <GiCrossedBones
-                className="cursor-pointer mr-2.5"
+                className="cursor-pointer mr-2.5 hover:animate-spin"
                 size={16}
                 onClick={onDelete}
               />
