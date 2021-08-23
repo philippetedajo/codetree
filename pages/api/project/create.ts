@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/client";
 import prisma from "../../../libs/prisma";
 
-export default async function handle(
+export default async function createProject(
   req: NextApiRequest,
   res: NextApiResponse
 ) {

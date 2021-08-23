@@ -3,31 +3,17 @@ import { GetServerSideProps } from "next";
 import { useForm } from "react-hook-form";
 import Router from "next/router";
 import { useAxios } from "../../hooks/useAxios";
-import prisma from "../../libs/prisma";
-import { ProjectProps } from "../../_types/prismaTypes";
+import { ProjectProps } from "../../_types/uiTypes";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { projectForm } from "../../_types/form";
 import { projectSchema } from "../../utils/formSchema";
-import { use } from "ast-types";
-
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const project = await prisma.project.findUnique({
-    where: {
-      id: Number(query?.key) || -1,
-    },
-  });
-  return {
-    props: {
-      project,
-    },
-  };
-};
 
 type Props = {
   project: ProjectProps;
 };
 
 const Slug = ({ project }: Props) => {
+  console.log(project);
   const {
     register,
     handleSubmit,
@@ -36,7 +22,7 @@ const Slug = ({ project }: Props) => {
     resolver: yupResolver(projectSchema),
   });
 
-  const { getData, data } = useAxios();
+  const { getData } = useAxios();
 
   const onSubmit = async (data: projectForm) => {
     await getData({
@@ -54,8 +40,6 @@ const Slug = ({ project }: Props) => {
       },
     });
   };
-
-  console.log(data);
 
   return (
     <div className="p-10">
@@ -76,3 +60,15 @@ const Slug = ({ project }: Props) => {
 };
 
 export default Slug;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const res = await fetch(
+    `http://localhost:3000/api/project/${context.query.key}`
+  );
+  const project = await res.json();
+  return {
+    props: {
+      project,
+    },
+  };
+};
