@@ -1,37 +1,21 @@
-import React from "react";
-import { GetStaticProps } from "next";
-import prisma from "../libs/prisma";
-import { ProjectProps } from "../_types/prismaTypes";
+import React, { useEffect, useState } from "react";
+import { ProjectProps } from "../_types/uiTypes";
 import { Project } from "../ui";
+import axios from "axios";
 import { CommonPageLayout } from "../ui/layouts";
 
-export const getStaticProps: GetStaticProps = async () => {
-  const projects = await prisma.project.findMany({
-    where: {
-      private: false,
-    },
-    include: {
-      author: {
-        select: {
-          id: true,
-          name: true,
-          email: true,
-        },
-      },
-    },
-  });
+const Home = () => {
+  const [projects, setProjects] = useState<any>();
 
-  return {
-    props: { projects },
-  };
-};
+  useEffect(() => {
+    const getData = async () => {
+      const result = await axios.get("/api/project/getAll");
+      setProjects(result.data);
+    };
+    getData().catch((err) => console.log(err));
+  }, []);
 
-type Props = {
-  projects: ProjectProps[];
-};
-
-const Home = (props: Props) => {
-  const projectList = props.projects.map((project) => (
+  const projectList = projects?.map((project: ProjectProps) => (
     <div key={project.id}>
       <Project props={project} />
     </div>
@@ -42,7 +26,7 @@ const Home = (props: Props) => {
       <div className="">
         <h1 className="text-4xl">All public projects</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 overflow-auto pt-14">
-          {projectList}
+          {projects ? projectList : "Loading..."}
         </div>
       </div>
     </CommonPageLayout>

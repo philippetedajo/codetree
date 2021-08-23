@@ -1,46 +1,15 @@
-import React from "react";
-import { GetServerSideProps } from "next";
+import React, { useEffect, useState } from "react";
 import generate from "project-name-generator";
 import Router from "next/router";
-import { getSession } from "next-auth/client";
+import axios from "axios";
 import { useAxios } from "../../hooks/useAxios";
-import prisma from "../../libs/prisma";
 import { Project } from "../../ui";
 import { ProjectProps } from "../../_types/uiTypes";
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const session = await getSession({ req });
-  if (!session) {
-    res.statusCode = 403;
-    return { props: { projects: [] } };
-  }
-
-  const projects = await prisma.project.findMany({
-    where: {
-      author: { email: session?.user?.email },
-    },
-    include: {
-      author: {
-        select: {
-          id: true,
-          name: true,
-          email: true,
-        },
-      },
-    },
-  });
-
-  return {
-    props: { projects },
-  };
-};
-
-type Props = {
-  projects: ProjectProps[];
-};
-
-const Index = (props: Props) => {
+const Index = () => {
   const { getData, isLoading } = useAxios();
+  const [projects, setProjects] = useState<any>();
+  const [projectsHasUpdate, setProjectsHasUpdate] = useState<boolean>(false);
 
   const onCreateProject = async () => {
     const generatedName = generate({
@@ -62,9 +31,25 @@ const Index = (props: Props) => {
     });
   };
 
-  const projectListByUser = props.projects.map((project) => (
+  const onDeleteProject = async (id: number) => {
+    await getData({
+      url: `/api/project/${id}`,
+      method: "DELETE",
+    });
+    setProjectsHasUpdate(true);
+  };
+
+  useEffect(() => {
+    const getData = async () => {
+      const result = await axios.get("/api/project/getAllByUser");
+      setProjects(result.data);
+    };
+    getData().catch((err) => console.log(err));
+  }, [projectsHasUpdate]);
+
+  const projectListByUser = projects?.map((project: ProjectProps) => (
     <div key={project.id}>
-      <Project props={project} />
+      <Project props={project} onDelete={() => onDeleteProject(project.id)} />
     </div>
   ));
 
