@@ -8,18 +8,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { projectForm } from "../../_types/form";
 import { projectSchema } from "../../utils/formSchema";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await fetch(
-    `http://localhost:3000/api/project/${context.query.key}`
-  );
-  const project = await res.json();
-  return {
-    props: {
-      project,
-    },
-  };
-};
-
 type Props = {
   project: ProjectProps;
 };
@@ -72,3 +60,15 @@ const Slug = ({ project }: Props) => {
 };
 
 export default Slug;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const res = await fetch(
+    `http://localhost:3000/api/project/${context.query.key}`
+  );
+  const project = await res.json();
+  return {
+    props: {
+      project,
+    },
+  };
+};
