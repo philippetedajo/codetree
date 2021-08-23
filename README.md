@@ -7,7 +7,7 @@
 
 ![](public/preview-image.png)
 
-# Codetree
+# Codetree : Standalone version - 0.1
 
 Codetree is a lightning fast ⚡️⚡️⚡️ code playground with automatic module detection as main feature. Unlike https://codepen.io/, Codetree is built on top of WebAssembly using esbuild, the code is compiled directly in your browser, without any backend and converted into machine language, allowing extremely fast execution and offline-mode.
 
