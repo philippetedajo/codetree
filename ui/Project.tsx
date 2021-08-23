@@ -3,12 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { GiCrossedBones } from "react-icons/gi";
 import { ProjectProps } from "../_types/uiTypes";
-import { useRouter } from "next/router";
 
-export const Project: React.FC<{ props: ProjectProps; onDelete: () => void }> =
+export const Project: React.FC<{ props: ProjectProps; onDelete?: () => void }> =
   ({ props, onDelete }) => {
-    const router = useRouter();
-
     return (
       <div>
         <Link
@@ -33,7 +30,7 @@ export const Project: React.FC<{ props: ProjectProps; onDelete: () => void }> =
         <div className="mt-2.5">
           <div className="flex items-center justify-between">
             <p className="text-lg font-bold truncate">{props.title}</p>
-            {router.pathname === "/dashboard" ? (
+            {onDelete ? (
               <GiCrossedBones
                 className="cursor-pointer mr-2.5"
                 size={16}
