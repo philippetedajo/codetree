@@ -20,7 +20,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const Slug = (project: ProjectProps) => {
+type Props = {
+  project: ProjectProps;
+};
+
+const Slug = ({ project }: Props) => {
   console.log(project);
   const {
     register,
