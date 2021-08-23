@@ -20,11 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-type Props = {
-  project: ProjectProps;
-};
-
-const Slug = ({ project }: Props) => {
+const Slug = (project: ProjectProps) => {
   console.log(project);
   const {
     register,
@@ -34,7 +30,7 @@ const Slug = ({ project }: Props) => {
     resolver: yupResolver(projectSchema),
   });
 
-  const { getData, data } = useAxios();
+  const { getData } = useAxios();
 
   const onSubmit = async (data: projectForm) => {
     await getData({
@@ -52,8 +48,6 @@ const Slug = ({ project }: Props) => {
       },
     });
   };
-
-  console.log(data);
 
   return (
     <div className="p-10">
