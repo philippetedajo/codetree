@@ -4,6 +4,7 @@ CREATE TABLE "Project" (
     "title" TEXT NOT NULL,
     "content" TEXT,
     "private" BOOLEAN NOT NULL DEFAULT false,
+    "viewCount" INTEGER NOT NULL DEFAULT 0,
     "authorId" INTEGER,
 
     PRIMARY KEY ("id")

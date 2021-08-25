@@ -2,6 +2,10 @@
   provider = "prisma-client-js"
  }
 
+ generator dbml {
+   provider = "prisma-dbml-generator"
+ }
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -12,6 +16,7 @@ model Project {
   title              String
   content            String?
   private            Boolean     @default(false)
+  viewCount          Int         @default(0)
   authorId           Int?
   author             User?       @relation(fields: [authorId], references: [id])
 }

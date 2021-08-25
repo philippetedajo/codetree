@@ -5,6 +5,7 @@ export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log(req);
   if (req.method === "GET") {
     await getProject(req, res);
   } else if (req.method === "PUT") {
@@ -36,6 +37,20 @@ async function updateProject(req: NextApiRequest, res: NextApiResponse) {
     },
     data: {
       title: req.body.title,
+    },
+  });
+  res.json(result);
+}
+
+async function incrementViewCount(req: NextApiRequest, res: NextApiResponse) {
+  const result = await prisma.project.update({
+    where: {
+      id: Number(req.query?.id) || -1,
+    },
+    data: {
+      viewCount: {
+        increment: 1,
+      },
     },
   });
   res.json(result);

@@ -29,9 +29,11 @@ const main = async () => {
         create: [
           {
             title: "Basic Data structure and algorithms",
+            viewCount: 15,
           },
           {
             title: "Learn Typescript",
+            viewCount: 62,
           },
           {
             title: "Dynamic Programming",

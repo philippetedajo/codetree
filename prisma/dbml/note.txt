@@ -1,0 +1,2 @@
+Generate dbml using: prisma-dbml-generator
+Generate docs using: https://dbdiagram.io/
