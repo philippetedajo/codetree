@@ -7,7 +7,6 @@ Table Project {
   title String [not null]
   content String
   private Boolean [not null, default: false]
-  viewCount Int [not null, default: 0]
   authorId Int
   author User
 }

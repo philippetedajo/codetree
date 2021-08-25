@@ -11,16 +11,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Project {
-  id                 Int         @id @default(autoincrement())
-  title              String
-  content            String?
-  private            Boolean     @default(false)
-  viewCount          Int         @default(0)
-  authorId           Int?
-  author             User?       @relation(fields: [authorId], references: [id])
-}
-
 model User {
   id                 Int         @id @default(autoincrement())
   createdAt          DateTime    @default(now()) @map(name: "created_at")
@@ -30,8 +20,30 @@ model User {
   emailVerified      DateTime?   @map(name: "email_verified")
   image              String?
   projects           Project[]
+  likes              Like[]
 
   @@map(name: "users")
+}
+
+model Project {
+  id                 Int         @id @default(autoincrement())
+  title              String
+  content            String?
+  private            Boolean     @default(false)
+  likes              Like[]
+  // ==== Realtions field
+  authorId           Int?
+  author             User?       @relation(fields: [authorId], references: [id])
+}
+
+model Like {
+  id                 Int         @id @default(autoincrement())
+  // ==== Realtions field
+  projectId          Int?
+  project            Project?    @relation(fields: [projectId], references: [id])
+
+  authorId           Int?
+  author             User?       @relation(fields: [authorId], references: [id])
 }
 
 model Account {
