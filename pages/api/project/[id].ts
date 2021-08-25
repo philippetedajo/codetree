@@ -5,7 +5,6 @@ export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log(req);
   if (req.method === "GET") {
     await getProject(req, res);
   } else if (req.method === "PUT") {

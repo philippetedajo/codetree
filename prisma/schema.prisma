@@ -21,6 +21,7 @@ model User {
   image              String?
   projects           Project[]
   likes              Like[]
+  comments           Comment[]
 
   @@map(name: "users")
 }
@@ -31,6 +32,7 @@ model Project {
   content            String?
   private            Boolean     @default(false)
   likes              Like[]
+  comments           Comment[]
   // ==== Realtions field
   authorId           Int?
   author             User?       @relation(fields: [authorId], references: [id])
@@ -38,6 +40,18 @@ model Project {
 
 model Like {
   id                 Int         @id @default(autoincrement())
+  // ==== Realtions field
+  projectId          Int?
+  project            Project?    @relation(fields: [projectId], references: [id])
+
+  authorId           Int?
+  author             User?       @relation(fields: [authorId], references: [id])
+}
+
+
+model Comment {
+  id                 Int         @id @default(autoincrement())
+  text               String
   // ==== Realtions field
   projectId          Int?
   project            Project?    @relation(fields: [projectId], references: [id])

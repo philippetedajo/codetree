@@ -2,15 +2,6 @@
 //// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 //// ------------------------------------------------------
 
-Table Project {
-  id Int [pk, increment]
-  title String [not null]
-  content String
-  private Boolean [not null, default: false]
-  authorId Int
-  author User
-}
-
 Table User {
   id Int [pk, increment]
   createdAt DateTime [default: `now()`, not null]
@@ -20,6 +11,36 @@ Table User {
   emailVerified DateTime
   image String
   projects Project [not null]
+  likes Like [not null]
+  comments Comment [not null]
+}
+
+Table Project {
+  id Int [pk, increment]
+  title String [not null]
+  content String
+  private Boolean [not null, default: false]
+  likes Like [not null]
+  comments Comment [not null]
+  authorId Int
+  author User
+}
+
+Table Like {
+  id Int [pk, increment]
+  projectId Int
+  project Project
+  authorId Int
+  author User
+}
+
+Table Comment {
+  id Int [pk, increment]
+  text String [not null]
+  projectId Int
+  project Project
+  authorId Int
+  author User
 }
 
 Table Account {
@@ -47,3 +68,11 @@ Table Session {
 }
 
 Ref: Project.authorId > User.id
+
+Ref: Like.projectId > Project.id
+
+Ref: Like.authorId > User.id
+
+Ref: Comment.projectId > Project.id
+
+Ref: Comment.authorId > User.id
