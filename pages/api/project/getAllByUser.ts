@@ -22,6 +22,7 @@ export default async function getAllProjectsByUser(
           id: true,
           name: true,
           email: true,
+          image: true,
         },
       },
     },

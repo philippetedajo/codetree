@@ -42,20 +42,6 @@ async function updateProject(req: NextApiRequest, res: NextApiResponse) {
   res.json(result);
 }
 
-async function incrementViewCount(req: NextApiRequest, res: NextApiResponse) {
-  const result = await prisma.project.update({
-    where: {
-      id: Number(req.query?.id) || -1,
-    },
-    data: {
-      viewCount: {
-        increment: 1,
-      },
-    },
-  });
-  res.json(result);
-}
-
 // DELETE /api/post/:id
 async function deleteProject(req: NextApiRequest, res: NextApiResponse) {
   const result = await prisma.project.delete({

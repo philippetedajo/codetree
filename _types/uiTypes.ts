@@ -7,5 +7,6 @@ export interface ProjectProps {
   author: {
     name: string;
     email: string;
+    image: string;
   } | null;
 }
