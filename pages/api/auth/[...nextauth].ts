@@ -22,8 +22,6 @@ const options = {
         },
       });
       const emails = await res.json();
-      console.log(account);
-      console.log(emails);
       if (!emails || emails.length === 0) {
         return;
       }
