@@ -13,7 +13,8 @@ type Props = {
 };
 
 const Slug = ({ project }: Props) => {
-  console.log(project);
+  const { getData } = useAxios();
+
   const {
     register,
     handleSubmit,
@@ -21,8 +22,6 @@ const Slug = ({ project }: Props) => {
   } = useForm<projectForm>({
     resolver: yupResolver(projectSchema),
   });
-
-  const { getData } = useAxios();
 
   const onSubmit = async (data: projectForm) => {
     await getData({

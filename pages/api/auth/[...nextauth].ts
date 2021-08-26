@@ -14,6 +14,10 @@ const options = {
   adapter: Adapters.Prisma.Adapter({ prisma }),
   secret: process.env.SECRET,
   callbacks: {
+    session: async (session: any, user: any) => {
+      session.userId = user.id;
+      return Promise.resolve(session);
+    },
     signIn: async (profile: any, account: any, metadata: any) => {
       // https://developer.github.com/v3/users/emails/#list-email-addresses-for-the-authenticated-user
       const res = await fetch("https://api.github.com/user/emails", {

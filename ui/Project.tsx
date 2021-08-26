@@ -4,12 +4,26 @@ import Link from "next/link";
 import { AiOutlineHeart } from "react-icons/ai";
 import { GiCrossedBones } from "react-icons/gi";
 import { ProjectProps } from "../_types/uiTypes";
+import { useAxios } from "../hooks/useAxios";
 
 export const Project: React.FC<{ props: ProjectProps; onDelete?: () => void }> =
   ({ props, onDelete }) => {
-    console.log(props.author);
+    // ====
+    const { getData, data } = useAxios();
+    const onTest = async () => {
+      await getData({
+        url: "/api/like/toggleLike",
+        method: "PUT",
+        input: {
+          projectId: props.id,
+        },
+      });
+    };
+    console.log(data);
+    //====
     return (
       <div>
+        <button onClick={onTest}>Hello</button>
         <div className="relative">
           <Link
             href={{

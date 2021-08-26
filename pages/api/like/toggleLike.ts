@@ -7,37 +7,63 @@ export default async function toggleLike(
   res: NextApiResponse
 ) {
   const session = await getSession({ req });
-  console.log(session);
 
   // 1. make sure that the user is authenticated
   if (session) {
-    // 2. check if the like already exists, if it exists remove it
-    const likes = await prisma.like.findMany({
+    // 2. check if the like already exists
+    const [like] = await prisma.like.findMany({
       where: {
-        AND: [{ authorId: 1 }, { projectId: 1 }],
+        AND: [
+          { authorId: Number(session.userId) },
+          { projectId: req.body.projectId },
+        ],
       },
     });
 
-    if (likes) {
-      await prisma.like.delete({
-        where: {
-          id: 1,
-        },
-      });
-      return true;
+    //3. if it exists remove it
+    if (like) {
+      try {
+        await prisma.like.delete({
+          where: {
+            id: like.id,
+          },
+        });
+        res.json({ success: true, message: "Successfully unlike the project" });
+      } catch (err) {
+        console.log(err);
+        res.status(500).json({ success: false, message: err.message });
+      }
     }
 
-    // 3. if not, create a like
-    if (!likes) {
-      await prisma.like.create({
-        data: {
-          authorId: 1,
-          projectId: 1,
-        },
-      });
+    // 4. if not, create a like
+    if (!like) {
+      try {
+        await prisma.like.create({
+          data: {
+            project: {
+              connect: {
+                id: req.body.projectId,
+              },
+            },
+            author: {
+              connect: {
+                id: Number(session.userId),
+              },
+            },
+          },
+        });
+        res.json({ success: true, message: "Successfully like the project" });
+      } catch (err) {
+        console.log(err);
+        res.status(500).json({ success: false, message: err.message });
+      }
     }
+
+    return;
+  } else {
+    res.status(500).json({
+      success: false,
+      message: "You need to be authenticated to perform this operation",
+    });
   }
-
-  // 4. return boolean
-  return false;
 }
