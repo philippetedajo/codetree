@@ -13,7 +13,6 @@ export const Project: React.FC<ProjectComponentProps> = ({
   console.log(props);
   return (
     <div>
-      {onToggleLike ? <button onClick={onToggleLike}>Hello</button> : ""}
       <div className="relative">
         <Link
           href={{
@@ -51,10 +50,18 @@ export const Project: React.FC<ProjectComponentProps> = ({
         <div className="flex items-center justify-between">
           <p className="text-lg font-bold truncate w-9/12">{props.title}</p>
 
-          <div className="flex items-center">
-            <AiOutlineHeart className="cursor-pointer mr-1" size={16} />
-            <p className="text-sm ">24</p>
-          </div>
+          {onToggleLike ? (
+            <div className="flex items-center">
+              <AiOutlineHeart
+                className="cursor-pointer mr-1"
+                size={16}
+                onClick={onToggleLike}
+              />
+              <p className="text-sm ">{props.likes.length}</p>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="flex items-center mt-1">
           <Image

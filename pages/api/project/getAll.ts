@@ -18,6 +18,11 @@ export default async function getAllProjects(
           image: true,
         },
       },
+      likes: {
+        select: {
+          id: true,
+        },
+      },
     },
   });
 

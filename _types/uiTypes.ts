@@ -3,6 +3,7 @@ export interface ProjectProps {
   title: string;
   content: string;
   private: boolean;
+  likes: [];
   authorId: number;
   author: {
     name: string;
