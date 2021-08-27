@@ -1,26 +1,33 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/client";
 import prisma from "../../../libs/prisma";
+import nc from "../../../server-utils/nc";
 
-export default async function createProject(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { title, content } = req.body;
-  const session = await getSession({ req });
+export default nc
+  // POST /api/project/create
+  .post(async (req, res) => {
+    try {
+      const { title, content } = req.body;
+      const session = await getSession({ req });
 
-  const result = await prisma.project.create({
-    data: {
-      content,
-      title,
-      author: {
-        connect: {
-          // @ts-ignore
-          email: session?.user?.email,
+      const project = await prisma.project.create({
+        data: {
+          content,
+          title,
+          author: {
+            connect: {
+              email: session?.user?.email || undefined,
+            },
+          },
         },
-      },
-    },
-  });
+      });
 
-  res.json(result);
-}
+      res.status(200).json({
+        success: true,
+        message: "Project successfully created",
+        data: { project },
+      });
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  });

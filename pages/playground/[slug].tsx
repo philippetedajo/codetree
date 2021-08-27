@@ -6,7 +6,7 @@ import { useAxios } from "../../hooks/useAxios";
 import { ProjectProps } from "../../_types/uiTypes";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { projectForm } from "../../_types/form";
-import { projectSchema } from "../../utils/formSchema";
+import { updateProjectSchema } from "../../utils/validationSchema";
 
 type Props = {
   project: ProjectProps;
@@ -20,7 +20,7 @@ const Slug = ({ project }: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm<projectForm>({
-    resolver: yupResolver(projectSchema),
+    resolver: yupResolver(updateProjectSchema),
   });
 
   const onSubmit = async (data: projectForm) => {

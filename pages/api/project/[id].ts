@@ -1,50 +1,69 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../libs/prisma";
+import nc from "../../../server-utils/nc";
 
-export default async function handle(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method === "GET") {
-    await getProject(req, res);
-  } else if (req.method === "PUT") {
-    await updateProject(req, res);
-  } else if (req.method === "DELETE") {
-    await deleteProject(req, res);
-  } else {
-    throw new Error(
-      `The HTTP ${req.method} method is not supported at this route.`
-    );
-  }
-}
+export default nc
+  // GET /api/project/:id
+  .get(async (req, res) => {
+    try {
+      const project = await prisma.project.findUnique({
+        where: {
+          id: Number(req.query?.id),
+        },
+      });
 
-// GET /api/post/:id
-async function getProject(req: NextApiRequest, res: NextApiResponse) {
-  const result = await prisma.project.findUnique({
-    where: {
-      id: Number(req.query?.id) || -1,
-    },
+      res.status(200).json({
+        success: true,
+        message: "Project successfully found",
+        data: { project },
+      });
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  })
+
+  // UPDATE /api/project/:id
+  .put(async (req, res) => {
+    try {
+      const project = await prisma.project.update({
+        where: {
+          id: Number(req.query.id),
+        },
+        data: {
+          title: req.body.title,
+        },
+      });
+
+      res.status(200).json({
+        success: true,
+        message: "Project successfully updated",
+        data: { project },
+      });
+    } catch (err) {
+      if (err.code === "P2025") {
+        res
+          .status(400)
+          .json({ success: false, message: err.meta.cause, data: null });
+      }
+    }
+  })
+
+  // DELETE /api/project/:id
+  .delete(async (req, res) => {
+    try {
+      await prisma.project.delete({
+        where: { id: Number(req.query.id) },
+      });
+
+      res.status(200).json({
+        success: true,
+        message: "Project successfully deleted",
+        data: null,
+      });
+    } catch (err) {
+      if (err.code === "P2025") {
+        res
+          .status(400)
+          .json({ success: false, message: err.meta.cause, data: null });
+      }
+    }
   });
-  res.json(result);
-}
-
-// UPDATE /api/post/:id
-async function updateProject(req: NextApiRequest, res: NextApiResponse) {
-  const result = await prisma.project.update({
-    where: {
-      id: Number(req.query.id),
-    },
-    data: {
-      title: req.body.title,
-    },
-  });
-  res.json(result);
-}
-
-// DELETE /api/post/:id
-async function deleteProject(req: NextApiRequest, res: NextApiResponse) {
-  const result = await prisma.project.delete({
-    where: { id: Number(req.query.id) },
-  });
-  res.json(result);
-}
