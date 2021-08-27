@@ -10,7 +10,6 @@ export const Project: React.FC<ProjectComponentProps> = ({
   onDelete,
   onToggleLike,
 }) => {
-  console.log(props);
   return (
     <div>
       <div className="relative">
