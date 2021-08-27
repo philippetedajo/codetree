@@ -3,21 +3,46 @@ import { ProjectProps } from "../_types/uiTypes";
 import { Project } from "../ui";
 import axios from "axios";
 import { CommonPageLayout } from "../ui/layouts";
+import { useAxios } from "../hooks/useAxios";
 
 const Home = () => {
+  const { getData, data } = useAxios();
   const [projects, setProjects] = useState<any>();
 
+  //  =========================================================
+  //  Get all projects   ======================================
+  //  =========================================================
   useEffect(() => {
-    const getData = async () => {
+    const onGetAllProject = async () => {
       const result = await axios.get("/api/project/getAll");
       setProjects(result.data);
     };
-    getData().catch((err) => console.log(err));
+    onGetAllProject().catch((err) => console.log(err));
   }, []);
+
+  //  =========================================================
+  //  Toggle like on a project  ===============================
+  //  =========================================================
+  const onToggleLikeProject = async (id: number) => {
+    await getData({
+      url: "/api/like/toggleLike",
+      method: "PUT",
+      input: {
+        projectId: id,
+      },
+    });
+  };
+
+  console.log(data);
+
+  //  Tsx ========================================================================================================
 
   const projectList = projects?.map((project: ProjectProps) => (
     <div key={project.id}>
-      <Project props={project} />
+      <Project
+        props={project}
+        onToggleLike={() => onToggleLikeProject(project.id)}
+      />
     </div>
   ));
 

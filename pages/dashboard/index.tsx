@@ -11,6 +11,9 @@ const Index = () => {
   const [projects, setProjects] = useState<any>();
   const [projectsHasUpdate, setProjectsHasUpdate] = useState<boolean>(false);
 
+  //  =========================================================
+  //  Create a project   ======================================
+  //  =========================================================
   const onCreateProject = async () => {
     const generatedName = generate({
       words: 2,
@@ -31,6 +34,9 @@ const Index = () => {
     });
   };
 
+  //  =========================================================
+  //  Delete a project   ======================================
+  //  =========================================================
   const onDeleteProject = async (id: number) => {
     await getData({
       url: `/api/project/${id}`,
@@ -39,13 +45,18 @@ const Index = () => {
     setProjectsHasUpdate(true);
   };
 
+  //  =========================================================
+  //  Get all projects by User   ===============================
+  //  =========================================================
   useEffect(() => {
-    const getData = async () => {
+    const onGetAllProjectByUser = async () => {
       const result = await axios.get("/api/project/getAllByUser");
       setProjects(result.data);
     };
-    getData().catch((err) => console.log(err));
+    onGetAllProjectByUser().catch((err) => console.log(err));
   }, [projectsHasUpdate]);
+
+  //  Tsx ========================================================================================================
 
   const projectListByUser = projects?.map((project: ProjectProps) => (
     <div key={project.id}>
