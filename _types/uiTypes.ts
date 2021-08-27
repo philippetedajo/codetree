@@ -10,3 +10,9 @@ export interface ProjectProps {
     image: string;
   } | null;
 }
+
+export interface ProjectComponentProps {
+  props: ProjectProps;
+  onDelete?: () => Promise<void>;
+  onToggleLike?: () => Promise<void>;
+}

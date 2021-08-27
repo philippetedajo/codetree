@@ -3,13 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineHeart } from "react-icons/ai";
 import { GiCrossedBones } from "react-icons/gi";
-import { ProjectProps } from "../_types/uiTypes";
+import { ProjectComponentProps } from "../_types/uiTypes";
 
-export const Project: React.FC<{
-  props: ProjectProps;
-  onDelete?: () => Promise<void>;
-  onToggleLike?: () => Promise<void>;
-}> = ({ props, onDelete, onToggleLike }) => {
+export const Project: React.FC<ProjectComponentProps> = ({
+  props,
+  onDelete,
+  onToggleLike,
+}) => {
+  console.log(props);
   return (
     <div>
       {onToggleLike ? <button onClick={onToggleLike}>Hello</button> : ""}
