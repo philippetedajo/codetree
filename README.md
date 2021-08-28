@@ -24,3 +24,7 @@ No need to install any npm package manually, codetree automatically detects the 
 - Auto-completion and intelliSense.
 
 - Offline mode.
+
+## Technologies
+
+- Nextjs
