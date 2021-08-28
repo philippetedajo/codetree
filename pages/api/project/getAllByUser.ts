@@ -1,32 +1,39 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../libs/prisma";
 import { getSession } from "next-auth/client";
+import nc from "../../../server-utils/nc";
 
-export default async function getAllProjectsByUser(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const session = await getSession({ req });
-  if (!session) {
-    res.statusCode = 403;
-    return { props: { projects: [] } };
-  }
+export default nc
+  //GET /api/project/getAllByUser
+  .get(async (req, res) => {
+    try {
+      const session = await getSession({ req });
+      if (!session) {
+        res.statusCode = 403;
+        return { props: { projects: [] } };
+      }
 
-  const result = await prisma.project.findMany({
-    where: {
-      author: { email: session?.user?.email },
-    },
-    include: {
-      author: {
-        select: {
-          id: true,
-          name: true,
-          email: true,
-          image: true,
+      const projects = await prisma.project.findMany({
+        where: {
+          author: { email: session?.user?.email },
         },
-      },
-    },
-  });
+        include: {
+          author: {
+            select: {
+              id: true,
+              name: true,
+              email: true,
+              image: true,
+            },
+          },
+        },
+      });
 
-  res.json(result);
-}
+      res.status(200).json({
+        success: true,
+        message: "Projects successfully found",
+        data: { projects },
+      });
+    } catch (err) {
+      throw new Error(err);
+    }
+  });
