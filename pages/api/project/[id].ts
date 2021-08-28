@@ -2,7 +2,7 @@ import prisma from "../../../libs/prisma";
 import nc from "../../../server-utils/nc";
 
 export default nc
-  // GET /api/project/:id
+  // GET /api/project/:id ========================
   .get(async (req, res) => {
     try {
       const project = await prisma.project.findUnique({
@@ -21,7 +21,7 @@ export default nc
     }
   })
 
-  // UPDATE /api/project/:id
+  // UPDATE /api/project/:id ========================
   .put(async (req, res) => {
     try {
       const project = await prisma.project.update({
@@ -47,7 +47,7 @@ export default nc
     }
   })
 
-  // DELETE /api/project/:id
+  // DELETE /api/project/:id ========================
   .delete(async (req, res) => {
     try {
       await prisma.project.delete({

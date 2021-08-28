@@ -2,7 +2,7 @@ import prisma from "../../../libs/prisma";
 import nc from "../../../server-utils/nc";
 
 export default nc
-  //GET /api/project/getAll
+  //GET /api/project/getAll ========================
   .get(async (req, res) => {
     try {
       const projects = await prisma.project.findMany({

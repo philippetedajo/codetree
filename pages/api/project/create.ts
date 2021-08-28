@@ -3,7 +3,7 @@ import prisma from "../../../libs/prisma";
 import nc from "../../../server-utils/nc";
 
 export default nc
-  // POST /api/project/create
+  // POST /api/project/create ========================
   .post(async (req, res) => {
     try {
       const { title, content } = req.body;
