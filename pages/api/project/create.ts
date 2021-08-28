@@ -1,7 +1,8 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/client";
 import prisma from "../../../libs/prisma";
 import nc from "../../../server-utils/nc";
+// import { validate } from "../../../server-utils/middlewares";
+// import { createProjectSchema } from "../../../utils/validationSchema";
 
 export default nc
   // POST /api/project/create
