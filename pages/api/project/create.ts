@@ -1,11 +1,9 @@
 import { getSession } from "next-auth/client";
 import prisma from "../../../libs/prisma";
 import nc from "../../../api-utils/nc";
-import { permissionHandler } from "../../../api-utils/middlewares";
 
 export default nc
   // ======================== POST /api/project/create ========================
-  .use(permissionHandler)
   .post(async (req, res) => {
     try {
       const { title, content } = req.body;

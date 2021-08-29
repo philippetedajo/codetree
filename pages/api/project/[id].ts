@@ -1,6 +1,5 @@
 import prisma from "../../../libs/prisma";
 import nc from "../../../api-utils/nc";
-import { permissionHandler } from "../../../api-utils/middlewares";
 
 export default nc
   // ======================== GET /api/project/:id ========================
@@ -23,7 +22,6 @@ export default nc
   })
 
   // ======================== PUT /api/project/:id ========================
-  .use(permissionHandler)
   .put(async (req, res) => {
     try {
       const project = await prisma.project.update({
@@ -48,7 +46,6 @@ export default nc
   })
 
   // ======================== DELETE /api/project/:id ========================
-  .use(permissionHandler)
   .delete(async (req, res) => {
     try {
       await prisma.project.delete({
