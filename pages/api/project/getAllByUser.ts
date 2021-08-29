@@ -1,9 +1,9 @@
 import prisma from "../../../libs/prisma";
 import { getSession } from "next-auth/client";
-import nc from "../../../server-utils/nc";
+import nc from "../../../api-utils/nc";
 
 export default nc
-  //GET /api/project/getAllByUser ========================
+  // ======================== GET /api/project/getAllByUser ========================
   .get(async (req, res) => {
     try {
       const session = await getSession({ req });
@@ -31,9 +31,10 @@ export default nc
       res.status(200).json({
         success: true,
         message: "Projects successfully found",
-        data: { projects },
+        data: projects,
       });
     } catch (err) {
+      console.log(err);
       throw new Error(err);
     }
   });

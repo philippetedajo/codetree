@@ -1,8 +1,8 @@
 import prisma from "../../../libs/prisma";
-import nc from "../../../server-utils/nc";
+import nc from "../../../api-utils/nc";
 
 export default nc
-  //GET /api/project/getAll ========================
+  // ======================== GET /api/project/getAll ========================
   .get(async (req, res) => {
     try {
       const projects = await prisma.project.findMany({
@@ -29,9 +29,10 @@ export default nc
       res.status(200).json({
         success: true,
         message: "Projects successfully found",
-        data: { projects },
+        data: projects,
       });
     } catch (err) {
+      console.log(err);
       throw new Error(err);
     }
   });

@@ -1,8 +1,9 @@
 import prisma from "../../../libs/prisma";
-import nc from "../../../server-utils/nc";
+import nc from "../../../api-utils/nc";
+import { permissionHandler } from "../../../api-utils/middlewares";
 
 export default nc
-  // GET /api/project/:id ========================
+  // ======================== GET /api/project/:id ========================
   .get(async (req, res) => {
     try {
       const project = await prisma.project.findUnique({
@@ -14,14 +15,15 @@ export default nc
       res.status(200).json({
         success: true,
         message: "Project successfully found",
-        data: { project },
+        data: project,
       });
     } catch (err) {
       throw new Error(err);
     }
   })
 
-  // UPDATE /api/project/:id ========================
+  // ======================== PUT /api/project/:id ========================
+  .use(permissionHandler)
   .put(async (req, res) => {
     try {
       const project = await prisma.project.update({
@@ -36,18 +38,17 @@ export default nc
       res.status(200).json({
         success: true,
         message: "Project successfully updated",
-        data: { project },
+        data: project,
       });
     } catch (err) {
       if (err.code === "P2025") {
-        res
-          .status(400)
-          .json({ success: false, message: err.meta.cause, data: null });
+        res.status(400).json({ success: false, err: err.meta.cause });
       }
     }
   })
 
-  // DELETE /api/project/:id ========================
+  // ======================== DELETE /api/project/:id ========================
+  .use(permissionHandler)
   .delete(async (req, res) => {
     try {
       await prisma.project.delete({
@@ -57,13 +58,10 @@ export default nc
       res.status(200).json({
         success: true,
         message: "Project successfully deleted",
-        data: null,
       });
     } catch (err) {
       if (err.code === "P2025") {
-        res
-          .status(400)
-          .json({ success: false, message: err.meta.cause, data: null });
+        res.status(400).json({ success: false, error: err.meta.cause });
       }
     }
   });

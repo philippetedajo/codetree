@@ -1,26 +1,26 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/client";
 import prisma from "../../../libs/prisma";
+import nc from "../../../api-utils/nc";
+import { permissionHandler } from "../../../api-utils/middlewares";
 
-export default async function toggleLike(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const session = await getSession({ req });
+export default nc
+  // ======================== POST /api/project/create ========================
+  .use(permissionHandler)
+  .post(async (req, res) => {
+    const session = await getSession({ req });
 
-  // 1. make sure that the user is authenticated
-  if (session) {
-    // 2. check if the like already exists
+    // 1. check if the like already exists
     const [like] = await prisma.like.findMany({
       where: {
         AND: [
-          { authorId: Number(session.userId) },
+          { authorId: Number(session?.userId) },
           { projectId: req.body.projectId },
         ],
       },
     });
 
-    //3. if it exists remove it
+    //2. if it exists remove it
     if (like) {
       try {
         await prisma.like.delete({
@@ -28,14 +28,17 @@ export default async function toggleLike(
             id: like.id,
           },
         });
-        res.json({ success: true, message: "Successfully unlike the project" });
+        res.json({
+          success: true,
+          message: "Successfully unlike the project",
+        });
       } catch (err) {
         console.log(err);
-        res.status(500).json({ success: false, message: err.message });
+        res.status(500).json({ success: false, error: err.message });
       }
     }
 
-    // 4. if not, create a like
+    // 3. if not, create a like
     if (!like) {
       try {
         await prisma.like.create({
@@ -47,7 +50,7 @@ export default async function toggleLike(
             },
             author: {
               connect: {
-                id: Number(session.userId),
+                id: Number(session?.userId),
               },
             },
           },
@@ -55,15 +58,7 @@ export default async function toggleLike(
         res.json({ success: true, message: "Successfully like the project" });
       } catch (err) {
         console.log(err);
-        res.status(500).json({ success: false, message: err.message });
+        res.status(500).json({ success: false, error: err.message });
       }
     }
-
-    return;
-  } else {
-    res.status(500).json({
-      success: false,
-      message: "You need to be authenticated to perform this operation",
-    });
-  }
-}
+  });

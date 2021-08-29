@@ -8,6 +8,7 @@ import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
+import * as NextAuth from "next-auth/client";
 
 import { store } from "../store/store";
 import { DashboardLayout } from "../ui/layouts";
@@ -21,15 +22,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return (
-    <Provider store={store}>
-      {router.pathname.startsWith("/dashboard") ? (
-        <DashboardLayout>
+    <NextAuth.Provider session={pageProps.session}>
+      <Provider store={store}>
+        {router.pathname.startsWith("/dashboard") ? (
+          <DashboardLayout>
+            <Component {...pageProps} />
+          </DashboardLayout>
+        ) : (
           <Component {...pageProps} />
-        </DashboardLayout>
-      ) : (
-        <Component {...pageProps} />
-      )}
-    </Provider>
+        )}
+      </Provider>
+    </NextAuth.Provider>
   );
 }
 export default MyApp;

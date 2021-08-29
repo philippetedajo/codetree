@@ -1,9 +1,11 @@
 import { getSession } from "next-auth/client";
 import prisma from "../../../libs/prisma";
-import nc from "../../../server-utils/nc";
+import nc from "../../../api-utils/nc";
+import { permissionHandler } from "../../../api-utils/middlewares";
 
 export default nc
-  // POST /api/project/create ========================
+  // ======================== POST /api/project/create ========================
+  .use(permissionHandler)
   .post(async (req, res) => {
     try {
       const { title, content } = req.body;
@@ -24,7 +26,7 @@ export default nc
       res.status(200).json({
         success: true,
         message: "Project successfully created",
-        data: { project },
+        data: project,
       });
     } catch (err) {
       throw new Error(err);
