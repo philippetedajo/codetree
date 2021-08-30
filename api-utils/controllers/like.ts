@@ -8,10 +8,7 @@ export async function toggleLike(req: NextApiRequest, res: NextApiResponse) {
   // 1. check if the like already exists
   const [like] = await prisma.like.findMany({
     where: {
-      AND: [
-        { authorId: Number(session?.userId) },
-        { projectId: req.body.projectId },
-      ],
+      AND: [{ authorId: Number(session?.userId) }, { projectId: req.body.id }],
     },
   });
 
@@ -40,7 +37,7 @@ export async function toggleLike(req: NextApiRequest, res: NextApiResponse) {
         data: {
           project: {
             connect: {
-              id: req.body.projectId,
+              id: req.body.id,
             },
           },
           author: {

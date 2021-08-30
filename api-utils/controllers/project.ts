@@ -8,6 +8,8 @@ export async function createProject(req: NextApiRequest, res: NextApiResponse) {
     const { title, content } = req.body;
     const session = await getSession({ req });
 
+    // console.log(req.rawHeaders);
+
     const project = await prisma.project.create({
       data: {
         content,
@@ -49,7 +51,7 @@ export async function updateProject(req: NextApiRequest, res: NextApiResponse) {
     });
   } catch (err) {
     if (err.code === "P2025") {
-      res.status(400).json({ success: false, err: err.meta.cause });
+      res.status(400).json({ success: false, error: err.meta.cause });
     }
   }
 }
@@ -87,14 +89,10 @@ export async function getProject(req: NextApiRequest, res: NextApiResponse) {
             image: true,
           },
         },
-        likes: {
+        _count: {
           select: {
-            id: true,
-          },
-        },
-        comments: {
-          select: {
-            id: true,
+            likes: true,
+            comments: true,
           },
         },
       },
@@ -128,14 +126,10 @@ export async function getAllProjects(
             image: true,
           },
         },
-        likes: {
+        _count: {
           select: {
-            id: true,
-          },
-        },
-        comments: {
-          select: {
-            id: true,
+            likes: true,
+            comments: true,
           },
         },
       },
@@ -168,14 +162,10 @@ export async function getMyProjects(req: NextApiRequest, res: NextApiResponse) {
             image: true,
           },
         },
-        likes: {
+        _count: {
           select: {
-            id: true,
-          },
-        },
-        comments: {
-          select: {
-            id: true,
+            likes: true,
+            comments: true,
           },
         },
       },
