@@ -1,4 +1,4 @@
-import { ObjectSchema } from "yup";
+import { object, ObjectSchema, number } from "yup";
 import { ObjectShape } from "yup/lib/object";
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 
@@ -9,7 +9,12 @@ export function validate(
   return async (req: NextApiRequest, res: NextApiResponse) => {
     if (["POST", "PUT"].includes(<string>req.method)) {
       try {
-        req.body = await schema.validate(req.body, {
+        const newSchema =
+          req.method === "POST"
+            ? schema
+            : schema.concat(object({ id: number().required().positive() }));
+
+        req.body = await newSchema.validate(req.body, {
           strict: true,
           stripUnknown: true,
         });
