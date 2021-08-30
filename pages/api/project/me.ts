@@ -3,7 +3,7 @@ import { getSession } from "next-auth/client";
 import nc from "../../../api-utils/nc";
 
 export default nc
-  // ======================== GET /api/project/getAllByUser ========================
+  // ======================== GET /api/project/me ========================
   .get(async (req, res) => {
     try {
       const session = await getSession({ req });
