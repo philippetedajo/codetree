@@ -77,6 +77,27 @@ export async function getProject(req: NextApiRequest, res: NextApiResponse) {
       where: {
         id: Number(req.query?.id),
       },
+
+      include: {
+        author: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            image: true,
+          },
+        },
+        likes: {
+          select: {
+            id: true,
+          },
+        },
+        comments: {
+          select: {
+            id: true,
+          },
+        },
+      },
     });
 
     res.status(200).json({
@@ -145,6 +166,16 @@ export async function getMyProjects(req: NextApiRequest, res: NextApiResponse) {
             name: true,
             email: true,
             image: true,
+          },
+        },
+        likes: {
+          select: {
+            id: true,
+          },
+        },
+        comments: {
+          select: {
+            id: true,
           },
         },
       },
