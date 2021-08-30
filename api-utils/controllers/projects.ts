@@ -3,62 +3,6 @@ import { getSession } from "next-auth/client";
 
 import prisma from "../../libs/prisma";
 
-export async function getAllProject(req: NextApiRequest, res: NextApiResponse) {
-  try {
-    const projects = await prisma.project.findMany({
-      where: {
-        private: false,
-      },
-      include: {
-        author: {
-          select: {
-            id: true,
-            name: true,
-            email: true,
-            image: true,
-          },
-        },
-        likes: {
-          select: {
-            id: true,
-          },
-        },
-        comments: {
-          select: {
-            id: true,
-          },
-        },
-      },
-    });
-
-    res.status(200).json({
-      success: true,
-      message: "Projects successfully found",
-      data: projects,
-    });
-  } catch (err) {
-    throw new Error(err);
-  }
-}
-
-export async function getProject(req: NextApiRequest, res: NextApiResponse) {
-  try {
-    const project = await prisma.project.findUnique({
-      where: {
-        id: Number(req.query?.id),
-      },
-    });
-
-    res.status(200).json({
-      success: true,
-      message: "Project successfully found",
-      data: project,
-    });
-  } catch (err) {
-    throw new Error(err);
-  }
-}
-
 export async function createProject(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { title, content } = req.body;
@@ -124,5 +68,94 @@ export async function deleteProject(req: NextApiRequest, res: NextApiResponse) {
     if (err.code === "P2025") {
       res.status(400).json({ success: false, error: err.meta.cause });
     }
+  }
+}
+
+export async function getProject(req: NextApiRequest, res: NextApiResponse) {
+  try {
+    const project = await prisma.project.findUnique({
+      where: {
+        id: Number(req.query?.id),
+      },
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Project successfully found",
+      data: project,
+    });
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
+export async function getAllProjects(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  try {
+    const projects = await prisma.project.findMany({
+      where: {
+        private: false,
+      },
+      include: {
+        author: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            image: true,
+          },
+        },
+        likes: {
+          select: {
+            id: true,
+          },
+        },
+        comments: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Projects successfully found",
+      data: projects,
+    });
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
+export async function getMyProjects(req: NextApiRequest, res: NextApiResponse) {
+  try {
+    const session = await getSession({ req });
+
+    const projects = await prisma.project.findMany({
+      where: {
+        author: { email: session?.user?.email },
+      },
+      include: {
+        author: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            image: true,
+          },
+        },
+      },
+    });
+
+    res.status(200).json({
+      success: true,
+      message: ` ${session?.user?.email} projects successfully found`,
+      data: projects,
+    });
+  } catch (err) {
+    throw new Error(err);
   }
 }
