@@ -4,10 +4,20 @@ import { useAxios } from "../hooks/useAxios";
 import { CommonPageLayout } from "../ui/layouts";
 
 const Home = () => {
-  const { getData } = useAxios();
+  const { getData, data } = useAxios();
   const test = () => {
-    getData({ url: "" });
+    getData({
+      url: "http://localhost:3000/api/project/create",
+      method: "POST",
+      input: {
+        content: "hjkl",
+        title: "dfgh",
+      },
+    });
   };
+
+  console.log(data);
+
   return (
     <CommonPageLayout>
       <div className="">
