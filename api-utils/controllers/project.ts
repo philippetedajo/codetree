@@ -8,7 +8,7 @@ export async function createProject(req: NextApiRequest, res: NextApiResponse) {
     const { title, content } = req.body;
     const session = await getSession({ req });
 
-    // console.log(req.rawHeaders);
+    console.log(req.rawHeaders);
 
     const project = await prisma.project.create({
       data: {
