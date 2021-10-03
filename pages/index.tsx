@@ -1,3 +1,5 @@
-import PlaygroundPage from "../modules/PlaygroundPage";
+import dynamic from "next/dynamic";
+
+const PlaygroundPage = dynamic(() => import("../modules/PlaygroundPage"));
 
 export default PlaygroundPage;
