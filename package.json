@@ -23,7 +23,7 @@
     "localforage": "^1.9.0",
     "monaco-editor": "^0.25.1",
     "monaco-jsx-highlighter": "^1.1.8",
-    "next": "11.0.1",
+    "next": "^11.1.2",
     "nprogress": "^0.2.0",
     "rc-tabs": "^11.9.1",
     "react": "17.0.2",
