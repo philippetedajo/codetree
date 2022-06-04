@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "../public/font/stylesheet.css";
 import "../styles/iframeLoaderScreen.css";
 import "../styles/customlib/_customTabs.css";
 import "../styles/customlib/_customReactSplit.css";
