@@ -19,7 +19,7 @@ const PlaygroundPage = () => {
   const dispatch = useAppDispatch();
 
   const { esbuildStatus, isCompiling, output } = useAppSelector(compiler_state);
-  const { logs, editorValue } = useAppSelector(editor_state);
+  const { logs, editorValue, isLogTabOpen } = useAppSelector(editor_state);
 
   useEffect(() => {
     if (!esbuildStatus.isReady) {
@@ -41,10 +41,11 @@ const PlaygroundPage = () => {
             esbuildStatus={esbuildStatus}
           />
         }
-        panelC={<ConsoleLog logs={logs} isCompiling={isCompiling} />}
+        panelC={<ConsoleLog logs={logs} />}
+        lastPanelVisibility={isLogTabOpen}
       />
 
-      <EditorFooter />
+      <EditorFooter isCompiling={isCompiling} logs={logs} />
 
       {/* ======================= Modal =================== */}
       <SettingsModal />

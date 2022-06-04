@@ -1,19 +1,41 @@
-import React from "react";
+import React, { ReactNode, useState } from "react";
 import { Allotment } from "allotment";
+import { LayoutPriority } from "allotment/dist/types/src/split-view";
 
 interface EditorPanel {
-  panelA: any;
-  panelB: any;
-  panelC: any;
+  panelA: ReactNode;
+  panelB: ReactNode;
+  panelC: ReactNode;
+  lastPanelVisibility: boolean;
 }
 
-const EditorPanel = ({ panelA, panelB, panelC }: EditorPanel) => {
+const EditorPanel = ({
+  panelA,
+  panelB,
+  panelC,
+  lastPanelVisibility,
+}: EditorPanel) => {
   return (
     <Allotment>
       <Allotment.Pane>{panelA}</Allotment.Pane>
-      <Allotment vertical={true}>
-        <Allotment.Pane preferredSize="100%">{panelB}</Allotment.Pane>
-        <Allotment.Pane>{panelC}</Allotment.Pane>
+
+      <Allotment onVisibleChange={function noRefCheck() {}} vertical={true}>
+        <Allotment.Pane
+          priority={"HIGH" as LayoutPriority}
+          preferredSize="70%"
+          visible
+        >
+          {panelB}
+        </Allotment.Pane>
+
+        <Allotment.Pane
+          preferredSize="30%"
+          priority={"LOW" as LayoutPriority}
+          snap
+          visible={lastPanelVisibility}
+        >
+          {panelC}
+        </Allotment.Pane>
       </Allotment>
     </Allotment>
   );
