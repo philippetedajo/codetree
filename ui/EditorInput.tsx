@@ -6,8 +6,6 @@ import { editor_state } from "../store/features/editorSlice";
 import { EditorValueInterface } from "../_types/editorTypes";
 
 const InputPanel = ({ editorValue }: { editorValue: EditorValueInterface }) => {
-  console.log("EditorInput");
-
   const dataToMap = Object.entries(editorValue.tabs);
 
   const tabPane = dataToMap.map((item, key) => (

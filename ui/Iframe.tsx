@@ -1,22 +1,28 @@
 import React, { useRef, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hook";
-import { editor_state, update_logs } from "../store/features/editorSlice";
-import {
-  compiler_state,
-  getCompileCode,
-} from "../store/features/compilerSlice";
+import { useAppDispatch } from "../store/hook";
+import { update_logs } from "../store/features/editorSlice";
+import { getCompileCode } from "../store/features/compilerSlice";
 import { createIframeContent } from "../tools";
 import { IframeLoaderScreen } from "./IframeLoaderScreen";
 import { IframeErrorScreen } from "./IframeErrorScreen";
+import { LanguagesInterface } from "../_types/editorTypes";
+import { CompilerOutput, CompilerStatus } from "../_types/compilerTypes";
 
-const Iframe = () => {
+interface IframeProps {
+  tabs: LanguagesInterface;
+  output: CompilerOutput;
+  isCompiling: boolean;
+  esbuildStatus: CompilerStatus;
+}
+
+const IframePanel = ({
+  tabs,
+  output,
+  isCompiling,
+  esbuildStatus,
+}: IframeProps) => {
   const iframe = useRef<any>();
   const dispatch = useAppDispatch();
-  const {
-    editorValue: { tabs },
-  } = useAppSelector(editor_state);
-
-  const { output, isCompiling, esbuildStatus } = useAppSelector(compiler_state);
 
   const htmlFrameContent = createIframeContent(tabs.css.data, tabs.html.data);
 
@@ -89,5 +95,7 @@ const Iframe = () => {
     </div>
   );
 };
+
+const Iframe = React.memo(IframePanel);
 
 export default Iframe;

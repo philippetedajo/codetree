@@ -14,7 +14,7 @@ import { editor_state } from "../store/features/editorSlice";
 const PlaygroundPage = () => {
   const dispatch = useAppDispatch();
 
-  const { esbuildStatus, isCompiling } = useAppSelector(compiler_state);
+  const { esbuildStatus, isCompiling, output } = useAppSelector(compiler_state);
   const { logs, editorValue } = useAppSelector(editor_state);
 
   useEffect(() => {
@@ -31,7 +31,12 @@ const PlaygroundPage = () => {
         <EditorInput editorValue={editorValue} />
         <div>
           <SplitEditor isVertical={true}>
-            <Iframe />
+            <Iframe
+              tabs={editorValue.tabs}
+              output={output}
+              isCompiling={isCompiling}
+              esbuildStatus={esbuildStatus}
+            />
             <ConsoleLog />
           </SplitEditor>
         </div>
