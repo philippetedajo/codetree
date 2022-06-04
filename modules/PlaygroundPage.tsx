@@ -1,15 +1,19 @@
 import React, { useEffect } from "react";
-import { SplitEditor, EditorHead, EditorFooter } from "../ui/layouts";
+import { EditorHead, EditorFooter } from "../ui/layouts";
 import { SettingsModal } from "../ui/Modals";
 import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { TemplateModal } from "../ui/Modals/TemplateModal";
 
-// Main components
 import EditorInput from "../ui/EditorInput";
 import ConsoleLog from "../ui/ConsoleLog";
 import Iframe from "../ui/Iframe";
 import { editor_state } from "../store/features/editorSlice";
+import dynamic from "next/dynamic";
+
+const EditorPanel = dynamic(() => import("../ui/layouts/EditorPanel"), {
+  ssr: false,
+});
 
 const PlaygroundPage = () => {
   const dispatch = useAppDispatch();
@@ -27,24 +31,22 @@ const PlaygroundPage = () => {
     <div className="h-screen flex flex-col overflow-hidden bg-tree-soft">
       <EditorHead />
 
-      <SplitEditor>
-        <EditorInput editorValue={editorValue} />
-        <div>
-          <SplitEditor isVertical={true}>
-            <Iframe
-              tabs={editorValue.tabs}
-              output={output}
-              isCompiling={isCompiling}
-              esbuildStatus={esbuildStatus}
-            />
-            <ConsoleLog logs={logs} />
-          </SplitEditor>
-        </div>
-      </SplitEditor>
+      <EditorPanel
+        panelA={<EditorInput editorValue={editorValue} />}
+        panelB={
+          <Iframe
+            tabs={editorValue.tabs}
+            output={output}
+            isCompiling={isCompiling}
+            esbuildStatus={esbuildStatus}
+          />
+        }
+        panelC={<ConsoleLog logs={logs} isCompiling={isCompiling} />}
+      />
 
-      <EditorFooter isCompiling={isCompiling} logs={logs} />
+      <EditorFooter />
 
-      {/* Modal  */}
+      {/* ======================= Modal =================== */}
       <SettingsModal />
       <TemplateModal />
     </div>

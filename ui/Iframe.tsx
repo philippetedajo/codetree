@@ -58,40 +58,38 @@ const IframePanel = ({
   }, [htmlFrameContent, output]);
 
   return (
-    <div>
-      <div className="iframe-container">
-        {/* build error */}
-        {output.error ? <IframeErrorScreen err={output.error} /> : ""}
+    <div className="iframe-container">
+      {/* build error */}
+      {output.error ? <IframeErrorScreen err={output.error} /> : ""}
 
-        {/* Loading screen */}
-        {isCompiling ? (
-          <div className="absolute h-full w-full bg-gray-50 z-40">
-            <IframeLoaderScreen />
-          </div>
-        ) : (
-          ""
-        )}
+      {/* Loading screen */}
+      {isCompiling ? (
+        <div className="absolute h-full w-full bg-gray-50 z-40">
+          <IframeLoaderScreen />
+        </div>
+      ) : (
+        ""
+      )}
 
-        <iframe
-          sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
-          allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi; clipboard-read; clipboard-write"
-          scrolling="auto"
-          frameBorder="0"
-          ref={iframe}
-          title="previewWindow"
-          srcDoc={htmlFrameContent}
-          onLoad={async () => {
-            const Hook = (await import("console-feed")).Hook;
-            Hook(
-              iframe.current.contentWindow.console,
-              (log) => {
-                dispatch(update_logs(log));
-              },
-              false
-            );
-          }}
-        />
-      </div>
+      <iframe
+        sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+        allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi; clipboard-read; clipboard-write"
+        scrolling="auto"
+        frameBorder="0"
+        ref={iframe}
+        title="previewWindow"
+        srcDoc={htmlFrameContent}
+        onLoad={async () => {
+          const Hook = (await import("console-feed")).Hook;
+          Hook(
+            iframe.current.contentWindow.console,
+            (log) => {
+              dispatch(update_logs(log));
+            },
+            false
+          );
+        }}
+      />
     </div>
   );
 };
