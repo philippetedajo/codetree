@@ -15,7 +15,7 @@ const PlaygroundPage = () => {
   const dispatch = useAppDispatch();
 
   const { esbuildStatus, isCompiling } = useAppSelector(compiler_state);
-  const { logs } = useAppSelector(editor_state);
+  const { logs, editorValue } = useAppSelector(editor_state);
 
   useEffect(() => {
     if (!esbuildStatus.isReady) {
@@ -28,7 +28,7 @@ const PlaygroundPage = () => {
       <EditorHead />
 
       <SplitEditor>
-        <EditorInput />
+        <EditorInput editorValue={editorValue} />
         <div>
           <SplitEditor isVertical={true}>
             <Iframe />

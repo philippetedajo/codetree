@@ -3,9 +3,10 @@ import Tabs, { TabPane } from "rc-tabs";
 import { Monaco } from "./Monaco";
 import { useAppSelector } from "../store/hook";
 import { editor_state } from "../store/features/editorSlice";
+import { EditorValueInterface } from "../_types/editorTypes";
 
-const EditorInput = () => {
-  const { editorValue } = useAppSelector(editor_state);
+const InputPanel = ({ editorValue }: { editorValue: EditorValueInterface }) => {
+  console.log("EditorInput");
 
   const dataToMap = Object.entries(editorValue.tabs);
 
@@ -26,5 +27,7 @@ const EditorInput = () => {
     </Tabs>
   );
 };
+
+const EditorInput = React.memo(InputPanel);
 
 export default EditorInput;
