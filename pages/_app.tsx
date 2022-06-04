@@ -2,8 +2,8 @@ import "../styles/globals.css";
 import "../public/font/stylesheet.css";
 import "../styles/iframeLoaderScreen.css";
 import "../styles/customlib/_customTabs.css";
-import "../styles/customlib/_customReactSplit.css";
 import "../styles/customlib/_customMonacoEditor.css";
+import "allotment/dist/style.css";
 
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";

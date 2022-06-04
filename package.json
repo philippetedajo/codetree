@@ -16,7 +16,8 @@
     "@reduxjs/toolkit": "^1.6.0",
     "@types/babel__traverse": "^7.11.1",
     "@types/nprogress": "^0.2.0",
-    "axios": "^0.21.1",
+    "allotment": "^1.14.1",
+    "axios": "^0.27.2",
     "console-feed": "^3.2.2",
     "esbuild-wasm": "^0.12.12",
     "localforage": "^1.9.0",
@@ -30,10 +31,7 @@
     "react-hook-form": "^7.8.6",
     "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
-    "react-split": "^2.0.11",
-    "request": "^2.88.2",
-    "use-debounce": "^7.0.0",
-    "yarn": "^1.22.10"
+    "use-debounce": "^7.0.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.39",
