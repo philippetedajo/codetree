@@ -11,9 +11,8 @@ import dynamic from "next/dynamic";
 
 const Console = dynamic(import("console-feed/lib/Component"), { ssr: false });
 
-const ConsoleLog = () => {
+const Logs = ({ logs }: any) => {
   const dispatch = useAppDispatch();
-  const { logs } = useAppSelector(editor_state);
 
   return (
     <div className="bg-tree-soft text-gray-300 relative h-full">
@@ -47,5 +46,7 @@ const ConsoleLog = () => {
     </div>
   );
 };
+
+const ConsoleLog = React.memo(Logs);
 
 export default ConsoleLog;

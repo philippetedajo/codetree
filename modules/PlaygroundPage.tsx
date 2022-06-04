@@ -5,7 +5,7 @@ import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { TemplateModal } from "../ui/Modals/TemplateModal";
 
-//Main components
+// Main components
 import EditorInput from "../ui/EditorInput";
 import ConsoleLog from "../ui/ConsoleLog";
 import Iframe from "../ui/Iframe";
@@ -37,7 +37,7 @@ const PlaygroundPage = () => {
               isCompiling={isCompiling}
               esbuildStatus={esbuildStatus}
             />
-            <ConsoleLog />
+            <ConsoleLog logs={logs} />
           </SplitEditor>
         </div>
       </SplitEditor>
