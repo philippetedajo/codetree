@@ -9,10 +9,13 @@ import { TemplateModal } from "../ui/Modals/TemplateModal";
 import EditorInput from "../ui/EditorInput";
 import ConsoleLog from "../ui/ConsoleLog";
 import Iframe from "../ui/Iframe";
+import { editor_state } from "../store/features/editorSlice";
 
 const PlaygroundPage = () => {
   const dispatch = useAppDispatch();
-  const { esbuildStatus } = useAppSelector(compiler_state);
+
+  const { esbuildStatus, isCompiling } = useAppSelector(compiler_state);
+  const { logs } = useAppSelector(editor_state);
 
   useEffect(() => {
     if (!esbuildStatus.isReady) {
@@ -23,6 +26,7 @@ const PlaygroundPage = () => {
   return (
     <div className="h-screen flex flex-col overflow-hidden bg-tree-soft">
       <EditorHead />
+
       <SplitEditor>
         <EditorInput />
         <div>
@@ -32,7 +36,10 @@ const PlaygroundPage = () => {
           </SplitEditor>
         </div>
       </SplitEditor>
-      <EditorFooter />
+
+      <EditorFooter isCompiling={isCompiling} logs={logs} />
+
+      {/* Modal  */}
       <SettingsModal />
       <TemplateModal />
     </div>

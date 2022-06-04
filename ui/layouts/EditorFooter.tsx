@@ -7,10 +7,8 @@ import {
 import { compiler_state } from "../../store/features/compilerSlice";
 import { FiTerminal } from "react-icons/fi";
 
-export const EditorFooter = () => {
+export const Footer = ({ logs, isCompiling }: any) => {
   const dispatch = useAppDispatch();
-  const { logs } = useAppSelector(editor_state);
-  const { isCompiling } = useAppSelector(compiler_state);
 
   return (
     <div className="h-7 flex items-center justify-between bg-tree-hard border-t-2 border-black text-gray-300 px-5 pb-0.5 flex-shrink-0 z-50">
@@ -58,3 +56,5 @@ export const EditorFooter = () => {
     </div>
   );
 };
+
+export const EditorFooter = React.memo(Footer);

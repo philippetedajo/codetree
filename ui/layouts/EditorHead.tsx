@@ -1,6 +1,5 @@
 import React from "react";
 import { HiPlus, HiCog } from "react-icons/hi";
-import { GoSettings } from "react-icons/go";
 
 import { useAppDispatch } from "../../store/hook";
 import {
@@ -8,7 +7,7 @@ import {
   set_template_modal,
 } from "../../store/features/editorSlice";
 
-export const EditorHead = () => {
+const Head = () => {
   const dispatch = useAppDispatch();
 
   return (
@@ -34,3 +33,5 @@ export const EditorHead = () => {
     </header>
   );
 };
+
+export const EditorHead = React.memo(Head);
