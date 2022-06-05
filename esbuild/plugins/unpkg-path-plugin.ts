@@ -1,19 +1,16 @@
 import * as esbuild from "esbuild-wasm";
 
-export const unpkgPathPlugin = (entryPoint: string) => {
+export const unpkgPathPlugin = (): esbuild.Plugin => {
   return {
     name: "unpkg-path-plugin",
     setup(build: esbuild.PluginBuild) {
-      //match entrypoint
-      if (entryPoint === "index.ts") {
-        build.onResolve({ filter: /(^index\.ts$)/ }, () => {
-          return { path: "index.ts", namespace: "a" };
-        });
-      } else {
-        build.onResolve({ filter: /(^index\.js$)/ }, () => {
-          return { path: "index.js", namespace: "a" };
-        });
-      }
+      //
+      build.onResolve({ filter: /.*/ }, (args) => {
+        if (args.kind === "entry-point") {
+          console.log(args.path);
+          return { path: args.path, namespace: "a" };
+        }
+      });
 
       //match relative path in a module "./" or "../"
       build.onResolve({ filter: /^\.+\// }, (args: esbuild.OnResolveArgs) => {

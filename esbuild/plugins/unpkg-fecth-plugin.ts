@@ -9,7 +9,7 @@ const fileCache = localForage.createInstance({
 export const unpkgFetchPlugin = (
   inputCode: string | undefined,
   entryPoint: string
-) => {
+): esbuild.Plugin => {
   return {
     name: "unpkg-fetch-plugin",
     setup(build: esbuild.PluginBuild) {

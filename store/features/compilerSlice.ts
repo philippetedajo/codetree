@@ -91,10 +91,7 @@ export function getCompileCode(rawCode: string, entryPoint: string) {
         entryPoints: [`${entryPoint}`],
         bundle: true,
         write: false,
-        plugins: [
-          unpkgPathPlugin(entryPoint),
-          unpkgFetchPlugin(rawCode, entryPoint),
-        ],
+        plugins: [unpkgPathPlugin(), unpkgFetchPlugin(rawCode, entryPoint)],
         define: {
           global: "window",
           "process.env.NODE_ENV": '"production"',
