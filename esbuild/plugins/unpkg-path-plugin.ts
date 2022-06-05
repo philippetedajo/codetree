@@ -7,7 +7,6 @@ export const unpkgPathPlugin = (): esbuild.Plugin => {
       //
       build.onResolve({ filter: /.*/ }, (args) => {
         if (args.kind === "entry-point") {
-          console.log(args.path);
           return { path: args.path, namespace: "a" };
         }
       });
