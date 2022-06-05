@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import * as esbuild from "esbuild-wasm";
-import { unpkgFetchPlugin, unpkgPathPlugin } from "../../esbuild/plugins";
+import {
+  unpkgFetchPlugin,
+  unpkgPathPlugin,
+} from "../../editor/esbuild/plugins";
 import { CompilerOutput, CompilerStatus } from "../../_types/compilerTypes";
 
 type InitialStateType = {
@@ -73,7 +76,7 @@ export function initEsbuild() {
     await esbuild
       .initialize({
         worker: true,
-        wasmURL: "https://unpkg.com/esbuild-wasm@0.12.12/esbuild.wasm",
+        wasmURL: "https://unpkg.com/esbuild-wasm@0.14.42/esbuild.wasm",
       })
       .then(() => {
         dispatch(init_esbuild_success());
@@ -91,11 +94,11 @@ export function getCompileCode(rawCode: string, entryPoint: string) {
         entryPoints: [`${entryPoint}`],
         bundle: true,
         write: false,
+        minify: true,
+        outdir: "/",
         plugins: [unpkgPathPlugin(), unpkgFetchPlugin(rawCode, entryPoint)],
-        define: {
-          global: "window",
-          "process.env.NODE_ENV": '"production"',
-        },
+        metafile: true,
+        allowOverwrite: true,
       });
 
       dispatch(compiled_success(result.outputFiles[0].text));

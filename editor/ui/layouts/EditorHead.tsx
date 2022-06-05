@@ -1,11 +1,11 @@
 import React from "react";
 import { HiPlus, HiCog } from "react-icons/hi";
 
-import { useAppDispatch } from "../../store/hook";
+import { useAppDispatch } from "../../../store/hook";
 import {
   set_settings_modal,
   set_template_modal,
-} from "../../store/features/editorSlice";
+} from "../../../store/features/editorSlice";
 
 const Head = () => {
   const dispatch = useAppDispatch();

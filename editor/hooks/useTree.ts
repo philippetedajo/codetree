@@ -1,11 +1,11 @@
-import { useAppDispatch } from "../store/hook";
+import { useAppDispatch } from "../../store/hook";
 import {
   set_monaco_input_value,
   set_editor_value,
   set_template_modal,
   clear_logs,
-} from "../store/features/editorSlice";
-import { EditorValueInterface } from "../_types/editorTypes";
+} from "../../store/features/editorSlice";
+import { EditorValueInterface } from "../../_types/editorTypes";
 
 export const useTree = () => {
   const dispatch = useAppDispatch();

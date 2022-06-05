@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import MonacoEditor from "@monaco-editor/react";
 import { useMonaco } from "../hooks";
-import { useAppDispatch, useAppSelector } from "../store/hook";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
 import {
   editor_state,
   update_editor_code,
-} from "../store/features/editorSlice";
+} from "../../store/features/editorSlice";
 
 type MonacoType = { monacoLanguage: string | undefined; tab: string };
 

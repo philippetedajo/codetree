@@ -1,10 +1,10 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { useAppDispatch, useAppSelector } from "../../../store/hook";
 import {
   toggle_logs_tab,
   editor_state,
-} from "../../store/features/editorSlice";
-import { compiler_state } from "../../store/features/compilerSlice";
+} from "../../../store/features/editorSlice";
+import { compiler_state } from "../../../store/features/compilerSlice";
 import { FiTerminal } from "react-icons/fi";
 
 interface FooterProps {
