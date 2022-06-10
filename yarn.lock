@@ -1119,10 +1119,10 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild-wasm@^0.12.12:
-  version "0.12.12"
-  resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.12.12.tgz#6976f6e37691de90f811c679c807b63f50fa2bc3"
-  integrity sha512-PHq21rqPm6tLdQXH2v5or3Q3KNkBEkIaEwBIAi8t/x0p+QOl84T6s3Vk5Twwtde2W+SASTIRUcwfGqstgzY4cw==
+esbuild-wasm@^0.14.42:
+  version "0.14.42"
+  resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.14.42.tgz#c3f54a0b5407d0dfa535bcab9b2c6980778d47ae"
+  integrity sha512-gaR16gg58YxDyIXjS/8zVKxnC0IqbPAqMCVv4Yu6PmrJFoFzhverHINiM24MXuhnngHYCTIn4p3t3JjkfkMPdg==
 
 escalade@^3.1.1:
   version "3.1.1"

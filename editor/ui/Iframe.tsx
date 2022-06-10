@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from "react";
-import { useAppDispatch } from "../store/hook";
-import { update_logs } from "../store/features/editorSlice";
-import { getCompileCode } from "../store/features/compilerSlice";
+import { useAppDispatch } from "../../store/hook";
+import { update_logs } from "../../store/features/editorSlice";
+import { getCompileCode } from "../../store/features/compilerSlice";
 import { createIframeContent } from "../tools";
 import { IframeLoaderScreen } from "./IframeLoaderScreen";
 import { IframeErrorScreen } from "./IframeErrorScreen";
-import { LanguagesInterface } from "../_types/editorTypes";
-import { CompilerOutput, CompilerStatus } from "../_types/compilerTypes";
+import { LanguagesInterface } from "../../_types/editorTypes";
+import { CompilerOutput, CompilerStatus } from "../../_types/compilerTypes";
 
 interface IframeProps {
   tabs: LanguagesInterface;

@@ -19,7 +19,7 @@
     "allotment": "^1.14.1",
     "axios": "^0.27.2",
     "console-feed": "^3.2.2",
-    "esbuild-wasm": "^0.12.12",
+    "esbuild-wasm": "^0.14.42",
     "localforage": "^1.9.0",
     "monaco-editor": "^0.25.1",
     "monaco-jsx-highlighter": "^1.1.8",

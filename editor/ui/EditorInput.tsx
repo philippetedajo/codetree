@@ -1,9 +1,9 @@
 import React from "react";
 import Tabs, { TabPane } from "rc-tabs";
 import { Monaco } from "./Monaco";
-import { useAppSelector } from "../store/hook";
-import { editor_state } from "../store/features/editorSlice";
-import { EditorValueInterface } from "../_types/editorTypes";
+import { useAppSelector } from "../../store/hook";
+import { editor_state } from "../../store/features/editorSlice";
+import { EditorValueInterface } from "../../_types/editorTypes";
 
 const InputPanel = ({ editorValue }: { editorValue: EditorValueInterface }) => {
   const dataToMap = Object.entries(editorValue.tabs);

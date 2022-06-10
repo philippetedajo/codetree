@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 import { EditorHead, EditorFooter } from "../ui/layouts";
 import { SettingsModal } from "../ui/Modals";
-import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
-import { useAppDispatch, useAppSelector } from "../store/hook";
+import {
+  compiler_state,
+  initEsbuild,
+} from "../../store/features/compilerSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { TemplateModal } from "../ui/Modals/TemplateModal";
 
 import EditorInput from "../ui/EditorInput";
 import ConsoleLog from "../ui/ConsoleLog";
 import Iframe from "../ui/Iframe";
-import { editor_state } from "../store/features/editorSlice";
+import { editor_state } from "../../store/features/editorSlice";
 import dynamic from "next/dynamic";
 
 const EditorPanel = dynamic(() => import("../ui/layouts/EditorPanel"), {
