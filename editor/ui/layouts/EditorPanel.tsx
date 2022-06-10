@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import { Allotment } from "allotment";
 import { LayoutPriority } from "allotment/dist/types/src/split-view";
 

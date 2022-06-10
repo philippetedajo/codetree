@@ -1,57 +1,30 @@
-import React, { useEffect } from "react";
-import { EditorHead, EditorFooter } from "../editor/ui/layouts";
-import { SettingsModal } from "../editor/ui/Modals";
-import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
-import { useAppDispatch, useAppSelector } from "../store/hook";
-import { TemplateModal } from "../editor/ui/Modals/TemplateModal";
+import React from "react";
 
-import EditorInput from "../editor/ui/EditorInput";
-import ConsoleLog from "../editor/ui/ConsoleLog";
-import Iframe from "../editor/ui/Iframe";
-import { editor_state } from "../store/features/editorSlice";
-import dynamic from "next/dynamic";
+import Playground from "../components/Playground";
+import { EditorHead } from "../editor/ui/layouts";
 
-const EditorPanel = dynamic(() => import("../editor/ui/layouts/EditorPanel"), {
-  ssr: false,
-});
-
-const PlaygroundPage = () => {
-  const dispatch = useAppDispatch();
-
-  const { esbuildStatus, isCompiling, output } = useAppSelector(compiler_state);
-  const { logs, editorValue, isLogTabOpen } = useAppSelector(editor_state);
-
-  useEffect(() => {
-    if (!esbuildStatus.isReady) {
-      dispatch(initEsbuild());
-    }
-  }, [dispatch, esbuildStatus]);
-
+const Index = () => {
   return (
-    <div className="h-screen flex flex-col overflow-hidden bg-tree-soft">
-      <EditorHead />
+    <div>
+      <div className="border w-full mb-10 h-12">
+        Codetree : Share It ...Fast
+      </div>
 
-      <EditorPanel
-        panelA={<EditorInput editorValue={editorValue} />}
-        panelB={
-          <Iframe
-            tabs={editorValue.tabs}
-            output={output}
-            isCompiling={isCompiling}
-            esbuildStatus={esbuildStatus}
-          />
-        }
-        panelC={<ConsoleLog logs={logs} />}
-        lastPanelVisibility={isLogTabOpen}
-      />
+      <div
+        style={{ height: "70vh" }}
+        className="flex justify-around border border-red-500 w-11/12 mx-auto"
+      >
+        <div className="w-10/12">
+          <Playground />
+        </div>
 
-      <EditorFooter isCompiling={isCompiling} logs={logs} />
-
-      {/* ======================= Modal =================== */}
-      <SettingsModal />
-      <TemplateModal />
+        <div className="border h-full w-2/12">
+          <EditorHead />
+          <div className="border w-24  h-24" />
+        </div>
+      </div>
     </div>
   );
 };
 
-export default PlaygroundPage;
+export default Index;
