@@ -1,6 +1,12 @@
 import React, { useRef, useEffect } from "react";
-import { useAppDispatch } from "../../store/hook";
-import { update_logs } from "../../store/features/editorSlice";
+import { FiTerminal } from "react-icons/fi";
+
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import {
+  editor_state,
+  toggle_logs_tab,
+  update_logs,
+} from "../../store/features/editorSlice";
 import { getCompileCode } from "../../store/features/compilerSlice";
 import { createIframeContent } from "../tools";
 import { IframeLoaderScreen } from "./IframeLoaderScreen";
@@ -22,6 +28,7 @@ const IframePanel = ({
   esbuildStatus,
 }: IframeProps) => {
   const iframe = useRef<any>();
+  const { logs } = useAppSelector(editor_state);
   const dispatch = useAppDispatch();
 
   const htmlFrameContent = createIframeContent(tabs.css.data, tabs.html.data);
@@ -72,6 +79,7 @@ const IframePanel = ({
       )}
 
       <iframe
+        id="super-iframe"
         sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
         allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi; clipboard-read; clipboard-write"
         scrolling="auto"
@@ -90,6 +98,32 @@ const IframePanel = ({
           );
         }}
       />
+
+      <div className="absolute right-0">
+        <div className="flex justify-center items-center">
+          <div
+            onClick={() => dispatch(toggle_logs_tab())}
+            className="flex items-center cursor-pointer"
+          >
+            <FiTerminal size={18} className="mr-1 " /> Console
+          </div>
+
+          <div className="ml-2  w-6">
+            {logs.length > 0 && (
+              <div className="h-5 w-5 flex justify-center items-center">
+                <div className="absolute p-1.5 bg-green-400 rounded-full animate-ping" />
+                <div className="absolute p-1 bg-green-400  border-white rounded-full" />
+              </div>
+            )}
+          </div>
+
+          {isCompiling && (
+            <div className="ml-10">
+              <span className="loader --1" />
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { EditorValueInterface } from "../../_types/editorTypes";
-import { treeTemplates, monacoOptions } from "../../editor/constants";
+import { treeTemplates, monacoOptions } from "../../components/constants";
 
 type InitialStateType = {
   editorValue: EditorValueInterface;

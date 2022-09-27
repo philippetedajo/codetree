@@ -1,9 +1,9 @@
-import "../editor/styles/globals.css";
 import "../public/font/stylesheet.css";
-import "../editor/styles/iframeLoaderScreen.css";
-import "../editor/styles/loaders.css";
-import "../editor/styles/customlib/_customTabs.css";
-import "../editor/styles/customlib/_customMonacoEditor.css";
+import "../components/styles/iframeLoaderScreen.css";
+import "../components/styles/loaders.css";
+import "../components/styles/globals.css";
+import "../components/styles/customlib/_customTabs.css";
+import "../components/styles/customlib/_customMonacoEditor.css";
 import "allotment/dist/style.css";
 
 import type { AppProps } from "next/app";
@@ -14,6 +14,9 @@ import { store } from "../store/store";
 import Router from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import { SettingsModal } from "../components/ui/Modals";
+import { TemplateModal } from "../components/ui/Modals/TemplateModal";
+import React from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   Router.events.on("routeChangeStart", () => NProgress.start());
@@ -40,6 +43,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       <Provider store={store}>
         <Component {...pageProps} />
+
+        <SettingsModal />
+        <TemplateModal />
       </Provider>
     </>
   );

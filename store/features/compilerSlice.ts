@@ -4,7 +4,7 @@ import * as esbuild from "esbuild-wasm";
 import {
   unpkgFetchPlugin,
   unpkgPathPlugin,
-} from "../../editor/esbuild/plugins";
+} from "../../components/esbuild/plugins";
 import { CompilerOutput, CompilerStatus } from "../../_types/compilerTypes";
 
 type InitialStateType = {

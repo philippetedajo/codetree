@@ -1,27 +1,29 @@
 import React from "react";
 
 import Playground from "../components/Playground";
-import { EditorHead } from "../editor/ui/layouts";
+import SidePanel from "../components/ui/SidePanel";
 
 const Index = () => {
   return (
-    <div>
-      <div className="border w-full mb-10 h-12">
-        Codetree : Share It ...Fast
+    <div className="w-full">
+      <div className="border mb-4 h-12 flex items-center px-12 justify-between">
+        <div>Codetree : Share It ...Fast</div>
+        <div>sign In </div>
+      </div>
+
+      <div className="text-5xl font-medium border flex justify-center mb-10">
+        <div>Share It ...Fast</div>
       </div>
 
       <div
-        style={{ height: "70vh" }}
-        className="flex justify-around border border-red-500 w-11/12 mx-auto"
+        style={{ height: "75vh" }}
+        className="flex justify-around border border-red-500 px-12"
       >
         <div className="w-10/12">
           <Playground />
         </div>
 
-        <div className="border h-full w-2/12">
-          <EditorHead />
-          <div className="border w-24  h-24" />
-        </div>
+        <SidePanel />
       </div>
     </div>
   );

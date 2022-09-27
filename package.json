@@ -6,11 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@babel/parser": "^7.14.6",
     "@babel/traverse": "^7.14.5",
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.3",
     "@headlessui/react": "^1.6.4",
     "@monaco-editor/react": "^4.2.0",
     "@reduxjs/toolkit": "^1.6.0",
@@ -18,8 +21,11 @@
     "@types/nprogress": "^0.2.0",
     "allotment": "^1.14.1",
     "axios": "^0.27.2",
+    "color-convert": "^2.0.1",
     "console-feed": "^3.2.2",
     "esbuild-wasm": "^0.14.42",
+    "graphql": "^16.6.0",
+    "html-to-image": "^1.10.8",
     "localforage": "^1.9.0",
     "monaco-editor": "^0.25.1",
     "monaco-jsx-highlighter": "^1.1.8",
@@ -34,6 +40,9 @@
     "use-debounce": "^7.0.0"
   },
   "devDependencies": {
+    "@graphql-codegen/introspection": "2.1.1",
+    "@graphql-codegen/typescript": "2.4.5",
+    "@graphql-codegen/typescript-operations": "2.3.2",
     "@types/node": "^17.0.39",
     "@types/prettier": "^2.3.0",
     "autoprefixer": "^10.2.6",
