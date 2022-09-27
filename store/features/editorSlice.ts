@@ -9,6 +9,7 @@ type InitialStateType = {
   logs: any;
   isLogTabOpen: boolean;
   isTemplateOpen: boolean;
+  isAuthOpen: boolean;
   isSettingsOpen: boolean;
   options: any;
 };
@@ -18,7 +19,8 @@ const initialState = {
   monacoInputValue: treeTemplates["_empty"],
   logs: [],
   isLogTabOpen: false,
-  isTemplateOpen: true,
+  isTemplateOpen: false,
+  isAuthOpen: false,
   isSettingsOpen: false,
   options: monacoOptions,
 };
@@ -36,7 +38,6 @@ export const editorSlice = createSlice({
     update_logs: (state: InitialStateType, { payload }) => {
       state.logs = [...state.logs, payload];
     },
-
     clear_logs: (state: InitialStateType) => {
       state.logs = [];
     },
@@ -48,6 +49,10 @@ export const editorSlice = createSlice({
     },
     set_template_modal: (state: InitialStateType, { payload }) => {
       state.isTemplateOpen = payload;
+    },
+    set_auth_modal: (state: InitialStateType, { payload }) => {
+      console.log(payload);
+      state.isAuthOpen = payload;
     },
     set_monaco_input_value: (
       state: InitialStateType,
@@ -68,6 +73,7 @@ export const {
   toggle_logs_tab,
   set_settings_modal,
   set_template_modal,
+  set_auth_modal,
   set_monaco_input_value,
   set_editor_value,
   set_options,

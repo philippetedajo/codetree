@@ -6,7 +6,6 @@ import {
   set_template_modal,
 } from "../../store/features/editorSlice";
 import { useAppDispatch } from "../../store/hook";
-import consoleLog from "./ConsoleLog";
 
 const SidePanel = () => {
   const dispatch = useAppDispatch();
@@ -17,12 +16,8 @@ const SidePanel = () => {
     node.current = document.getElementById("super-iframe");
   }, [node.current]);
 
-  console.log(node.current);
-
   const onSave = () => {
     if (node.current) {
-      console.log("saving");
-
       htmlToImage
         .toBlob(node.current)
         .then(function (blob) {

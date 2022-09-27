@@ -1,27 +1,51 @@
 import "../public/font/stylesheet.css";
-import "../components/styles/iframeLoaderScreen.css";
-import "../components/styles/loaders.css";
-import "../components/styles/globals.css";
-import "../components/styles/customlib/_customTabs.css";
-import "../components/styles/customlib/_customMonacoEditor.css";
+import "../styles/iframeLoaderScreen.css";
+import "../styles/loaders.css";
+import "../styles/globals.css";
+import "../styles/customlib/_customTabs.css";
+import "../styles/customlib/_customMonacoEditor.css";
 import "allotment/dist/style.css";
+import "nprogress/nprogress.css";
 
-import type { AppProps } from "next/app";
-import Script from "next/script";
+import React, { useEffect } from "react";
 import { Provider } from "react-redux";
-import { store } from "../store/store";
-
+import App from "next/app";
+import type { AppContext, AppProps } from "next/app";
+import Script from "next/script";
+import { getIronSession, IronSessionData } from "iron-session";
 import Router from "next/router";
 import NProgress from "nprogress";
-import "nprogress/nprogress.css";
-import { SettingsModal } from "../components/ui/Modals";
-import { TemplateModal } from "../components/ui/Modals/TemplateModal";
-import React from "react";
+import { ApolloProvider } from "@apollo/client";
 
-function MyApp({ Component, pageProps }: AppProps) {
+import { createApolloClient } from "../utils/client";
+import { sessionOptions } from "../utils/withSession";
+import { store } from "../store/store";
+import { AuthModal, SettingsModal } from "../components/ui/Modals";
+import { TemplateModal } from "../components/ui/Modals/TemplateModal";
+
+import { set_initial_user, withGoogle } from "../store/features/authSlice";
+import { GoogleAuthInput } from "../graphql/generated/graphql";
+
+interface MyAppProps extends AppProps {
+  initialUser?: IronSessionData["user"] | null;
+}
+
+function MyApp({ Component, pageProps, router, initialUser }: MyAppProps) {
   Router.events.on("routeChangeStart", () => NProgress.start());
   Router.events.on("routeChangeComplete", () => NProgress.done());
   Router.events.on("routeChangeError", () => NProgress.done());
+
+  console.log(initialUser);
+
+  useEffect(() => {
+    window.withGoogle = function (input: GoogleAuthInput) {
+      store.dispatch(withGoogle(input));
+    };
+  }, []);
+
+  useEffect(() => {
+    store.dispatch(set_initial_user(initialUser));
+  }, [initialUser]);
 
   return (
     <>
@@ -42,12 +66,35 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Script>
 
       <Provider store={store}>
-        <Component {...pageProps} />
+        <ApolloProvider client={createApolloClient(initialUser?.token)}>
+          <Component {...pageProps} />
 
-        <SettingsModal />
-        <TemplateModal />
+          <SettingsModal />
+          <TemplateModal />
+          <AuthModal />
+        </ApolloProvider>
       </Provider>
     </>
   );
 }
+
 export default MyApp;
+
+MyApp.getInitialProps = async (appContext: AppContext) => {
+  const appProps = await App.getInitialProps(appContext);
+
+  if (appContext.ctx.req && appContext.ctx.res) {
+    const session = await getIronSession(
+      appContext.ctx.req,
+      appContext.ctx.res,
+      sessionOptions
+    );
+
+    return {
+      ...appProps,
+      initialUser: session.user,
+    };
+  }
+
+  return appProps;
+};
