@@ -13,16 +13,16 @@ const Index = () => {
         <div>Share It ...Fast</div>
       </div>
 
-      {/*<div*/}
-      {/*  style={{ height: "75vh" }}*/}
-      {/*  className="flex justify-around border border-red-500 px-12"*/}
-      {/*>*/}
-      {/*  <div className="w-10/12">*/}
-      {/*    <Playground />*/}
-      {/*  </div>*/}
+      <div
+        style={{ height: "75vh" }}
+        className="flex justify-around border border-red-500 px-12"
+      >
+        <div className="w-10/12">
+          <Playground />
+        </div>
 
-      {/*  <SidePanel />*/}
-      {/*</div>*/}
+        <SidePanel />
+      </div>
     </div>
   );
 };

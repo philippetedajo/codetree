@@ -8,7 +8,7 @@ import {
   update_logs,
 } from "../../store/features/editorSlice";
 import { getCompileCode } from "../../store/features/compilerSlice";
-import { createIframeContent } from "../tools";
+import { createIframeContent } from "../../utils/createIframeContent";
 import { IframeLoaderScreen } from "./IframeLoaderScreen";
 import { IframeErrorScreen } from "./IframeErrorScreen";
 import { LanguagesInterface } from "../../_types/editorTypes";
