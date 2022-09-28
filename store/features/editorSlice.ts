@@ -51,7 +51,6 @@ export const editorSlice = createSlice({
       state.isTemplateOpen = payload;
     },
     set_auth_modal: (state: InitialStateType, { payload }) => {
-      console.log(payload);
       state.isAuthOpen = payload;
     },
     set_monaco_input_value: (

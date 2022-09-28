@@ -41,14 +41,16 @@ export const AuthModal = () => {
               <div className="inline-block border  lg:w-4/12 h-96 my-8 overflow-hidden text-left align-middle transition-all transform shadow-xl rounded">
                 <div className="flex justify-center items-center">
                   <button
-                    onClick={() =>
+                    onClick={() => {
                       nativePopup({
                         pageURL: getGoogleOAuthURL(),
                         pageTitle: "Codetree authentication",
                         popupWinWidth: 490,
                         popupWinHeight: 600,
-                      })
-                    }
+                      });
+
+                      dispatch(set_auth_modal(false));
+                    }}
                     className="mt-10"
                   >
                     connect with google

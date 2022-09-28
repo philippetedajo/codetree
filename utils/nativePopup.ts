@@ -4,6 +4,7 @@ interface Popups {
   popupWinWidth: number;
   popupWinHeight: number;
 }
+
 export function nativePopup({
   pageURL,
   pageTitle,

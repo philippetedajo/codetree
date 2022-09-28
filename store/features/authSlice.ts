@@ -12,7 +12,22 @@ type InitialStateType = {
 };
 
 const initialState = {
-  user: null,
+  user: {
+    isLoggedIn: false,
+    data: {
+      id: "",
+      email: "",
+      username: "",
+      avatar: undefined,
+      bio: undefined,
+      website: undefined,
+      verifiedAt: undefined,
+      createdAt: undefined,
+      updatedAt: undefined,
+    },
+    token: undefined,
+    status: false,
+  },
   errors: null,
   isLoadingLogin: false,
   isLoadingLogout: false,

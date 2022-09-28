@@ -6,7 +6,12 @@ const Google = () => {
 
   useEffect(() => {
     if (query.code) {
-      window?.opener && window.opener.withGoogle(query);
+      new Promise((resolve) => {
+        window?.opener && window.opener.withGoogle(query);
+        resolve("done");
+      }).then(() => {
+        window.close();
+      });
     }
   }, [query]);
 

@@ -64,8 +64,9 @@ function MyApp({ Component, pageProps, router, initialUser }: MyAppProps) {
       </Script>
 
       <Provider store={store}>
-        {/* TODO: SET TOKEN FROM Store.getState() */}
-        <ApolloProvider client={createApolloClient(initialUser?.token)}>
+        <ApolloProvider
+          client={createApolloClient(store.getState().auth.user?.token)}
+        >
           <Component {...pageProps} />
 
           <SettingsModal />
