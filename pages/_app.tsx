@@ -35,8 +35,6 @@ function MyApp({ Component, pageProps, router, initialUser }: MyAppProps) {
   Router.events.on("routeChangeComplete", () => NProgress.done());
   Router.events.on("routeChangeError", () => NProgress.done());
 
-  console.log(initialUser);
-
   useEffect(() => {
     window.withGoogle = function (input: GoogleAuthInput) {
       store.dispatch(withGoogle(input));
@@ -66,6 +64,7 @@ function MyApp({ Component, pageProps, router, initialUser }: MyAppProps) {
       </Script>
 
       <Provider store={store}>
+        {/* TODO: SET TOKEN FROM Store.getState() */}
         <ApolloProvider client={createApolloClient(initialUser?.token)}>
           <Component {...pageProps} />
 

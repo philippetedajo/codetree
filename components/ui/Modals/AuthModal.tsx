@@ -43,10 +43,10 @@ export const AuthModal = () => {
                   <button
                     onClick={() =>
                       nativePopup({
-                        url: getGoogleOAuthURL(),
-                        title: "Codetree authentication",
-                        w: 490,
-                        h: 600,
+                        pageURL: getGoogleOAuthURL(),
+                        pageTitle: "Codetree authentication",
+                        popupWinWidth: 490,
+                        popupWinHeight: 600,
                       })
                     }
                     className="mt-10"
