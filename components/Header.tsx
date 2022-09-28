@@ -1,7 +1,7 @@
 import React from "react";
-import { set_auth_modal } from "../store/features/editorSlice";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { auth_state, logout } from "../store/features/authSlice";
+import { MODAL_TYPE, open_modal } from "../store/features/modalSlice";
 import { Avatar } from "./Avatar";
 
 const Header = () => {
@@ -12,7 +12,6 @@ const Header = () => {
     <div className="border mb-4 h-12 flex items-center px-12 justify-between">
       <div>Codetree : Share It ...Fast</div>
       <div>
-        {/*  TODO: INFER TYPE*/}
         {user?.isLoggedIn ? (
           <div className="flex items-center gap-3">
             <div className="cursor-pointer" onClick={() => dispatch(logout())}>
@@ -28,7 +27,7 @@ const Header = () => {
         ) : (
           <div
             className="cursor-pointer"
-            onClick={() => dispatch(set_auth_modal(true))}
+            onClick={() => dispatch(open_modal(MODAL_TYPE.AUTH))}
           >
             sign In
           </div>

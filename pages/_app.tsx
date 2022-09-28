@@ -20,11 +20,9 @@ import { ApolloProvider } from "@apollo/client";
 import { createApolloClient } from "../utils/client";
 import { sessionOptions } from "../utils/withSession";
 import { store } from "../store/store";
-import { AuthModal, SettingsModal } from "../components/Modals";
-import { TemplateModal } from "../components/Modals/TemplateModal";
-
 import { set_initial_user, withGoogle } from "../store/features/authSlice";
 import { GoogleAuthInput } from "../graphql/generated/graphql";
+import { RootModal } from "../components";
 
 interface MyAppProps extends AppProps {
   initialUser?: IronSessionData["user"] | null;
@@ -68,10 +66,7 @@ function MyApp({ Component, pageProps, router, initialUser }: MyAppProps) {
           client={createApolloClient(store.getState().auth.user?.token)}
         >
           <Component {...pageProps} />
-
-          <SettingsModal />
-          <TemplateModal />
-          <AuthModal />
+          <RootModal />
         </ApolloProvider>
       </Provider>
     </>

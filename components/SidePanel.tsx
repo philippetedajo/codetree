@@ -1,11 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import * as htmlToImage from "html-to-image";
 import { HiCog, HiPlus } from "react-icons/hi";
-import {
-  set_settings_modal,
-  set_template_modal,
-} from "../store/features/editorSlice";
 import { useAppDispatch } from "../store/hook";
+import { MODAL_TYPE, open_modal } from "../store/features/modalSlice";
 
 const SidePanel = () => {
   const dispatch = useAppDispatch();
@@ -37,14 +34,14 @@ const SidePanel = () => {
         </div>
         <div className="flex items-center">
           <HiPlus
-            onClick={() => dispatch(set_template_modal(true))}
+            onClick={() => dispatch(open_modal(MODAL_TYPE.TEMPLATE))}
             size={26}
             className="text-gray-500 cursor-pointer hover:text-white mr-4"
             aria-hidden="true"
           />
 
           <HiCog
-            onClick={() => dispatch(set_settings_modal(true))}
+            onClick={() => dispatch(open_modal(MODAL_TYPE.SETTINGS))}
             size={23}
             className="text-gray-500 cursor-pointer hover:text-white"
             aria-hidden="true"
