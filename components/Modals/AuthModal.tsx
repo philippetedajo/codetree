@@ -1,12 +1,9 @@
 import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { useAppDispatch, useAppSelector } from "../../../store/hook";
-import {
-  editor_state,
-  set_auth_modal,
-} from "../../../store/features/editorSlice";
-import getGoogleOAuthURL from "../../../utils/getGoogleOAuthUrl";
-import { nativePopup } from "../../../utils/nativePopup";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { editor_state, set_auth_modal } from "../../store/features/editorSlice";
+import getGoogleOAuthURL from "../../utils/getGoogleOAuthUrl";
+import { nativePopup } from "../../utils/nativePopup";
 
 export const AuthModal = () => {
   const { isAuthOpen } = useAppSelector(editor_state);

@@ -1,25 +1,27 @@
 import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Tabs, { TabPane } from "rc-tabs";
-import { GoSettings } from "react-icons/go";
-import { useAppDispatch, useAppSelector } from "../../../store/hook";
+import { CgTrees } from "react-icons/cg";
+import { GiPartyPopper } from "react-icons/gi";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
 import {
   editor_state,
-  set_settings_modal,
-} from "../../../store/features/editorSlice";
-import OptionsTab from "./OptionsTab";
+  set_template_modal,
+} from "../../store/features/editorSlice";
+import { TreeTab } from "./TreeTab";
+import { News } from "./NewsTab";
 
-export const SettingsModal = () => {
-  const { isSettingsOpen } = useAppSelector(editor_state);
+export const TemplateModal = () => {
+  const { isTemplateOpen } = useAppSelector(editor_state);
   const dispatch = useAppDispatch();
 
   return (
     <>
-      <Transition appear show={isSettingsOpen} as={Fragment}>
+      <Transition appear show={isTemplateOpen} as={Fragment}>
         <Dialog
           as="div"
           className="fixed inset-0 z-50 overflow-y-auto"
-          onClose={() => dispatch(set_settings_modal(false))}
+          onClose={() => dispatch(set_template_modal(false))}
         >
           <div className="min-h-screen px-4 text-center z-50">
             <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
@@ -48,12 +50,23 @@ export const SettingsModal = () => {
                   <TabPane
                     tab={
                       <div className="flex">
-                        <GoSettings size={27} className="mr-2" /> Editor
+                        <CgTrees size={27} className="mr-2" />
+                        trees
                       </div>
                     }
-                    key="editor"
+                    key="trees"
                   >
-                    <OptionsTab />
+                    <TreeTab />
+                  </TabPane>
+                  <TabPane
+                    tab={
+                      <div className="flex">
+                        <GiPartyPopper size={27} className="mr-2" /> News
+                      </div>
+                    }
+                    key="news"
+                  >
+                    <News />
                   </TabPane>
                 </Tabs>
               </div>

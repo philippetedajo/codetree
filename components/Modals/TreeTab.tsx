@@ -1,7 +1,7 @@
-import { useTree } from "../../../hooks";
-import { treeTemplates } from "../../../constants";
-import { useAppSelector } from "../../../store/hook";
-import { compiler_state } from "../../../store/features/compilerSlice";
+import { useTree } from "../../hooks";
+import { treeTemplates } from "../../constants";
+import { useAppSelector } from "../../store/hook";
+import { compiler_state } from "../../store/features/compilerSlice";
 import { TemplateSelectionSkeleton } from "../Skeleton";
 
 export const TreeTab = () => {

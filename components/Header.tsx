@@ -1,7 +1,7 @@
 import React from "react";
-import { set_auth_modal } from "../../store/features/editorSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hook";
-import { auth_state, logout } from "../../store/features/authSlice";
+import { set_auth_modal } from "../store/features/editorSlice";
+import { useAppDispatch, useAppSelector } from "../store/hook";
+import { auth_state, logout } from "../store/features/authSlice";
 import { Avatar } from "./Avatar";
 
 const Header = () => {

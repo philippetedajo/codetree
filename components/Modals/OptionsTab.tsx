@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useAppDispatch, useAppSelector } from "../../../store/hook";
-import { editor_state, set_options } from "../../../store/features/editorSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { editor_state, set_options } from "../../store/features/editorSlice";
 
 const OptionsTab = () => {
   const dispatch = useAppDispatch();

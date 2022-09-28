@@ -1,9 +1,9 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import { useAppDispatch } from "../../store/hook";
-import { clear_logs } from "../../store/features/editorSlice";
+import { useAppDispatch } from "../store/hook";
+import { clear_logs } from "../store/features/editorSlice";
 
-import { defaultStyles } from "../../constants/styles";
+import { defaultStyles } from "../constants/styles";
 
 const Console = dynamic(import("console-feed/lib/Component"), { ssr: false });
 

@@ -4,8 +4,8 @@ import { HiCog, HiPlus } from "react-icons/hi";
 import {
   set_settings_modal,
   set_template_modal,
-} from "../../store/features/editorSlice";
-import { useAppDispatch } from "../../store/hook";
+} from "../store/features/editorSlice";
+import { useAppDispatch } from "../store/hook";
 
 const SidePanel = () => {
   const dispatch = useAppDispatch();

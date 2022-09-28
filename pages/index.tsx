@@ -1,8 +1,8 @@
 import React from "react";
 
 import Playground from "../components/Playground";
-import SidePanel from "../components/ui/SidePanel";
-import Header from "../components/ui/Header";
+import SidePanel from "../components/SidePanel";
+import Header from "../components/Header";
 
 const Index = () => {
   return (

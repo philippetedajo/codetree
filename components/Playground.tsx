@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 
-import EditorInput from "./ui/EditorInput";
-import ConsoleLog from "./ui/ConsoleLog";
-import Iframe from "./ui/Iframe";
+import EditorInput from "./EditorInput";
+import ConsoleLog from "./ConsoleLog";
+import Iframe from "./Iframe";
 import { editor_state } from "../store/features/editorSlice";
 import dynamic from "next/dynamic";
 
-const EditorPanel = dynamic(() => import("./ui/EditorPanel"), {
+const EditorPanel = dynamic(() => import("./EditorPanel"), {
   ssr: false,
 });
 
