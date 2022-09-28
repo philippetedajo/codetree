@@ -6,7 +6,7 @@ import parserHtml from "prettier/parser-html";
 import parserCss from "prettier/parser-postcss";
 import parserBabel from "prettier/parser-babel";
 import prettier from "prettier";
-import { defaultStyles } from "../../constants/styles";
+import { defaultStyles } from "../constants/styles";
 
 export const useMonaco = () => {
   const codeEditor = useRef<any>();

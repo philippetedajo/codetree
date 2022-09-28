@@ -1,10 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import * as esbuild from "esbuild-wasm";
-import {
-  unpkgFetchPlugin,
-  unpkgPathPlugin,
-} from "../../components/esbuild/plugins";
+import { unpkgFetchPlugin, unpkgPathPlugin } from "../../esbuild/plugins";
 import { CompilerOutput, CompilerStatus } from "../../_types/compilerTypes";
 
 type InitialStateType = {
