@@ -113,6 +113,12 @@ a {
   }
 }
 
+.glassmorphism {
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  background-color: rgba(23, 30, 37, 0.75);
+}
+
 .backdrop {
   background: rgba(0, 0, 0, 0.5);
   z-index: 50;

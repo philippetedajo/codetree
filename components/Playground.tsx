@@ -12,7 +12,7 @@ const EditorPanel = dynamic(() => import("./EditorPanel"), {
   ssr: false,
 });
 
-const Playground = () => {
+export const Playground = () => {
   const dispatch = useAppDispatch();
 
   const { esbuildStatus, isCompiling, output } = useAppSelector(compiler_state);
@@ -40,5 +40,3 @@ const Playground = () => {
     />
   );
 };
-
-export default Playground;

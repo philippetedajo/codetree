@@ -43,6 +43,8 @@ function MyApp({ Component, pageProps, router, initialUser }: MyAppProps) {
     store.dispatch(set_initial_user(initialUser));
   }, [initialUser]);
 
+  console.log(store.getState().auth.user?.token);
+
   return (
     <>
       <Script
@@ -61,14 +63,16 @@ function MyApp({ Component, pageProps, router, initialUser }: MyAppProps) {
                 `}
       </Script>
 
-      <Provider store={store}>
-        <ApolloProvider
-          client={createApolloClient(store.getState().auth.user?.token)}
-        >
+      <ApolloProvider
+        client={createApolloClient(
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbDhtY2hwdzQwMDA4Z3l2cGRmbXY2d2V5IiwiaWF0IjoxNjY0NDEzMjAwfQ.HVBdNKoHppNZHN8EbwV0mhVfkbFt0odL58pHheZV7w0"
+        )}
+      >
+        <Provider store={store}>
           <Component {...pageProps} />
           <RootModal />
-        </ApolloProvider>
-      </Provider>
+        </Provider>
+      </ApolloProvider>
     </>
   );
 }

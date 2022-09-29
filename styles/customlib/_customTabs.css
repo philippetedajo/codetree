@@ -14,14 +14,12 @@
 }
 
 .editor-input-tabs .rc-tabs-nav-wrap {
-  @apply bg-tree-hard;
 }
 
 .editor-input-tabs .rc-tabs-tab:hover {
 }
 
 .editor-input-tabs .rc-tabs-tab-active {
-  @apply bg-tree-soft;
 }
 
 .editor-input-tabs .margin-view-overlays {

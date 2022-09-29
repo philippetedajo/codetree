@@ -28,7 +28,6 @@
     "esbuild-wasm": "^0.14.42",
     "framer-motion": "^6.3.11",
     "graphql": "^16.6.0",
-    "html-to-image": "^1.10.8",
     "iron-session": "^6.2.1",
     "localforage": "^1.9.0",
     "monaco-editor": "^0.25.1",

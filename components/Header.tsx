@@ -4,12 +4,12 @@ import { auth_state, logout } from "../store/features/authSlice";
 import { MODAL_TYPE, open_modal } from "../store/features/modalSlice";
 import { Avatar } from "./Avatar";
 
-const Header = () => {
+export const Header = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector(auth_state);
 
   return (
-    <div className="border mb-4 h-12 flex items-center px-12 justify-between">
+    <div className="mb-4 h-12 flex items-center px-12 justify-between">
       <div>Codetree : Share It ...Fast</div>
       <div>
         {user?.isLoggedIn ? (
@@ -36,5 +36,3 @@ const Header = () => {
     </div>
   );
 };
-
-export default Header;

@@ -4,8 +4,7 @@ export const monacoOptions: editor.IStandaloneEditorConstructionOptions = {
   fontSize: 12,
   fontWeight: "500",
   minimap: {
-    enabled: true,
-    scale: 2,
+    enabled: false,
   },
   wordWrap: "on",
   autoClosingBrackets: "always",
