@@ -20,9 +20,11 @@ const Index = () => {
       <div style={{ height: "75vh" }} className="flex justify-center px-12">
         <SideBar />
 
-        <div className="w-10/12 glassmorphism rounded-tr-xl rounded-br-xl overflow-hidden">
+        <div className="w-10/12 bg-tree-hard overflow-hidden">
           <Playground />
         </div>
+
+        <SidePanel />
       </div>
     </div>
   );

@@ -1,10 +1,12 @@
 import { useTree } from "../../hooks";
 import { treeTemplates } from "../../constants";
-import { useAppSelector } from "../../store/hook";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { compiler_state } from "../../store/features/compilerSlice";
-import { TemplateSelectionSkeleton } from "../Skeleton";
+import { PanelEnum, set_panel } from "../../store/features/editorSlice";
+import { TemplateSelectionSkeleton } from "../Skeleton/TemplateSelectionSkeleton";
 
 export const TemplateTab = () => {
+  const dispatch = useAppDispatch();
   const { esbuildStatus } = useAppSelector(compiler_state);
   const { setTree } = useTree();
 
@@ -18,7 +20,10 @@ export const TemplateTab = () => {
     <button
       key={key}
       name={template[1].name}
-      onClick={() => setTree(template[1])}
+      onClick={() => {
+        setTree(template[1]);
+        dispatch(set_panel(PanelEnum.EDITOR_INPUT));
+      }}
       className="hover:bg-tree-soft p-2 rounded-sm"
     >
       <div className="flex pointer-events-none">
@@ -38,10 +43,10 @@ export const TemplateTab = () => {
 
   return (
     <div>
-      <h1 className="text-2xl pb-3 border-b border-tree-border">
-        Select your tree
-      </h1>
-      <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="border-b border-black h-10 flex items-center px-7">
+        <h1 className="text-lg">Templates</h1>
+      </div>
+      <div className="pt-6 px-7 flex flex-wrap gap-x-10 gap-y-5">
         {esbuildStatus.isReady ? templates : <TemplateSelectionSkeleton />}
       </div>
     </div>

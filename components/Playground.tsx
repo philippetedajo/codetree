@@ -11,7 +11,7 @@ import { TemplateTab } from "./Tabs/TemplateTab";
 import { SettingsTab } from "./Tabs/SettingsTab";
 import { InputCodeTab } from "./Tabs/InputCodeTab";
 
-const EditorPanel = dynamic(() => import("./EditorPanel"), {
+const EditorPanel = dynamic(() => import("./MiddlePanel"), {
   ssr: false,
 });
 

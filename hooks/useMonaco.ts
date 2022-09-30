@@ -24,9 +24,9 @@ export const useMonaco = () => {
     monaco.editor.defineTheme("myTheme", {
       base: "vs-dark",
       inherit: true,
-      rules: [{ background: "#00000000", token: "" }],
+      rules: [{ background: defaultStyles.hard, token: "" }],
       colors: {
-        "editor.background": "#00000000",
+        "editor.background": defaultStyles.hard,
       },
     });
     monaco.editor.setTheme("myTheme");

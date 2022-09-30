@@ -17,3 +17,5 @@ export * from "./SideBar";
 export * from "./Tabs/InputCodeTab";
 export * from "./Tabs/TemplateTab";
 export * from "./Tabs/SettingsTab";
+
+export * from "./Skeleton/TemplateSelectionSkeleton";

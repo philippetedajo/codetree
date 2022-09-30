@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { Allotment } from "allotment";
 import { LayoutPriority } from "allotment/dist/types/src/split-view";
 
-interface EditorPanel {
+interface MiddlePanel {
   panelA: ReactNode;
   panelB: ReactNode;
   panelC: ReactNode;
@@ -14,7 +14,7 @@ const EditorPanel = ({
   panelB,
   panelC,
   lastPanelVisibility,
-}: EditorPanel) => {
+}: MiddlePanel) => {
   return (
     <Allotment>
       <Allotment.Pane>{panelA}</Allotment.Pane>

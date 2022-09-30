@@ -40,12 +40,12 @@ export const SettingsTab = () => {
 
   return (
     <>
-      <h1 className="text-2xl pb-3 border-b border-tree-border">
-        Editor settings
-      </h1>
+      <div className="border-b border-black h-10 flex items-center px-7">
+        <h1 className="text-lg"> Settings</h1>
+      </div>
 
       <div className="overflow-auto h-full">
-        <div className="pt-5">
+        <div className="pt-6 px-7 ">
           <form
             className=" mb-12 overflow-auto"
             onSubmit={handleSubmit(onChangeOptions)}
