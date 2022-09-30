@@ -8,7 +8,7 @@ export const SideBar = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="glassmorphism rounded-bl-xl rounded-tl-xl w-14 flex flex-col items-center gap-3 pt-10">
+    <div className="glassmorphism rounded-bl-xl rounded-tl-xl w-14 flex flex-col items-center gap-3 pt-3">
       <RiTerminalLine
         onClick={() => dispatch(set_panel(PanelEnum.EDITOR_INPUT))}
         size={24}

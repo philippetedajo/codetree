@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
+import dynamic from "next/dynamic";
 import { compiler_state, initEsbuild } from "../store/features/compilerSlice";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 
-import EditorInput from "./EditorInput";
 import ConsoleLog from "./ConsoleLog";
 import Iframe from "./Iframe";
 import { editor_state, PanelEnum } from "../store/features/editorSlice";
-import dynamic from "next/dynamic";
-import { TemplateTab } from "./TemplateTab";
-import { SettingsTab } from "./SettingsTab";
+
+import { TemplateTab } from "./Tabs/TemplateTab";
+import { SettingsTab } from "./Tabs/SettingsTab";
+import { InputCodeTab } from "./Tabs/InputCodeTab";
 
 const EditorPanel = dynamic(() => import("./EditorPanel"), {
   ssr: false,
@@ -30,7 +31,7 @@ export const Playground = () => {
   const renderPanel = (panel: PanelEnum) => {
     switch (panel) {
       case PanelEnum.EDITOR_INPUT:
-        return <EditorInput editorValue={editorValue} />;
+        return <InputCodeTab editorValue={editorValue} />;
 
       case PanelEnum.EDITOR_TEMPLATE:
         return <TemplateTab />;

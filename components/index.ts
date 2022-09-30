@@ -1,14 +1,12 @@
 export * from "./Monaco";
 export * from "./Iframe";
 export * from "./ConsoleLog";
-export * from "./EditorInput";
+export * from "./Tabs/InputCodeTab";
 export * from "./IframeErrorScreen";
 export * from "./IframeLoaderScreen";
 export * from "./Avatar";
 
 export * from "./Modals/RootModal";
-export * from "./Modals/SettingsModal";
-export * from "./Modals/TemplateModal";
 export * from "./Modals/AuthModal";
 
 export * from "./SidePanel";
@@ -16,5 +14,6 @@ export * from "./Header";
 export * from "./Playground";
 export * from "./SideBar";
 
-export * from "./TemplateTab";
-export * from "./SettingsTab";
+export * from "./Tabs/InputCodeTab";
+export * from "./Tabs/TemplateTab";
+export * from "./Tabs/SettingsTab";
