@@ -15,3 +15,6 @@ export * from "./SidePanel";
 export * from "./Header";
 export * from "./Playground";
 export * from "./SideBar";
+
+export * from "./TemplateTab";
+export * from "./SettingsTab";

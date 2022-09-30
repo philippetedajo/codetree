@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { auth_state, logout } from "../store/features/authSlice";
-import { MODAL_TYPE, open_modal } from "../store/features/modalSlice";
+import { ModalEnum, open_modal } from "../store/features/modalSlice";
 import { Avatar } from "./Avatar";
 
 export const Header = () => {
@@ -27,7 +27,7 @@ export const Header = () => {
         ) : (
           <div
             className="cursor-pointer"
-            onClick={() => dispatch(open_modal(MODAL_TYPE.AUTH))}
+            onClick={() => dispatch(open_modal(ModalEnum.AUTH))}
           >
             sign In
           </div>
