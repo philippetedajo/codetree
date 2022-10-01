@@ -13,6 +13,7 @@
     "@apollo/client": "^3.6.9",
     "@babel/parser": "^7.14.6",
     "@babel/traverse": "^7.14.5",
+    "@emotion/react": "^11.10.4",
     "@graphql-codegen/cli": "^2.6.2",
     "@graphql-codegen/typescript-react-apollo": "^3.3.3",
     "@monaco-editor/react": "^4.2.0",

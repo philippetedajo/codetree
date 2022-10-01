@@ -6,9 +6,11 @@ import parserHtml from "prettier/parser-html";
 import parserCss from "prettier/parser-postcss";
 import parserBabel from "prettier/parser-babel";
 import prettier from "prettier";
-import { defaultStyles } from "../constants/styles";
+import { useAppSelector } from "../store/hook";
+import { theme_state } from "../store/features/themeSlice";
 
 export const useMonaco = () => {
+  const { theme } = useAppSelector(theme_state);
   const codeEditor = useRef<any>();
 
   const [input, setInput] = useState<string | undefined>("");
@@ -24,11 +26,12 @@ export const useMonaco = () => {
     monaco.editor.defineTheme("myTheme", {
       base: "vs-dark",
       inherit: true,
-      rules: [{ background: defaultStyles.hard, token: "" }],
+      rules: [{ background: theme.background, token: "" }],
       colors: {
-        "editor.background": defaultStyles.hard,
+        "editor.background": theme.foreground,
       },
     });
+
     monaco.editor.setTheme("myTheme");
 
     const { default: traverse } = await import("@babel/traverse");

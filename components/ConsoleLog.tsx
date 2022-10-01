@@ -1,9 +1,9 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import { useAppDispatch } from "../store/hook";
+import { useAppDispatch, useAppSelector } from "../store/hook";
 import { clear_logs } from "../store/features/editorSlice";
 
-import { defaultStyles } from "../constants/styles";
+import { theme_state } from "../store/features/themeSlice";
 
 const Console = dynamic(import("console-feed/lib/Component"), { ssr: false });
 
@@ -12,11 +12,12 @@ interface LogsProps {
 }
 
 const Logs = ({ logs }: LogsProps) => {
+  const { theme } = useAppSelector(theme_state);
   const dispatch = useAppDispatch();
 
   return (
-    <div className="bg-tree-soft text-gray-300 relative h-full">
-      <div className="flex items-center justify-between bg-tree-hard px-3 h-9">
+    <div className="text-gray-300 relative h-full">
+      <div className="flex items-center justify-between px-3 h-9">
         <button
           onClick={() => dispatch(clear_logs())}
           className="editor-button h-5 mr-3"
@@ -30,8 +31,8 @@ const Logs = ({ logs }: LogsProps) => {
           styles={{
             BASE_FONT_FAMILY: '"Rubik", sans-serif;',
             BASE_FONT_SIZE: 14,
-            BASE_BACKGROUND_COLOR: defaultStyles.soft,
-            LOG_BORDER: defaultStyles.border_high,
+            BASE_BACKGROUND_COLOR: theme.background,
+            LOG_BORDER: theme.border,
           }}
           logs={logs}
           variant="dark"

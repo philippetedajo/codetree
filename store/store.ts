@@ -4,6 +4,7 @@ import authSlice from "./features/authSlice";
 import editorReducer from "./features/editorSlice";
 import compilerReducer from "./features/compilerSlice";
 import modalReducer from "./features/modalSlice";
+import themeReducer from "./features/themeSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     editor: editorReducer,
     compiler: compilerReducer,
     modal: modalReducer,
+    theme: themeReducer,
   },
 });
 

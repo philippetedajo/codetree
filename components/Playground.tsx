@@ -5,11 +5,11 @@ import { useAppDispatch, useAppSelector } from "../store/hook";
 
 import ConsoleLog from "./ConsoleLog";
 import Iframe from "./Iframe";
-import { editor_state, PanelEnum } from "../store/features/editorSlice";
+import { editor_state } from "../store/features/editorSlice";
 
-import { TemplateTab } from "./Tabs/TemplateTab";
-import { SettingsTab } from "./Tabs/SettingsTab";
 import { InputCodeTab } from "./Tabs/InputCodeTab";
+import { theme_state } from "../store/features/themeSlice";
+import { Header } from "./Header";
 
 const EditorPanel = dynamic(() => import("./MiddlePanel"), {
   ssr: false,
@@ -18,6 +18,7 @@ const EditorPanel = dynamic(() => import("./MiddlePanel"), {
 export const Playground = () => {
   const dispatch = useAppDispatch();
 
+  const { theme } = useAppSelector(theme_state);
   const { esbuildStatus, isCompiling, output } = useAppSelector(compiler_state);
   const { panel, logs, editorValue, isLogTabOpen } =
     useAppSelector(editor_state);
@@ -28,32 +29,27 @@ export const Playground = () => {
     }
   }, [dispatch, esbuildStatus]);
 
-  const renderPanel = (panel: PanelEnum) => {
-    switch (panel) {
-      case PanelEnum.EDITOR_INPUT:
-        return <InputCodeTab editorValue={editorValue} />;
-
-      case PanelEnum.EDITOR_TEMPLATE:
-        return <TemplateTab />;
-
-      case PanelEnum.EDITOR_SETTINGS:
-        return <SettingsTab />;
-    }
-  };
-
   return (
-    <EditorPanel
-      panelA={renderPanel(panel)}
-      panelB={
-        <Iframe
-          tabs={editorValue.tabs}
-          output={output}
-          isCompiling={isCompiling}
-          esbuildStatus={esbuildStatus}
+    <div style={{ background: theme.background }}>
+      <div style={{ height: "4rem" }}>
+        <Header />
+      </div>
+      <div style={{ height: "calc(100vh - 6rem)" }}>
+        <EditorPanel
+          panelA={<InputCodeTab editorValue={editorValue} />}
+          panelB={
+            <Iframe
+              tabs={editorValue.tabs}
+              output={output}
+              isCompiling={isCompiling}
+              esbuildStatus={esbuildStatus}
+            />
+          }
+          panelC={<ConsoleLog logs={logs} />}
+          lastPanelVisibility={isLogTabOpen}
         />
-      }
-      panelC={<ConsoleLog logs={logs} />}
-      lastPanelVisibility={isLogTabOpen}
-    />
+      </div>
+      <div style={{ height: "2rem" }}>footer</div>
+    </div>
   );
 };

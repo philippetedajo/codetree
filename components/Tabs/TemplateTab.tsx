@@ -1,12 +1,14 @@
 import { useTree } from "../../hooks";
 import { treeTemplates } from "../../constants";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { theme_state } from "../../store/features/themeSlice";
 import { compiler_state } from "../../store/features/compilerSlice";
 import { PanelEnum, set_panel } from "../../store/features/editorSlice";
 import { TemplateSelectionSkeleton } from "../Skeleton/TemplateSelectionSkeleton";
 
 export const TemplateTab = () => {
   const dispatch = useAppDispatch();
+  const { theme } = useAppSelector(theme_state);
   const { esbuildStatus } = useAppSelector(compiler_state);
   const { setTree } = useTree();
 
@@ -24,7 +26,7 @@ export const TemplateTab = () => {
         setTree(template[1]);
         dispatch(set_panel(PanelEnum.EDITOR_INPUT));
       }}
-      className="hover:bg-tree-soft p-2 rounded-sm"
+      className="p-2 rounded-sm"
     >
       <div className="flex pointer-events-none">
         {/* eslint-disable-next-line @next/next/no-img-element */}

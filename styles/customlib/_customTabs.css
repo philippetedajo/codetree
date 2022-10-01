@@ -34,35 +34,6 @@
   @apply bg-green-500;
 }
 
-/* editor Modal ====================================*/
-.option-modal-tabs {
-  height: 100%;
-  border: none !important;
-  color: white;
-}
-
-.option-modal-tabs .rc-tabs-tabpane {
-  @apply p-5 bg-tree-hard;
-}
-
-.option-modal-tabs .rc-tabs-nav-wrap {
-  border-right: 1px solid black;
-  @apply pt-5 bg-tree-soft;
-}
-
-.option-modal-tabs .rc-tabs-tab {
-  padding-left: 10px;
-  @apply font-medium text-sm;
-}
-
-.option-modal-tabs .rc-tabs-tab-active {
-  @apply text-green-500;
-}
-
-.option-modal-tabs .rc-tabs-ink-bar {
-  @apply bg-green-500;
-}
-
 /* default  ====================================*/
 .rc-tabs-dropdown {
   position: absolute;

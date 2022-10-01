@@ -43,8 +43,6 @@ function MyApp({ Component, pageProps, router, initialUser }: MyAppProps) {
     store.dispatch(set_initial_user(initialUser));
   }, [initialUser]);
 
-  console.log(store.getState().auth.user?.token);
-
   return (
     <>
       <Script

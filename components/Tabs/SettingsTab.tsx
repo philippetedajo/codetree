@@ -33,8 +33,6 @@ export const SettingsTab = () => {
       scrollbar: { verticalScrollbarSize: 10, verticalSliderSize: 10 },
     };
 
-    console.log(custom);
-
     dispatch(set_options(custom));
   };
 
