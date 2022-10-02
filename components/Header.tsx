@@ -3,13 +3,18 @@ import { useAppDispatch, useAppSelector } from "../store/hook";
 import { auth_state, logout } from "../store/features/authSlice";
 import { ModalEnum, open_modal } from "../store/features/modalSlice";
 import { Avatar } from "./Avatar";
+import { theme_state } from "../store/features/themeSlice";
 
 export const Header = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector(auth_state);
+  const { theme } = useAppSelector(theme_state);
 
   return (
-    <div className="mb-4 h-full w-full flex items-center px-12 justify-between">
+    <div
+      style={{ height: "3rem", background: theme.background }}
+      className="flex items-center px-12 justify-between"
+    >
       <div>Codetree : Code It ...Fast</div>
       <div>
         {user?.isLoggedIn ? (

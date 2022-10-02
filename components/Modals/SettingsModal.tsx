@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { editor_state, set_options } from "../../store/features/editorSlice";
 
-export const SettingsTab = () => {
+export const SettingsModal = () => {
   const dispatch = useAppDispatch();
   const { options } = useAppSelector(editor_state);
 

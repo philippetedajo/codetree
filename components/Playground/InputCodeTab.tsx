@@ -1,6 +1,6 @@
 import React from "react";
 import Tabs, { TabPane } from "rc-tabs";
-import { Monaco } from "../Monaco";
+import { Monaco } from "./Monaco";
 import { EditorValueInterface } from "../../_types/editorTypes";
 
 const InputCode = ({ editorValue }: { editorValue: EditorValueInterface }) => {
@@ -24,4 +24,6 @@ const InputCode = ({ editorValue }: { editorValue: EditorValueInterface }) => {
   );
 };
 
-export const InputCodeTab = React.memo(InputCode);
+const InputCodeTab = React.memo(InputCode);
+
+export default InputCodeTab;

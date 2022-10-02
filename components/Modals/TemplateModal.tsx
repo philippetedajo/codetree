@@ -3,10 +3,9 @@ import { treeTemplates } from "../../constants";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { theme_state } from "../../store/features/themeSlice";
 import { compiler_state } from "../../store/features/compilerSlice";
-import { PanelEnum, set_panel } from "../../store/features/editorSlice";
 import { TemplateSelectionSkeleton } from "../Skeleton/TemplateSelectionSkeleton";
 
-export const TemplateTab = () => {
+export const TemplateModal = () => {
   const dispatch = useAppDispatch();
   const { theme } = useAppSelector(theme_state);
   const { esbuildStatus } = useAppSelector(compiler_state);
@@ -22,10 +21,7 @@ export const TemplateTab = () => {
     <button
       key={key}
       name={template[1].name}
-      onClick={() => {
-        setTree(template[1]);
-        dispatch(set_panel(PanelEnum.EDITOR_INPUT));
-      }}
+      onClick={() => setTree(template[1])}
       className="p-2 rounded-sm"
     >
       <div className="flex pointer-events-none">

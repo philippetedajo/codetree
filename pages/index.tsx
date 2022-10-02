@@ -1,8 +1,14 @@
 import React from "react";
-import { Playground } from "../components";
+import Playground from "../components/Playground";
+import { Header } from "../components/Header";
 
 const Index = () => {
-  return <Playground />;
+  return (
+    <>
+      <Header />
+      <Playground />
+    </>
+  );
 };
 
 export default Index;

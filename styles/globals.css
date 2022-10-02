@@ -48,11 +48,12 @@ a {
 }
 
 .editor-select {
-  @apply text-gray-200 bg-tree-soft rounded-sm;
+  @apply text-gray-200 rounded-sm;
+  /*  bg-tree-soft */
 }
 
 .editor-button {
-  @apply bg-tree-low hover:bg-tree-border flex items-center justify-center px-4 rounded transform active:scale-75 transition-all duration-300;
+  @apply flex items-center justify-center px-4 rounded transform active:scale-75 transition-all duration-300;
 }
 
 /* iframe =========================================== */

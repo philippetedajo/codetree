@@ -3,19 +3,12 @@ import { RootState } from "../store";
 import { EditorValueInterface } from "../../_types/editorTypes";
 import { treeTemplates, monacoOptions } from "../../constants";
 
-export enum PanelEnum {
-  EDITOR_INPUT = "EDITOR_INPUT",
-  EDITOR_SETTINGS = "EDITOR_SETTINGS",
-  EDITOR_TEMPLATE = "EDITOR_TEMPLATE",
-}
-
 type InitialStateType = {
   editorValue: EditorValueInterface;
   monacoInputValue: EditorValueInterface;
   logs: any;
   isLogTabOpen: boolean;
   options: any;
-  panel: PanelEnum;
 };
 
 const initialState = {
@@ -24,16 +17,12 @@ const initialState = {
   logs: [],
   isLogTabOpen: false,
   options: monacoOptions,
-  panel: PanelEnum.EDITOR_INPUT,
 };
 
 export const editorSlice = createSlice({
   name: "editor",
   initialState: initialState,
   reducers: {
-    set_panel: (state: InitialStateType, action: PayloadAction<PanelEnum>) => {
-      state.panel = action.payload;
-    },
     set_editor_value: (state: InitialStateType, { payload }) => {
       state.editorValue = payload;
     },
@@ -62,7 +51,6 @@ export const editorSlice = createSlice({
 });
 
 export const {
-  set_panel,
   update_editor_code,
   update_logs,
   clear_logs,

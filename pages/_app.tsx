@@ -22,7 +22,7 @@ import { sessionOptions } from "../utils/withSession";
 import { store } from "../store/store";
 import { set_initial_user, withGoogle } from "../store/features/authSlice";
 import { GoogleAuthInput } from "../graphql/generated/graphql";
-import { RootModal } from "../components";
+import { RootModal } from "../components/Modals/RootModal";
 
 interface MyAppProps extends AppProps {
   initialUser?: IronSessionData["user"] | null;
