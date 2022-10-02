@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
+import Loader from "../../components/Loader";
 
 const Google = () => {
   const { query } = useRouter();
@@ -17,7 +18,7 @@ const Google = () => {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <div>loading...</div>
+      <Loader size={30} color="black" />
     </div>
   );
 };

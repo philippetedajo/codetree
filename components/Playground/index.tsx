@@ -14,6 +14,7 @@ import Iframe from "./Iframe";
 import InputCodeTab from "./InputCodeTab";
 import Footer from "./Footer";
 import Header from "./Header";
+import { ModalEnum, open_modal } from "../../store/features/modalSlice";
 
 const Pane = dynamic(() => import("./Pane"), {
   ssr: false,
@@ -31,6 +32,10 @@ const Playground = () => {
       dispatch(initEsbuild());
     }
   }, [dispatch, esbuildStatus]);
+
+  useEffect(() => {
+    dispatch(open_modal(ModalEnum.TEMPLATE));
+  }, [dispatch]);
 
   return (
     <div style={{ background: theme.background }}>

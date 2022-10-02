@@ -42,12 +42,12 @@ const SettingsModal = () => {
 
   return (
     <motion.div
-      style={{ backgroundColor: theme.background }}
-      className="sm:mt-10 mx-auto h-full sm:h-auto sm:w-8/12 lg:w-6/12 sm:rounded-xl overflow-hidden"
+      className="sm:mt-10 mx-auto h-full sm:h-auto sm:w-8/12 lg:w-6/12 sm:rounded-xl overflow-hidden glassmorphism"
       variants={modalVariant}
       initial="initial"
       animate="animate"
-      transition={{ ease: "easeOut", duration: 0.4 }}
+      exit="exit"
+      transition={{ ease: "easeOut", duration: 0.3 }}
       onClick={(e) => e.stopPropagation()}
     >
       <div

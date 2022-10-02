@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
+import Loader from "../../components/Loader";
 
 const Github = () => {
   const { query } = useRouter();
@@ -10,14 +11,14 @@ const Github = () => {
         window?.opener && window.opener.withOauth(query, "github");
         resolve("done");
       }).then(() => {
-        // window.close();
+        window.close();
       });
     }
   }, [query]);
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <div>loading...</div>
+      <Loader size={30} color="black" />
     </div>
   );
 };

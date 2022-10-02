@@ -36,9 +36,6 @@ export const RootModal = () => {
     <AnimatePresence exitBeforeEnter onExitComplete={() => null}>
       {visible && (
         <motion.div
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
           className="backdrop"
           onClick={() => dispatch(close_modal())}
         >
