@@ -1,11 +1,15 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { editor_state, set_options } from "../../store/features/editorSlice";
+import { modalVariant } from "./config";
+import { theme_state } from "../../store/features/themeSlice";
 
-export const SettingsModal = () => {
+const SettingsModal = () => {
   const dispatch = useAppDispatch();
   const { options } = useAppSelector(editor_state);
+  const { theme } = useAppSelector(theme_state);
 
   const { register, handleSubmit } = useForm();
 
@@ -37,9 +41,20 @@ export const SettingsModal = () => {
   };
 
   return (
-    <>
-      <div className="border-b border-black h-10 flex items-center px-7">
-        <h1 className="text-lg"> Settings</h1>
+    <motion.div
+      style={{ backgroundColor: theme.background }}
+      className="sm:mt-10 mx-auto h-full sm:h-auto sm:w-8/12 lg:w-6/12 sm:rounded-xl overflow-hidden"
+      variants={modalVariant}
+      initial="initial"
+      animate="animate"
+      transition={{ ease: "easeOut", duration: 0.4 }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div
+        style={{ backgroundColor: theme.foreground }}
+        className="border-b border-black h-10 flex items-center px-7"
+      >
+        <h1 className="text-xl"> Settings</h1>
       </div>
 
       <div className="overflow-auto h-full">
@@ -57,6 +72,9 @@ export const SettingsModal = () => {
                 id="fontSize"
                 className="editor-select"
                 defaultValue={options.fontSize}
+                style={{
+                  backgroundColor: theme.foreground,
+                }}
               >
                 <option value={9}>9</option>
                 <option value={10}>10</option>
@@ -78,6 +96,9 @@ export const SettingsModal = () => {
                 id="fontWeight"
                 className="editor-select"
                 defaultValue={options.fontWeight}
+                style={{
+                  backgroundColor: theme.foreground,
+                }}
               >
                 <option value="500">Regular</option>
                 <option value="600">Bold</option>
@@ -97,6 +118,9 @@ export const SettingsModal = () => {
                   className="editor-select mr-2"
                   type="checkbox"
                   defaultChecked={options.minimap?.enabled}
+                  style={{
+                    backgroundColor: theme.foreground,
+                  }}
                 />
                 <label>On </label>
               </div>
@@ -110,6 +134,9 @@ export const SettingsModal = () => {
                 id="minimap-scale"
                 className="editor-select"
                 defaultValue={options.minimap?.scale}
+                style={{
+                  backgroundColor: theme.foreground,
+                }}
               >
                 <option value={1}>1</option>
                 <option value={2}>2</option>
@@ -126,6 +153,9 @@ export const SettingsModal = () => {
                 id="wordWrap"
                 className="editor-select"
                 defaultValue={options.wordWrap}
+                style={{
+                  backgroundColor: theme.foreground,
+                }}
               >
                 <option value="on">On</option>
                 <option value="off">Off</option>
@@ -142,6 +172,9 @@ export const SettingsModal = () => {
                 id="autoClosingBrackets"
                 className="editor-select"
                 defaultValue={options.autoClosingBrackets}
+                style={{
+                  backgroundColor: theme.foreground,
+                }}
               >
                 <option value="always">always</option>
                 <option value="languageDefined">languageDefined</option>
@@ -156,6 +189,8 @@ export const SettingsModal = () => {
           </form>
         </div>
       </div>
-    </>
+    </motion.div>
   );
 };
+
+export default SettingsModal;

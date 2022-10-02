@@ -4,6 +4,8 @@ import { RootState } from "../store";
 export enum ModalEnum {
   IDLE = "IDLE",
   AUTH = "AUTH",
+  TEMPLATE = "TEMPLATE",
+  SETTINGS = "SETTINGS",
 }
 
 type InitialStateType = {

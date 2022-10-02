@@ -20,8 +20,12 @@ import { ApolloProvider } from "@apollo/client";
 import { createApolloClient } from "../utils/client";
 import { sessionOptions } from "../utils/withSession";
 import { store } from "../store/store";
-import { set_initial_user, withGoogle } from "../store/features/authSlice";
-import { GoogleAuthInput } from "../graphql/generated/graphql";
+import {
+  OauthInput,
+  OauthProvider,
+  set_initial_user,
+  withOauth,
+} from "../store/features/authSlice";
 import { RootModal } from "../components/Modals/RootModal";
 
 interface MyAppProps extends AppProps {
@@ -34,8 +38,8 @@ function MyApp({ Component, pageProps, router, initialUser }: MyAppProps) {
   Router.events.on("routeChangeError", () => NProgress.done());
 
   useEffect(() => {
-    window.withGoogle = function (input: GoogleAuthInput) {
-      store.dispatch(withGoogle(input));
+    window.withOauth = function (input: OauthInput, provider: OauthProvider) {
+      store.dispatch(withOauth(input, provider));
     };
   }, []);
 

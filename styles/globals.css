@@ -49,7 +49,6 @@ a {
 
 .editor-select {
   @apply text-gray-200 rounded-sm;
-  /*  bg-tree-soft */
 }
 
 .editor-button {

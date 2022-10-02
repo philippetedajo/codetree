@@ -95,6 +95,26 @@ export const googleOauthMutation =
   }
 }`);
 
+export const githubOauthMutation =
+  gql(`mutation Mutation($input: GithubAuthInput!) {
+  githubOauth(input: $input) {
+    data {
+      id
+      email
+      username
+      avatar
+      bio
+      website
+      verifiedAt
+      createdAt
+      updatedAt
+    }
+    token
+    message
+    status
+  }
+}`);
+
 export const updateProfileMutation =
   gql(`mutation UpdateProfile($input: UpdateProfileInput) {
   updateProfile(input: $input) {

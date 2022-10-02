@@ -1,8 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import axios from "axios";
-import { GoogleAuthInput } from "../../graphql/generated/graphql";
+import {
+  GoogleAuthInput,
+  GithubAuthInput,
+} from "../../graphql/generated/graphql";
 import { IronSessionData } from "iron-session";
+
+export type OauthProvider = "google" | "github";
+export type OauthInput = GoogleAuthInput | GithubAuthInput;
 
 type InitialStateType = {
   user: IronSessionData["user"] | null;
@@ -41,15 +47,15 @@ export const authSlice = createSlice({
       state.user = payload;
       state.errors = null;
     },
-    with_google: (state: InitialStateType) => {
+    with_oauth: (state: InitialStateType) => {
       state.isLoadingLogin = true;
     },
-    with_google_success: (state: InitialStateType, { payload }) => {
+    with_oauth_success: (state: InitialStateType, { payload }) => {
       state.isLoadingLogin = false;
       state.user = payload;
       state.errors = null;
     },
-    with_google_failure: (state: InitialStateType, { payload }) => {
+    with_oauth_failure: (state: InitialStateType, { payload }) => {
       state.isLoadingLogin = false;
       state.user = null;
       state.errors = payload;
@@ -71,9 +77,9 @@ export const authSlice = createSlice({
 
 export const {
   set_initial_user,
-  with_google,
-  with_google_success,
-  with_google_failure,
+  with_oauth,
+  with_oauth_success,
+  with_oauth_failure,
   logout_user,
   logout_user_success,
   logout_user_failure,
@@ -83,22 +89,22 @@ export const auth_state = (state: RootState) => state.auth;
 
 export default authSlice.reducer;
 
-export function withGoogle(input: GoogleAuthInput) {
+export function withOauth(input: OauthInput, provider: OauthProvider) {
   return async (dispatch: any) => {
-    dispatch(with_google());
+    dispatch(with_oauth());
 
     try {
-      const res = await axios.post("/api/oauth/google", input);
+      const res = await axios.post(`/api/oauth/${provider}`, input);
 
       if (res.data.status) {
-        dispatch(with_google_success(res.data));
+        dispatch(with_oauth_success(res.data));
         return;
       }
 
-      dispatch(with_google_failure(res.data.message));
+      dispatch(with_oauth_failure(res.data.message));
       return res.data;
     } catch (err) {
-      dispatch(with_google_failure(err.message));
+      dispatch(with_oauth_failure(err.message));
     }
   };
 }

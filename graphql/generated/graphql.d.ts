@@ -99,6 +99,10 @@ export type DeleteProjectInput = {
   projectId: Scalars['String'];
 };
 
+export type GithubAuthInput = {
+  code?: InputMaybe<Scalars['String']>;
+};
+
 export type GoogleAuthInput = {
   authuser?: InputMaybe<Scalars['String']>;
   code?: InputMaybe<Scalars['String']>;
@@ -118,6 +122,7 @@ export type Mutation = {
   deleteComment: CommentResponse;
   deleteProject: ProjectResponse;
   forgotPassword: SimpleAuthResponse;
+  githubOauth: AuthResponse;
   googleOauth: AuthResponse;
   login: AuthResponse;
   register: AuthResponse;
@@ -154,6 +159,11 @@ export type MutationDeleteProjectArgs = {
 
 export type MutationForgotPasswordArgs = {
   input: UserForgotPasswordInput;
+};
+
+
+export type MutationGithubOauthArgs = {
+  input: GithubAuthInput;
 };
 
 

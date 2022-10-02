@@ -1,9 +1,10 @@
 import "iron-session";
-import { GoogleAuthInput, User } from "./graphql/generated/graphql";
+import { User } from "./graphql/generated/graphql";
+import { OauthInput, OauthProvider } from "./store/features/authSlice";
 
 declare global {
   interface Window {
-    withGoogle: (input: GoogleAuthInput) => void;
+    withOauth: (input: OauthInput, provider: OauthProvider) => void;
   }
 }
 

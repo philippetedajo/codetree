@@ -1,12 +1,13 @@
+import { motion } from "framer-motion";
 import { useTree } from "../../hooks";
 import { treeTemplates } from "../../constants";
-import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { useAppSelector } from "../../store/hook";
 import { theme_state } from "../../store/features/themeSlice";
 import { compiler_state } from "../../store/features/compilerSlice";
 import { TemplateSelectionSkeleton } from "../Skeleton/TemplateSelectionSkeleton";
+import { modalVariant } from "./config";
 
-export const TemplateModal = () => {
-  const dispatch = useAppDispatch();
+const TemplateModal = () => {
   const { theme } = useAppSelector(theme_state);
   const { esbuildStatus } = useAppSelector(compiler_state);
   const { setTree } = useTree();
@@ -25,7 +26,6 @@ export const TemplateModal = () => {
       className="p-2 rounded-sm"
     >
       <div className="flex pointer-events-none">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           alt={template[1].name}
           src={template[1].iconSrc}
@@ -40,13 +40,26 @@ export const TemplateModal = () => {
   ));
 
   return (
-    <div>
-      <div className="border-b border-black h-10 flex items-center px-7">
-        <h1 className="text-lg">Templates</h1>
+    <motion.div
+      style={{ backgroundColor: theme.background }}
+      className="sm:mt-44 mx-auto h-full sm:h-auto sm:w-8/12 lg:w-6/12 sm:pb-20 sm:rounded-xl overflow-hidden"
+      variants={modalVariant}
+      initial="initial"
+      animate="animate"
+      transition={{ ease: "easeOut", duration: 0.4 }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div
+        style={{ backgroundColor: theme.foreground }}
+        className="border-b border-black h-10 flex items-center px-7"
+      >
+        <h1 className="text-xl">Templates</h1>
       </div>
-      <div className="pt-6 px-7 flex flex-wrap gap-x-10 gap-y-5">
+      <div className="pt-6 px-7 flex flex-wrap gap-x-14 gap-y-8">
         {esbuildStatus.isReady ? templates : <TemplateSelectionSkeleton />}
       </div>
-    </div>
+    </motion.div>
   );
 };
+
+export default TemplateModal;

@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 
-const Google = () => {
+const Github = () => {
   const { query } = useRouter();
 
   useEffect(() => {
     if (query.code) {
       new Promise((resolve) => {
-        window?.opener && window.opener.withOauth(query, "google");
+        window?.opener && window.opener.withOauth(query, "github");
         resolve("done");
       }).then(() => {
-        window.close();
+        // window.close();
       });
     }
   }, [query]);
@@ -22,4 +22,4 @@ const Google = () => {
   );
 };
 
-export default Google;
+export default Github;
