@@ -15,10 +15,11 @@ import Iframe from "./Iframe";
 import InputCodeTab from "./InputCodeTab";
 import Footer from "./Footer";
 import Header from "./Header";
+import Pane from "./Pane";
 
-const Pane = dynamic(() => import("./Pane"), {
-  ssr: false,
-});
+// const Pane = dynamic(() => import("./Pane"), {
+//   ssr: false,
+// });
 
 const Playground = () => {
   const dispatch = useAppDispatch();

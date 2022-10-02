@@ -31,7 +31,7 @@
 }
 
 .editor-input-tabs .rc-tabs-ink-bar {
-  @apply bg-green-500;
+  @apply bg-teal-500;
 }
 
 /* default  ====================================*/
