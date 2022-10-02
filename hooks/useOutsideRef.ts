@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const UseOutsideRef = (ref: any) => {
   const [isOutsideRef, setIsOutsideRef] = useState(false);
