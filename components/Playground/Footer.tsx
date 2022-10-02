@@ -56,8 +56,8 @@ const Footer = () => {
         <div className="ml-2  w-6">
           {logs.length > 0 && (
             <div className="h-5 w-5 flex justify-center items-center">
-              <div className="absolute p-1.5 bg-green-400 rounded-full animate-ping" />
-              <div className="absolute p-1 bg-green-400  border-white rounded-full" />
+              <div className="absolute p-1.5 bg-teal-400 rounded-full animate-ping" />
+              <div className="absolute p-1 bg-teal-400  border-white rounded-full" />
             </div>
           )}
         </div>

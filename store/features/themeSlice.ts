@@ -15,7 +15,7 @@ const initialState = {
     text: "#ffffff",
     background: "#171E25",
     foreground: "#1B252D",
-    border: "#4c5b67",
+    border: "#263440",
   },
 };
 

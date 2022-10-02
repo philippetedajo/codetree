@@ -21,7 +21,7 @@
     "@types/apollo-upload-client": "^17.0.1",
     "@types/babel__traverse": "^7.11.1",
     "@types/nprogress": "^0.2.0",
-    "allotment": "^1.14.1",
+    "allotment": "^1.17.0",
     "apollo-upload-client": "^17.0.0",
     "axios": "^0.27.2",
     "color-convert": "^2.0.1",
