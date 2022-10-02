@@ -1,20 +1,20 @@
 import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 
+import { useAppDispatch, useAppSelector } from "../../store/hook";
 import {
   compiler_state,
   initEsbuild,
 } from "../../store/features/compilerSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { editor_state } from "../../store/features/editorSlice";
 import { theme_state } from "../../store/features/themeSlice";
+import { ModalEnum, open_modal } from "../../store/features/modalSlice";
 
 import ConsoleLog from "./ConsoleLog";
 import Iframe from "./Iframe";
 import InputCodeTab from "./InputCodeTab";
 import Footer from "./Footer";
 import Header from "./Header";
-import { ModalEnum, open_modal } from "../../store/features/modalSlice";
 
 const Pane = dynamic(() => import("./Pane"), {
   ssr: false,

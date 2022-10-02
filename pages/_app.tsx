@@ -65,11 +65,7 @@ function MyApp({ Component, pageProps, router, initialUser }: MyAppProps) {
                 `}
       </Script>
 
-      <ApolloProvider
-        client={createApolloClient(
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbDhtY2hwdzQwMDA4Z3l2cGRmbXY2d2V5IiwiaWF0IjoxNjY0NDEzMjAwfQ.HVBdNKoHppNZHN8EbwV0mhVfkbFt0odL58pHheZV7w0"
-        )}
-      >
+      <ApolloProvider client={createApolloClient()}>
         <Provider store={store}>
           <Component {...pageProps} />
           <RootModal />
